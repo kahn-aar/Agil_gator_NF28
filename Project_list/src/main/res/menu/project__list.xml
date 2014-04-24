@@ -4,12 +4,12 @@
     tools:context="com.agil_gator_nf28.agil_gator.Project_List" >
     
     <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+        android:title="@string/action_create"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
     <item android:id="@+id/action_settings"
-        android:title="@string/action_home"
-        android:orderInCategory="90"
+        android:title="@string/action_delete"
+        android:orderInCategory="110"
         app:showAsAction="never" />
 </menu>
