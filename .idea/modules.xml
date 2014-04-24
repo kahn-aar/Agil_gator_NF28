@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Agil_gator_NF28.iml" filepath="$PROJECT_DIR$/Agil_gator_NF28.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Project_list/Project_list.iml" filepath="$PROJECT_DIR$/Project_list/Project_list.iml" />
+    </modules>
+  </component>
+</project>
+
