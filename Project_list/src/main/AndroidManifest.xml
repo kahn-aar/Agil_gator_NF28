@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.agil_gator_nf28.agil_gator.AddProject"
+            android:label="@string/title_activity_add_project"
+            android:parentActivityName="com.agil_gator_nf28.agil_gator.Project_List" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Project_List" />
+        </activity>
     </application>
 
 </manifest>

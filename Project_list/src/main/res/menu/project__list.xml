@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.agil_gator_nf28.agil_gator.Project_List" >
     
-    <item android:id="@+id/action_settings"
+    <item android:id="@+id/addProject"
         android:title="@string/action_create"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        app:showAsAction="never"/>
 
     <item android:id="@+id/action_settings"
         android:title="@string/action_delete"

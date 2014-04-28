@@ -1,38 +1,24 @@
 package com.agil_gator_nf28.agil_gator;
 
-import java.util.Locale;
-
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-public class Project_List extends ActionBarActivity {
+public class AddProject extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.project__list);
+        setContentView(R.layout.activity_add_project);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
+        
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.project__list, menu);
+        getMenuInflater().inflate(R.menu.add_project, menu);
         return true;
     }
 
@@ -43,11 +29,6 @@ public class Project_List extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.addProject) {
-            Intent intent = new Intent(this, AddProject.class);
-            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
