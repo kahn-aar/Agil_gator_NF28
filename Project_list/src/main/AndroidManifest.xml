@@ -24,6 +24,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Project_List" />
         </activity>
+
     </application>
 
-</manifest>
+ </manifest>

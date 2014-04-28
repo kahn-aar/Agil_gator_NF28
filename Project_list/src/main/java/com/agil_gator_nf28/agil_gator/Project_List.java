@@ -19,12 +19,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.agil_gator_nf28.constantes.AndroidConstantes;
+
 public class Project_List extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project__list);
+
+        Intent intent = getIntent();
+        TextView nom = (TextView) findViewById(R.id.nom);
+        TextView sub = (TextView) findViewById(R.id.sub);
+
+        if (intent != null) {
+            nom.setText(intent.getStringExtra(AndroidConstantes.EXTRA_TITLE_NEW_PROJECT));
+            sub.setText(intent.getStringExtra(AndroidConstantes.EXTRA_SUB_NEW_PROJECT));
+        }
     }
 
 

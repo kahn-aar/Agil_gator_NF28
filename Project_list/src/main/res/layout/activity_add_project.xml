@@ -45,7 +45,7 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"/>
+            android:id="@+id/editNomProjet"/>
     </LinearLayout>
 
     <LinearLayout
@@ -69,7 +69,7 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextSousTitre"/>
+            android:id="@+id/editSubTitre"/>
     </LinearLayout>
 
 
@@ -96,7 +96,7 @@
             android:layout_height="100dp"
             android:inputType="textMultiLine"
             android:ems="20"
-            android:id="@+id/editText2" />
+            android:id="@+id/editDescription" />
 
     </LinearLayout>
 
@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:text="@string/add_project_boutton"
         android:layout_alignTop="@+id/description"
-        android:id="@+id/button"
+        android:id="@+id/add_button"
         android:layout_marginTop="120dp"/>
 
 </RelativeLayout>

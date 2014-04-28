@@ -24,6 +24,8 @@
     <string name="add_project_sub_title">Sous-titre : </string>
     <string name="add_project_description">Description : </string>
     <string name="add_project_boutton">Créer un nouveau projet</string>
+    <string name="error_name_project">Erreur : veuillez entrer un nom de projet</string>
+    <string name="error_sub_project">Erreur : veuillez entrer un sous titre de projet</string>
 
 
 
