@@ -21,7 +21,7 @@
         android:layout_alignParentStart="true"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="@dimen/activity_title_size"
         android:textIsSelectable="false" />
 
     <View
@@ -64,7 +64,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="@dimen/title_project_size"
                 android:textIsSelectable="false" />
 
             <TextView
@@ -78,7 +78,7 @@
                 android:layout_alignStart="@+id/textView"
                 android:textStyle="italic"
                 android:textColor="#979797"
-                android:textSize="16dp" />
+                android:textSize="@dimen/sub_title_project_size" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                 android:longClickable="true"
                 android:layout_below="@+id/imageView2"
                 android:minHeight="80dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="@dimen/space_vertical_projects" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -107,7 +107,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="@dimen/title_project_size"
                 android:textIsSelectable="false" />
 
             <TextView
@@ -121,7 +121,7 @@
                 android:layout_alignStart="@+id/textView"
                 android:textStyle="italic"
                 android:textColor="#979797"
-                android:textSize="16dp" />
+                android:textSize="@dimen/sub_title_project_size" />
 
 
             <ImageView
@@ -137,7 +137,7 @@
                 android:longClickable="true"
                 android:layout_below="@+id/imageView3"
                 android:minHeight="80dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="@dimen/space_vertical_projects" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -152,7 +152,7 @@
                 android:longClickable="true"
                 android:layout_below="@+id/imageView4"
                 android:minHeight="80dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="@dimen/space_vertical_projects" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -167,7 +167,7 @@
                 android:longClickable="true"
                 android:layout_below="@+id/imageView5"
                 android:minHeight="80dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="@dimen/space_vertical_projects" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

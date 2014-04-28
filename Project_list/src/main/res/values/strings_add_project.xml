@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_add_project">AddProject</string>
+    <string name="title_add_project">Créer un nouveau projet</string>
+    <string name="add_project_titre">Nom du projet : </string>
+    <string name="add_project_sub_title">Sous-titre : </string>
+    <string name="add_project_description">Description : </string>
+    <string name="add_project_boutton">Créer un nouveau projet</string>
+    <string name="error_name_project">Erreur : veuillez entrer un nom de projet</string>
+    <string name="error_sub_project">Erreur : veuillez entrer un sous titre de projet</string>
+
+</resources>

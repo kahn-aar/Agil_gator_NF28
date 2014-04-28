@@ -24,7 +24,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Project_List" />
         </activity>
+        <activity
+            android:name="com.agil_gator_nf28.agil_gator.LoginActivity"
+            android:label="@string/title_activity_login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
- </manifest>
+</manifest>
