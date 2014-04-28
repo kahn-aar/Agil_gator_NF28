@@ -12,6 +12,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_home">Home</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_project_list">Liste des projets</string>
     <string name="title_project">Title project one</string>
     <string name="sub_title_project">subTitle</string>
 
