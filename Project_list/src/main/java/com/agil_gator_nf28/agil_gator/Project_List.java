@@ -1,25 +1,20 @@
 package com.agil_gator_nf28.agil_gator;
 
-import java.util.Locale;
-
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.agil_gator_nf28.BddInterne.ProjetBDD;
+import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.Projet.ProjetAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Project_List extends ActionBarActivity {
 
@@ -27,15 +22,23 @@ public class Project_List extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project__list);
+        ListView contenuDeLaPage = (ListView)findViewById(R.id.contenuDeLaPage);
 
-        Intent intent = getIntent();
-        TextView nom = (TextView) findViewById(R.id.nom);
-        TextView sub = (TextView) findViewById(R.id.sub);
+        //Création d'une instance de ma classe LivresBDD
+        ProjetBDD projetBdd = new ProjetBDD(this);
 
-        if (intent != null) {
-            nom.setText(intent.getStringExtra(AndroidConstantes.EXTRA_TITLE_NEW_PROJECT));
-            sub.setText(intent.getStringExtra(AndroidConstantes.EXTRA_SUB_NEW_PROJECT));
-        }
+        //On ouvre la base de données pour écrire dedans
+        projetBdd.open();
+
+        List<Projet> projets = projetBdd.getProjets();
+        //List<Projet> projets = new ArrayList<Projet>();
+        //projets.add(livre);
+        projetBdd.close();
+
+        ProjetAdapter adapter = new ProjetAdapter(getApplicationContext(), projets);
+
+        // On dit à la ListView de se remplir via cet adapter
+        contenuDeLaPage.setAdapter(adapter);
     }
 
 

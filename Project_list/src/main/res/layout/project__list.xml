@@ -32,142 +32,20 @@
         android:layout_marginTop="35dp"
         android:background="@android:color/darker_gray"/>
 
+
+    <ListView
+        android:id="@+id/contenuDeLaPage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lineTop"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/project_background">
+    </ListView>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignTop="@+id/lineTop"
         android:layout_marginTop="10dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/imageView2"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:background="@drawable/project_view"
-                android:maxHeight="100dp"
-                android:longClickable="true"
-                android:minHeight="80dp" />
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/title_project"
-                android:id="@+id/textView"
-                android:layout_alignTop="@+id/imageView2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:textSize="@dimen/title_project_size"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/sub_title_project"
-                android:id="@+id/textView2"
-                android:layout_below="@+id/textView"
-                android:layout_alignLeft="@+id/textView"
-                android:layout_alignStart="@+id/textView"
-                android:textStyle="italic"
-                android:textColor="#979797"
-                android:textSize="@dimen/sub_title_project_size" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/imageView3"
-                android:layout_alignRight="@+id/imageView"
-                android:layout_alignEnd="@+id/imageView"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:background="@drawable/project_view"
-                android:maxHeight="100dp"
-                android:longClickable="true"
-                android:layout_below="@+id/imageView2"
-                android:minHeight="80dp"
-                android:layout_marginTop="@dimen/space_vertical_projects" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/title_project"
-                android:id="@+id/nom"
-                android:layout_alignTop="@+id/imageView3"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:textSize="@dimen/title_project_size"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/sub_title_project"
-                android:id="@+id/sub"
-                android:layout_below="@+id/nom"
-                android:layout_alignLeft="@+id/textView"
-                android:layout_alignStart="@+id/textView"
-                android:textStyle="italic"
-                android:textColor="#979797"
-                android:textSize="@dimen/sub_title_project_size" />
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView4"
-                android:layout_alignRight="@+id/imageView"
-                android:layout_alignEnd="@+id/imageView"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:background="@drawable/project_view"
-                android:maxHeight="100dp"
-                android:longClickable="true"
-                android:layout_below="@+id/imageView3"
-                android:minHeight="80dp"
-                android:layout_marginTop="@dimen/space_vertical_projects" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView5"
-                android:layout_alignRight="@+id/imageView"
-                android:layout_alignEnd="@+id/imageView"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:background="@drawable/project_view"
-                android:maxHeight="100dp"
-                android:longClickable="true"
-                android:layout_below="@+id/imageView4"
-                android:minHeight="80dp"
-                android:layout_marginTop="@dimen/space_vertical_projects" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView6"
-                android:layout_alignRight="@+id/imageView"
-                android:layout_alignEnd="@+id/imageView"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
-                android:background="@drawable/project_view"
-                android:maxHeight="100dp"
-                android:longClickable="true"
-                android:layout_below="@+id/imageView5"
-                android:minHeight="80dp"
-                android:layout_marginTop="@dimen/space_vertical_projects" />
-        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

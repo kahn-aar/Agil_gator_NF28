@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.agil_gator_nf28.BddInterne.ProjetBDD;
+import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.regex.Matcher;
@@ -50,11 +52,15 @@ public class AddProject extends ActionBarActivity {
                     Toast.makeText(AddProject.this, R.string.error_sub_project, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent = new Intent(AddProject.this, Project_List.class);
-                intent.putExtra(AndroidConstantes.EXTRA_TITLE_NEW_PROJECT, nom.getText().toString());
-                intent.putExtra(AndroidConstantes.EXTRA_SUB_NEW_PROJECT, sub.getText().toString());
-                intent.putExtra(AndroidConstantes.EXTRA_DESCRIPTION_NEW_PROJECT, desc.getText().toString());
-                startActivity(intent);
+                Projet projet = new Projet(nomText, subText);
+                //Création d'une instance de ma classe LivresBDD
+                ProjetBDD projetBdd = new ProjetBDD(AddProject.this);
+
+                //On ouvre la base de données pour écrire dedans
+                projetBdd.open();
+                //On insère le livre que l'on vient de créer
+                projetBdd.insertProjet(projet);
+                projetBdd.close();
             }
         });
     }
