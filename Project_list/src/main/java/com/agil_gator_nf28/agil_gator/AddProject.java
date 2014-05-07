@@ -35,7 +35,7 @@ public class AddProject extends ActionBarActivity {
             public void onClick(View v) {
                 final String nomText = nom.getText().toString();
                 final String subText = sub.getText().toString();
-
+                final String descText = desc.getText().toString();
                 // On déclare le pattern que l’on doit vérifier
                 Pattern p = Pattern.compile(".+");
                 // On déclare un matcher, qui comparera le pattern avec la
@@ -52,7 +52,7 @@ public class AddProject extends ActionBarActivity {
                     Toast.makeText(AddProject.this, R.string.error_sub_project, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Projet projet = new Projet(nomText, subText);
+                Projet projet = new Projet(nomText, subText, descText);
                 //Création d'une instance de ma classe LivresBDD
                 ProjetBDD projetBdd = new ProjetBDD(AddProject.this);
 
@@ -61,6 +61,11 @@ public class AddProject extends ActionBarActivity {
                 //On insère le livre que l'on vient de créer
                 projetBdd.insertProjet(projet);
                 projetBdd.close();
+
+                //On retourne sur la page d'accueil
+                Intent intent = new Intent(AddProject.this, Project_List.class);
+                startActivity(intent);
+
             }
         });
     }

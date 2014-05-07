@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class ProjetBDD {
 
-    private static final int VERSION_BDD = 1;
+    private static final int VERSION_BDD = 3;
 
     private static final int NUM_COL_ID = 0;
     private static final int NUM_COL_ISBN = 1;
@@ -50,9 +50,12 @@ public class ProjetBDD {
         ContentValues values = new ContentValues();
 
         System.out.println("insert projet");
+
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_NAME, projet.getName());
         values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
+        values.put(AndroidConstantes.COL_DESC, projet.getDescription());
+
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(AndroidConstantes.TABLE_PROJET, null, values);
     }
@@ -86,7 +89,7 @@ public class ProjetBDD {
     private List<Projet> cursorToLivres(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
-            return null;
+            return new ArrayList<Projet>();
 
         List<Projet> projets = new ArrayList<Projet>();
 

@@ -13,8 +13,8 @@ public class MaBaseProjet extends SQLiteOpenHelper {
 
 
     private static final String CREATE_BDD = "CREATE TABLE " + AndroidConstantes.TABLE_PROJET + " ("
-            + AndroidConstantes.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + AndroidConstantes.COL_NAME + " TEXT NOT NULL, "
-            + AndroidConstantes.COL_SUBTITLE + " TEXT NOT NULL);";
+            + AndroidConstantes.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "  + AndroidConstantes.COL_NAME + " TEXT NOT NULL, "
+            + AndroidConstantes.COL_SUBTITLE + " TEXT NOT NULL, " + AndroidConstantes.COL_DESC + " TEXT)";
 
     public MaBaseProjet(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -32,7 +32,7 @@ public class MaBaseProjet extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //On peut fait ce qu'on veut ici moi j'ai décidé de supprimer la table et de la recréer
         //comme ça lorsque je change la version les id repartent de 0
-        db.execSQL("DROP TABLE " + AndroidConstantes.NOM_BDD + ";");
+        db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_PROJET + ";");
         onCreate(db);
     }
 
