@@ -7,14 +7,30 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
         <activity
-            android:name="com.agil_gator_nf28.agil_gator.Project_List"
+            android:name="com.agil_gator_nf28.agil_gator.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.agil_gator_nf28.agil_gator.Project_List"
+            android:label="@string/app_name" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="LoginActivity" />
+        </activity>
+        <activity
+            android:name="com.agil_gator_nf28.agil_gator.AddProject"
+            android:label="@string/app_name"
+            android:parentActivityName="com.agil_gator_nf28.agil_gator.Project_List" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Project_List" />
         </activity>
     </application>
 
