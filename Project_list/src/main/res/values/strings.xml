@@ -16,7 +16,9 @@
     <string name="title_project">Title project one</string>
     <string name="sub_title_project">subTitle</string>
     <string name="hello_world">Hello world!</string>
-
-
+    <string name="title_activity_page_projet">Page_projet</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
 
 </resources>
