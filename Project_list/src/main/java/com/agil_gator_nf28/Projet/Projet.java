@@ -16,6 +16,12 @@ public class Projet {
         this.subTitle = subTitle;
     }
 
+    public Projet(String name, String subTitle, String description) {
+        this.name = name;
+        this.subTitle = subTitle;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }

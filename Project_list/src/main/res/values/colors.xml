@@ -4,4 +4,6 @@
     <color name="black_color">#000</color>
     <color name="green_begin">#000</color>
     <color name="green_end">#000</color>
+
+    <color name="red_notif">#FF0000</color>
 </resources>

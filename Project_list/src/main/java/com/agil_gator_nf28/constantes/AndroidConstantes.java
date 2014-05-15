@@ -11,10 +11,12 @@ public class AndroidConstantes {
 
     //BDD
     public static final String NOM_BDD = "agilgator2.db";
+    //Table Projet
     public static final String TABLE_PROJET = "table_projet";
     public static final String COL_ID = "ID";
     public static final String COL_NAME = "Name";
     public static final String COL_SUBTITLE = "SubTitle";
+    public static final String COL_DESC = "description";
 
 
 }
