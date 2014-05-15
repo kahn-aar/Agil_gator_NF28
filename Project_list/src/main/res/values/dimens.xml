@@ -17,4 +17,8 @@
     <dimen name="small_padding">10dp</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>
 
+    <dimen name="colomn_size">300dp</dimen>
+    <dimen name="colomn_postIt_size">100dp</dimen>
+    <dimen name="colomn_hauteur">100dp</dimen>
+
 </resources>

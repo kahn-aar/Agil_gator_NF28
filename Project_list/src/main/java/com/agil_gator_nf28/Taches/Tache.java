@@ -10,6 +10,7 @@ import java.util.List;
 public class Tache {
 
     private List<SousTache> sousTaches;
+    private String nom;
     private int priorite;
     private int difficulte;
     private int notifications;
@@ -22,7 +23,8 @@ public class Tache {
         this.notifications = notifications;
     }
 
-    public Tache(int priorite, int difficulte) {
+    public Tache(String nom, int priorite, int difficulte) {
+        this.nom = nom;
         this.priorite = priorite;
         this.difficulte = difficulte;
     }
@@ -49,6 +51,14 @@ public class Tache {
 
     public void setDifficulte(int difficulte) {
         this.difficulte = difficulte;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public int getNotifications() {
