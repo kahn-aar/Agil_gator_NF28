@@ -18,6 +18,8 @@ import java.util.List;
 
 public class Project_List extends ActionBarActivity {
 
+    final String EXTRA_LOGIN = "user_login";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +37,7 @@ public class Project_List extends ActionBarActivity {
         //projets.add(livre);
         projetBdd.close();
 
-        ProjetAdapter adapter = new ProjetAdapter(getApplicationContext(), projets);
-
+        ProjetAdapter adapter = new ProjetAdapter(Project_List.this, getApplicationContext(), projets);
         // On dit à la ListView de se remplir via cet adapter
         contenuDeLaPage.setAdapter(adapter);
     }

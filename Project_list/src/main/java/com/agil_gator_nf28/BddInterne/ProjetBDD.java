@@ -14,9 +14,7 @@ import java.util.List;
 /**
  * Created by Nicolas on 30/04/14.
  */
-public class ProjetBDD {
-
-    private static final int VERSION_BDD = 3;
+public class ProjetBDD implements GestionnaireBDD{
 
     private static final int NUM_COL_ID = 0;
     private static final int NUM_COL_ISBN = 1;
@@ -28,7 +26,7 @@ public class ProjetBDD {
 
     public ProjetBDD(Context context){
         //On créer la BDD et sa table
-        maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, VERSION_BDD);
+        maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, AndroidConstantes.VERSION_BDD);
     }
 
     public void open(){

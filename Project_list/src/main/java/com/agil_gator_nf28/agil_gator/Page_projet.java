@@ -1,6 +1,7 @@
 package com.agil_gator_nf28.agil_gator;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -18,8 +19,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 
@@ -44,6 +47,8 @@ public class Page_projet extends ActionBarActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final String EXTRA_ID = "user_login";
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_projet);
         ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
@@ -57,8 +62,17 @@ public class Page_projet extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            Toast.makeText(this, intent.getStringExtra(EXTRA_ID), Toast.LENGTH_SHORT).show();
+        }
+
         // Mise en place de la liste des tâches
         Tache task = new Tache("ma tache", 5, 3);
+        SousTache sub = new SousTache("lolilol");
+        sub.setEtat(SousTacheEtat.AFAIRE);
+        task.addNewSousTache(sub);
+
         List<Tache> taches = new ArrayList<Tache>();
         taches.add(task);
 
@@ -80,7 +94,7 @@ public class Page_projet extends ActionBarActivity
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(R.string.title_add_task);
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
