@@ -49,6 +49,25 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Membre du projet :"
+            style="@style/subtitle_descriptif"
+            android:id="@+id/membreTitle"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="- Johny\n- Mickael"
+            android:id="@+id/membreContent"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,25 +86,6 @@
         android:id="@+id/avancedContent"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Priorité"
-        android:id="@+id/priorityTitle"
-        style="@style/subtitle_descriptif"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="pripri"
-            android:id="@+id/priorityContent"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp" />
 
      </LinearLayout>
 

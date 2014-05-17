@@ -9,11 +9,23 @@ public class Projet {
     private String name;
     private String subTitle;
     private String description;
+    private int advanced;
 
-    public Projet() {}
-    public Projet(String name, String subTitle) {
+    public Projet(String name, String subTitle, String description, int advanced) {
         this.name = name;
         this.subTitle = subTitle;
+        this.description = description;
+        this.advanced = advanced;
+    }
+
+    public Projet() {}
+
+    public int getAdvanced() {
+        return advanced;
+    }
+
+    public void setAdvanced(int advanced) {
+        this.advanced = advanced;
     }
 
     public Projet(String name, String subTitle, String description) {

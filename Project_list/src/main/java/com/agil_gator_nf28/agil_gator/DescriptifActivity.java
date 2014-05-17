@@ -12,10 +12,16 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.agil_gator_nf28.BddInterne.ProjetBDD;
+import com.agil_gator_nf28.Projet.Projet;
+
+import java.util.List;
+
 public class DescriptifActivity extends ActionBarActivity {
 
-    private TextView title_project, text_description, text_priority, text_advanced;
+    private TextView title_project, text_description, text_membres, text_advanced;
     private RelativeLayout layout = null;
+    private int ID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +34,27 @@ public class DescriptifActivity extends ActionBarActivity {
 
         title_project = (TextView)layout.findViewById(R.id.title_project);
         text_description = (TextView)layout.findViewById(R.id.descriptionContent);
-        text_priority = (TextView)layout.findViewById(R.id.priorityContent);
+        text_membres = (TextView)layout.findViewById(R.id.membreContent);
         text_advanced = (TextView)layout.findViewById(R.id.avancedContent);
+
+        Intent intent = getIntent();
+
+        intent.getIntExtra("id",ID);
+
+        //Création d'une instance de ma classe ProjetBDD
+        ProjetBDD projetBdd = new ProjetBDD(this);
+
+        //On ouvre la base de données pour écrire dedans
+        projetBdd.open();
+
+        Projet projet = projetBdd.getProjectWithId(ID);
+
+        projetBdd.close();
+
+        /** on remplit les champs title, description, priorité et l'avancee **/
+        title_project.setText(projet.getName());
+        text_description.setText(projet.getDescription());
+        text_advanced.setText(projet.getAdvanced());
 
         setContentView(layout);
 

@@ -17,6 +17,11 @@ public class AndroidConstantes {
     public static final String COL_NAME = "Name";
     public static final String COL_SUBTITLE = "SubTitle";
     public static final String COL_DESC = "description";
+    public static final String COL_ADVANCED = "advanced";
 
-
+    //Table User
+    public static final String TABLE_USER = "table_user";
+    public static final String COL_EMAIL = "EMAIL";
+    public static final String COL_NOM = "NOM";
+    public static final String COL_PRENOM = "PRENOM";
 }

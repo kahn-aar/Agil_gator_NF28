@@ -14,7 +14,12 @@ public class MaBaseProjet extends SQLiteOpenHelper {
 
     private static final String CREATE_BDD = "CREATE TABLE " + AndroidConstantes.TABLE_PROJET + " ("
             + AndroidConstantes.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "  + AndroidConstantes.COL_NAME + " TEXT NOT NULL, "
-            + AndroidConstantes.COL_SUBTITLE + " TEXT NOT NULL, " + AndroidConstantes.COL_DESC + " TEXT)";
+            + AndroidConstantes.COL_SUBTITLE + " TEXT NOT NULL, " + AndroidConstantes.COL_DESC + " TEXT,"
+            + AndroidConstantes.COL_ADVANCED+" INTEGER);"
+            + " CREATE TABLE " + AndroidConstantes.TABLE_USER + "("
+            + AndroidConstantes.COL_EMAIL + " TEXT PRIMARY KEY,"
+            + AndroidConstantes.COL_NAME + "TEXT NOT NULL,"
+            + AndroidConstantes.COL_PRENOM + "TEXT);";
 
     public MaBaseProjet(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

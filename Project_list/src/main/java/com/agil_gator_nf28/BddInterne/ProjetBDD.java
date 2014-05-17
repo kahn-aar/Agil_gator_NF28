@@ -55,6 +55,7 @@ public class ProjetBDD {
         values.put(AndroidConstantes.COL_NAME, projet.getName());
         values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
         values.put(AndroidConstantes.COL_DESC, projet.getDescription());
+        values.put(AndroidConstantes.COL_ADVANCED, projet.getAdvanced());
 
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(AndroidConstantes.TABLE_PROJET, null, values);
@@ -66,27 +67,31 @@ public class ProjetBDD {
         ContentValues values = new ContentValues();
         values.put(AndroidConstantes.COL_NAME, projet.getName());
         values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
+        values.put(AndroidConstantes.COL_ADVANCED, projet.getAdvanced());
         return bdd.update(AndroidConstantes.TABLE_PROJET, values, AndroidConstantes.COL_ID + " = " +id, null);
     }
 
-    public int removeLivreWithID(int id){
+    public int removeProjetWithID(int id){
         //Suppression d'un livre de la BDD grâce à l'ID
         return bdd.delete(AndroidConstantes.TABLE_PROJET, AndroidConstantes.COL_ID + " = " +id, null);
     }
 
-    public Projet getLivreWithTitre(String titre){
-        //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-        Cursor c = bdd.query(AndroidConstantes.TABLE_PROJET, new String[] {AndroidConstantes.COL_ID, AndroidConstantes.COL_NAME, AndroidConstantes.COL_SUBTITLE}, AndroidConstantes.COL_NAME + " LIKE \"" + titre +"\"", null, null, null, null);
-        return cursorToLivre(c);
+    public Projet getProjectWithId(int id){
+        //selectionne project avec ID
+       // Cursor c = bdd.query(AndroidConstantes.TABLE_PROJET, new String[]{AndroidConstantes.COL_ID, AndroidConstantes.COL_NAME, AndroidConstantes.COL_SUBTITLE}, AndroidConstantes.COL_ID + " = " + id, null, null, null, null);
+        Cursor c = bdd.rawQuery("SELECT * FROM "+AndroidConstantes.TABLE_PROJET+" WHERE "+AndroidConstantes.COL_ID+" = '"+id+"';",null);
+
+        return cursorToProjet(c);
     }
 
     public List<Projet> getProjets() {
-        Cursor c = bdd.query(AndroidConstantes.TABLE_PROJET, new String[] {AndroidConstantes.COL_ID, AndroidConstantes.COL_NAME, AndroidConstantes.COL_SUBTITLE}, null, null, null, null, null);
-        return cursorToLivres(c);
+        //Cursor c = bdd.query(AndroidConstantes.TABLE_PROJET, new String[] {AndroidConstantes.COL_ID, AndroidConstantes.COL_NAME, AndroidConstantes.COL_SUBTITLE}, null, null, null, null, null);
+        Cursor c = bdd.rawQuery("SELECT * FROM "+AndroidConstantes.TABLE_PROJET+";",null);
+        return cursorToProjets(c);
     }
 
     //Cette méthode permet de convertir un cursor en un livre
-    private List<Projet> cursorToLivres(Cursor c){
+    private List<Projet> cursorToProjets(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
             return new ArrayList<Projet>();
@@ -95,7 +100,7 @@ public class ProjetBDD {
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();
-        //On créé un livre
+        //On créé un projet
         while(!c.isAfterLast()) {
             Projet projet = new Projet();
             //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
@@ -110,19 +115,19 @@ public class ProjetBDD {
         //On ferme le cursor
         c.close();
 
-        //On retourne le livre
+        //On retourne le projet
         return projets;
     }
 
-    //Cette méthode permet de convertir un cursor en un livre
-    private Projet cursorToLivre(Cursor c){
+    //Cette méthode permet de convertir un cursor en un projet
+    private Projet cursorToProjet(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
             return null;
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();
-        //On créé un livre
+        //On créé un projet
         Projet projet = new Projet();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         projet.setId(c.getInt(NUM_COL_ID));
@@ -131,7 +136,7 @@ public class ProjetBDD {
         //On ferme le cursor
         c.close();
 
-        //On retourne le livre
+        //On retourne le projet
         return projet;
     }
 }
