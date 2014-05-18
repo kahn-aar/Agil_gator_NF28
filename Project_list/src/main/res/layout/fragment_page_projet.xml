@@ -25,6 +25,14 @@
         android:layout_marginTop="35dp"
         android:background="@android:color/darker_gray"/>
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/lineTop2"
+        android:layout_alignTop="@+id/lineTop"
+        android:layout_marginTop="25dp"
+        android:background="@android:color/darker_gray"/>
+
     <HorizontalScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -32,19 +40,78 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/lineTop"
         >
-
-
-
-        <ListView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:id="@+id/ListeTaches">
+            >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/headerTab">
 
-        </ListView>
+                <TextView
+                    android:layout_width="310dp"
+                    android:layout_height="30dp"
+                    android:text="Taches"
+                    android:gravity="center_horizontal"
+                    />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/line1"
+                    android:background="@android:color/darker_gray"/>
+
+                <TextView
+                    android:layout_width="@dimen/colomn_size"
+                    android:layout_height="30dp"
+                    android:text="en cours"
+                    android:gravity="center_horizontal"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/line2"
+                    android:background="@android:color/darker_gray"/>
+
+                <TextView
+                    android:layout_width="@dimen/colomn_size"
+                    android:layout_height="30dp"
+                    android:text="relecture"
+                    android:gravity="center_horizontal"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/line2"
+                    android:background="@android:color/darker_gray"/>
+                <TextView
+                    android:layout_width="@dimen/colomn_size"
+                    android:layout_height="@dimen/colomn_hauteur"
+                    android:text="Done"
+                    android:gravity="center_horizontal"/>
 
 
+            </LinearLayout>
 
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_alignTop="@+id/headerTab"
+                android:id="@+id/ListeTaches">
+
+            </ListView>
+
+
+        </RelativeLayout>
     </HorizontalScrollView>
 
 

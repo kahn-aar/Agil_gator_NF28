@@ -21,6 +21,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.agil_gator_nf28.BddInterne.ProjetBDD;
+import com.agil_gator_nf28.BddInterne.SousTacheBDD;
+import com.agil_gator_nf28.BddInterne.TacheBDD;
+import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Taches.Tache;
@@ -45,6 +49,8 @@ public class Page_projet extends ActionBarActivity
      */
     private CharSequence mTitle;
 
+    private Projet project;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final String EXTRA_ID = "user_login";
@@ -64,22 +70,26 @@ public class Page_projet extends ActionBarActivity
 
         Intent intent = getIntent();
         if (intent != null) {
-            Toast.makeText(this, intent.getStringExtra(EXTRA_ID), Toast.LENGTH_SHORT).show();
+            ProjetBDD projetBDD = new ProjetBDD(this);
+            projetBDD.open();
+            int projectId = Integer.valueOf(intent.getStringExtra(EXTRA_ID));
+            project = projetBDD.getProjetById(projectId);
+
+            projetBDD.close();
+
+            TacheBDD tacheBDD = new TacheBDD(this);
+            tacheBDD.open();
+
+
+            List<Tache> taches = tacheBDD.getTaches(project);
+            Toast.makeText(this, taches.get(0).getNom(), Toast.LENGTH_SHORT).show();
+            tacheBDD.close();
+
+            TacheAdapter adapter = new TacheAdapter(getApplicationContext(), taches);
+
+            // On dit à la ListView de se remplir via cet adapter
+            ListeTaches.setAdapter(adapter);
         }
-
-        // Mise en place de la liste des tâches
-        Tache task = new Tache("ma tache", 5, 3);
-        SousTache sub = new SousTache("lolilol");
-        sub.setEtat(SousTacheEtat.AFAIRE);
-        task.addNewSousTache(sub);
-
-        List<Tache> taches = new ArrayList<Tache>();
-        taches.add(task);
-
-        TacheAdapter adapter = new TacheAdapter(getApplicationContext(), taches);
-
-        // On dit à la ListView de se remplir via cet adapter
-        ListeTaches.setAdapter(adapter);
     }
 
     @Override

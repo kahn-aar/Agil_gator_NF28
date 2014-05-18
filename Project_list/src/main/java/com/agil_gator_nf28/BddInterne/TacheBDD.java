@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.agil_gator_nf28.Projet.Projet;
-import com.agil_gator_nf28.SousTaches.SousTacheEtat;
+import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
@@ -25,12 +25,13 @@ public class TacheBDD implements GestionnaireBDD {
     private static final int NUM_COL_PROJET = 4;
 
     private SQLiteDatabase bdd;
-
+    private Context context;
     private MaBaseProjet maBaseSQLite;
 
     public TacheBDD(Context context){
         //On créer la BDD et sa table
         maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, AndroidConstantes.VERSION_BDD);
+        this.context = context;
     }
 
     @Override
@@ -95,6 +96,8 @@ public class TacheBDD implements GestionnaireBDD {
             tache.setDifficulte(c.getInt(NUM_COL_DIFF));
             tache.setPriorite(c.getInt(NUM_COL_PRIO));
 
+            tache.setSousTaches(getSousTaches(tache));
+
             taches.add(tache);
             c.moveToNext();
         }
@@ -103,6 +106,15 @@ public class TacheBDD implements GestionnaireBDD {
         c.close();
 
         return taches;
+    }
+
+    private List<SousTache> getSousTaches(Tache tache) {
+        List<SousTache> sub = new ArrayList<SousTache>();
+        SousTacheBDD sousTacheBDD = new SousTacheBDD(context);
+        sousTacheBDD.open();
+        sub = sousTacheBDD.getSousTaches(tache);
+        sousTacheBDD.close();
+        return sub;
     }
 }
 
