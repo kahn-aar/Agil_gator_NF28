@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/mainLayout" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:id="@+id/descriptionScrollView"
+        android:layout_above="@+id/separateur"
+        android:layout_alignParentTop="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="TITLE"
+        style="@style/title_descriptif"
+        android:id="@+id/title_project"
+        android:layout_gravity="center_horizontal|left"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Description"
+        android:id="@+id/title_description"
+        style="@style/subtitle_descriptif"
+        android:layout_gravity="center_horizontal|left"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="adazdyzgdgyazgdgzaygdyzadgyazgdgdyazgdyuazdgyazgdygdgagdyazgudgazydgyadgyazgdyagdyagydgaydga"
+            android:id="@+id/descriptionContent"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Membre du projet :"
+            style="@style/subtitle_descriptif"
+            android:id="@+id/membreTitle"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="- Johny\n- Mickael"
+            android:id="@+id/membreContent"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Avancée tache"
+        style="@style/subtitle_descriptif"
+        android:id="@+id/avancedTitle"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="OKKKKKKKKKKKKKKKK"
+        android:id="@+id/avancedContent"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp" />
+
+     </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/menu_options">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:src="@drawable/stat_icone"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton2"
+            android:src="@drawable/stat_icone" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton3"
+            android:src="@drawable/stat_icone" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton4"
+            android:src="@drawable/stat_icone" />
+        </LinearLayout>
+
+    <View
+        android:background="@android:color/darker_gray"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:id="@+id/separateur"
+        android:layout_above="@id/menu_options"
+        />
+
+</RelativeLayout>

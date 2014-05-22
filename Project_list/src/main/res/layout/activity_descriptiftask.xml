@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/mainLayout" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:id="@+id/descriptionScrollView"
+        android:layout_above="@+id/separateur"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="TITLE"
+                style="@style/title_descriptif"
+                android:id="@+id/title_project"
+                android:layout_gravity="center_horizontal|left"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Description"
+                android:id="@+id/title_description"
+                style="@style/subtitle_descriptif"
+                android:layout_gravity="center_horizontal|left"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="none"
+                android:id="@+id/descriptionContent"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Avancée tache"
+                style="@style/subtitle_descriptif"
+                android:id="@+id/avancedTitle"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="none"
+                android:id="@+id/avancedContent"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Priorité :"
+                style="@style/subtitle_descriptif"
+                android:id="@+id/title_priority"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="none"
+                android:id="@+id/prioritycontent"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="En cours"
+                style="@style/subtitle_descriptif"
+                android:id="@+id/doingtitle"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="none"
+                android:id="@+id/doingContent"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/menu_options"
+        android:weightSum="1">
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/imageButton"
+            android:src="@drawable/plus_icone"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="5dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton2"
+            android:src="@drawable/stat_icone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"/>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/imageButton3"
+            android:src="@drawable/supp_icone"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"/>
+
+      </LinearLayout>
+
+    <View
+        android:background="@android:color/darker_gray"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:id="@+id/separateur"
+        android:layout_above="@id/menu_options"
+        />
+
+</RelativeLayout>
