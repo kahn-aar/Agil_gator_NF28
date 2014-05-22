@@ -21,15 +21,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
+
 import com.agil_gator_nf28.BddInterne.TacheBDD;
-=======
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.BddInterne.SprintBDD;
 import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
->>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Sprint.Sprint;
@@ -100,7 +98,6 @@ public class Page_projet extends ActionBarActivity
             System.out.println(actualSprint);
             sprintBDD.close();
 
-<<<<<<< HEAD
         // Mise en place de la liste des tâches
         SousTache sub = new SousTache("lolilol");
         sub.setEtat(SousTacheEtat.AFAIRE);
@@ -109,17 +106,14 @@ public class Page_projet extends ActionBarActivity
 
         TacheBDD tacheBDD = new TacheBDD(this);
         tacheBDD.open();
-        List<Tache> taches = tacheBDD.getTachesWithIdProject(id_project);
+        List<Tache> taches = tacheBDD.getTachesWithIdSprint(id_project);
 
         tacheBDD.close();
 
         for (Tache tac : taches) System.out.println("nom tache !!!!!!!!!!!! :"+tac.getNom());
 
         TacheAdapter adapter = new TacheAdapter(this,getApplicationContext(), taches);
-=======
 
-            TacheBDD tacheBDD = new TacheBDD(this);
-            tacheBDD.open();
            /* SousTache ss1 =new SousTache("blob");
             ss1.setEtat(SousTacheEtat.AFAIRE);
             SousTache ss2 =new SousTache("clob");
@@ -137,7 +131,6 @@ public class Page_projet extends ActionBarActivity
             task.setDifficulte(3);
             task.setNotifications(0);
             task.setSousTaches(sst);
->>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
 
             tacheBDD.insertTache(task, actualSprint);
 
@@ -149,11 +142,11 @@ public class Page_projet extends ActionBarActivity
             ssb.close();*/
 
 
-            List<Tache> taches = tacheBDD.getTaches(actualSprint);
+           /* List<Tache> taches = tacheBDD.getTaches(actualSprint);
             Toast.makeText(this, taches.get(0).getNom(), Toast.LENGTH_SHORT).show();
             tacheBDD.close();
 
-            TacheAdapter adapter = new TacheAdapter(getApplicationContext(), taches);
+            TacheAdapter adapter = new TacheAdapter(getApplicationContext(), taches);*/
 
             // On dit à la ListView de se remplir via cet adapter
             ListeTaches.setAdapter(adapter);

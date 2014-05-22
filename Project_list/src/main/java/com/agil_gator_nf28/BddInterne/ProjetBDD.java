@@ -88,7 +88,7 @@ public class ProjetBDD implements GestionnaireBDD{
     public Projet getProjetById(int id) {
         String query = "SELECT * FROM " + AndroidConstantes.TABLE_PROJET + " WHERE " + AndroidConstantes.COL_ID + "=" + id + ";";
         Cursor c = bdd.rawQuery(query, null);
-        return cursorToLivre(c);
+        return cursorToProjet(c);
     }
 
     public List<Projet> getProjets() {

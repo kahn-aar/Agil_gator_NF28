@@ -31,13 +31,10 @@ public class Project_List extends ActionBarActivity {
 
         //On ouvre la base de données pour écrire dedans
         projetBdd.open();
-<<<<<<< HEAD
 
        // Projet projet = new Projet("test projet","ceci est un test de projet", "lalalallal lilalou",55);
         //projetBdd.insertProjet(projet);
 
-=======
->>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
         List<Projet> projets = projetBdd.getProjets();
 
         projetBdd.close();

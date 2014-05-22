@@ -70,23 +70,6 @@ public class TacheBDD implements GestionnaireBDD {
         return bdd.insert(AndroidConstantes.TABLE_TACHE, null, values);
     }
 
-<<<<<<< HEAD
-    public long insertTache(Tache tache, int id_projet) {
-        //Création d'un ContentValues (fonctionne comme une HashMap)
-        ContentValues values = new ContentValues();
-
-        System.out.println("insert Tache");
-
-        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
-        values.put(AndroidConstantes.COL_TACHE_NAME, tache.getNom());
-        values.put(AndroidConstantes.COL_TACHE_DESCRIPTION, tache.getDescription());
-        values.put(AndroidConstantes.COL_TACHE_PRIORITE, tache.getPriorite());
-        values.put(AndroidConstantes.COL_TACHE_DIFFICULTE, tache.getDifficulte());
-        values.put(AndroidConstantes.COL_TACHE_PROJET, id_projet);
-
-        //on insère l'objet dans la BDD via le ContentValues
-        return bdd.insert(AndroidConstantes.TABLE_TACHE, null, values);
-    }
 
     public Tache getTacheWithId(int id){
         //selectionne project avec ID
@@ -96,10 +79,9 @@ public class TacheBDD implements GestionnaireBDD {
         return cursorToTache(c);
     }
 
-    public List<Tache> getTaches(Projet projet) {
-=======
+
     public List<Tache> getTaches(Sprint sprint) {
->>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
+
         String query = "SELECT " + AndroidConstantes.COL_TACHE_ID + ", " + AndroidConstantes.COL_TACHE_NAME + ", " + AndroidConstantes.COL_TACHE_PRIORITE + ", " + AndroidConstantes.COL_TACHE_DIFFICULTE
                 + " FROM " + AndroidConstantes.TABLE_TACHE
                 + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + sprint.getId() + ";";
@@ -109,12 +91,12 @@ public class TacheBDD implements GestionnaireBDD {
         return toList(c);
     }
 
-    public List<Tache> getTachesWithIdProject(int id_project) {
+    public List<Tache> getTachesWithIdSprint(int id_sprint) {
        /* String query = "SELECT " + AndroidConstantes.COL_TACHE_ID + ", " + AndroidConstantes.COL_TACHE_NAME + ", " + AndroidConstantes.COL_TACHE_PRIORITE + ", " + AndroidConstantes.COL_TACHE_DIFFICULTE
                 + " FROM " + AndroidConstantes.TABLE_TACHE
                 + " WHERE " + AndroidConstantes.COL_TACHE_PROJET + "=" + id_project + ";";*/
         String query = "SELECT * FROM " + AndroidConstantes.TABLE_TACHE
-                + " WHERE " + AndroidConstantes.COL_TACHE_PROJET + "=" + id_project + ";";
+                + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + id_sprint + ";";
         Cursor c = bdd.rawQuery(query, null);
 
 
