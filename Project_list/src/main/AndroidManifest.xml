@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.agil_gator_nf28.agil_gator" >
@@ -32,12 +33,12 @@
                 android:value="Project_List" />
         </activity>
         <activity
-        android:name=".DescriptifProjectActivity"
-        android:label="@string/title_descriptif" >
+         android:name="com.agil_gator_nf28.agil_gator.DescriptifActivity"
+         android:label="@string/title_descriptif" >
       <!--  <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="Page_Projet" />-->
-    </activity>
+		</activity>
         <activity
             android:name=".DescriptifTaskActivity"
             android:label="@string/title_descriptif" >
@@ -49,10 +50,17 @@
             android:name="com.agil_gator_nf28.agil_gator.Page_projet"
             android:label="@string/title_activity_page_projet"
             android:parentActivityName="com.agil_gator_nf28.agil_gator.Project_List" >
-
-           <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Project_List" />
+        </activity>
+        <activity
+            android:name="com.agil_gator_nf28.agil_gator.Add_Task"
+            android:label="@string/title_activity_add__task"
+            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Page_projet" />
         </activity>
     </application>
 
