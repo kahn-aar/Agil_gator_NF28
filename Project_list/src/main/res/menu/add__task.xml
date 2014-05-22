@@ -1,15 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.agil_gator_nf28.agil_gator.Page_projet" >
-    <item android:id="@+id/add_task_menu"
-        android:title="@string/add_task_menu"
-        app:showAsAction="withText|ifRoom" />
-
-    <item android:id="@+id/description_project"
-        android:title="@string/action_example"
-        app:showAsAction="withText|ifRoom" />
-
+    tools:context="com.agil_gator_nf28.agil_gator.Add_Task" >
+    
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"

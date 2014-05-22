@@ -2,13 +2,9 @@
 <resources>
 
     <string name="app_name">Agil\'gator</string>
-
-
     <string name="title_add_task">Ajouter une tache</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
-
-
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="action_create">Créer un nouveau projet</string>

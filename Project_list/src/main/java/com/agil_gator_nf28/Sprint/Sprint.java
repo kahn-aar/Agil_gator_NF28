@@ -10,10 +10,16 @@ import java.util.List;
  */
 public class Sprint {
 
+    private int id;
+    private int number;
     private List<Tache> taches;
 
-    public Sprint(List<Tache> taches) {
+    public Sprint() {
+    }
+
+    public Sprint(List<Tache> taches, int number) {
         this.taches = taches;
+        this.number = number;
     }
 
     public List<Tache> getTaches() {
@@ -22,5 +28,21 @@ public class Sprint {
 
     public void setTaches(List<Tache> taches) {
         this.taches = taches;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

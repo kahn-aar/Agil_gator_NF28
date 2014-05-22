@@ -1,15 +1,25 @@
 package com.agil_gator_nf28.Taches;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+<<<<<<< HEAD
 import android.content.Intent;
+=======
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.view.DragEvent;
+>>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.agil_gator_nf28.Listeners.TacheGridListener;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheAdapter;
 import com.agil_gator_nf28.agil_gator.DescriptifProjectActivity;
@@ -17,6 +27,7 @@ import com.agil_gator_nf28.agil_gator.DescriptifTaskActivity;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
 
+import java.security.acl.Group;
 import java.util.List;
 
 /**
@@ -29,7 +40,12 @@ public class TacheAdapter extends BaseAdapter {
     private Context context;
     private Page_projet page_project;
 
+<<<<<<< HEAD
     public TacheAdapter(Page_projet page_projet, Context context, List<Tache> taches) {
+=======
+
+    public TacheAdapter(Context context, List<Tache> taches) {
+>>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.taches = taches;
@@ -58,10 +74,17 @@ public class TacheAdapter extends BaseAdapter {
         TextView notifs;
 
         GridView aFaireGrid;
+<<<<<<< HEAD
         LinearLayout tacheLayout;
 
+=======
+        GridView enCoursGrid;
+        GridView aRelireGrid;
+        GridView doneGrid;
+>>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
@@ -88,8 +111,10 @@ public class TacheAdapter extends BaseAdapter {
         holder.priorite.setText("priorité = " + taches.get(position).getPriorite());
         holder.difficulte.setText("difficulté = " + taches.get(position).getDifficulte());
         holder.notifs.setText("" + taches.get(position).getNotifications());
+
         // On va créer les sous taches liés à la tache
         holder.aFaireGrid = (GridView)convertView.findViewById(R.id.gridAFaire);
+<<<<<<< HEAD
         holder.tacheLayout = (LinearLayout)convertView.findViewById(R.id.tache);
 
         SousTacheAdapter adapter = new SousTacheAdapter(context, taches.get(position).getSousTachesAFaire());
@@ -103,8 +128,31 @@ public class TacheAdapter extends BaseAdapter {
             }
         }));
 
+=======
+        SousTacheAdapter adapter1 = new SousTacheAdapter(context, taches.get(position).getSousTachesAFaire());
+        holder.aFaireGrid.setOnDragListener(new TacheGridListener(context, adapter1));
         // On dit à la ListView de se remplir via cet adapter
-        holder.aFaireGrid.setAdapter(adapter);
+        holder.aFaireGrid.setAdapter(adapter1);
+
+        holder.enCoursGrid = (GridView)convertView.findViewById(R.id.gridenCours);
+        SousTacheAdapter adapter2 = new SousTacheAdapter(context, taches.get(position).getSousTachesEnCours());
+        holder.enCoursGrid.setOnDragListener(new TacheGridListener(context, adapter2));
+>>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
+        // On dit à la ListView de se remplir via cet adapter
+        holder.enCoursGrid.setAdapter(adapter2);
+
+        holder.aRelireGrid = (GridView)convertView.findViewById(R.id.gridaRelire);
+        SousTacheAdapter adapter3 = new SousTacheAdapter(context, taches.get(position).getSousTachesARelire());
+        holder.aRelireGrid.setOnDragListener(new TacheGridListener(context, adapter3));
+        // On dit à la ListView de se remplir via cet adapter
+        holder.aRelireGrid.setAdapter(adapter3);
+
+        holder.doneGrid = (GridView)convertView.findViewById(R.id.griddone);
+        SousTacheAdapter adapter4 = new SousTacheAdapter(context, taches.get(position).getSousTachesDone());
+        holder.doneGrid.setOnDragListener(new TacheGridListener(context, adapter4));
+        // On dit à la ListView de se remplir via cet adapter
+        holder.doneGrid.setAdapter(adapter4);
+
         return convertView;
     }
 }

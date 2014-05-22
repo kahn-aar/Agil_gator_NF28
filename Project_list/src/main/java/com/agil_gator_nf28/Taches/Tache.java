@@ -114,4 +114,35 @@ public class Tache {
         }
         return aFaire;
     }
+
+    public List<SousTache> getSousTachesEnCours() {
+        List<SousTache> enCours = new ArrayList<SousTache>();
+        for(SousTache tache : sousTaches) {
+            if (SousTacheEtat.ENCOURS.equals(tache.getEtat())) {
+                enCours.add(tache);
+            }
+        }
+        return enCours;
+    }
+
+
+    public List<SousTache> getSousTachesARelire() {
+        List<SousTache> aRelire = new ArrayList<SousTache>();
+        for(SousTache tache : sousTaches) {
+            if (SousTacheEtat.ARELIRE.equals(tache.getEtat())) {
+                aRelire.add(tache);
+            }
+        }
+        return aRelire;
+    }
+
+    public List<SousTache> getSousTachesDone() {
+        List<SousTache> done = new ArrayList<SousTache>();
+        for(SousTache tache : sousTaches) {
+            if (SousTacheEtat.VALIDE.equals(tache.getEtat())) {
+                done.add(tache);
+            }
+        }
+        return done;
+    }
 }

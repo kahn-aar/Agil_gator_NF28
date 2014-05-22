@@ -36,7 +36,7 @@
     <GridView
         android:layout_width="@dimen/colomn_size"
         android:layout_height="@dimen/colomn_hauteur"
-        android:id="@+id/gridAFaire"
+        android:id="@+id/gridenCours"
         android:columnWidth="100dp"
         android:numColumns="3"
         >
@@ -54,7 +54,25 @@
     <GridView
         android:layout_width="@dimen/colomn_size"
         android:layout_height="@dimen/colomn_hauteur"
-        android:id="@+id/gridAFaire"
+        android:id="@+id/gridaRelire"
+        android:columnWidth="100dp"
+        android:numColumns="3"
+        >
+
+    </GridView>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/line2"
+        android:background="@android:color/darker_gray"/>
+
+    <GridView
+        android:layout_width="@dimen/colomn_size"
+        android:layout_height="@dimen/colomn_hauteur"
+        android:id="@+id/griddone"
         android:columnWidth="100dp"
         android:numColumns="3"
         >

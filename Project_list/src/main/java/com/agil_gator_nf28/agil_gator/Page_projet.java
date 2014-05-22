@@ -21,11 +21,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.agil_gator_nf28.BddInterne.TacheBDD;
+=======
+import com.agil_gator_nf28.BddInterne.ProjetBDD;
+import com.agil_gator_nf28.BddInterne.SousTacheBDD;
+import com.agil_gator_nf28.BddInterne.SprintBDD;
+import com.agil_gator_nf28.BddInterne.TacheBDD;
+import com.agil_gator_nf28.Projet.Projet;
+>>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
+import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
+import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -48,6 +58,8 @@ public class Page_projet extends ActionBarActivity
     private CharSequence mTitle;
     private int id_project;
 
+    private Projet project;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final String EXTRA_ID = "user_login";
@@ -55,6 +67,7 @@ public class Page_projet extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_projet);
         ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
+        TextView titre = (TextView)findViewById(R.id.projectPageTitle);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -67,9 +80,27 @@ public class Page_projet extends ActionBarActivity
 
         Intent intent = getIntent();
         if (intent != null) {
-            Toast.makeText(this, intent.getStringExtra(EXTRA_ID), Toast.LENGTH_SHORT).show();
-        }
+            ProjetBDD projetBDD = new ProjetBDD(this);
+            projetBDD.open();
+            int projectId = Integer.valueOf(intent.getStringExtra(EXTRA_ID));
 
+            project = projetBDD.getProjetById(projectId);
+
+            projetBDD.close();
+
+            titre.setText(project.getName());
+
+            SprintBDD sprintBDD = new SprintBDD(this);
+
+            sprintBDD.open();
+            Sprint createdSprint = new Sprint();
+            createdSprint.setNumber(1);
+            sprintBDD.insertSprint(createdSprint, project);
+            Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
+            System.out.println(actualSprint);
+            sprintBDD.close();
+
+<<<<<<< HEAD
         // Mise en place de la liste des tâches
         SousTache sub = new SousTache("lolilol");
         sub.setEtat(SousTacheEtat.AFAIRE);
@@ -85,9 +116,48 @@ public class Page_projet extends ActionBarActivity
         for (Tache tac : taches) System.out.println("nom tache !!!!!!!!!!!! :"+tac.getNom());
 
         TacheAdapter adapter = new TacheAdapter(this,getApplicationContext(), taches);
+=======
 
-        // On dit à la ListView de se remplir via cet adapter
-        ListeTaches.setAdapter(adapter);
+            TacheBDD tacheBDD = new TacheBDD(this);
+            tacheBDD.open();
+           /* SousTache ss1 =new SousTache("blob");
+            ss1.setEtat(SousTacheEtat.AFAIRE);
+            SousTache ss2 =new SousTache("clob");
+            ss2.setEtat(SousTacheEtat.AFAIRE);
+            SousTache ss3 =new SousTache("slob");
+            ss3.setEtat(SousTacheEtat.ENCOURS);
+            List<SousTache> sst = new ArrayList<SousTache>();
+            sst.add(ss1);
+            sst.add(ss2);
+            sst.add(ss3);
+
+            Tache task = new Tache();
+            task.setPriorite(990);
+            task.setNom("kranar");
+            task.setDifficulte(3);
+            task.setNotifications(0);
+            task.setSousTaches(sst);
+>>>>>>> baf3b9e3622333380bd8bac4e116ffd7585dc5e5
+
+            tacheBDD.insertTache(task, actualSprint);
+
+            SousTacheBDD ssb = new SousTacheBDD(this);
+            ssb.open();
+            ssb.insertSousTache(ss1, task);
+            ssb.insertSousTache(ss2, task);
+            ssb.insertSousTache(ss3, task);
+            ssb.close();*/
+
+
+            List<Tache> taches = tacheBDD.getTaches(actualSprint);
+            Toast.makeText(this, taches.get(0).getNom(), Toast.LENGTH_SHORT).show();
+            tacheBDD.close();
+
+            TacheAdapter adapter = new TacheAdapter(getApplicationContext(), taches);
+
+            // On dit à la ListView de se remplir via cet adapter
+            ListeTaches.setAdapter(adapter);
+        }
     }
 
     @Override
@@ -139,7 +209,10 @@ public class Page_projet extends ActionBarActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.add_task_menu) {
+            Intent intent = new Intent(this, Add_Task.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
