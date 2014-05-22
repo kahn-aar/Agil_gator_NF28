@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.agil_gator_nf28.agil_gator.Page_projet" >
     <item android:id="@+id/action_example"
-        android:title="@string/action_example"
+        android:title="@string/add_task_menu"
         app:showAsAction="withText|ifRoom" />
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"

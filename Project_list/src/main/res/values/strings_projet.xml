@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="Taches" >Tâches</string>
+    <string name="todo" >A faire</string>
+    <string name="relecture" >A relire</string>
+    <string name="encours" >En cours</string>
+    <string name="done" >Fini</string>
+    <string name="add_task_menu" />
+</resources>

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
@@ -51,7 +52,7 @@ public class TacheBDD implements GestionnaireBDD {
         return bdd;
     }
 
-    public long insertTache(Tache tache, Projet projet) {
+    public long insertTache(Tache tache, Sprint sprint) {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
 
@@ -61,16 +62,16 @@ public class TacheBDD implements GestionnaireBDD {
         values.put(AndroidConstantes.COL_TACHE_NAME, tache.getNom());
         values.put(AndroidConstantes.COL_TACHE_PRIORITE, tache.getPriorite());
         values.put(AndroidConstantes.COL_TACHE_DIFFICULTE, tache.getDifficulte());
-        values.put(AndroidConstantes.COL_TACHE_PROJET, projet.getId());
+        values.put(AndroidConstantes.COL_TACHE_SPRINT, sprint.getId());
 
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(AndroidConstantes.TABLE_TACHE, null, values);
     }
 
-    public List<Tache> getTaches(Projet projet) {
+    public List<Tache> getTaches(Sprint sprint) {
         String query = "SELECT " + AndroidConstantes.COL_TACHE_ID + ", " + AndroidConstantes.COL_TACHE_NAME + ", " + AndroidConstantes.COL_TACHE_PRIORITE + ", " + AndroidConstantes.COL_TACHE_DIFFICULTE
                 + " FROM " + AndroidConstantes.TABLE_TACHE
-                + " WHERE " + AndroidConstantes.COL_TACHE_PROJET + "=" + projet.getId() + ";";
+                + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + sprint.getId() + ";";
         Cursor c = bdd.rawQuery(query, null);
 
 

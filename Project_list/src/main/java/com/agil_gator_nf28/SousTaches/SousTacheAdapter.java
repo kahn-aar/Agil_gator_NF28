@@ -1,6 +1,10 @@
 package com.agil_gator_nf28.SousTaches;
 
+import android.annotation.TargetApi;
+import android.content.ClipData;
 import android.content.Context;
+import android.os.Build;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,15 +45,26 @@ public class SousTacheAdapter extends BaseAdapter{
         return position;
     }
 
+    public void addSousTache(SousTache tache) {
+        taches.add(tache);
+    }
+
+    public void removeSousTache(int position) {
+        taches.remove(position);
+    }
+
     private class ViewHolder {
         TextView nom;
 
     }
 
+
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-
+        final int pos = position;
         if(convertView == null) {
             holder = new ViewHolder();
             // On lie les éléments au fichier ligne_de_la_listview.xml
@@ -64,6 +79,26 @@ public class SousTacheAdapter extends BaseAdapter{
         // On défini ici le texte que doit contenir chacun des TextView
         // Le premier affichera le numéro de l'élément (numéro de ligne)
         holder.nom.setText(taches.get(position).getTitre());
+
+
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                View postit = inflater.inflate(R.layout.post_it_layout_big, null);
+                ViewHolder holderBig = new ViewHolder();
+                holderBig.nom = (TextView)postit.findViewById(R.id.postitGrosTitre);
+                holderBig.nom.setText(taches.get(pos).getTitre());
+                postit.setTag(holderBig);
+                System.out.println("Ok long click");
+                postit.setVisibility(View.VISIBLE);
+
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
+                v.startDrag(data, shadowBuilder, v, 0);
+                v.setVisibility(View.INVISIBLE);
+                return true;
+            }
+        });
         return convertView;
     }
 }

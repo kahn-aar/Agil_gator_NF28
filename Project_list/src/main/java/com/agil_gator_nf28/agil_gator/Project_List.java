@@ -31,7 +31,6 @@ public class Project_List extends ActionBarActivity {
 
         //On ouvre la base de données pour écrire dedans
         projetBdd.open();
-
         List<Projet> projets = projetBdd.getProjets();
         //List<Projet> projets = new ArrayList<Projet>();
         //projets.add(livre);

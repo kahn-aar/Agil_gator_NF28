@@ -23,10 +23,12 @@ import android.widget.Toast;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
+import com.agil_gator_nf28.BddInterne.SprintBDD;
 import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
+import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 
@@ -58,6 +60,7 @@ public class Page_projet extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_projet);
         ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
+        TextView titre = (TextView)findViewById(R.id.projectPageTitle);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -73,15 +76,55 @@ public class Page_projet extends ActionBarActivity
             ProjetBDD projetBDD = new ProjetBDD(this);
             projetBDD.open();
             int projectId = Integer.valueOf(intent.getStringExtra(EXTRA_ID));
+
             project = projetBDD.getProjetById(projectId);
 
             projetBDD.close();
 
+            titre.setText(project.getName());
+
+            SprintBDD sprintBDD = new SprintBDD(this);
+
+            sprintBDD.open();
+            Sprint createdSprint = new Sprint();
+            createdSprint.setNumber(1);
+            sprintBDD.insertSprint(createdSprint, project);
+            Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
+            System.out.println(actualSprint);
+            sprintBDD.close();
+
+
             TacheBDD tacheBDD = new TacheBDD(this);
             tacheBDD.open();
+           /* SousTache ss1 =new SousTache("blob");
+            ss1.setEtat(SousTacheEtat.AFAIRE);
+            SousTache ss2 =new SousTache("clob");
+            ss2.setEtat(SousTacheEtat.AFAIRE);
+            SousTache ss3 =new SousTache("slob");
+            ss3.setEtat(SousTacheEtat.ENCOURS);
+            List<SousTache> sst = new ArrayList<SousTache>();
+            sst.add(ss1);
+            sst.add(ss2);
+            sst.add(ss3);
+
+            Tache task = new Tache();
+            task.setPriorite(990);
+            task.setNom("kranar");
+            task.setDifficulte(3);
+            task.setNotifications(0);
+            task.setSousTaches(sst);
+
+            tacheBDD.insertTache(task, actualSprint);
+
+            SousTacheBDD ssb = new SousTacheBDD(this);
+            ssb.open();
+            ssb.insertSousTache(ss1, task);
+            ssb.insertSousTache(ss2, task);
+            ssb.insertSousTache(ss3, task);
+            ssb.close();*/
 
 
-            List<Tache> taches = tacheBDD.getTaches(project);
+            List<Tache> taches = tacheBDD.getTaches(actualSprint);
             Toast.makeText(this, taches.get(0).getNom(), Toast.LENGTH_SHORT).show();
             tacheBDD.close();
 

@@ -1,5 +1,8 @@
 package com.agil_gator_nf28.SousTaches;
 
+import com.agil_gator_nf28.BddInterne.SousTacheBDD;
+import com.agil_gator_nf28.Taches.Tache;
+
 /**
  * Created by Nicolas on 15/05/14.
  */
@@ -38,5 +41,9 @@ public class SousTache {
 
     public void setEtat(SousTacheEtat etat) {
         this.etat = etat;
+    }
+
+    public Tache getTache() {
+        return null;
     }
 }

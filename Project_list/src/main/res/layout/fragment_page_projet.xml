@@ -11,17 +11,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="bonjour"
         android:layout_centerHorizontal="true"
-        android:textSize="16dp"
-        android:id="@+id/textView1"
+        android:textSize="16sp"
+        android:id="@+id/projectPageTitle"
         android:textStyle="bold"/>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:id="@+id/lineTop"
-        android:layout_alignTop="@+id/textView1"
+        android:layout_alignTop="@+id/projectPageTitle"
         android:layout_marginTop="35dp"
         android:background="@android:color/darker_gray"/>
 
@@ -53,7 +52,7 @@
                 <TextView
                     android:layout_width="310dp"
                     android:layout_height="30dp"
-                    android:text="Taches"
+                    android:text="@string/Taches"
                     android:gravity="center_horizontal"
                     />
 
@@ -68,7 +67,7 @@
                 <TextView
                     android:layout_width="@dimen/colomn_size"
                     android:layout_height="30dp"
-                    android:text="en cours"
+                    android:text="@string/todo"
                     android:gravity="center_horizontal"/>
 
                 <View
@@ -82,7 +81,7 @@
                 <TextView
                     android:layout_width="@dimen/colomn_size"
                     android:layout_height="30dp"
-                    android:text="relecture"
+                    android:text="@string/encours"
                     android:gravity="center_horizontal"/>
 
                 <View
@@ -95,7 +94,20 @@
                 <TextView
                     android:layout_width="@dimen/colomn_size"
                     android:layout_height="@dimen/colomn_hauteur"
-                    android:text="Done"
+                    android:text="@string/relecture"
+                    android:gravity="center_horizontal"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/line2"
+                    android:background="@android:color/darker_gray"/>
+                <TextView
+                    android:layout_width="@dimen/colomn_size"
+                    android:layout_height="@dimen/colomn_hauteur"
+                    android:text="@string/done"
                     android:gravity="center_horizontal"/>
 
 
