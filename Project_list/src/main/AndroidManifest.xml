@@ -32,15 +32,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Project_List" />
         </activity>
+
         <activity
-         android:name="com.agil_gator_nf28.agil_gator.DescriptifActivity"
-         android:label="@string/title_descriptif" >
-      <!--  <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="Page_Projet" />-->
-		</activity>
-        <activity
-            android:name=".DescriptifTaskActivity"
+            android:name="com.agil_gator_nf28.agil_gator.DescriptifTaskActivity"
             android:label="@string/title_descriptif" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
