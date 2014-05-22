@@ -6,5 +6,5 @@
     <string name="relecture" >A relire</string>
     <string name="encours" >En cours</string>
     <string name="done" >Fini</string>
-    <string name="add_task_menu" />
+    <string name="add_task_menu" >Ajouter une tâche</string>
 </resources>

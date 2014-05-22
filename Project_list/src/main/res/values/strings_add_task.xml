@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_add__task">Agil\'Gator</string>
+    <string name="title_add_task_page">Créer une nouvelle Tache</string>
+    <string name="add_task_titre">Nom de la Tâche : </string>
+    <string name="add_task_diff">Difficulté : </string>
+    <string name="add_task_prio">Priorité : </string>
+    <string name="add_task_boutton">Créer la nouvelle tâche</string>
+    <string name="error_name_task">Erreur : veuillez entrer un nom de tâche</string>
+    <string name="error_diff_task">Erreur : veuillez entrer une difficulté</string>
+    <string name="error_prio_task">Erreur : veuillez entrer une priorité</string>
+
+</resources>

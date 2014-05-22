@@ -31,6 +31,7 @@ import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
+import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -185,7 +186,10 @@ public class Page_projet extends ActionBarActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.add_task_menu) {
+            Intent intent = new Intent(this, Add_Task.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
