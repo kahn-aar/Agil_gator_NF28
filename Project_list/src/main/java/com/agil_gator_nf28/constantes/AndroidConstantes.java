@@ -11,6 +11,8 @@ public class AndroidConstantes {
 
     //BDD
     public static final String NOM_BDD = "agilgator2.db";
+    public static final int VERSION_BDD = 5;
+
     //Table Projet
     public static final String TABLE_PROJET = "table_projet";
     public static final String COL_ID = "ID";
@@ -24,4 +26,21 @@ public class AndroidConstantes {
     public static final String COL_EMAIL = "EMAIL";
     public static final String COL_NOM = "NOM";
     public static final String COL_PRENOM = "PRENOM";
+
+    //Table Tache
+    public static final String TABLE_TACHE = "table_tache";
+    public static final String COL_TACHE_ID = "ID";
+    public static final String COL_TACHE_NAME = "Name";
+    public static final String COL_TACHE_DESCRIPTION = "description";
+    public static final String COL_TACHE_PRIORITE = "Priorite";
+    public static final String COL_TACHE_DIFFICULTE = "Difficulte";
+    public static final String COL_TACHE_PROJET = "projet";
+
+    //Table SousTache
+    public static final String TABLE_SS_TACHE = "table_sous_tache";
+    public static final String COL_SS_TACHE_ID = "ID";
+    public static final String COL_SS_TACHE_NAME = "Name";
+    public static final String COL_SS_TACHE_ETAT = "Etat";
+    public static final String COL_SS_TACHE_TACHE = "Tache";
+
 }

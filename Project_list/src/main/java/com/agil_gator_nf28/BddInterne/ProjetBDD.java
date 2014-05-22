@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
@@ -14,13 +15,13 @@ import java.util.List;
 /**
  * Created by Nicolas on 30/04/14.
  */
-public class ProjetBDD {
-
-    private static final int VERSION_BDD = 3;
+public class ProjetBDD implements GestionnaireBDD{
 
     private static final int NUM_COL_ID = 0;
     private static final int NUM_COL_ISBN = 1;
     private static final int NUM_COL_TITRE = 2;
+    private static final int NUM_COL_DESCRIPTION = 3;
+    private static final int NUM_COL_ADVANCED = 4;
 
     private SQLiteDatabase bdd;
 
@@ -28,7 +29,7 @@ public class ProjetBDD {
 
     public ProjetBDD(Context context){
         //On créer la BDD et sa table
-        maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, VERSION_BDD);
+        maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, AndroidConstantes.VERSION_BDD);
     }
 
     public void open(){
@@ -107,6 +108,8 @@ public class ProjetBDD {
             projet.setId(c.getInt(NUM_COL_ID));
             projet.setName(c.getString(NUM_COL_ISBN));
             projet.setSubTitle(c.getString(NUM_COL_TITRE));
+            projet.setDescription(c.getString(NUM_COL_DESCRIPTION));
+            projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
 
             projets.add(projet);
             c.moveToNext();
@@ -133,6 +136,8 @@ public class ProjetBDD {
         projet.setId(c.getInt(NUM_COL_ID));
         projet.setName(c.getString(NUM_COL_ISBN));
         projet.setSubTitle(c.getString(NUM_COL_TITRE));
+        projet.setDescription(c.getString(NUM_COL_DESCRIPTION));
+        projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
         //On ferme le cursor
         c.close();
 

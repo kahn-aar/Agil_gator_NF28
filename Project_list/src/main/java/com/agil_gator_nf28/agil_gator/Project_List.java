@@ -18,6 +18,8 @@ import java.util.List;
 
 public class Project_List extends ActionBarActivity {
 
+    final String EXTRA_LOGIN = "user_login";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +32,14 @@ public class Project_List extends ActionBarActivity {
         //On ouvre la base de données pour écrire dedans
         projetBdd.open();
 
+       // Projet projet = new Projet("test projet","ceci est un test de projet", "lalalallal lilalou",55);
+        //projetBdd.insertProjet(projet);
+
         List<Projet> projets = projetBdd.getProjets();
-        //List<Projet> projets = new ArrayList<Projet>();
-        //projets.add(livre);
+
         projetBdd.close();
 
-        ProjetAdapter adapter = new ProjetAdapter(getApplicationContext(), projets);
-
+        ProjetAdapter adapter = new ProjetAdapter(Project_List.this, getApplicationContext(), projets);
         // On dit à la ListView de se remplir via cet adapter
         contenuDeLaPage.setAdapter(adapter);
     }

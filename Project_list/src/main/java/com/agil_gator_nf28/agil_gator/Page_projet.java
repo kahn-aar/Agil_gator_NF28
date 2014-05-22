@@ -1,6 +1,7 @@
 package com.agil_gator_nf28.agil_gator;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -16,7 +17,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.agil_gator_nf28.BddInterne.TacheBDD;
+import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.SousTaches.SousTacheEtat;
+import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.Taches.TacheAdapter;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class Page_projet extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -29,12 +44,17 @@ public class Page_projet extends ActionBarActivity
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
+
     private CharSequence mTitle;
+    private int id_project;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final String EXTRA_ID = "user_login";
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_projet);
+        ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -44,6 +64,30 @@ public class Page_projet extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            Toast.makeText(this, intent.getStringExtra(EXTRA_ID), Toast.LENGTH_SHORT).show();
+        }
+
+        // Mise en place de la liste des tâches
+        SousTache sub = new SousTache("lolilol");
+        sub.setEtat(SousTacheEtat.AFAIRE);
+
+        id_project = Integer.parseInt(intent.getStringExtra(EXTRA_ID));
+
+        TacheBDD tacheBDD = new TacheBDD(this);
+        tacheBDD.open();
+        List<Tache> taches = tacheBDD.getTachesWithIdProject(id_project);
+
+        tacheBDD.close();
+
+        for (Tache tac : taches) System.out.println("nom tache !!!!!!!!!!!! :"+tac.getNom());
+
+        TacheAdapter adapter = new TacheAdapter(this,getApplicationContext(), taches);
+
+        // On dit à la ListView de se remplir via cet adapter
+        ListeTaches.setAdapter(adapter);
     }
 
     @Override
@@ -58,7 +102,7 @@ public class Page_projet extends ActionBarActivity
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(R.string.title_add_task);
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
@@ -75,7 +119,6 @@ public class Page_projet extends ActionBarActivity
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -131,8 +174,10 @@ public class Page_projet extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_page_projet, container, false);
+
             /*TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));*/
+
             return rootView;
         }
 

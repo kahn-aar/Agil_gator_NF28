@@ -5,6 +5,11 @@
     <item android:id="@+id/action_example"
         android:title="@string/action_example"
         app:showAsAction="withText|ifRoom" />
+
+    <item android:id="@+id/description_project"
+        android:title="@string/action_example"
+        app:showAsAction="withText|ifRoom" />
+
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"

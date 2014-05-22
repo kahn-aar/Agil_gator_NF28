@@ -1,12 +1,15 @@
 package com.agil_gator_nf28.Projet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.agil_gator_nf28.agil_gator.Page_projet;
+import com.agil_gator_nf28.agil_gator.Project_List;
 import com.agil_gator_nf28.agil_gator.R;
 
 import java.util.List;
@@ -18,9 +21,19 @@ public class ProjetAdapter extends BaseAdapter {
 
     private List<Projet> projets;
     private LayoutInflater inflater;
+    private Context context;
+    private Project_List project_list;
+
+    final String EXTRA_ID = "user_login";
 
     public ProjetAdapter(Context context, List<Projet> projets) {
         inflater = LayoutInflater.from(context);
+        this.projets = projets;
+    }
+
+    public ProjetAdapter(Project_List project_list, Context applicationContext, List<Projet> projets) {
+        this.project_list = project_list;
+        inflater = LayoutInflater.from(applicationContext);
         this.projets = projets;
     }
 
@@ -54,6 +67,8 @@ public class ProjetAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
+        final int pos = position;
+
         if(convertView == null) {
             holder = new ViewHolder();
             // On lie les éléments au fichier ligne_de_la_listview.xml
@@ -70,6 +85,15 @@ public class ProjetAdapter extends BaseAdapter {
         holder.titre.setText(projets.get(position).getName());
         // Le second affichera l'élément
         holder.sub.setText(projets.get(position).getSubTitle());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(project_list, Page_projet.class);
+                intent.putExtra(EXTRA_ID, String.valueOf(projets.get(pos).getId()));
+                project_list.startActivity(intent);
+            }
+        });
         return convertView;
     }
 }
