@@ -208,6 +208,13 @@ public class Page_projet extends ActionBarActivity
             startActivity(intent);
             return true;
         }
+        if (id == R.id.edit_project) {
+            Intent intent = new Intent(Page_projet.this, EditProjet.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            intent.putExtra(AndroidConstantes.PROJECT_EDIT_FROM, String.valueOf(AndroidConstantes.PROJECT_EDIT_FROM_DETAIL));
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

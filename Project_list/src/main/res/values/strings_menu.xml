@@ -2,4 +2,5 @@
 <resources>
     <string name="context_menu_proj_edit">Modifier le projet</string>
     <string name="context_menu_proj_suppr">Supprimer ce projet</string>
+    <string name="edit_project">Editer le projet</string>
 </resources>

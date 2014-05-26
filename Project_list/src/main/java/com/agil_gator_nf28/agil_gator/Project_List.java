@@ -60,9 +60,13 @@ public class Project_List extends ActionBarActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        Projet selectedProject = (Projet) adapter.getItem(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position);
+        Projet selectedProject = (Projet) adapter.getItem(item.getItemId());
         switch (item.getItemId()) {
             case MENU_EDIT:
+                Intent intent = new Intent(Project_List.this, EditProjet.class);
+                intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(selectedProject.getId()));
+                intent.putExtra(AndroidConstantes.PROJECT_EDIT_FROM, String.valueOf(AndroidConstantes.PROJECT_EDIT_FROM_LIST));
+                startActivity(intent);
                 return true;
 
             case MENU_DELETE:

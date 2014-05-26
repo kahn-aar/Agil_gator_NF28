@@ -1,5 +1,7 @@
 package com.agil_gator_nf28.constantes;
 
+import com.agil_gator_nf28.SousTaches.SousTache;
+
 /**
  * Created by Nicolas on 28/04/14.
  */
@@ -9,6 +11,9 @@ public class AndroidConstantes {
     public static String PROJECT_ID = "id_projet";
     public static String EXTRA_SUB_NEW_PROJECT = "sub_nouveau_projet";
     public static String EXTRA_DESCRIPTION_NEW_PROJECT = "description_nouveau_projet";
+    public static String PROJECT_EDIT_FROM = "from_page";
+    public static String PROJECT_EDIT_FROM_LIST = "from_list";
+    public static String PROJECT_EDIT_FROM_DETAIL = "from_proj";
 
     //BDD
     public static final String NOM_BDD = "agilgator2.db";
