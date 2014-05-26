@@ -54,9 +54,8 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText" />
+            android:id="@+id/taskName" />
 
     </LinearLayout>
 
@@ -83,7 +82,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText2" />
+            android:id="@+id/taskPrio" />
 
     </LinearLayout>
 
@@ -111,7 +110,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText3" />
+            android:id="@+id/taskHard" />
 
     </LinearLayout>
 

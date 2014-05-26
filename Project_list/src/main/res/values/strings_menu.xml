@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="context_menu_proj_edit">Modifier le projet</string>
+    <string name="context_menu_proj_suppr">Supprimer ce projet</string>
+</resources>

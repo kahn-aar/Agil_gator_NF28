@@ -94,6 +94,9 @@ public class ProjetAdapter extends BaseAdapter {
                 project_list.startActivity(intent);
             }
         });
+
+        project_list.registerForContextMenu(convertView);
+
         return convertView;
     }
 }

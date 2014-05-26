@@ -7,8 +7,5 @@
     <string name="add_task_diff">Difficulté : </string>
     <string name="add_task_prio">Priorité : </string>
     <string name="add_task_boutton">Créer la nouvelle tâche</string>
-    <string name="error_name_task">Erreur : veuillez entrer un nom de tâche</string>
-    <string name="error_diff_task">Erreur : veuillez entrer une difficulté</string>
-    <string name="error_prio_task">Erreur : veuillez entrer une priorité</string>
 
 </resources>

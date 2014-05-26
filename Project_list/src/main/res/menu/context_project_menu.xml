@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/modifProjet"
+        android:title="@string/context_menu_proj_edit"
+        android:enabled="false">
+
+        </item>
+
+    <item
+        android:id="@+id/supprProjet"
+        android:title="@string/context_menu_proj_suppr"
+        android:enabled="false">
+
+    </item>
+</menu>

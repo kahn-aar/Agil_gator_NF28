@@ -115,7 +115,7 @@ public class ProjetBDD implements GestionnaireBDD{
             projet.setName(c.getString(NUM_COL_ISBN));
             projet.setSubTitle(c.getString(NUM_COL_TITRE));
             projet.setDescription(c.getString(NUM_COL_DESCRIPTION));
-            projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
+            //projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
 
             projets.add(projet);
             c.moveToNext();
