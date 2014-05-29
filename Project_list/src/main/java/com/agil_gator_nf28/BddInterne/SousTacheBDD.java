@@ -69,7 +69,6 @@ public class SousTacheBDD implements GestionnaireBDD {
     public List<SousTache> getSousTaches(Tache tache) {
         String query = "SELECT " + AndroidConstantes.COL_SS_TACHE_ID + ", " + AndroidConstantes.COL_SS_TACHE_NAME + ", " + AndroidConstantes.COL_SS_TACHE_ETAT
                 + " FROM " + AndroidConstantes.TABLE_SS_TACHE + ";";
-                //
                 // + " WHERE " + AndroidConstantes.COL_SS_TACHE_TACHE + "=" + tache.getId() + ";";
         Cursor c = bdd.rawQuery(query, null);
 

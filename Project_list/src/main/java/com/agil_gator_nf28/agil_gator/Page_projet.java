@@ -7,10 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.view.ContextMenu;
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,10 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-<<<<<<< HEAD
-import android.widget.AdapterView;
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,10 +29,7 @@ import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 import java.util.List;
 
 /**
@@ -107,20 +97,6 @@ public class Page_projet extends ActionBarActivity
 
             List<Tache> ltache = new ArrayList<Tache>();
             ltache.add(task);*/
-            sprintBDD.open();
-<<<<<<< HEAD
-           /* Sprint createdSprint = new Sprint();
-            createdSprint.setNumber(1);
-            sprintBDD.insertSprint(createdSprint, project);
-=======
-            //Sprint createdSprint = new Sprint();
-            //createdSprint.setNumber(1);
-            //sprintBDD.insertSprint(createdSprint, project);
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
-            Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
-            System.out.println(actualSprint);*/
-            //sprintBDD.insertSprint(new Sprint(ltache,5),project);
-            sprintBDD.close();
 
         // Mise en place de la liste des tâches
         SousTache sub = new SousTache("lolilol");
