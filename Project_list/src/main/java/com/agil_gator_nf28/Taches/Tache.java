@@ -35,6 +35,13 @@ public class Tache {
         this.difficulte = difficulte;
     }
 
+    public Tache(String nom, String description, int priorite, int difficulte) {
+        this.nom = nom;
+        this.description = description;
+        this.priorite = priorite;
+        this.difficulte = difficulte;
+    }
+
     public Tache(String nom, String description, int difficulte, int priorite, int notifications) {
         this.nom = nom;
         this.description = description;

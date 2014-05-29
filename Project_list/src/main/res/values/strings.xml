@@ -31,5 +31,6 @@
 
     <!-- pour modifier la tâche -->
     <string name="modif_task_button">Modifier la tâche</string>
+    <string name="title_activity_edit_projet">EditProjet</string>
 
 </resources>

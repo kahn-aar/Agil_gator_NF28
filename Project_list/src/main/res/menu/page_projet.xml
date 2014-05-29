@@ -10,8 +10,8 @@
         android:title="@string/action_example"
         app:showAsAction="withText|ifRoom" />
 
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    <item android:id="@+id/edit_project"
+        android:title="@string/edit_project"
         android:orderInCategory="100"
         app:showAsAction="never" />
 </menu>

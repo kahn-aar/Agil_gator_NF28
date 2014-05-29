@@ -69,6 +69,8 @@ public class ProjetAdapter extends BaseAdapter {
 
         final int pos = position;
 
+        System.out.println("POSITION"+pos);
+
         if(convertView == null) {
             holder = new ViewHolder();
             // On lie les éléments au fichier ligne_de_la_listview.xml
@@ -94,6 +96,9 @@ public class ProjetAdapter extends BaseAdapter {
                 project_list.startActivity(intent);
             }
         });
+
+        project_list.registerForContextMenu(convertView);
+
         return convertView;
     }
 }

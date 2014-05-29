@@ -68,7 +68,8 @@ public class ProjetBDD implements GestionnaireBDD{
         ContentValues values = new ContentValues();
         values.put(AndroidConstantes.COL_NAME, projet.getName());
         values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
-        values.put(AndroidConstantes.COL_ADVANCED, projet.getAdvanced());
+        values.put(AndroidConstantes.COL_DESC, projet.getDescription());
+        //values.put(AndroidConstantes.COL_ADVANCED, projet.getAdvanced());
         return bdd.update(AndroidConstantes.TABLE_PROJET, values, AndroidConstantes.COL_ID + " = " +id, null);
     }
 
@@ -115,7 +116,7 @@ public class ProjetBDD implements GestionnaireBDD{
             projet.setName(c.getString(NUM_COL_ISBN));
             projet.setSubTitle(c.getString(NUM_COL_TITRE));
             projet.setDescription(c.getString(NUM_COL_DESCRIPTION));
-            projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
+            //projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
 
             projets.add(projet);
             c.moveToNext();
@@ -143,7 +144,7 @@ public class ProjetBDD implements GestionnaireBDD{
         projet.setName(c.getString(NUM_COL_ISBN));
         projet.setSubTitle(c.getString(NUM_COL_TITRE));
         projet.setDescription(c.getString(NUM_COL_DESCRIPTION));
-        projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
+        //projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
         //On ferme le cursor
         c.close();
 

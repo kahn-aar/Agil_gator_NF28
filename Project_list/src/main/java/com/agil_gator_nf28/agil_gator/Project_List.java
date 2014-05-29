@@ -3,8 +3,11 @@ package com.agil_gator_nf28.agil_gator;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +22,9 @@ import java.util.List;
 public class Project_List extends ActionBarActivity {
 
     final String EXTRA_LOGIN = "user_login";
+    private static final int  MENU_EDIT = Menu.FIRST;
+    private static final int  MENU_DELETE = Menu.FIRST + 1;
+    ProjetAdapter adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +45,34 @@ public class Project_List extends ActionBarActivity {
 
         projetBdd.close();
 
-        ProjetAdapter adapter = new ProjetAdapter(Project_List.this, getApplicationContext(), projets);
+        adapter = new ProjetAdapter(Project_List.this, getApplicationContext(), projets);
         // On dit à la ListView de se remplir via cet adapter
         contenuDeLaPage.setAdapter(adapter);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View vue, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, vue, menuInfo);
+        menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.context_menu_proj_edit);
+        menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.context_menu_proj_suppr);
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        Projet selectedProject = (Projet) adapter.getItem(item.getItemId()-1);
+        switch (item.getItemId()) {
+            case MENU_EDIT:
+                Intent intent = new Intent(Project_List.this, EditProjet.class);
+                intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(selectedProject.getId()));
+                intent.putExtra(AndroidConstantes.PROJECT_EDIT_FROM, String.valueOf(AndroidConstantes.PROJECT_EDIT_FROM_LIST));
+                startActivity(intent);
+                return true;
+
+            case MENU_DELETE:
+                return true;
+        }
+        return super.onContextItemSelected(item);
     }
 
 

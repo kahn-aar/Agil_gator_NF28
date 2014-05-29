@@ -45,10 +45,16 @@ public class Page_projet extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
 
+
+    private static final int  MENU_EDIT = Menu.FIRST;
+    private static final int  MENU_DELETE = Menu.FIRST + 1;
+
     private CharSequence mTitle;
     private int id_project;
 
     private Projet project;
+    private TacheAdapter adapter = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +122,7 @@ public class Page_projet extends ActionBarActivity
         //on definit la vue associé au menu floattant
         //this.registerForContextMenu(ListeTaches);
 
-        TacheAdapter adapter = new TacheAdapter(this,getApplicationContext(), taches);
+         adapter = new TacheAdapter(this,getApplicationContext(), taches);
 
            /* SousTache ss1 =new SousTache("blob");
             ss1.setEtat(SousTacheEtat.AFAIRE);
@@ -212,6 +218,13 @@ public class Page_projet extends ActionBarActivity
             startActivity(intent);
             return true;
         }
+        if (id == R.id.edit_project) {
+            Intent intent = new Intent(Page_projet.this, EditProjet.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            intent.putExtra(AndroidConstantes.PROJECT_EDIT_FROM, String.valueOf(AndroidConstantes.PROJECT_EDIT_FROM_DETAIL));
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -219,20 +232,19 @@ public class Page_projet extends ActionBarActivity
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.modif_task, menu);
+        menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
+        menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.description_task);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-//        int position = info.position;
-        int position = 1;
+        Tache selectedTache = (Tache) adapter.getItem(item.getItemId()-1);
+        System.out.println("id de la tache selectionne "+ selectedTache.getId());
 
         switch (item.getItemId()) {
-            case R.id.modif_task:
+            case 1:
                 Intent intent = new Intent(this,Modif_task.class);
-                intent.putExtra("ID_TA", position);
+                intent.putExtra("ID_TA", selectedTache.getId());
                 this.startActivity(intent);
                 return true;
             case R.id.description_task:
@@ -280,7 +292,6 @@ public class Page_projet extends ActionBarActivity
 
             /*TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));*/
-
             return rootView;
         }
 

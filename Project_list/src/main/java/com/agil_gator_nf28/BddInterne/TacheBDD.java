@@ -78,6 +78,16 @@ public class TacheBDD implements GestionnaireBDD {
         return cursorToTache(c);
     }
 
+    public int updateTache(int id, Tache tache){
+        //La mise à jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
+        //il faut simple préciser quelle livre on doit mettre à jour grâce à l'ID
+        ContentValues values = new ContentValues();
+        values.put(AndroidConstantes.COL_TACHE_NAME, tache.getNom());
+        values.put(AndroidConstantes.COL_TACHE_PRIORITE, tache.getPriorite());
+        values.put(AndroidConstantes.COL_TACHE_DIFFICULTE, tache.getDifficulte());
+        values.put(AndroidConstantes.COL_TACHE_DESCRIPTION, tache.getDescription());
+        return bdd.update(AndroidConstantes.TABLE_TACHE, values, AndroidConstantes.COL_TACHE_ID + " = " +id, null);
+    }
 
     public List<Tache> getTaches(Sprint sprint) {
 

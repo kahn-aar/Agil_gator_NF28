@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.agil_gator_nf28.agil_gator.Page_projet" >
+
+        <item android:id="@+id/modif_task"
+            android:title="@string/modif_task"
+            app:showAsAction="withText|ifRoom" />
+
+    <item android:id="@+id/description_task"
+        android:title="@string/description_task"
+        app:showAsAction="withText|ifRoom" />
+
+    <item android:id="@+id/add_sub__task"
+        android:title="@string/add_sub_task"
+        app:showAsAction="withText|ifRoom" />
+
+        <item android:id="@+id/supp_task"
+            android:title="@string/supp_task"
+            android:orderInCategory="100"
+            app:showAsAction="never" />
+
+ </menu>

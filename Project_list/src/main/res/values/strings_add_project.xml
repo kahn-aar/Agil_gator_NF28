@@ -9,5 +9,6 @@
     <string name="add_project_boutton">Créer un nouveau projet</string>
     <string name="error_name_project">Erreur : veuillez entrer un nom de projet</string>
     <string name="error_sub_project">Erreur : veuillez entrer un sous titre de projet</string>
+    <string name="edit_project_boutton">Modifier le projet</string>
 
 </resources>

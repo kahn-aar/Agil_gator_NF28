@@ -9,20 +9,11 @@
     tools:context="com.agil_gator_nf28.agil_gator.AddProject">
 
     <TextView
-        android:id="@+id/textView1"
-        android:text="@string/title_add_task_page"
+        android:text="@string/title_add_project"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/activity_title_size"
         android:textStyle="bold"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView1"
-        android:layout_marginTop="35dp"
-        android:id="@+id/add_task_project_name"
         android:gravity="center"/>
 
     <View
@@ -30,7 +21,7 @@
         android:layout_height="1dp"
         android:id="@+id/lineTop"
         android:layout_alignTop="@+id/textView1"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:background="@android:color/darker_gray"/>
 
 
@@ -46,17 +37,15 @@
         android:layout_marginTop="20dp">
 
         <TextView
-            android:text="@string/add_task_titre"
+            android:text="@string/add_project_titre"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textSize="18dp"/>
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/taskName" />
-
+            android:id="@+id/editNomProjet"/>
     </LinearLayout>
 
     <LinearLayout
@@ -72,18 +61,15 @@
         android:layout_marginTop="60dp">
 
         <TextView
-            android:text="@string/add_task_prio"
+            android:text="@string/add_project_sub_title"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textSize="18dp"/>
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/taskPrio" />
-
+            android:id="@+id/editSubTitre"/>
     </LinearLayout>
 
 
@@ -100,26 +86,26 @@
         android:layout_marginTop="60dp">
 
         <TextView
-            android:text="@string/add_task_diff"
+            android:text="@string/add_project_description"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textSize="18dp"/>
 
         <EditText
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/taskHard" />
+            android:layout_height="100dp"
+            android:inputType="textMultiLine"
+            android:ems="20"
+            android:id="@+id/editDescription" />
 
     </LinearLayout>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_task_boutton"
+        android:text="@string/edit_project_boutton"
         android:layout_alignTop="@+id/description"
-        android:id="@+id/add_button"
+        android:id="@+id/edit_button"
         android:layout_marginTop="120dp"/>
 
 </RelativeLayout>
