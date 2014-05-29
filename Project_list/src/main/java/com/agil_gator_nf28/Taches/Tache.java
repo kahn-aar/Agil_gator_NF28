@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * POJO de la Tache
+ *
  * Created by Nicolas on 15/05/14.
  */
 public class Tache {

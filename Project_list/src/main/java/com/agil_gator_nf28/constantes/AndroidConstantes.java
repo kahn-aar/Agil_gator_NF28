@@ -17,7 +17,11 @@ public class AndroidConstantes {
 
     //BDD
     public static final String NOM_BDD = "agilgator2.db";
+<<<<<<< HEAD
     public static final int VERSION_BDD = 6;
+=======
+    public static final int VERSION_BDD = 30;
+>>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 
     //Table Projet
     public static final String TABLE_PROJET = "table_projet";

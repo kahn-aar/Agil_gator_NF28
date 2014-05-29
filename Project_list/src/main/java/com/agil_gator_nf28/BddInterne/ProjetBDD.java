@@ -6,13 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.agil_gator_nf28.Projet.Projet;
-import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Classe gérant la table des projets
+ *
  * Created by Nicolas on 30/04/14.
  */
 public class ProjetBDD implements GestionnaireBDD{

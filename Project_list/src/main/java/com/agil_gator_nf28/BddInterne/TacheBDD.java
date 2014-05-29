@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Classe gérant la table des taches
+ *
  * Created by Nicolas on 17/05/14.
  */
 public class TacheBDD implements GestionnaireBDD {

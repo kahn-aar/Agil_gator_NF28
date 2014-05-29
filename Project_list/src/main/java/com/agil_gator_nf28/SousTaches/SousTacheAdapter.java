@@ -4,28 +4,29 @@ import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.Context;
 import android.os.Build;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.Listeners.SousTacheListener;
 import com.agil_gator_nf28.agil_gator.R;
 
 import java.util.List;
 
 /**
+ * Adapteur pour les sous tâches, générés dans l'adapteur des tâches
+ *
  * Created by Nicolas on 15/05/14.
  */
-public class SousTacheAdapter extends BaseAdapter{
+public class SousTacheAdapter extends ArrayAdapter<SousTache> {
 
     private List<SousTache> taches;
     private LayoutInflater inflater;
 
-    public SousTacheAdapter(Context context, List<SousTache> taches) {
+    public SousTacheAdapter(Context context, int view, List<SousTache> taches) {
+        super(context, view, taches);
         inflater = LayoutInflater.from(context);
         this.taches = taches;
     }
@@ -36,7 +37,7 @@ public class SousTacheAdapter extends BaseAdapter{
     }
 
     @Override
-    public Object getItem(int position) {
+    public SousTache getItem(int position) {
         return taches.get(position);
     }
 
@@ -51,6 +52,20 @@ public class SousTacheAdapter extends BaseAdapter{
 
     public void removeSousTache(int position) {
         taches.remove(position);
+    }
+
+    public void removeSousTache(SousTache sousTache) {
+        taches.remove(sousTache);
+    }
+
+    public void removeSousTacheId(int id) {
+        SousTache tacheToRemove = null;
+        for(SousTache tache : taches) {
+            if (tache.getId() == id) {
+                tacheToRemove = tache;
+            }
+        }
+        taches.remove(tacheToRemove);
     }
 
     private class ViewHolder {
@@ -76,14 +91,14 @@ public class SousTacheAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        // On défini ici le texte que doit contenir chacun des TextView
-        // Le premier affichera le numéro de l'élément (numéro de ligne)
+
         holder.nom.setText(taches.get(position).getTitre());
 
+        convertView.setOnLongClickListener(new SousTacheListener(taches.get(position)));
 
-        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+        convertView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 View postit = inflater.inflate(R.layout.post_it_layout_big, null);
                 ViewHolder holderBig = new ViewHolder();
                 holderBig.nom = (TextView)postit.findViewById(R.id.postitGrosTitre);
@@ -95,10 +110,11 @@ public class SousTacheAdapter extends BaseAdapter{
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
                 v.startDrag(data, shadowBuilder, v, 0);
-                v.setVisibility(View.INVISIBLE);
-                return true;
+                //v.setVisibility(View.INVISIBLE);
             }
         });
+
+
         return convertView;
     }
 }

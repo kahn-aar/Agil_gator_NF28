@@ -27,10 +27,12 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:id="@+id/lineTop2"
         android:layout_alignTop="@+id/lineTop"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/line2"
         android:background="@android:color/darker_gray"/>
+
+
 
     <HorizontalScrollView
         android:layout_width="fill_parent"

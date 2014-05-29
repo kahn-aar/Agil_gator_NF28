@@ -1,6 +1,7 @@
 package com.agil_gator_nf28.Listeners;
 
 import android.annotation.TargetApi;
+import android.content.ClipData;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -8,11 +9,18 @@ import android.view.DragEvent;
 import android.view.View;
 import android.widget.GridView;
 
+import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheAdapter;
+import com.agil_gator_nf28.SousTaches.SousTacheEtat;
+import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.agil_gator.R;
 
+import java.util.List;
+
 /**
+ * Listener pour le drag and drop des sous tâches
+ *
  * Created by Nicolas on 22/05/14.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -24,10 +32,14 @@ public class TacheGridListener implements View.OnDragListener {
     Drawable enterShape;
     Drawable normalShape;
     SousTache actualDragged;
+    SousTacheEtat clicked;
+    List<SousTache> taches;
 
-    public TacheGridListener(Context context, SousTacheAdapter adapter) {
+    public TacheGridListener(Context context, List<SousTache> taches, SousTacheAdapter adapter, SousTacheEtat etat) {
         this.context = context;
         this.adapter = adapter;
+        this.clicked = etat;
+        this.taches = taches;
         this.enterShape = context.getResources().getDrawable(R.drawable.shape_droptarget);
         this.normalShape = context.getResources().getDrawable(R.drawable.shape);
     }
@@ -38,11 +50,7 @@ public class TacheGridListener implements View.OnDragListener {
             int action = event.getAction();
             switch (action) {
                 case DragEvent.ACTION_DRAG_STARTED:
-                    GridView container = (GridView) v;
-                    long lg = container.getSelectedItemId();
-                    System.out.println(lg + " = selectedID");
-                    System.out.println(container.getSelectedItem());
-                    adapter.removeSousTache(0);
+                    //Do nothing
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     v.setBackgroundDrawable(enterShape);
@@ -51,11 +59,30 @@ public class TacheGridListener implements View.OnDragListener {
                     v.setBackgroundDrawable(normalShape);
                     break;
                 case DragEvent.ACTION_DROP:
-                    // Dropped, reassign View to ViewGroup
+                    //On récupère la sous tâche qui a été déplacée
+                    int id = Integer.valueOf(event.getClipData().getItemAt(0).getText().toString());
+                    SousTacheEtat old = SousTacheEtat.valueOf(event.getClipData().getItemAt(1).getText().toString());
                     View view = (View) event.getLocalState();
-                    GridView owner = (GridView) view.getParent();
-                    container = (GridView) v;
-                    adapter.addSousTache((SousTache )adapter.getItem(0));
+
+                    if (! clicked.equals(old)) {
+                        SousTacheBDD sousTacheBDD = new SousTacheBDD(context);
+                        sousTacheBDD.open();
+                        //Mise a jour en base de données
+                        sousTacheBDD.updateSousTacheEtat(id, clicked);
+                        SousTache selected = sousTacheBDD.getSousTacheFromId(id);
+                        sousTacheBDD.close();
+
+                        //Récupération des différentes vues
+
+                        GridView owner = (GridView) view.getParent();
+                        GridView container = (GridView) v;
+
+                        //Mise a jour de la vue
+                        ((SousTacheAdapter )container.getAdapter()).addSousTache(selected);
+                        ((SousTacheAdapter )container.getAdapter()).notifyDataSetChanged();
+                        ((SousTacheAdapter )owner.getAdapter()).removeSousTacheId(id);
+                        ((SousTacheAdapter )owner.getAdapter()).notifyDataSetChanged();
+                    }
 
                     view.setVisibility(View.VISIBLE);
                     break;
