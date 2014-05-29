@@ -48,8 +48,7 @@ public class TacheGridListener implements View.OnDragListener {
             int action = event.getAction();
             switch (action) {
                 case DragEvent.ACTION_DRAG_STARTED:
-                    //On attache au clip le lieu de départ
-                    event.getClipData().addItem(new ClipData.Item(clicked.name()));
+                    //Do nothing
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     v.setBackgroundDrawable(enterShape);
@@ -60,23 +59,28 @@ public class TacheGridListener implements View.OnDragListener {
                 case DragEvent.ACTION_DROP:
                     //On récupère la sous tâche qui a été déplacée
                     int id = Integer.valueOf(event.getClipData().getItemAt(0).getText().toString());
-                    SousTacheBDD sousTacheBDD = new SousTacheBDD(context);
-                    sousTacheBDD.open();
-                    //Mise a jour en base de données
-                    sousTacheBDD.updateSousTacheEtat(id, clicked);
-                    SousTache selected = sousTacheBDD.getSousTacheFromId(id);
-                    sousTacheBDD.close();
-
-                    //Récupération des différentes vues
+                    SousTacheEtat old = SousTacheEtat.valueOf(event.getClipData().getItemAt(1).getText().toString());
                     View view = (View) event.getLocalState();
-                    GridView owner = (GridView) view.getParent();
-                    GridView container = (GridView) v;
 
-                    //Mise a jour de la vue
-                    ((SousTacheAdapter )container.getAdapter()).addSousTache(selected);
-                    ((SousTacheAdapter )container.getAdapter()).notifyDataSetChanged();
-                    ((SousTacheAdapter )owner.getAdapter()).removeSousTacheId(id);
-                    ((SousTacheAdapter )owner.getAdapter()).notifyDataSetChanged();
+                    if (! clicked.equals(old)) {
+                        SousTacheBDD sousTacheBDD = new SousTacheBDD(context);
+                        sousTacheBDD.open();
+                        //Mise a jour en base de données
+                        sousTacheBDD.updateSousTacheEtat(id, clicked);
+                        SousTache selected = sousTacheBDD.getSousTacheFromId(id);
+                        sousTacheBDD.close();
+
+                        //Récupération des différentes vues
+
+                        GridView owner = (GridView) view.getParent();
+                        GridView container = (GridView) v;
+
+                        //Mise a jour de la vue
+                        ((SousTacheAdapter )container.getAdapter()).addSousTache(selected);
+                        ((SousTacheAdapter )container.getAdapter()).notifyDataSetChanged();
+                        ((SousTacheAdapter )owner.getAdapter()).removeSousTacheId(id);
+                        ((SousTacheAdapter )owner.getAdapter()).notifyDataSetChanged();
+                    }
 
                     view.setVisibility(View.VISIBLE);
                     break;

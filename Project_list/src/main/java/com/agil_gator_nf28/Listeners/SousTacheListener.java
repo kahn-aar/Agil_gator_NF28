@@ -29,6 +29,7 @@ public class SousTacheListener implements View.OnLongClickListener {
     public boolean onLongClick(View v) {
         // Create a new ClipData.Item from the ImageView object's tag
         ClipData data = ClipData.newPlainText("id", String.valueOf(sousTache.getId()));
+        data.addItem(new ClipData.Item( sousTache.getEtat().name()));
         View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
         v.startDrag(data, shadowBuilder, v, 0);
         v.setVisibility(View.INVISIBLE);
