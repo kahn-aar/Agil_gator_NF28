@@ -22,6 +22,8 @@ import com.agil_gator_nf28.agil_gator.R;
 import java.util.List;
 
 /**
+ * Adapteur pour les taches, dans la page du projet
+ *
  * Created by Nicolas on 15/05/14.
  */
 public class TacheAdapter extends BaseAdapter {

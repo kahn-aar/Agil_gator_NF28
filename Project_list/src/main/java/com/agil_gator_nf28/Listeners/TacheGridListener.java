@@ -19,6 +19,8 @@ import com.agil_gator_nf28.agil_gator.R;
 import java.util.List;
 
 /**
+ * Listener pour le drag and drop des sous tâches
+ *
  * Created by Nicolas on 22/05/14.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)

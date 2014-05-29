@@ -8,6 +8,8 @@ import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 /**
+ * Classe de base de la base SQLite
+ *
  * Created by Nicolas on 30/04/14.
  */
 public class MaBaseProjet extends SQLiteOpenHelper {

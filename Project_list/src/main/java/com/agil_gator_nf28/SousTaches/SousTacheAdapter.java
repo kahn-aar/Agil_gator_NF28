@@ -4,22 +4,20 @@ import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.Context;
 import android.os.Build;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.TextView;
 
 import com.agil_gator_nf28.Listeners.SousTacheListener;
-import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.agil_gator.R;
 
 import java.util.List;
 
 /**
+ * Adapteur pour les sous tâches, générés dans l'adapteur des tâches
+ *
  * Created by Nicolas on 15/05/14.
  */
 public class SousTacheAdapter extends ArrayAdapter<SousTache> {

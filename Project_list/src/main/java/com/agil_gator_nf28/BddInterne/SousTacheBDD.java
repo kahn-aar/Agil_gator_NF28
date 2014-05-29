@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Taches.Tache;
@@ -15,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Classe gérant la table des sous taches.
+ *
  * Created by Nicolas on 17/05/14.
  */
 public class SousTacheBDD implements GestionnaireBDD {

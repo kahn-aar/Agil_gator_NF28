@@ -6,27 +6,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
-import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.BddInterne.SprintBDD;
-import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
@@ -35,12 +28,11 @@ import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
+/**
+ * Activité gérant le tableau scul d'un projet
+ */
 public class Page_projet extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
