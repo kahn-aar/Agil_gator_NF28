@@ -40,8 +40,6 @@ public class DescriptifProjectActivity extends ActionBarActivity {
         //On ouvre la base de données pour écrire dedans
         tacheBDD.open();
 
-        System.out.println("identifiant de la tache !!!!!!!!!!!!!!!!!!!!!!!!!!! : "+ID);
-
         tache = tacheBDD.getTacheWithId(ID);
 
         tacheBDD.close();

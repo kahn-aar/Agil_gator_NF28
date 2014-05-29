@@ -74,7 +74,6 @@ public class TacheBDD implements GestionnaireBDD {
     public Tache getTacheWithId(int id){
         //selectionne project avec ID
        Cursor c = bdd.rawQuery("SELECT * FROM "+AndroidConstantes.TABLE_TACHE+" WHERE "+AndroidConstantes.COL_TACHE_ID+" = '"+id+"';",null);
-        System.out.println("requete : !!!!!!!!!!!!!! : "+"SELECT * FROM "+AndroidConstantes.TABLE_TACHE+" WHERE "+AndroidConstantes.COL_TACHE_ID+" = '"+id+"';");
 
         return cursorToTache(c);
     }

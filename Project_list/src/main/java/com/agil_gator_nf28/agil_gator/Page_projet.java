@@ -6,40 +6,32 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
-import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.BddInterne.SprintBDD;
-import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
-import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class Page_projet extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -90,12 +82,20 @@ public class Page_projet extends ActionBarActivity
 
             SprintBDD sprintBDD = new SprintBDD(this);
 
+           /* TacheBDD tbdd = new  TacheBDD(this);
+            tbdd.open();
+            Tache task = tbdd.getTacheWithId(1);
+            tbdd.close();
+
+            List<Tache> ltache = new ArrayList<Tache>();
+            ltache.add(task);*/
             sprintBDD.open();
-            Sprint createdSprint = new Sprint();
+           /* Sprint createdSprint = new Sprint();
             createdSprint.setNumber(1);
             sprintBDD.insertSprint(createdSprint, project);
             Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
-            System.out.println(actualSprint);
+            System.out.println(actualSprint);*/
+            //sprintBDD.insertSprint(new Sprint(ltache,5),project);
             sprintBDD.close();
 
         // Mise en place de la liste des tâches
@@ -106,11 +106,15 @@ public class Page_projet extends ActionBarActivity
 
         TacheBDD tacheBDD = new TacheBDD(this);
         tacheBDD.open();
-        List<Tache> taches = tacheBDD.getTachesWithIdSprint(id_project);
-
+        //tacheBDD.insertTache(new Tache("test tache","ceci est un test de tache",1,2,3),new Sprint(null,1));
+        Tache tache = tacheBDD.getTacheWithId(1);
+       // List<Tache> taches = tacheBDD.getTachesWithIdSprint(3);
+        List<Tache> taches = new ArrayList<Tache>();
+            taches.add(tache);
         tacheBDD.close();
 
-        for (Tache tac : taches) System.out.println("nom tache !!!!!!!!!!!! :"+tac.getNom());
+        //on definit la vue associé au menu floattant
+        //this.registerForContextMenu(ListeTaches);
 
         TacheAdapter adapter = new TacheAdapter(this,getApplicationContext(), taches);
 
@@ -211,6 +215,39 @@ public class Page_projet extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.modif_task, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+//        int position = info.position;
+        int position = 1;
+
+        switch (item.getItemId()) {
+            case R.id.modif_task:
+                Intent intent = new Intent(this,Modif_task.class);
+                intent.putExtra("ID_TA", position);
+                this.startActivity(intent);
+                return true;
+            case R.id.description_task:
+                //editNote(info.id);
+                return true;
+            case R.id.add_sub__task:
+                //editNote(info.id);
+                return true;
+            case R.id.supp_task:
+                //deleteNote(info.id);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
     /**
      * A placeholder fragment containing a simple view.
      */

@@ -32,7 +32,7 @@ public class Project_List extends ActionBarActivity {
         //On ouvre la base de données pour écrire dedans
         projetBdd.open();
 
-       // Projet projet = new Projet("test projet","ceci est un test de projet", "lalalallal lilalou",55);
+        //Projet projet = new Projet("test projet","ceci est un test de projet", "lalalallal lilalou",55);
         //projetBdd.insertProjet(projet);
 
         List<Projet> projets = projetBdd.getProjets();

@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
+import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
@@ -29,6 +30,10 @@ public class Add_Task extends ActionBarActivity {
 
             TextView titreProjet = (TextView) findViewById(R.id.add_task_project_name);
             titreProjet.setText(project.getName());
+
+           // TacheBDD tacheBDD = new TacheBDD(this);
+           // tacheBDD.open();
+
         }
     }
 

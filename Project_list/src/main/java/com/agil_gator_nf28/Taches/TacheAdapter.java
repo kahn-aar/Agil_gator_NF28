@@ -5,14 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.view.ContextMenu;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -110,6 +113,7 @@ public class TacheAdapter extends BaseAdapter {
 
         SousTacheAdapter adapter = new SousTacheAdapter(context, taches.get(position).getSousTachesAFaire());
 
+        //on lance la page de description lorsque click sur tache
         holder.tacheLayout.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,6 +147,7 @@ public class TacheAdapter extends BaseAdapter {
         // On dit à la ListView de se remplir via cet adapter
         holder.doneGrid.setAdapter(adapter4);
 
+        page_project.registerForContextMenu((LinearLayout)convertView.findViewById(R.id.tache));
         return convertView;
     }
 }

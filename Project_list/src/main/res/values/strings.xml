@@ -21,5 +21,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
+    <string name="title_activity_modif__task">Modification tâche</string>
+
+    <!-- pour le context menu des tâches -->
+    <string name="modif_task">Modifier Tâche</string>
+    <string name="description_task">Descrition de la Tâche</string>
+    <string name="add_sub_task">Ajouter sous_Tâche</string>
+    <string name="supp_task">Supprimer Tâche</string>
+
+    <!-- pour modifier la tâche -->
+    <string name="modif_task_button">Modifier la tâche</string>
 
 </resources>
