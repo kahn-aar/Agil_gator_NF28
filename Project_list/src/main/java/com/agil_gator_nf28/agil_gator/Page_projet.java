@@ -91,9 +91,9 @@ public class Page_projet extends ActionBarActivity
             SprintBDD sprintBDD = new SprintBDD(this);
 
             sprintBDD.open();
-            Sprint createdSprint = new Sprint();
-            createdSprint.setNumber(1);
-            sprintBDD.insertSprint(createdSprint, project);
+            //Sprint createdSprint = new Sprint();
+            //createdSprint.setNumber(1);
+            //sprintBDD.insertSprint(createdSprint, project);
             Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
             System.out.println(actualSprint);
             sprintBDD.close();
@@ -114,39 +114,6 @@ public class Page_projet extends ActionBarActivity
 
         TacheAdapter adapter = new TacheAdapter(this,getApplicationContext(), taches);
 
-           /* SousTache ss1 =new SousTache("blob");
-            ss1.setEtat(SousTacheEtat.AFAIRE);
-            SousTache ss2 =new SousTache("clob");
-            ss2.setEtat(SousTacheEtat.AFAIRE);
-            SousTache ss3 =new SousTache("slob");
-            ss3.setEtat(SousTacheEtat.ENCOURS);
-            List<SousTache> sst = new ArrayList<SousTache>();
-            sst.add(ss1);
-            sst.add(ss2);
-            sst.add(ss3);
-
-            Tache task = new Tache();
-            task.setPriorite(990);
-            task.setNom("kranar");
-            task.setDifficulte(3);
-            task.setNotifications(0);
-            task.setSousTaches(sst);
-
-            tacheBDD.insertTache(task, actualSprint);
-
-            SousTacheBDD ssb = new SousTacheBDD(this);
-            ssb.open();
-            ssb.insertSousTache(ss1, task);
-            ssb.insertSousTache(ss2, task);
-            ssb.insertSousTache(ss3, task);
-            ssb.close();*/
-
-
-           /* List<Tache> taches = tacheBDD.getTaches(actualSprint);
-            Toast.makeText(this, taches.get(0).getNom(), Toast.LENGTH_SHORT).show();
-            tacheBDD.close();
-
-            TacheAdapter adapter = new TacheAdapter(getApplicationContext(), taches);*/
 
             // On dit à la ListView de se remplir via cet adapter
             ListeTaches.setAdapter(adapter);

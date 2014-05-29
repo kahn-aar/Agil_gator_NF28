@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 /**
@@ -57,16 +58,31 @@ public class MaBaseProjet extends SQLiteOpenHelper {
         db.execSQL(CREATE_TACHE_TABLE);
         db.execSQL(CREATE_SOUS_TACHE_TABLE);
         System.out.println("création de la table");
+        db.execSQL("INSERT INTO table_projet values (1, \"agilgator\", \"le dieu des agiles\", \"application android\", 0);");
+
+        db.execSQL("INSERT INTO table_sprint values (1, 1, 1);");
+
+        db.execSQL("INSERT INTO table_tache values (1, \"application\", \"creer l'application\", 900, 10, 1);");
+
+        db.execSQL("INSERT INTO table_tache values (2, \"SMA\", \"Créer le serveur\", 800, 7, 1);");
+
+        db.execSQL("INSERT INTO table_sous_tache values (1, \"vue\", \"" + SousTacheEtat.ENCOURS + "\", 1);");
+
+        db.execSQL("INSERT INTO table_sous_tache values (2, \"agent\", \"" + SousTacheEtat.AFAIRE + "\", 1);");
+
+        db.execSQL("INSERT INTO table_sous_tache values (3, \"agent\", \"" + SousTacheEtat.ENCOURS + "\", 2);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //On peut fait ce qu'on veut ici moi j'ai décidé de supprimer la table et de la recréer
         //comme ça lorsque je change la version les id repartent de 0
+
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_SS_TACHE + ";");
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_TACHE + ";");
+        db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_SPRINT + ";");
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_PROJET + ";");
-        db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_TACHE + ";");
+        db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_USER + ";");
         onCreate(db);
     }
 

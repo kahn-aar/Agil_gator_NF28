@@ -60,7 +60,7 @@ public class Project_List extends ActionBarActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        Projet selectedProject = (Projet) adapter.getItem(item.getItemId());
+        Projet selectedProject = (Projet) adapter.getItem(item.getItemId() - 1);
         switch (item.getItemId()) {
             case MENU_EDIT:
                 Intent intent = new Intent(Project_List.this, EditProjet.class);

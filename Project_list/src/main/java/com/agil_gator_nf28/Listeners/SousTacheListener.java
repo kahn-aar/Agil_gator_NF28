@@ -1,6 +1,7 @@
 package com.agil_gator_nf28.Listeners;
 
 import android.annotation.TargetApi;
+import android.content.ClipData;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -16,7 +17,7 @@ import com.agil_gator_nf28.agil_gator.R;
  * Created by Nicolas on 22/05/14.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class SousTacheListener implements View.OnDragListener {
+public class SousTacheListener implements View.OnLongClickListener {
 
     private SousTache sousTache;
 
@@ -24,25 +25,14 @@ public class SousTacheListener implements View.OnDragListener {
         this.sousTache = sousTache;
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
-    public boolean onDrag(View v, DragEvent event) {
-        int action = event.getAction();
-        switch (action) {
-            case DragEvent.ACTION_DRAG_STARTED:
-                //sousTache.getProjet();
-                break;
-            case DragEvent.ACTION_DRAG_ENTERED:
-                break;
-            case DragEvent.ACTION_DRAG_EXITED:
-                break;
-            case DragEvent.ACTION_DROP:
-                break;
-            case DragEvent.ACTION_DRAG_ENDED:
-            default:
-                break;
-        }
+    public boolean onLongClick(View v) {
+        // Create a new ClipData.Item from the ImageView object's tag
+        ClipData data = ClipData.newPlainText("id", String.valueOf(sousTache.getId()));
+        View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
+        v.startDrag(data, shadowBuilder, v, 0);
+        v.setVisibility(View.INVISIBLE);
+
         return true;
     }
-
 }
