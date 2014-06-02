@@ -133,4 +133,10 @@ public class SprintBDD implements GestionnaireBDD {
 
         return getFirstSprint(c);
     }
+
+    public void archivateSprint(Sprint actualSprint, Projet projet) {
+        Sprint newSprint = new Sprint();
+        newSprint.setNumber(actualSprint.getNumber() + 1);
+        insertSprint(newSprint, projet);
+    }
 }

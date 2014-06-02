@@ -59,7 +59,7 @@ public class TacheBDD implements GestionnaireBDD {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
 
-        System.out.println("insert Tache");
+        System.out.println("insert Tache, sprint = " + sprint.getNumber());
 
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_TACHE_NAME, tache.getNom());
@@ -152,8 +152,8 @@ public class TacheBDD implements GestionnaireBDD {
             tache.setId(c.getInt(NUM_COL_ID));
             tache.setNom(c.getString(NUM_COL_TITRE));
             tache.setPriorite(c.getInt(NUM_COL_PRIO));
-            tache.setDifficulte(c.getInt(NUM_COL_DIFF));
-
+            //tache.setDifficulte(c.getInt(NUM_COL_DIFF));
+            tache.setDifficulte(12);
             tache.setSousTaches(getSousTaches(tache));
 
             taches.add(tache);

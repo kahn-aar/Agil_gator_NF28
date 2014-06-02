@@ -42,13 +42,14 @@ public class Add_Task extends ActionBarActivity {
             sprintBDD.open();
             final Sprint acutalSprint = sprintBDD.getLastSprintOfProject(project);
             sprintBDD.close();
-
+            System.out.println("actualSprint = " + acutalSprint.getNumber());
             TextView titreProjet = (TextView) findViewById(R.id.add_task_project_name);
             titreProjet.setText(project.getName());
 
             final EditText titre = (EditText) findViewById(R.id.taskName);
             final EditText prio = (EditText) findViewById(R.id.taskPrio);
             final EditText diff = (EditText) findViewById(R.id.taskHard);
+            final EditText description = (EditText) findViewById(R.id.description_task);
 
             //Gestion du boutton d'ajout add_button
             Button ajout = (Button) findViewById(R.id.add_button);
@@ -59,15 +60,21 @@ public class Add_Task extends ActionBarActivity {
                     final String nomText = titre.getText().toString();
                     final int prioValue = Integer.valueOf(prio.getText().toString());
                     final int hardValue = Integer.valueOf(diff.getText().toString());
+                    final String descriptionText = description.getText().toString();
                     // On déclare le pattern que l’on doit vérifier
                     Pattern p = Pattern.compile(".+");
                     // On déclare un matcher, qui comparera le pattern avec la
                     // string passée en argument
                     Matcher m = p.matcher(nomText);
+                    Matcher m2 = p.matcher(descriptionText);
                     // Si l’adresse mail saisie ne correspond au format d’une
                     // adresse mail on un affiche un message à l'utilisateur
                     if (!m.matches()) {
                         Toast.makeText(Add_Task.this, R.string.error_name_task, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (!m2.matches()) {
+                        Toast.makeText(Add_Task.this, R.string.error_desc_task, Toast.LENGTH_SHORT).show();
                         return;
                     }
                     if (prioValue <= 0 || prioValue > 1000) {
@@ -80,7 +87,7 @@ public class Add_Task extends ActionBarActivity {
                     }
 
                     // Ajout de la tâche
-                    Tache tache = new Tache(nomText, prioValue, hardValue);
+                    Tache tache = new Tache(nomText, descriptionText, prioValue, hardValue);
                     //Création d'une instance de ma classe TacheBDD
                     TacheBDD tacheBDD = new TacheBDD(Add_Task.this);
 

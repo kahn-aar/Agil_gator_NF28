@@ -4,4 +4,5 @@
     <string name="context_menu_proj_suppr">Supprimer ce projet</string>
     <string name="edit_project">Editer le projet</string>
     <string name="archives">Voir les archives</string>
+    <string name="archiver">Archiver le sprint</string>
 </resources>

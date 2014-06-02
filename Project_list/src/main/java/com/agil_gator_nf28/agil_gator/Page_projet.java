@@ -25,6 +25,7 @@ import com.agil_gator_nf28.BddInterne.SprintBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
+import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
@@ -35,18 +36,7 @@ import java.util.List;
 /**
  * Activité gérant le tableau scul d'un projet
  */
-public class Page_projet extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
-
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
-
+public class Page_projet extends ActionBarActivity {
 
     private static final int  MENU_EDIT = Menu.FIRST;
     private static final int  MENU_DELETE = Menu.FIRST + 1;
@@ -55,6 +45,7 @@ public class Page_projet extends ActionBarActivity
     private int id_project;
 
     private Projet project;
+    private Sprint actualSprint;
     private TacheAdapter adapter = null;
 
 
@@ -67,83 +58,34 @@ public class Page_projet extends ActionBarActivity
         ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
         TextView titre = (TextView)findViewById(R.id.projectPageTitle);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
-
-        // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
 
         Intent intent = getIntent();
         if (intent != null) {
             ProjetBDD projetBDD = new ProjetBDD(this);
             projetBDD.open();
-            int projectId = Integer.valueOf(intent.getStringExtra(EXTRA_ID));
+            id_project = Integer.valueOf(intent.getStringExtra(EXTRA_ID));
 
-            project = projetBDD.getProjetById(projectId);
+            project = projetBDD.getProjetById(id_project);
 
             projetBDD.close();
 
             titre.setText(project.getName());
 
             SprintBDD sprintBDD = new SprintBDD(this);
+            sprintBDD.open();
+            actualSprint = sprintBDD.getLastSprintOfProject(project);
+            sprintBDD.close();
 
-           /* TacheBDD tbdd = new  TacheBDD(this);
-            tbdd.open();
-            Tache task = tbdd.getTacheWithId(1);
-            tbdd.close();
+            TacheBDD tacheBDD = new TacheBDD(this);
+            tacheBDD.open();
+            Tache tache = tacheBDD.getTacheWithId(1);
+            List<Tache> taches = tacheBDD.getTaches(actualSprint);
+            tacheBDD.close();
 
-            List<Tache> ltache = new ArrayList<Tache>();
-            ltache.add(task);*/
-
-        // Mise en place de la liste des tâches
-        SousTache sub = new SousTache("lolilol");
-        sub.setEtat(SousTacheEtat.AFAIRE);
-
-        id_project = Integer.parseInt(intent.getStringExtra(EXTRA_ID));
-
-        TacheBDD tacheBDD = new TacheBDD(this);
-        tacheBDD.open();
-        //tacheBDD.insertTache(new Tache("test tache","ceci est un test de tache",1,2,3),new Sprint(null,1));
-        Tache tache = tacheBDD.getTacheWithId(1);
-       // List<Tache> taches = tacheBDD.getTachesWithIdSprint(3);
-        List<Tache> taches = new ArrayList<Tache>();
-            taches.add(tache);
-        tacheBDD.close();
-
-        //on definit la vue associé au menu floattant
-        //this.registerForContextMenu(ListeTaches);
-
-         adapter = new TacheAdapter(this,getApplicationContext(), taches);
-
+            adapter = new TacheAdapter(this,getApplicationContext(), taches);
 
             // On dit à la ListView de se remplir via cet adapter
             ListeTaches.setAdapter(adapter);
-        }
-    }
-
-    @Override
-    public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
-    }
-
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_add_task);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
         }
     }
 
@@ -156,15 +98,9 @@ public class Page_projet extends ActionBarActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.page_projet, menu);
-            restoreActionBar();
-            return true;
-        }
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.page_projet, menu);
+        restoreActionBar();
+        return true;
     }
 
     @Override
@@ -192,7 +128,21 @@ public class Page_projet extends ActionBarActivity
             startActivity(intent);
             return true;
         }
+        if (id == R.id.archiver) {
+            archiver();
+            Intent intent = new Intent(Page_projet.this, Page_projet.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void archiver() {
+        SprintBDD sprintBDD = new SprintBDD(this);
+        sprintBDD.open();
+        sprintBDD.archivateSprint(actualSprint, project);
+        sprintBDD.close();
     }
 
     @Override
@@ -206,7 +156,7 @@ public class Page_projet extends ActionBarActivity
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         Tache selectedTache = (Tache) adapter.getItem(item.getItemId()-1);
-        System.out.println("id de la tache selectionne "+ selectedTache.getId());
+        System.out.println("id de la tache selectionne " + selectedTache.getId());
 
         switch (item.getItemId()) {
             case 1:
@@ -227,47 +177,4 @@ public class Page_projet extends ActionBarActivity
                 return super.onContextItemSelected(item);
         }
     }
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_page_projet, container, false);
-
-            /*TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));*/
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((Page_projet) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
-    }
-
 }
