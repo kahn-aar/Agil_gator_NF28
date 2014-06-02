@@ -186,6 +186,12 @@ public class Page_projet extends ActionBarActivity
             startActivity(intent);
             return true;
         }
+        if (id == R.id.archives) {
+            Intent intent = new Intent(Page_projet.this, ArchivedSprint.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

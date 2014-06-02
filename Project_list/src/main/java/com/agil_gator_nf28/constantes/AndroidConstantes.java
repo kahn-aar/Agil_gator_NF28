@@ -9,19 +9,22 @@ public class AndroidConstantes {
 
     //Extras
     public static String PROJECT_ID = "id_projet";
+    public static String SPRINT_ID = "id_sprint";
+    public static String TACHE_ID = "id_tache";
+
     public static String EXTRA_SUB_NEW_PROJECT = "sub_nouveau_projet";
     public static String EXTRA_DESCRIPTION_NEW_PROJECT = "description_nouveau_projet";
     public static String PROJECT_EDIT_FROM = "from_page";
     public static String PROJECT_EDIT_FROM_LIST = "from_list";
     public static String PROJECT_EDIT_FROM_DETAIL = "from_proj";
 
+    public static String TASK_DESC_FROM = "from_page";
+    public static String TASK_DESC_FROM_LIST = "from_proj";
+    public static String TASK_DESC_FROM_ARCHIVE = "from_archive";
+
     //BDD
     public static final String NOM_BDD = "agilgator2.db";
-<<<<<<< HEAD
-    public static final int VERSION_BDD = 6;
-=======
     public static final int VERSION_BDD = 30;
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 
     //Table Projet
     public static final String TABLE_PROJET = "table_projet";

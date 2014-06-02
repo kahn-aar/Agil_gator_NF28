@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.agil_gator_nf28.agil_gator" >
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.agil_gator_nf28.agil_gator.LoginActivity"
             android:label="@string/app_name" >
@@ -53,20 +54,36 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Page_projet" />
         </activity>
-    <activity
+        <activity
             android:name="com.agil_gator_nf28.agil_gator.EditProjet"
-            android:label="@string/title_activity_edit_projet">
+            android:label="@string/title_activity_edit_projet" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Page_Projet" />
         </activity>
         <activity
-            android:name=".Modif_task"
+            android:name="com.agil_gator_nf28.agil_gator.Modif_task"
             android:label="@string/title_activity_modif__task"
             android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Page_projet" />
+        </activity>
+        <activity
+            android:name="com.agil_gator_nf28.agil_gator.ArchivedSprint"
+            android:label="@string/title_activity_archived_sprint"
+            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Page_projet" />
+        </activity>
+        <activity
+            android:name="com.agil_gator_nf28.agil_gator.PageSprint"
+            android:label="@string/title_activity_page_sprint"
+            android:parentActivityName="com.agil_gator_nf28.agil_gator.ArchivedSprint" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ArchivedSprint" />
         </activity>
     </application>
 

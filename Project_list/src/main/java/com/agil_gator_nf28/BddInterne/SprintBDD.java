@@ -9,6 +9,9 @@ import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Nicolas on 22/05/14.
  */
@@ -82,5 +85,52 @@ public class SprintBDD implements GestionnaireBDD {
         c.close();
 
         return sprint;
+    }
+
+    public List<Sprint> getSprintsFromProject(Projet project) {
+        String query = "SELECT " + AndroidConstantes.COL_SPRINT_ID + ", " + AndroidConstantes.COL_SPRINT_NUMBER
+                + " FROM " + AndroidConstantes.TABLE_SPRINT
+                + " WHERE " + AndroidConstantes.COL_SPRINT_PROJET + "=" + project.getId()
+                + " ORDER BY " + AndroidConstantes.COL_SPRINT_NUMBER + " DESC;";
+        Cursor c = bdd.rawQuery(query, null);
+
+        return getSprints(c);
+    }
+
+    private List<Sprint> getSprints(Cursor c) {
+        //si aucun élément n'a été retourné dans la requête, on renvoie null
+        if (c.getCount() == 0)
+            return new ArrayList<Sprint>();
+
+        List<Sprint> sprints = new ArrayList<Sprint>();
+
+        //Sinon on se place sur le premier élément
+        c.moveToFirst();
+        //On créé un projet
+        while(!c.isAfterLast()) {
+            Sprint sprint = new Sprint();
+            //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+            sprint.setId(c.getInt(NUM_COL_ID));
+            sprint.setNumber(c.getInt(NUM_COL_NUMBER));
+
+            sprints.add(sprint);
+            c.moveToNext();
+        }
+
+        //On ferme le cursor
+        c.close();
+
+        //On retourne le projet
+        return sprints;
+    }
+
+    public Sprint getSprintFromId(int sprintId) {
+        String query = "SELECT " + AndroidConstantes.COL_SPRINT_ID + ", " + AndroidConstantes.COL_SPRINT_NUMBER
+                + " FROM " + AndroidConstantes.TABLE_SPRINT
+                + " WHERE " + AndroidConstantes.COL_SPRINT_ID + "=" + sprintId
+                + " ORDER BY " + AndroidConstantes.COL_SPRINT_NUMBER + " DESC;";
+        Cursor c = bdd.rawQuery(query, null);
+
+        return getFirstSprint(c);
     }
 }

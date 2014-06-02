@@ -4,11 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-<<<<<<< HEAD
-import android.view.ContextMenu;
-import android.view.DragEvent;
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
@@ -25,6 +20,7 @@ import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.agil_gator.DescriptifTaskActivity;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
+import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
 
@@ -111,17 +107,12 @@ public class TacheAdapter extends BaseAdapter {
 
         holder.tacheLayout = (LinearLayout)convertView.findViewById(R.id.tache);
 
-<<<<<<< HEAD
-        SousTacheAdapter adapter = new SousTacheAdapter(context, taches.get(position).getSousTachesAFaire());
-
-        //on lance la page de description lorsque click sur tache
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
         holder.tacheLayout.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(page_project, DescriptifTaskActivity.class);
-                intent.putExtra("ID_TACHE", taches.get(pos).getId());
+                intent.putExtra(AndroidConstantes.TACHE_ID, taches.get(pos).getId());
+                intent.putExtra(AndroidConstantes.TASK_DESC_FROM, AndroidConstantes.TASK_DESC_FROM_LIST);
                 page_project.startActivity(intent);
             }
         }));

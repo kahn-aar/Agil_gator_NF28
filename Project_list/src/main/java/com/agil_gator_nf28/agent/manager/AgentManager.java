@@ -20,12 +20,20 @@ public class AgentManager {
     public static final String RESULT_CONNECTED = "connected";
     public static final String RESULT_DISONNECTED = "disconnected";
 
+    private static AgentManager instance = null;
     private boolean isConnected = false;
     private MicroRuntimeService mr;
     private String participant;
     private String agentName;
     private AndroidUserAgent agent;
     private Context context;
+
+    public static AgentManager getInstance() {
+        if (instance == null ) {
+            instance = new AgentManager();
+        }
+        return instance;
+    }
 
     public synchronized void setAgent(AndroidUserAgent agent) {
         this.agent = agent;
@@ -126,7 +134,10 @@ public class AgentManager {
 
 
     private void sendErrorToast(Throwable throwable) {
-        Toast.makeText(context, "looser connected", Toast.LENGTH_SHORT).show();
+        System.out.println("looser connected");
+        //Toast.makeText(context, "looser connected", Toast.LENGTH_SHORT).show();
     }
+
+
 
 }

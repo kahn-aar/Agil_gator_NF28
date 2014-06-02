@@ -151,8 +151,8 @@ public class TacheBDD implements GestionnaireBDD {
             //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
             tache.setId(c.getInt(NUM_COL_ID));
             tache.setNom(c.getString(NUM_COL_TITRE));
-            tache.setDifficulte(c.getInt(NUM_COL_DIFF));
             tache.setPriorite(c.getInt(NUM_COL_PRIO));
+            tache.setDifficulte(c.getInt(NUM_COL_DIFF));
 
             tache.setSousTaches(getSousTaches(tache));
 
