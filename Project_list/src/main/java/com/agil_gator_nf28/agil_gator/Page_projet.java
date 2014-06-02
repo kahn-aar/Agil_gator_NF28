@@ -78,7 +78,6 @@ public class Page_projet extends ActionBarActivity {
 
             TacheBDD tacheBDD = new TacheBDD(this);
             tacheBDD.open();
-            Tache tache = tacheBDD.getTacheWithId(1);
             List<Tache> taches = tacheBDD.getTaches(actualSprint);
             tacheBDD.close();
 

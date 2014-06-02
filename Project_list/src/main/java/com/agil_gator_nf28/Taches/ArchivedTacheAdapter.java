@@ -77,8 +77,8 @@ public class ArchivedTacheAdapter extends BaseAdapter {
         // On défini ici le texte que doit contenir chacun des TextView
         // Le premier affichera le numéro de l'élément (numéro de ligne)
         holder.nom.setText(taches.get(position).getNom());
-        holder.priorite.setText(taches.get(position).getPriorite());
-        holder.difficulte.setText(taches.get(position).getDifficulte());
+        holder.priorite.setText("Priorité : " + String.valueOf(taches.get(position).getPriorite()));
+        holder.difficulte.setText("Difficulté : " +String.valueOf(taches.get(position).getDifficulte()));
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

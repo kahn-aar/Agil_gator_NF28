@@ -36,7 +36,7 @@ public class DescriptifTaskActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
 
-        ID = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
+        ID = Integer.valueOf(intent.getStringExtra(AndroidConstantes.TACHE_ID));
 
         if(ID != -1){
 
