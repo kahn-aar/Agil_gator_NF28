@@ -2,8 +2,11 @@ package com.agil_gator_nf28.SousTaches;
 
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.User.User;
 
 /**
+ * Classe gérant les sous taches
+ *
  * Created by Nicolas on 15/05/14.
  */
 public class SousTache {
@@ -11,6 +14,7 @@ public class SousTache {
     private int id;
     private String titre;
     private SousTacheEtat etat;
+    private User effecteur;
 
     public SousTache() {
     }
@@ -45,5 +49,13 @@ public class SousTache {
 
     public Tache getTache() {
         return null;
+    }
+
+    public User getEffecteur() {
+        return effecteur;
+    }
+
+    public void setEffecteur(User effecteur) {
+        this.effecteur = effecteur;
     }
 }

@@ -7,6 +7,7 @@ import com.agil_gator_nf28.SousTaches.SousTache;
  */
 public class AndroidConstantes {
 
+
     //Extras
     public static String PROJECT_ID = "id_projet";
     public static String SPRINT_ID = "id_sprint";
@@ -36,9 +37,10 @@ public class AndroidConstantes {
 
     //Table User
     public static final String TABLE_USER = "table_user";
-    public static final String COL_EMAIL = "EMAIL";
-    public static final String COL_NOM = "NOM";
-    public static final String COL_PRENOM = "PRENOM";
+    public static final String COL_USER_ID = "EMAIL";
+    public static final String COL_USER_EMAIL = "EMAIL";
+    public static final String COL_USER_NAME= "NOM";
+    public static final String COL_USER_PRENOM = "PRENOM";
 
     //Table Sprint
     public static final String TABLE_SPRINT = "table_sprint";
@@ -61,5 +63,12 @@ public class AndroidConstantes {
     public static final String COL_SS_TACHE_NAME = "Name";
     public static final String COL_SS_TACHE_ETAT = "Etat";
     public static final String COL_SS_TACHE_TACHE = "Tache";
+    public static final String COL_SS_TACHE_USER = "Effecteur";
+
+    //Table user projet
+    public static final String TABLE_USER_PROJET = "table_user_projet";
+    public static final String COL_USER_PROJET_ID = "id";
+    public static final String COL_USER_PROJET_USER = "membre";
+    public static final String COL_USER_PROJET_PROJET = "projet";
 
 }
