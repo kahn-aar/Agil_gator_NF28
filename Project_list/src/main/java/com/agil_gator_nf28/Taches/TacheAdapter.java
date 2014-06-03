@@ -4,15 +4,11 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-<<<<<<< HEAD
-import android.view.ContextMenu;
-import android.view.DragEvent;
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -25,6 +21,7 @@ import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.agil_gator.DescriptifTaskActivity;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
+import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
 
@@ -33,15 +30,17 @@ import java.util.List;
  *
  * Created by Nicolas on 15/05/14.
  */
-public class TacheAdapter extends BaseAdapter {
+public class TacheAdapter extends ArrayAdapter<Tache> {
 
     private List<Tache> taches;
     private LayoutInflater inflater;
     private Context context;
     private Page_projet page_project;
+    private int Position;
 
 
-    public TacheAdapter(Page_projet page_project, Context context, List<Tache> taches) {
+    public TacheAdapter(Page_projet page_project, int view, Context context, List<Tache> taches) {
+        super(context,view,taches);
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.taches = taches;
@@ -54,13 +53,17 @@ public class TacheAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Tache getItem(int position) {
         return taches.get(position);
     }
 
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    public int getposition (){
+        return Position;
     }
 
     private class ViewHolder {
@@ -83,6 +86,7 @@ public class TacheAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
+        Position = position;
         final int pos = position;
 
         if(convertView == null) {
@@ -111,17 +115,13 @@ public class TacheAdapter extends BaseAdapter {
 
         holder.tacheLayout = (LinearLayout)convertView.findViewById(R.id.tache);
 
-<<<<<<< HEAD
-        SousTacheAdapter adapter = new SousTacheAdapter(context, taches.get(position).getSousTachesAFaire());
-
         //on lance la page de description lorsque click sur tache
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
+
         holder.tacheLayout.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(page_project, DescriptifTaskActivity.class);
-                intent.putExtra("ID_TACHE", taches.get(pos).getId());
+                intent.putExtra(AndroidConstantes.TACHE_ID, taches.get(pos).getId());
                 page_project.startActivity(intent);
             }
         }));

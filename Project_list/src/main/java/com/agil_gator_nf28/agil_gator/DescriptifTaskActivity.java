@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 /**
  * Created by Mathieu on 22/05/14.
@@ -35,15 +36,13 @@ public class DescriptifTaskActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
 
-        ID = intent.getIntExtra("ID_TACHE",-1);
+        ID = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
 
         if(ID != -1){
 
             TacheBDD tacheBDD = new TacheBDD(this);
 
             tacheBDD.open();
-
-            System.out.println("identifiant de la tache !!!!!!!!!!!!!!!!!!!!!!!!!!! : " + ID);
 
             tache = tacheBDD.getTacheWithId(ID);
 

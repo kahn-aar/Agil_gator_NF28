@@ -14,7 +14,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_project_list">Liste des projets</string>
     <string name="title_project">Title project one</string>
-    <string name="title_descriptif">Descriptifs</string>
+    <string name="title_activity_descriptif_projet">Description Projet</string>
+    <string name="title_activity_descriptif_tache">Description Tache</string>
     <string name="sub_title_project">subTitle</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_page_projet">Page_projet</string>
@@ -22,12 +23,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="title_activity_modif__task">Modification tâche</string>
-
-    <!-- pour le context menu des tâches -->
-    <string name="modif_task">Modifier Tâche</string>
-    <string name="description_task">Descrition de la Tâche</string>
-    <string name="add_sub_task">Ajouter sous_Tâche</string>
-    <string name="supp_task">Supprimer Tâche</string>
 
     <!-- pour modifier la tâche -->
     <string name="modif_task_button">Modifier la tâche</string>

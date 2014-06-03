@@ -84,10 +84,7 @@ public class MaBaseProjet extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_TACHE + ";");
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_SPRINT + ";");
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_PROJET + ";");
-<<<<<<< HEAD
-=======
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_USER + ";");
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
         onCreate(db);
     }
 

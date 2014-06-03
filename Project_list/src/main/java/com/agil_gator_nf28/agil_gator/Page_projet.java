@@ -1,16 +1,15 @@
 package com.agil_gator_nf28.agil_gator;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.view.ContextMenu;
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,10 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-<<<<<<< HEAD
 import android.widget.AdapterView;
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,14 +28,11 @@ import com.agil_gator_nf28.BddInterne.SprintBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
+import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
-
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
 import java.util.List;
 
 /**
@@ -57,9 +50,10 @@ public class Page_projet extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
 
-
     private static final int  MENU_EDIT = Menu.FIRST;
-    private static final int  MENU_DELETE = Menu.FIRST + 1;
+    private static final int  MENU_DESCRIPTION = Menu.FIRST + 1;
+    private static final int  MENU_ADD_SUB_TASK = Menu.FIRST + 2;
+    private static final int  MENU_DELETE = Menu.FIRST + 3;
 
     private CharSequence mTitle;
     private int id_project;
@@ -74,7 +68,7 @@ public class Page_projet extends ActionBarActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_projet);
-        ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
+        final ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
         TextView titre = (TextView)findViewById(R.id.projectPageTitle);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -106,32 +100,31 @@ public class Page_projet extends ActionBarActivity
             tbdd.close();
 
             List<Tache> ltache = new ArrayList<Tache>();
-            ltache.add(task);*/
+            ltache.add(task);
             sprintBDD.open();
-<<<<<<< HEAD
-           /* Sprint createdSprint = new Sprint();
+
+            Sprint createdSprint = new Sprint();
             createdSprint.setNumber(1);
-            sprintBDD.insertSprint(createdSprint, project);
-=======
+            sprintBDD.insertSprint(createdSprint, project);*/
+
             //Sprint createdSprint = new Sprint();
             //createdSprint.setNumber(1);
             //sprintBDD.insertSprint(createdSprint, project);
->>>>>>> 7c897ae616331c66c9d7ae134e2c3e99e8dd01d1
-            Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
+            /*Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
             System.out.println(actualSprint);*/
             //sprintBDD.insertSprint(new Sprint(ltache,5),project);
-            sprintBDD.close();
+//            sprintBDD.close();
 
         // Mise en place de la liste des tâches
-        SousTache sub = new SousTache("lolilol");
-        sub.setEtat(SousTacheEtat.AFAIRE);
+        //SousTache sub = new SousTache("lolilol");
+        //sub.setEtat(SousTacheEtat.AFAIRE);
 
         id_project = Integer.parseInt(intent.getStringExtra(EXTRA_ID));
 
         TacheBDD tacheBDD = new TacheBDD(this);
         tacheBDD.open();
         //tacheBDD.insertTache(new Tache("test tache","ceci est un test de tache",1,2,3),new Sprint(null,1));
-        Tache tache = tacheBDD.getTacheWithId(1);
+        Tache tache = tacheBDD.getTacheWithId(3);
        // List<Tache> taches = tacheBDD.getTachesWithIdSprint(3);
         List<Tache> taches = new ArrayList<Tache>();
             taches.add(tache);
@@ -140,11 +133,21 @@ public class Page_projet extends ActionBarActivity
         //on definit la vue associé au menu floattant
         //this.registerForContextMenu(ListeTaches);
 
-         adapter = new TacheAdapter(this,getApplicationContext(), taches);
+         adapter = new TacheAdapter(this,R.id.ListeTaches,getApplicationContext(), taches);
 
 
             // On dit à la ListView de se remplir via cet adapter
+
+
+            Thread thread = new Thread()
+            {
+                @Override
+                public void run() {
             ListeTaches.setAdapter(adapter);
+                }
+            };
+
+            thread.start();
         }
     }
 
@@ -218,28 +221,51 @@ public class Page_projet extends ActionBarActivity
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
-        menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.description_task);
+        menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.description_task);
+        menu.add(Menu.NONE, MENU_ADD_SUB_TASK, Menu.NONE, R.string.add_sub_task);
+        menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.supp_task);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        Tache selectedTache = (Tache) adapter.getItem(item.getItemId()-1);
+        final Tache selectedTache = (Tache) adapter.getItem(adapter.getposition());
         System.out.println("id de la tache selectionne "+ selectedTache.getId());
-
+        Intent intent;
         switch (item.getItemId()) {
-            case 1:
-                Intent intent = new Intent(this,Modif_task.class);
-                intent.putExtra("ID_TA", selectedTache.getId());
+            case MENU_EDIT:
+                intent = new Intent(this,Modif_task.class);
+                intent.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
                 this.startActivity(intent);
                 return true;
-            case R.id.description_task:
-                //editNote(info.id);
+            case MENU_DESCRIPTION:
+                intent = new Intent(this,DescriptifTaskActivity.class);
+                intent.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                this.startActivity(intent);
                 return true;
-            case R.id.add_sub__task:
-                //editNote(info.id);
+            case MENU_ADD_SUB_TASK:
+
                 return true;
-            case R.id.supp_task:
-                //deleteNote(info.id);
+            case MENU_DELETE:
+                //on affiche un popup de confirmation pour la suppression
+                new AlertDialog.Builder(this)
+                        .setTitle("Suppression")
+                        .setMessage("Etes vous sure de vouloir supprimer cette tâche?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                TacheBDD tacheBDD = new TacheBDD(Page_projet.this);
+                                tacheBDD.open();
+                                tacheBDD.deleteTacheWithId(selectedTache.getId());
+                                tacheBDD.close();
+                                adapter.remove(selectedTache);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
                 return true;
             default:
                 return super.onContextItemSelected(item);

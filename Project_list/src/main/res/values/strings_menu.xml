@@ -3,4 +3,11 @@
     <string name="context_menu_proj_edit">Modifier le projet</string>
     <string name="context_menu_proj_suppr">Supprimer ce projet</string>
     <string name="edit_project">Editer le projet</string>
+    <string name="context_menu_proj_desc">Description du projet</string>
+
+    <!-- pour le context menu des tâches -->
+    <string name="modif_task">Modifier Tâche</string>
+    <string name="description_task">Descrition de la Tâche</string>
+    <string name="add_sub_task">Ajouter sous_Tâche</string>
+    <string name="supp_task">Supprimer Tâche</string>
 </resources>
