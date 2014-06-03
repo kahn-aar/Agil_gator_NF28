@@ -25,7 +25,7 @@
 
     <!-- pour le context menu des tâches -->
     <string name="modif_task">Modifier Tâche</string>
-    <string name="description_task">Descrition de la Tâche</string>
+    <string name="description_task">Description de la Tâche</string>
     <string name="add_sub_task">Ajouter sous_Tâche</string>
     <string name="supp_task">Supprimer Tâche</string>
 
@@ -34,5 +34,9 @@
     <string name="title_activity_edit_projet">EditProjet</string>
     <string name="title_activity_archived_sprint">ArchivedSprint</string>
     <string name="title_activity_page_sprint">PageSprint</string>
+    <string name="title_activity_add_sub_task">AddSubTask</string>
+    <string name="title_add__sub_task_page">Créer une sous tache</string>
+    <string name="add_sub_task_titre">nom</string>
+    <string name="add_sub_task_boutton">Ajouter une sous tâche</string>
 
 </resources>

@@ -90,7 +90,7 @@ public class TacheBDD extends GestionnaireBDD {
 
     public List<Tache> getTaches(Sprint sprint) {
 
-        String query = "SELECT " + AndroidConstantes.COL_TACHE_ID + ", " + AndroidConstantes.COL_TACHE_NAME + ", " + AndroidConstantes.COL_TACHE_PRIORITE + ", " + AndroidConstantes.COL_TACHE_DIFFICULTE
+        String query = "SELECT * "
                 + " FROM " + AndroidConstantes.TABLE_TACHE
                 + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + sprint.getId() + ";";
         Cursor c = bdd.rawQuery(query, null);
@@ -149,8 +149,8 @@ public class TacheBDD extends GestionnaireBDD {
             tache.setId(c.getInt(NUM_COL_ID));
             tache.setNom(c.getString(NUM_COL_TITRE));
             tache.setPriorite(c.getInt(NUM_COL_PRIO));
-            //tache.setDifficulte(c.getInt(NUM_COL_DIFF));
-            tache.setDifficulte(12);
+            tache.setDifficulte(c.getInt(NUM_COL_DIFF));
+
             tache.setSousTaches(getSousTaches(tache));
 
             taches.add(tache);

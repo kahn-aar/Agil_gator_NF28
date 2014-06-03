@@ -36,7 +36,7 @@
             android:label="@string/title_descriptif" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_Projet" />
+                android:value="Page_projet" />
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.Page_projet"
@@ -59,7 +59,7 @@
             android:label="@string/title_activity_edit_projet" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_Projet" />
+                android:value="Page_projet" />
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.Modif_task"
@@ -84,6 +84,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ArchivedSprint" />
+        </activity>
+        <activity
+            android:name="com.agil_gator_nf28.agil_gator.AddSubTask"
+            android:label="@string/title_activity_add_sub_task"
+            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Page_projet" />
         </activity>
     </application>
 

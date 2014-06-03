@@ -141,7 +141,6 @@ public class TacheAdapter extends BaseAdapter {
         // On dit à la ListView de se remplir via cet adapter
         holder.doneGrid.setAdapter(adapter4);
 
-        page_project.registerForContextMenu((LinearLayout)convertView.findViewById(R.id.tache));
         return convertView;
     }
 }

@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,6 +42,7 @@ public class Page_projet extends ActionBarActivity {
 
     private static final int  MENU_EDIT = Menu.FIRST;
     private static final int  MENU_DELETE = Menu.FIRST + 1;
+    private static final int  MENU_ADD_SUB = Menu.FIRST + 2;
 
     private CharSequence mTitle;
     private int id_project;
@@ -47,6 +50,7 @@ public class Page_projet extends ActionBarActivity {
     private Projet project;
     private Sprint actualSprint;
     private TacheAdapter adapter = null;
+    private ListView listTaches;
 
 
     @Override
@@ -55,7 +59,7 @@ public class Page_projet extends ActionBarActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_projet);
-        ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
+        listTaches = (ListView)findViewById(R.id.ListeTaches);
         TextView titre = (TextView)findViewById(R.id.projectPageTitle);
 
 
@@ -83,8 +87,12 @@ public class Page_projet extends ActionBarActivity {
 
             adapter = new TacheAdapter(this,getApplicationContext(), taches);
 
+
+            registerForContextMenu(listTaches);
+            listTaches.setLongClickable(true);
             // On dit à la ListView de se remplir via cet adapter
-            ListeTaches.setAdapter(adapter);
+            listTaches.setAdapter(adapter);
+
         }
     }
 
@@ -148,8 +156,13 @@ public class Page_projet extends ActionBarActivity {
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+        //AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        //Tache tache = (Tache) listTaches.getItemAtPosition(acmi.position);
+
         menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
         menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.description_task);
+        menu.add(Menu.NONE, MENU_ADD_SUB, Menu.NONE, R.string.context_menu_tache_add);
+        //menu.add(tache.getId());
     }
 
     @Override
@@ -166,8 +179,11 @@ public class Page_projet extends ActionBarActivity {
             case R.id.description_task:
                 //editNote(info.id);
                 return true;
-            case R.id.add_sub__task:
-                //editNote(info.id);
+            case 3:
+                Intent intent2 = new Intent(this,Modif_task.class);
+                intent2.putExtra(AndroidConstantes.PROJECT_ID, project.getId());
+                intent2.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                this.startActivity(intent2);
                 return true;
             case R.id.supp_task:
                 //deleteNote(info.id);
