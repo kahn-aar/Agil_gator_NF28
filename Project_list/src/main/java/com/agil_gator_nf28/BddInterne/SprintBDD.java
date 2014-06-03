@@ -15,19 +15,14 @@ import java.util.List;
 /**
  * Created by Nicolas on 22/05/14.
  */
-public class SprintBDD implements GestionnaireBDD {
+public class SprintBDD extends GestionnaireBDD {
 
     private static final int NUM_COL_ID = 0;
     private static final int NUM_COL_NUMBER = 1;
     private static final int NUM_COL_PROJET = 2;
 
-    private SQLiteDatabase bdd;
-
-    private MaBaseProjet maBaseSQLite;
-
     public SprintBDD(Context context){
-        //On créer la BDD et sa table
-        maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, AndroidConstantes.VERSION_BDD);
+        super(context);
     }
 
     public void open(){

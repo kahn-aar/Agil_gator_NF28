@@ -24,9 +24,10 @@ public class MaBaseProjet extends SQLiteOpenHelper {
 
     private static final String CREATE_USER_TABLE = " CREATE TABLE " + AndroidConstantes.TABLE_USER + "("
             + AndroidConstantes.COL_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + AndroidConstantes.COL_USER_EMAIL + " TEXT PRIMARY KEY,"
-            + AndroidConstantes.COL_USER_NAME + " TEXT NOT NULL,"
-            + AndroidConstantes.COL_USER_PRENOM + " TEXT);";
+            + AndroidConstantes.COL_USER_EMAIL + " TEXT PRIMARY KEY, "
+            + AndroidConstantes.COL_USER_NAME + " TEXT NOT NULL, "
+            + AndroidConstantes.COL_USER_PRENOM + " TEXT NOT NULL, "
+            + AndroidConstantes.COL_USER_PASSWORD + " TEXT);";
 
     private static final String CREATE_SPRINT_TABLE =  "CREATE TABLE " + AndroidConstantes.TABLE_SPRINT + " ("
             + AndroidConstantes.COL_SPRINT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "

@@ -3,10 +3,11 @@ package com.agil_gator_nf28.constantes;
 import com.agil_gator_nf28.SousTaches.SousTache;
 
 /**
+ * Ensemble des constantes du projet
+ *
  * Created by Nicolas on 28/04/14.
  */
 public class AndroidConstantes {
-
 
     //Extras
     public static String PROJECT_ID = "id_projet";
@@ -70,5 +71,6 @@ public class AndroidConstantes {
     public static final String COL_USER_PROJET_ID = "id";
     public static final String COL_USER_PROJET_USER = "membre";
     public static final String COL_USER_PROJET_PROJET = "projet";
+    public static final String COL_USER_PASSWORD = "password";
 
 }

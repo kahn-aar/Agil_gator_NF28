@@ -18,20 +18,15 @@ import java.util.List;
  *
  * Created by Nicolas on 17/05/14.
  */
-public class SousTacheBDD implements GestionnaireBDD {
+public class SousTacheBDD extends GestionnaireBDD {
 
     private static final int NUM_COL_ID = 0;
     private static final int NUM_COL_TITRE = 1;
     private static final int NUM_COL_ETAT = 2;
     private static final int NUM_COL_TACHE = 3;
 
-    private SQLiteDatabase bdd;
-
-    private MaBaseProjet maBaseSQLite;
-
     public SousTacheBDD(Context context){
-        //On créer la BDD et sa table
-        maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, AndroidConstantes.VERSION_BDD);
+        super(context);
     }
 
     @Override
