@@ -28,6 +28,8 @@ public class Modif_task extends ActionBarActivity {
     private Projet project;
     private Tache tache;
     private int ID;
+    private String from;
+    private int sprintIdFrom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,12 @@ public class Modif_task extends ActionBarActivity {
 
         Intent intent = getIntent();
 
-        ID = intent.getIntExtra("ID_TACHE",-1);
+        ID = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
+
+        from = intent.getStringExtra(AndroidConstantes.TASK_DESC_FROM);
+        if(AndroidConstantes.TASK_DESC_FROM_ARCHIVE.equals(from)) {
+            sprintIdFrom = intent.getIntExtra(AndroidConstantes.SPRINT_ID,-1);
+        }
 
        if (intent != null) {
 
@@ -97,5 +104,20 @@ public class Modif_task extends ActionBarActivity {
 
 
        }
+    }
+
+    @Override
+    public Intent getSupportParentActivityIntent() {
+        Intent intent = null;
+        if (AndroidConstantes.TASK_DESC_FROM_LIST.equals(from)) {
+            intent = new Intent(this, Page_projet.class);
+            intent.putExtra("user_login", String.valueOf(ID));
+        }
+        else if (AndroidConstantes.TASK_DESC_FROM_ARCHIVE.equals(from)) {
+            intent = new Intent(this, PageSprint.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(ID));
+            intent.putExtra(AndroidConstantes.SPRINT_ID, String.valueOf(sprintIdFrom));
+        }
+        return intent;
     }
 }

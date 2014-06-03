@@ -89,7 +89,7 @@
 
 
     <LinearLayout
-        android:id="@+id/description"
+        android:id="@+id/difficulte"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -111,6 +111,31 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/taskHard" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/description"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/difficulte"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="60dp">
+
+        <TextView
+            android:text="@string/edit_desciption"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/description_task" />
 
     </LinearLayout>
 

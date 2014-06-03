@@ -3,4 +3,5 @@
     <string name="error_name_task">Erreur : veuillez entrer un nom de tache</string>
     <string name="error_prio_task">Erreur : veuillez entrer une priorité entre 0 et 1000</string>
     <string name="error_hard_task">Erreur : veuillez entrer une difficulté entre 0 et 20</string>
+    <string name="error_desc_task">Erreur : veuillez entrer une description</string>
 </resources>

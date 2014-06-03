@@ -73,6 +73,7 @@ public class Project_List extends ActionBarActivity {
     public boolean onContextItemSelected(MenuItem item) {
         final Projet selectedProject = (Projet) adapter.getItem(item.getItemId() - 1);
         Intent intent;
+
         switch (item.getItemId()) {
             case MENU_DESCRIPTION:
                 intent = new Intent(Project_List.this,DescriptifProjectActivity.class);

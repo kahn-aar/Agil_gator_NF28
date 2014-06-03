@@ -4,14 +4,20 @@
     tools:context="com.agil_gator_nf28.agil_gator.Page_projet" >
     <item android:id="@+id/add_task_menu"
         android:title="@string/add_task_menu"
-        app:showAsAction="withText|ifRoom" />
-
-    <item android:id="@+id/description_project"
-        android:title="@string/action_example"
-        app:showAsAction="withText|ifRoom" />
+        app:showAsAction="never" />
 
     <item android:id="@+id/edit_project"
         android:title="@string/edit_project"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/archives"
+        android:title="@string/archives"
+        android:orderInCategory="110"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/archiver"
+        android:title="@string/archiver"
         android:orderInCategory="100"
         app:showAsAction="never" />
 </menu>

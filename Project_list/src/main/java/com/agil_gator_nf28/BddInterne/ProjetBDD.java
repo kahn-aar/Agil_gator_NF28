@@ -16,7 +16,7 @@ import java.util.List;
  *
  * Created by Nicolas on 30/04/14.
  */
-public class ProjetBDD implements GestionnaireBDD{
+public class ProjetBDD extends GestionnaireBDD{
 
     private static final int NUM_COL_ID = 0;
     private static final int NUM_COL_ISBN = 1;
@@ -24,28 +24,10 @@ public class ProjetBDD implements GestionnaireBDD{
     private static final int NUM_COL_DESCRIPTION = 3;
     private static final int NUM_COL_ADVANCED = 4;
 
-    private SQLiteDatabase bdd;
-
-    private MaBaseProjet maBaseSQLite;
-
-    public ProjetBDD(Context context){
-        //On créer la BDD et sa table
-        maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, AndroidConstantes.VERSION_BDD);
+    public ProjetBDD(Context context) {
+        super(context);
     }
 
-    public void open(){
-        //on ouvre la BDD en écriture
-        bdd = maBaseSQLite.getWritableDatabase();
-    }
-
-    public void close(){
-        //on ferme l'accès à la BDD
-        bdd.close();
-    }
-
-    public SQLiteDatabase getBDD(){
-        return bdd;
-    }
 
     public long insertProjet(Projet projet){
         //Création d'un ContentValues (fonctionne comme une HashMap)

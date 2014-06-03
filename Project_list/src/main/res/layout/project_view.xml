@@ -28,7 +28,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/sub_title_project"
                 android:id="@+id/sub_project_list"
                 android:layout_marginLeft="10dp"
                 android:layout_alignLeft="@+id/textView"

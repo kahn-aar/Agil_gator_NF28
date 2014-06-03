@@ -3,6 +3,7 @@
 
     <string name="app_name">Agil\'gator</string>
     <string name="title_add_task">Ajouter une tache</string>
+    <string name="title_add_sub_task">Ajouter une sous tâche</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="edit_message">Enter a message</string>
@@ -27,5 +28,7 @@
     <!-- pour modifier la tâche -->
     <string name="modif_task_button">Modifier la tâche</string>
     <string name="title_activity_edit_projet">EditProjet</string>
+    <string name="title_activity_archived_sprint">ArchivedSprint</string>
+    <string name="title_activity_page_sprint">PageSprint</string>
 
 </resources>

@@ -1,6 +1,8 @@
 package com.agil_gator_nf28.User;
 
 /**
+ * Classe gérant les utilisateurs
+ *
  * Created by Mathieu on 15/05/14.
  */
 public class User {
@@ -37,5 +39,10 @@ public class User {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public String getTag() {
+        String tag = firstname.substring(0,1) + name.substring(0,2);
+        return tag;
     }
 }

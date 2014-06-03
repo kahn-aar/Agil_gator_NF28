@@ -10,4 +10,7 @@
     <string name="description_task">Descrition de la Tâche</string>
     <string name="add_sub_task">Ajouter sous_Tâche</string>
     <string name="supp_task">Supprimer Tâche</string>
+    <string name="archives">Voir les archives</string>
+    <string name="archiver">Archiver le sprint</string>
+
 </resources>

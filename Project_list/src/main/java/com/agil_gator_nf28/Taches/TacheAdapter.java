@@ -122,6 +122,7 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
             public void onClick(View v) {
                 Intent intent = new Intent(page_project, DescriptifTaskActivity.class);
                 intent.putExtra(AndroidConstantes.TACHE_ID, taches.get(pos).getId());
+                intent.putExtra(AndroidConstantes.TASK_DESC_FROM, AndroidConstantes.TASK_DESC_FROM_LIST);
                 page_project.startActivity(intent);
             }
         }));

@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.agil_gator_nf28.agent.manager.AgentManager;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.regex.Matcher;
@@ -30,6 +31,8 @@ public class LoginActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
+                //AgentManager manager = AgentManager.getInstance();
+                //manager.doConnect(LoginActivity.this, "178.251.23.167", "loule");
                 Intent intent = new Intent(LoginActivity.this, Project_List.class);
                 startActivity(intent);
             }

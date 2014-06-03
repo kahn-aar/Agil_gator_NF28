@@ -9,22 +9,20 @@ import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Nicolas on 22/05/14.
  */
-public class SprintBDD implements GestionnaireBDD {
+public class SprintBDD extends GestionnaireBDD {
 
     private static final int NUM_COL_ID = 0;
     private static final int NUM_COL_NUMBER = 1;
     private static final int NUM_COL_PROJET = 2;
 
-    private SQLiteDatabase bdd;
-
-    private MaBaseProjet maBaseSQLite;
-
     public SprintBDD(Context context){
-        //On créer la BDD et sa table
-        maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, AndroidConstantes.VERSION_BDD);
+        super(context);
     }
 
     public void open(){
@@ -82,5 +80,58 @@ public class SprintBDD implements GestionnaireBDD {
         c.close();
 
         return sprint;
+    }
+
+    public List<Sprint> getSprintsFromProject(Projet project) {
+        String query = "SELECT " + AndroidConstantes.COL_SPRINT_ID + ", " + AndroidConstantes.COL_SPRINT_NUMBER
+                + " FROM " + AndroidConstantes.TABLE_SPRINT
+                + " WHERE " + AndroidConstantes.COL_SPRINT_PROJET + "=" + project.getId()
+                + " ORDER BY " + AndroidConstantes.COL_SPRINT_NUMBER + " DESC;";
+        Cursor c = bdd.rawQuery(query, null);
+
+        return getSprints(c);
+    }
+
+    private List<Sprint> getSprints(Cursor c) {
+        //si aucun élément n'a été retourné dans la requête, on renvoie null
+        if (c.getCount() == 0)
+            return new ArrayList<Sprint>();
+
+        List<Sprint> sprints = new ArrayList<Sprint>();
+
+        //Sinon on se place sur le premier élément
+        c.moveToFirst();
+        //On créé un projet
+        while(!c.isAfterLast()) {
+            Sprint sprint = new Sprint();
+            //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+            sprint.setId(c.getInt(NUM_COL_ID));
+            sprint.setNumber(c.getInt(NUM_COL_NUMBER));
+
+            sprints.add(sprint);
+            c.moveToNext();
+        }
+
+        //On ferme le cursor
+        c.close();
+
+        //On retourne le projet
+        return sprints;
+    }
+
+    public Sprint getSprintFromId(int sprintId) {
+        String query = "SELECT " + AndroidConstantes.COL_SPRINT_ID + ", " + AndroidConstantes.COL_SPRINT_NUMBER
+                + " FROM " + AndroidConstantes.TABLE_SPRINT
+                + " WHERE " + AndroidConstantes.COL_SPRINT_ID + "=" + sprintId
+                + " ORDER BY " + AndroidConstantes.COL_SPRINT_NUMBER + " DESC;";
+        Cursor c = bdd.rawQuery(query, null);
+
+        return getFirstSprint(c);
+    }
+
+    public void archivateSprint(Sprint actualSprint, Projet projet) {
+        Sprint newSprint = new Sprint();
+        newSprint.setNumber(actualSprint.getNumber() + 1);
+        insertSprint(newSprint, projet);
     }
 }

@@ -19,7 +19,7 @@ import java.util.List;
  *
  * Created by Nicolas on 17/05/14.
  */
-public class TacheBDD implements GestionnaireBDD {
+public class TacheBDD extends GestionnaireBDD {
 
     private static final int NUM_COL_ID = 0;
     private static final int NUM_COL_TITRE = 1;
@@ -28,13 +28,10 @@ public class TacheBDD implements GestionnaireBDD {
     private static final int NUM_COL_DIFF = 4;
     private static final int NUM_COL_PROJET = 5;
 
-    private SQLiteDatabase bdd;
     private Context context;
-    private MaBaseProjet maBaseSQLite;
 
     public TacheBDD(Context context){
-        //On créer la BDD et sa table
-        maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, AndroidConstantes.VERSION_BDD);
+        super(context);
         this.context = context;
     }
 
@@ -59,7 +56,7 @@ public class TacheBDD implements GestionnaireBDD {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
 
-        System.out.println("insert Tache");
+        System.out.println("insert Tache, sprint = " + sprint.getNumber());
 
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_TACHE_NAME, tache.getNom());
@@ -153,9 +150,9 @@ public class TacheBDD implements GestionnaireBDD {
             //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
             tache.setId(c.getInt(NUM_COL_ID));
             tache.setNom(c.getString(NUM_COL_TITRE));
-            tache.setDifficulte(c.getInt(NUM_COL_DIFF));
             tache.setPriorite(c.getInt(NUM_COL_PRIO));
-
+            //tache.setDifficulte(c.getInt(NUM_COL_DIFF));
+            tache.setDifficulte(12);
             tache.setSousTaches(getSousTaches(tache));
 
             taches.add(tache);

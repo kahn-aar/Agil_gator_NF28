@@ -73,26 +73,62 @@ public class SousTacheAdapter extends ArrayAdapter<SousTache> {
 
     }
 
+    private class ViewHolderDoing {
+        TextView nom;
+        TextView tag;
+
+    }
+
 
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-        final int pos = position;
-        if(convertView == null) {
-            holder = new ViewHolder();
-            // On lie les éléments au fichier ligne_de_la_listview.xml
-            convertView = inflater.inflate(R.layout.post_it_layout, null);
-            // On lie les deux TextView déclarés précédemment à ceux du xml
-            holder.nom = (TextView)convertView.findViewById(R.id.postitTitre);
 
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
+        final int pos = position;
+
+        switch(taches.get(position).getEtat()) {
+
+            case AFAIRE:
+                ViewHolder holder;
+                if(convertView == null) {
+                    holder = new ViewHolder();
+                    // On lie les éléments au fichier ligne_de_la_listview.xml
+                    convertView = inflater.inflate(R.layout.post_it_layout, null);
+                    // On lie les deux TextView déclarés précédemment à ceux du xml
+                    holder.nom = (TextView)convertView.findViewById(R.id.postitTitre);
+
+                    convertView.setTag(holder);
+                } else {
+                    holder = (ViewHolder) convertView.getTag();
+                }
+
+                holder.nom.setText(taches.get(position).getTitre());
+                break;
+            case ENCOURS:
+            case ARELIRE:
+            case VALIDE:
+                ViewHolderDoing holderdoing;
+                if(convertView == null) {
+                    holderdoing = new ViewHolderDoing();
+                    // On lie les éléments au fichier ligne_de_la_listview.xml
+                    convertView = inflater.inflate(R.layout.post_it_doing_layout, null);
+                    // On lie les deux TextView déclarés précédemment à ceux du xml
+                    holderdoing.nom = (TextView)convertView.findViewById(R.id.postitTitre);
+                    holderdoing.tag = (TextView)convertView.findViewById(R.id.postitTag);
+
+                    convertView.setTag(holderdoing);
+                } else {
+                    holderdoing = (ViewHolderDoing) convertView.getTag();
+                }
+
+                holderdoing.nom.setText(taches.get(position).getTitre());
+                if(taches.get(position).getEffecteur() != null) {
+                    holderdoing.tag.setText(taches.get(position).getEffecteur().getTag());
+                }
+                break;
         }
 
-        holder.nom.setText(taches.get(position).getTitre());
 
         convertView.setOnLongClickListener(new SousTacheListener(taches.get(position)));
 
