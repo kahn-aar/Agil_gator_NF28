@@ -83,7 +83,7 @@ public class PageSprint extends ActionBarActivity {
 
     @Override
     public Intent getSupportParentActivityIntent() {
-        Intent intent = new Intent(this, ArchivedSprint.class);
+        Intent intent = new Intent(PageSprint.this, ArchivedSprint.class);
         intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
         return intent;
     }
