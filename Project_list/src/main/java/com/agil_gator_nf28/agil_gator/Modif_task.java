@@ -38,17 +38,20 @@ public class Modif_task extends ActionBarActivity {
 
         Intent intent = getIntent();
 
-        ID = intent.getIntExtra("ID_TA",-1);
+        ID = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
+
         from = intent.getStringExtra(AndroidConstantes.TASK_DESC_FROM);
         if(AndroidConstantes.TASK_DESC_FROM_ARCHIVE.equals(from)) {
             sprintIdFrom = intent.getIntExtra(AndroidConstantes.SPRINT_ID,-1);
         }
+
        if (intent != null) {
 
-            TacheBDD tacheBDD = new TacheBDD(this);
-            tacheBDD.open();
-            tache = tacheBDD.getTacheWithId(ID);
-            tacheBDD.close();
+                   TacheBDD tacheBDD = new TacheBDD(Modif_task.this);
+                   tacheBDD.open();
+                   tache = tacheBDD.getTacheWithId(ID);
+                   tacheBDD.close();
+
 
             final EditText ediNomTache = (EditText) findViewById(R.id.editTextNomTache);
             ediNomTache.setText(tache.getNom());
@@ -64,8 +67,6 @@ public class Modif_task extends ActionBarActivity {
 
             Button edit = (Button) findViewById(R.id.modif_button);
 
-
-
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                    public void onClick(View v) {
@@ -79,18 +80,16 @@ public class Modif_task extends ActionBarActivity {
                     // On déclare un matcher, qui comparera le pattern avec la
                     // string passée en argument
                     Matcher m = p.matcher(NomTache);
-                    Matcher m1 = p.matcher(Difficulty);
-                    Matcher m2 = p.matcher(Priority);
 
                     if (!m.matches()) {
                         Toast.makeText(Modif_task.this, R.string.error_name_task, Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if (!m1.matches()) {
-                        Toast.makeText(Modif_task.this, R.string.error_prio_task, Toast.LENGTH_SHORT).show();
+                    if ((Integer.valueOf(Priority)<0)||(Integer.valueOf(Priority)>1000)) {
+                        Toast.makeText(Modif_task.this,  R.string.error_prio_task, Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if (!m2.matches()) {
+                    if ((Integer.valueOf(Difficulty)<0)||(Integer.valueOf(Difficulty)>20)) {
                         Toast.makeText(Modif_task.this, R.string.error_hard_task, Toast.LENGTH_SHORT).show();
                         return;
                     }

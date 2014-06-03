@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -29,15 +30,17 @@ import java.util.List;
  *
  * Created by Nicolas on 15/05/14.
  */
-public class TacheAdapter extends BaseAdapter {
+public class TacheAdapter extends ArrayAdapter<Tache> {
 
     private List<Tache> taches;
     private LayoutInflater inflater;
     private Context context;
     private Page_projet page_project;
+    private int Position;
 
 
-    public TacheAdapter(Page_projet page_project, Context context, List<Tache> taches) {
+    public TacheAdapter(Page_projet page_project, int view, Context context, List<Tache> taches) {
+        super(context,view,taches);
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.taches = taches;
@@ -50,13 +53,17 @@ public class TacheAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Tache getItem(int position) {
         return taches.get(position);
     }
 
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    public int getposition (){
+        return Position;
     }
 
     private class ViewHolder {
@@ -79,6 +86,7 @@ public class TacheAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
+        Position = position;
         final int pos = position;
 
         if(convertView == null) {
@@ -106,6 +114,8 @@ public class TacheAdapter extends BaseAdapter {
         holder.aFaireGrid = (GridView)convertView.findViewById(R.id.gridAFaire);
 
         holder.tacheLayout = (LinearLayout)convertView.findViewById(R.id.tache);
+
+        //on lance la page de description lorsque click sur tache
 
         holder.tacheLayout.setOnClickListener((new View.OnClickListener() {
             @Override

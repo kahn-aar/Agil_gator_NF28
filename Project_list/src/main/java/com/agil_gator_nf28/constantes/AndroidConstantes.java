@@ -13,7 +13,6 @@ public class AndroidConstantes {
     public static String PROJECT_ID = "id_projet";
     public static String SPRINT_ID = "id_sprint";
     public static String TACHE_ID = "id_tache";
-
     public static String EXTRA_SUB_NEW_PROJECT = "sub_nouveau_projet";
     public static String EXTRA_DESCRIPTION_NEW_PROJECT = "description_nouveau_projet";
     public static String PROJECT_EDIT_FROM = "from_page";
@@ -26,7 +25,8 @@ public class AndroidConstantes {
 
     //BDD
     public static final String NOM_BDD = "agilgator2.db";
-    public static final int VERSION_BDD = 30;
+
+    public static final int VERSION_BDD = 31;
 
     //Table Projet
     public static final String TABLE_PROJET = "table_projet";

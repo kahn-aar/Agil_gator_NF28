@@ -6,15 +6,18 @@ import android.os.Bundle;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.BddInterne.TacheBDD;
+import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 public class DescriptifProjectActivity extends ActionBarActivity {
 
     private TextView title_project, text_description, text_membres, text_advanced;
     private RelativeLayout layout = null;
     private int ID = 0;
-    private Tache tache;
+    private Projet projet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +35,21 @@ public class DescriptifProjectActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
 
-        ID = intent.getIntExtra("ID_TACHE",-1);
+        ID = intent.getIntExtra(AndroidConstantes.PROJECT_ID,-1);
 
         if(ID != -1){
 
-        TacheBDD tacheBDD = new TacheBDD(this);
+        ProjetBDD projetBDD = new ProjetBDD(this);
         //On ouvre la base de données pour écrire dedans
-        tacheBDD.open();
+        projetBDD.open();
 
-        tache = tacheBDD.getTacheWithId(ID);
+        projet = projetBDD.getProjectWithId(ID);
 
-        tacheBDD.close();
+        projetBDD.close();
         /** on remplit les champs title, description, priorité et l'avancee **/
-        title_project.setText(tache.getNom());
-        text_description.setText(Integer.toString(tache.getDifficulte()));
-        text_advanced.setText(Integer.toString(tache.getId()));
+        title_project.setText(projet.getName());
+        text_description.setText(projet.getDescription());
+        text_advanced.setText(Integer.toString(projet.getAdvanced()));
         }
 
         setContentView(layout);

@@ -77,9 +77,12 @@ public class TacheBDD extends GestionnaireBDD {
         return cursorToTache(c);
     }
 
+    public void deleteTacheWithId(int id){
+       // bdd.rawQuery("DELETE FROM "+AndroidConstantes.TABLE_TACHE + " WHERE "+AndroidConstantes.COL_TACHE_ID+" = '"+id+"';",null);
+        bdd.delete(AndroidConstantes.TABLE_TACHE,AndroidConstantes.COL_TACHE_ID +" = "+id+" ",null);
+    }
+
     public int updateTache(int id, Tache tache){
-        //La mise à jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
-        //il faut simple préciser quelle livre on doit mettre à jour grâce à l'ID
         ContentValues values = new ContentValues();
         values.put(AndroidConstantes.COL_TACHE_NAME, tache.getNom());
         values.put(AndroidConstantes.COL_TACHE_PRIORITE, tache.getPriorite());
@@ -106,7 +109,6 @@ public class TacheBDD extends GestionnaireBDD {
         String query = "SELECT * FROM " + AndroidConstantes.TABLE_TACHE
                 + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + id_sprint + ";";
         Cursor c = bdd.rawQuery(query, null);
-
 
         return toList(c);
     }

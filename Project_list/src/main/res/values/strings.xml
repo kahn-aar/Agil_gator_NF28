@@ -3,6 +3,7 @@
 
     <string name="app_name">Agil\'gator</string>
     <string name="title_add_task">Ajouter une tache</string>
+    <string name="title_add_sub_task">Ajouter une sous tâche</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="edit_message">Enter a message</string>
@@ -14,7 +15,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_project_list">Liste des projets</string>
     <string name="title_project">Title project one</string>
-    <string name="title_descriptif">Descriptifs</string>
+    <string name="title_activity_descriptif_projet">Description Projet</string>
+    <string name="title_activity_descriptif_tache">Description Tache</string>
     <string name="sub_title_project">subTitle</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_page_projet">Page_projet</string>
@@ -25,10 +27,7 @@
 
     <!-- pour le context menu des tâches -->
     <string name="modif_task">Modifier Tâche</string>
-    <string name="description_task">Description de la Tâche</string>
     <string name="add_sub_task">Ajouter sous_Tâche</string>
-    <string name="supp_task">Supprimer Tâche</string>
-
     <!-- pour modifier la tâche -->
     <string name="modif_task_button">Modifier la tâche</string>
     <string name="title_activity_edit_projet">EditProjet</string>

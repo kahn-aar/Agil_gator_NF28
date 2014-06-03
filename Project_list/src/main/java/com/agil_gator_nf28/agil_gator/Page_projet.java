@@ -1,6 +1,8 @@
 package com.agil_gator_nf28.agil_gator;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -31,18 +33,19 @@ import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Activité gérant le tableau scul d'un projet
  */
+
 public class Page_projet extends ActionBarActivity {
 
     private static final int  MENU_EDIT = Menu.FIRST;
-    private static final int  MENU_DELETE = Menu.FIRST + 1;
-    private static final int  MENU_ADD_SUB = Menu.FIRST + 2;
+    private static final int  MENU_DESCRIPTION = Menu.FIRST + 1;
+    private static final int  MENU_ADD_SUB_TASK = Menu.FIRST + 2;
+    private static final int  MENU_DELETE = Menu.FIRST + 3;
 
     private CharSequence mTitle;
     private int id_project;
@@ -59,9 +62,8 @@ public class Page_projet extends ActionBarActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_projet);
-        listTaches = (ListView)findViewById(R.id.ListeTaches);
+        final ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
         TextView titre = (TextView)findViewById(R.id.projectPageTitle);
-
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -76,23 +78,67 @@ public class Page_projet extends ActionBarActivity {
             titre.setText(project.getName());
 
             SprintBDD sprintBDD = new SprintBDD(this);
+
+           /* TacheBDD tbdd = new  TacheBDD(this);
+            tbdd.open();
+            Tache task = tbdd.getTacheWithId(1);
+            tbdd.close();
+
+            List<Tache> ltache = new ArrayList<Tache>();
+            ltache.add(task);
             sprintBDD.open();
-            actualSprint = sprintBDD.getLastSprintOfProject(project);
-            sprintBDD.close();
 
-            TacheBDD tacheBDD = new TacheBDD(this);
-            tacheBDD.open();
-            List<Tache> taches = tacheBDD.getTaches(actualSprint);
-            tacheBDD.close();
+            Sprint createdSprint = new Sprint();
+            createdSprint.setNumber(1);
+            sprintBDD.insertSprint(createdSprint, project);*/
 
-            adapter = new TacheAdapter(this,getApplicationContext(), taches);
+            //Sprint createdSprint = new Sprint();
+            //createdSprint.setNumber(1);
+            //sprintBDD.insertSprint(createdSprint, project);
+            /*Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
+            System.out.println(actualSprint);*/
+            //sprintBDD.insertSprint(new Sprint(ltache,5),project);
+//            sprintBDD.close();
+
+        // Mise en place de la liste des tâches
+        SousTache sub = new SousTache("lolilol");
+        sub.setEtat(SousTacheEtat.AFAIRE);
 
 
-            registerForContextMenu(listTaches);
-            listTaches.setLongClickable(true);
+        id_project = Integer.parseInt(intent.getStringExtra(EXTRA_ID));
+
+        TacheBDD tacheBDD = new TacheBDD(this);
+        tacheBDD.open();
+        //tacheBDD.insertTache(new Tache("test tache","ceci est un test de tache",1,2,3),new Sprint(null,1));
+        Tache tache = tacheBDD.getTacheWithId(3);
+            //tache.addNewSousTache(sub);
+
+       // List<Tache> taches = tacheBDD.getTachesWithIdSprint(3);
+        List<Tache> taches = new ArrayList<Tache>();
+            taches.add(tache);
+        tacheBDD.close();
+
+        //on definit la vue associé au menu floattant
+        //this.registerForContextMenu(ListeTaches);
+
+
             // On dit à la ListView de se remplir via cet adapter
-            listTaches.setAdapter(adapter);
 
+         adapter = new TacheAdapter(this,R.id.ListeTaches,getApplicationContext(), taches);
+
+
+
+            // On dit à la ListView de se remplir via cet adapter
+
+            Thread thread = new Thread()
+            {
+                @Override
+                public void run() {
+            ListeTaches.setAdapter(adapter);
+                }
+            };
+
+            thread.start();
         }
     }
 
@@ -160,33 +206,56 @@ public class Page_projet extends ActionBarActivity {
         //Tache tache = (Tache) listTaches.getItemAtPosition(acmi.position);
 
         menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
-        menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.description_task);
-        menu.add(Menu.NONE, MENU_ADD_SUB, Menu.NONE, R.string.context_menu_tache_add);
-        //menu.add(tache.getId());
+        menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.description_task);
+        menu.add(Menu.NONE, MENU_ADD_SUB_TASK, Menu.NONE, R.string.add_sub_task);
+        menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.supp_task);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        Tache selectedTache = (Tache) adapter.getItem(item.getItemId()-1);
-        System.out.println("id de la tache selectionne " + selectedTache.getId());
+
+        final Tache selectedTache = (Tache) adapter.getItem(adapter.getposition());
+        System.out.println("id de la tache selectionne "+ selectedTache.getId());
+        Intent intent;
 
         switch (item.getItemId()) {
-            case 1:
-                Intent intent = new Intent(this,Modif_task.class);
-                intent.putExtra("ID_TA", selectedTache.getId());
+            case MENU_EDIT:
+                intent = new Intent(this,Modif_task.class);
+                intent.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
                 this.startActivity(intent);
                 return true;
-            case R.id.description_task:
-                //editNote(info.id);
+            case MENU_DESCRIPTION:
+                intent = new Intent(this,DescriptifTaskActivity.class);
+                intent.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                this.startActivity(intent);
                 return true;
-            case 3:
+            case MENU_ADD_SUB_TASK:
                 Intent intent2 = new Intent(this,Modif_task.class);
                 intent2.putExtra(AndroidConstantes.PROJECT_ID, project.getId());
                 intent2.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
                 this.startActivity(intent2);
                 return true;
-            case R.id.supp_task:
-                //deleteNote(info.id);
+            case MENU_DELETE:
+                //on affiche un popup de confirmation pour la suppression
+                new AlertDialog.Builder(this)
+                        .setTitle("Suppression")
+                        .setMessage("Etes vous sure de vouloir supprimer cette tâche?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                TacheBDD tacheBDD = new TacheBDD(Page_projet.this);
+                                tacheBDD.open();
+                                tacheBDD.deleteTacheWithId(selectedTache.getId());
+                                tacheBDD.close();
+                                adapter.remove(selectedTache);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
                 return true;
             default:
                 return super.onContextItemSelected(item);
