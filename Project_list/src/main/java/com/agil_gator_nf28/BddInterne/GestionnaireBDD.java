@@ -14,12 +14,13 @@ import com.agil_gator_nf28.constantes.AndroidConstantes;
 public class GestionnaireBDD {
 
     protected SQLiteDatabase bdd;
-
+    protected Context context;
     protected MaBaseProjet maBaseSQLite;
 
     public GestionnaireBDD(Context context){
         //On créer la BDD et sa table
         maBaseSQLite = new MaBaseProjet(context, AndroidConstantes.NOM_BDD, null, AndroidConstantes.VERSION_BDD);
+        this.context = context;
     }
 
     public void open(){

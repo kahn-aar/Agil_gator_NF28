@@ -23,6 +23,7 @@ import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
         super(context,view,taches);
         this.context = context;
         inflater = LayoutInflater.from(context);
-        this.taches = taches;
+        this.taches = taches == null ? new ArrayList<Tache>() : taches;
         this.page_project = page_project;
     }
 

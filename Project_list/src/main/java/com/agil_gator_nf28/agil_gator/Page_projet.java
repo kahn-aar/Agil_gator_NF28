@@ -78,53 +78,25 @@ public class Page_projet extends ActionBarActivity {
             titre.setText(project.getName());
 
             SprintBDD sprintBDD = new SprintBDD(this);
-
-           /* TacheBDD tbdd = new  TacheBDD(this);
-            tbdd.open();
-            Tache task = tbdd.getTacheWithId(1);
-            tbdd.close();
-
-            List<Tache> ltache = new ArrayList<Tache>();
-            ltache.add(task);
             sprintBDD.open();
 
-            Sprint createdSprint = new Sprint();
-            createdSprint.setNumber(1);
-            sprintBDD.insertSprint(createdSprint, project);*/
-
-            //Sprint createdSprint = new Sprint();
-            //createdSprint.setNumber(1);
-            //sprintBDD.insertSprint(createdSprint, project);
-            /*Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
-            System.out.println(actualSprint);*/
-            //sprintBDD.insertSprint(new Sprint(ltache,5),project);
-//            sprintBDD.close();
-
-        // Mise en place de la liste des tâches
-        SousTache sub = new SousTache("lolilol");
-        sub.setEtat(SousTacheEtat.AFAIRE);
+            Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
+            sprintBDD.close();
 
 
-        id_project = Integer.parseInt(intent.getStringExtra(EXTRA_ID));
+            TacheBDD tacheBDD = new TacheBDD(this);
+            tacheBDD.open();
 
-        TacheBDD tacheBDD = new TacheBDD(this);
-        tacheBDD.open();
-        //tacheBDD.insertTache(new Tache("test tache","ceci est un test de tache",1,2,3),new Sprint(null,1));
-        Tache tache = tacheBDD.getTacheWithId(3);
-            //tache.addNewSousTache(sub);
+            List<Tache> taches = tacheBDD.getTachesWithIdSprint(actualSprint.getId());
+            tacheBDD.close();
 
-       // List<Tache> taches = tacheBDD.getTachesWithIdSprint(3);
-        List<Tache> taches = new ArrayList<Tache>();
-            taches.add(tache);
-        tacheBDD.close();
-
-        //on definit la vue associé au menu floattant
-        //this.registerForContextMenu(ListeTaches);
+            //on definit la vue associé au menu floattant
+            //this.registerForContextMenu(ListeTaches);
 
 
             // On dit à la ListView de se remplir via cet adapter
 
-         adapter = new TacheAdapter(this,R.id.ListeTaches,getApplicationContext(), taches);
+            adapter = new TacheAdapter(this,R.id.ListeTaches,getApplicationContext(), taches);
 
 
 

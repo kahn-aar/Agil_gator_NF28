@@ -11,7 +11,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
+import com.agil_gator_nf28.BddInterne.SprintBDD;
+import com.agil_gator_nf28.BddInterne.UserProjetBDD;
 import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.Sprint.Sprint;
+import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.regex.Matcher;
@@ -53,14 +57,25 @@ public class AddProject extends ActionBarActivity {
                     return;
                 }
                 Projet projet = new Projet(nomText, subText, descText);
-                //Création d'une instance de ma classe LivresBDD
-                ProjetBDD projetBdd = new ProjetBDD(AddProject.this);
 
-                //On ouvre la base de données pour écrire dedans
+
+                ProjetBDD projetBdd = new ProjetBDD(AddProject.this);
                 projetBdd.open();
-                //On insère le livre que l'on vient de créer
-                projetBdd.insertProjet(projet);
+                long projectId = projetBdd.insertProjet(projet);
                 projetBdd.close();
+
+                projet.setId((int) projectId);
+                Sprint sprint = new Sprint();
+                sprint.setNumber(1);
+                SprintBDD sprintBDD = new SprintBDD(AddProject.this);
+                sprintBDD.open();
+                sprintBDD.insertSprint(sprint, projet);
+                sprintBDD.close();
+
+                UserProjetBDD userProjetBDD = new UserProjetBDD(AddProject.this);
+                userProjetBDD.open();
+                userProjetBDD.insertProjet(ConnectedUser.getInstance().getConnectedUser(), projectId);
+                userProjetBDD.close();
 
                 //On retourne sur la page d'accueil
                 Intent intent = new Intent(AddProject.this, Project_List.class);

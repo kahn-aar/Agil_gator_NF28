@@ -15,8 +15,10 @@ import android.widget.TextView;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.BddInterne.TacheBDD;
+import com.agil_gator_nf28.BddInterne.UserProjetBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Projet.ProjetAdapter;
+import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
@@ -37,15 +39,13 @@ public class Project_List extends ActionBarActivity {
         final ListView contenuDeLaPage = (ListView)findViewById(R.id.contenuDeLaPage);
 
         //Création d'une instance de ma classe LivresBDD
-        ProjetBDD projetBdd = new ProjetBDD(this);
+        UserProjetBDD projetBdd = new UserProjetBDD(this);
 
         //On ouvre la base de données pour écrire dedans
         projetBdd.open();
 
-        //Projet projet = new Projet("test projet","ceci est un test de projet", "lalalallal lilalou",55);
-        //projetBdd.insertProjet(projet);
+        List<Projet> projets = projetBdd.getProjetsFromUser(ConnectedUser.getInstance().getConnectedUser());
 
-        List<Projet> projets = projetBdd.getProjets();
 
         projetBdd.close();
 
