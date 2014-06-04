@@ -38,7 +38,7 @@ public class AndroidConstantes {
 
     //Table User
     public static final String TABLE_USER = "table_user";
-    public static final String COL_USER_ID = "EMAIL";
+    public static final String COL_USER_ID = "ID";
     public static final String COL_USER_EMAIL = "EMAIL";
     public static final String COL_USER_NAME= "NOM";
     public static final String COL_USER_PRENOM = "PRENOM";

@@ -37,5 +37,6 @@
     <string name="title_add__sub_task_page">Créer une sous tache</string>
     <string name="add_sub_task_titre">nom</string>
     <string name="add_sub_task_boutton">Ajouter une sous tâche</string>
+    <string name="error_login">Mauvaise combinaison email/password</string>
 
 </resources>
