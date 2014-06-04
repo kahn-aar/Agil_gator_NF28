@@ -61,7 +61,8 @@ public class LoginActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Not implémenté", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, CreateAccount.class);
+                startActivity(intent);
             }
         });
     }

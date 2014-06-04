@@ -1,8 +1,10 @@
 package com.agil_gator_nf28.BddInterne;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
@@ -22,6 +24,22 @@ public class UserBDD extends GestionnaireBDD {
 
     public UserBDD(Context context) {
         super(context);
+    }
+
+    public long insertProjet(User user, String password){
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+
+        System.out.println("insert user");
+
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
+        values.put(AndroidConstantes.COL_USER_EMAIL, user.getEmail());
+        values.put(AndroidConstantes.COL_USER_NAME, user.getName());
+        values.put(AndroidConstantes.COL_USER_PRENOM, user.getFirstname());
+        values.put(AndroidConstantes.COL_USER_PASSWORD, password);
+
+        //on insère l'objet dans la BDD via le ContentValues
+        return bdd.insert(AndroidConstantes.TABLE_USER, null, values);
     }
 
 
