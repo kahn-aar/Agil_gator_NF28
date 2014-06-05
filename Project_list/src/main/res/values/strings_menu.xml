@@ -11,4 +11,5 @@
     <string name="archives">Voir les archives</string>
     <string name="archiver">Archiver le sprint</string>
     <string name="context_menu_tache_add">Créer une sous tâche</string>
+    <string name="add_user_project">Ajouter un membre</string>
 </resources>
