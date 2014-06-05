@@ -14,6 +14,7 @@ import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheAdapter;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.agil_gator.R;
 
@@ -80,8 +81,7 @@ public class TacheGridListener implements View.OnDragListener {
 
                         //TMP - user
                         if(SousTacheEtat.AFAIRE.equals(old) && SousTacheEtat.ENCOURS.equals(clicked)) {
-                            User utilisateur = new User("nicolas.martinr@gmail.com", "Martin", "Nicolas");
-                            selected.setEffecteur(utilisateur);
+                            selected.setEffecteur(ConnectedUser.getInstance().getConnectedUser());
                         }
 
                         //Mise a jour de la vue

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
@@ -133,5 +134,9 @@ public class ProjetBDD extends GestionnaireBDD{
 
         //On retourne le projet
         return projet;
+    }
+
+    public List<Projet> getProjetsFromUser(User connectedUser) {
+        return null;
     }
 }

@@ -26,7 +26,7 @@ public class AndroidConstantes {
     //BDD
     public static final String NOM_BDD = "agilgator2.db";
 
-    public static final int VERSION_BDD = 6;
+    public static final int VERSION_BDD = 33;
 
     //Table Projet
     public static final String TABLE_PROJET = "table_projet";
@@ -38,7 +38,7 @@ public class AndroidConstantes {
 
     //Table User
     public static final String TABLE_USER = "table_user";
-    public static final String COL_USER_ID = "EMAIL";
+    public static final String COL_USER_ID = "ID";
     public static final String COL_USER_EMAIL = "EMAIL";
     public static final String COL_USER_NAME= "NOM";
     public static final String COL_USER_PRENOM = "PRENOM";

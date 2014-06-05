@@ -7,9 +7,14 @@ package com.agil_gator_nf28.User;
  */
 public class User {
 
+    private int id;
     private String email;
     private String name;
     private String firstname;
+
+    public User() {
+
+    }
 
     public User(String email, String name, String firstname) {
         this.email = email;
@@ -45,4 +50,13 @@ public class User {
         String tag = firstname.substring(0,1) + name.substring(0,2);
         return tag;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

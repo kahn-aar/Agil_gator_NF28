@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -75,62 +77,26 @@ public class Page_projet extends ActionBarActivity {
             titre.setText(project.getName());
 
             SprintBDD sprintBDD = new SprintBDD(this);
-
-           /* TacheBDD tbdd = new  TacheBDD(this);
-            tbdd.open();
-            Tache task = tbdd.getTacheWithId(1);
-            tbdd.close();
-
-            List<Tache> ltache = new ArrayList<Tache>();
-            ltache.add(task);
             sprintBDD.open();
 
-            Sprint createdSprint = new Sprint();
-            createdSprint.setNumber(1);
-            sprintBDD.insertSprint(createdSprint, project);*/
-
-            //Sprint createdSprint = new Sprint();
-            //createdSprint.setNumber(1);
-            //sprintBDD.insertSprint(createdSprint, project);
-            /*Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
-            System.out.println(actualSprint);*/
-            //sprintBDD.insertSprint(new Sprint(ltache,5),project);
-//            sprintBDD.close();
-
-        // Mise en place de la liste des tâches
-        SousTache sub = new SousTache("lolilol");
-        sub.setEtat(SousTacheEtat.AFAIRE);
-
-
-        id_project = Integer.parseInt(intent.getStringExtra(EXTRA_ID));
-
-        TacheBDD tacheBDD = new TacheBDD(this);
-        tacheBDD.open();
-        //tacheBDD.insertTache(new Tache("test tache","ceci est un test de tache",1,2,3),new Sprint(null,1));
-        Tache tache = tacheBDD.getTacheWithId(3);
-            //tache.addNewSousTache(sub);
-
-       // List<Tache> taches = tacheBDD.getTachesWithIdSprint(3);
-        List<Tache> taches = new ArrayList<Tache>();
-            taches.add(tache);
-        tacheBDD.close();
-
-        //on definit la vue associé au menu floattant
-        //this.registerForContextMenu(ListeTaches);
-
-
-            // On dit à la ListView de se remplir via cet adapter
-
-         adapter = new TacheAdapter(this,R.id.ListeTaches,getApplicationContext(), taches);
-
-           /* sprintBDD.open();
-            actualSprint = sprintBDD.getLastSprintOfProject(project);
+            Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
             sprintBDD.close();
+
 
             TacheBDD tacheBDD = new TacheBDD(this);
             tacheBDD.open();
-            List<Tache> taches = tacheBDD.getTaches(actualSprint);
-            tacheBDD.close();*/
+
+            List<Tache> taches = tacheBDD.getTachesWithIdSprint(actualSprint.getId());
+            tacheBDD.close();
+
+            //on definit la vue associé au menu floattant
+            this.registerForContextMenu(ListeTaches);
+
+            // On dit à la ListView de se remplir via cet adapter
+
+            adapter = new TacheAdapter(this,R.id.ListeTaches,getApplicationContext(), taches);
+
+            // On dit à la ListView de se remplir via cet adapter
 
             Thread thread = new Thread()
             {
@@ -204,6 +170,9 @@ public class Page_projet extends ActionBarActivity {
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+        //AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        //Tache tache = (Tache) listTaches.getItemAtPosition(acmi.position);
+
         menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
         menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.description_task);
         menu.add(Menu.NONE, MENU_ADD_SUB_TASK, Menu.NONE, R.string.add_sub_task);
@@ -229,7 +198,10 @@ public class Page_projet extends ActionBarActivity {
                 this.startActivity(intent);
                 return true;
             case MENU_ADD_SUB_TASK:
-
+                Intent intent2 = new Intent(this,Modif_task.class);
+                intent2.putExtra(AndroidConstantes.PROJECT_ID, project.getId());
+                intent2.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                this.startActivity(intent2);
                 return true;
             case MENU_DELETE:
                 //on affiche un popup de confirmation pour la suppression

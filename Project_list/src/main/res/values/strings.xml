@@ -25,10 +25,26 @@
     <string name="action_example">Example action</string>
     <string name="title_activity_modif__task">Modification tâche</string>
 
+    <!-- pour le context menu des tâches -->
+    <string name="modif_task">Modifier Tâche</string>
+    <string name="add_sub_task">Ajouter sous_Tâche</string>
     <!-- pour modifier la tâche -->
     <string name="modif_task_button">Modifier la tâche</string>
     <string name="title_activity_edit_projet">EditProjet</string>
     <string name="title_activity_archived_sprint">ArchivedSprint</string>
     <string name="title_activity_page_sprint">PageSprint</string>
+    <string name="title_activity_add_sub_task">AddSubTask</string>
+    <string name="title_add__sub_task_page">Créer une sous tache</string>
+    <string name="error_login">Mauvaise combinaison email/password</string>
+    <string name="title_activity_create_account">CreateAccount</string>
+    <string name="title_activity_statistic">Statistique</string>
+    <string name="create_account_email">email</string>
+    <string name="create_account_nom">Nom</string>
+    <string name="create_account_prenom">Prenom</string>
+    <string name="create_account_password">password</string>
+    <string name="error_account_email">L\'email que vous avez entré est incorecte</string>
+    <string name="error_account_name">Veuillez entrer un nom</string>
+    <string name="error_account_prenom">Veuillez entrer un prénom</string>
+    <string name="error_account_password">Veuillez entrer un mot de passe correct</string>
 
 </resources>
