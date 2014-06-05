@@ -91,7 +91,7 @@ public class Page_projet extends ActionBarActivity {
             tacheBDD.close();
 
             //on definit la vue associé au menu floattant
-            //this.registerForContextMenu(ListeTaches);
+            this.registerForContextMenu(ListeTaches);
 
 
             // On dit à la ListView de se remplir via cet adapter

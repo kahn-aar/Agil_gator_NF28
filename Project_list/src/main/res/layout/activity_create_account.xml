@@ -33,12 +33,24 @@
         android:layout_marginTop="50dp"
         android:background="@android:color/darker_gray"/>
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/lineTop"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp">
+        <LinearLayout
 
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
     <LinearLayout
         android:id="@+id/nomProjet"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/lineTop"
         android:layout_alignParentRight="true"
@@ -63,7 +75,7 @@
         android:id="@+id/sousTitre"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/nomProjet"
         android:layout_alignParentRight="true"
@@ -91,7 +103,7 @@
         android:id="@+id/difficulte"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/sousTitre"
         android:layout_alignParentRight="true"
@@ -116,7 +128,7 @@
         android:id="@+id/description"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/difficulte"
         android:layout_alignParentRight="true"
@@ -145,5 +157,6 @@
         android:layout_alignTop="@+id/description"
         android:id="@+id/create_account_btn"
         android:layout_marginTop="120dp"/>
-
+</LinearLayout>
+    </ScrollView>
 </RelativeLayout>
