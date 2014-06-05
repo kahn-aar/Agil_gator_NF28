@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.Project_List;
 import com.agil_gator_nf28.agil_gator.R;
+import com.agil_gator_nf28.agil_gator.Statistic_sprint;
+import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
 
@@ -97,7 +99,7 @@ public class ProjetAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(project_list, Page_projet.class);
-                intent.putExtra(EXTRA_ID, String.valueOf(projets.get(pos).getId()));
+                intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projets.get(pos).getId()));
                 project_list.startActivity(intent);
             }
         });

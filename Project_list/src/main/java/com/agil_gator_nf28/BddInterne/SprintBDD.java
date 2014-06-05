@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
@@ -133,5 +135,42 @@ public class SprintBDD extends GestionnaireBDD {
         Sprint newSprint = new Sprint();
         newSprint.setNumber(actualSprint.getNumber() + 1);
         insertSprint(newSprint, projet);
+    }
+
+    public ArrayList<SousTache> getSousTachesFromSprintID(int sprint_id){
+        String query =  "SELECT " + AndroidConstantes.COL_SS_TACHE_ID + ", " + AndroidConstantes.COL_SS_TACHE_NAME + ", " + AndroidConstantes.COL_SS_TACHE_ETAT + ", " + AndroidConstantes.COL_SS_TACHE_USER
+                + " FROM " + AndroidConstantes.TABLE_SS_TACHE
+                + " WHERE " + AndroidConstantes.COL_SS_TACHE_TACHE + "=" + "(SELECT "+AndroidConstantes.COL_TACHE_ID +" FROM " + AndroidConstantes.TABLE_TACHE
+                + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + sprint_id + ")" + ";";
+        Cursor c = bdd.rawQuery(query,null);
+        return getAllSousTache(c);
+    }
+
+    public ArrayList<SousTache> getAllSousTache(Cursor c){
+
+        if (c.getCount() == 0)
+            return new ArrayList<SousTache>();
+
+        ArrayList<SousTache> sousTaches = new ArrayList<SousTache>();
+
+        //Sinon on se place sur le premier élément
+        c.moveToFirst();
+        //On créé un projet
+        while(!c.isAfterLast()) {
+            SousTache sub = new SousTache();
+            //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+            sub.setId(c.getInt(NUM_COL_ID));
+            sub.setTitre(c.getString(1));
+            sub.setEtat(SousTacheEtat.valueOf(c.getString(2)));
+
+            sousTaches.add(sub);
+            c.moveToNext();
+        }
+
+        //On ferme le cursor
+        c.close();
+
+        //On retourne le projet
+        return sousTaches;
     }
 }

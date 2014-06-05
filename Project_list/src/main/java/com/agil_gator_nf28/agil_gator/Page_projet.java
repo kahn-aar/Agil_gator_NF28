@@ -42,7 +42,6 @@ public class Page_projet extends ActionBarActivity {
     private Projet project;
     private Sprint actualSprint;
     private TacheAdapter adapter = null;
-    private ListView listTaches;
 
 
     @Override
@@ -58,7 +57,7 @@ public class Page_projet extends ActionBarActivity {
         if (intent != null) {
             ProjetBDD projetBDD = new ProjetBDD(this);
             projetBDD.open();
-            id_project = Integer.valueOf(intent.getStringExtra(EXTRA_ID));
+            id_project = Integer.valueOf(intent.getStringExtra(AndroidConstantes.PROJECT_ID));
 
             project = projetBDD.getProjetById(id_project);
 
@@ -79,10 +78,8 @@ public class Page_projet extends ActionBarActivity {
             List<Tache> taches = tacheBDD.getTachesWithIdSprint(actualSprint.getId());
             tacheBDD.close();
 
-
-            // On dit à la ListView de se remplir via cet adapter
-
             adapter = new TacheAdapter(this,R.id.listeTaches,getApplicationContext(), taches);
+
             // On dit à la ListView de se remplir via cet adapter
 
             Thread thread = new Thread()

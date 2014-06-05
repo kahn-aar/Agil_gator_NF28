@@ -22,6 +22,7 @@ import com.agil_gator_nf28.agil_gator.AddSubTask;
 import com.agil_gator_nf28.agil_gator.DescriptifTaskActivity;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
+import com.agil_gator_nf28.agil_gator.Statistic;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
@@ -123,9 +124,10 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
         holder.tacheLayout.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(page_project, DescriptifTaskActivity.class);
+                Intent intent = new Intent(page_project, Statistic.class);
+               // Intent intent = new Intent(page_project, DescriptifTaskActivity.class);
                 intent.putExtra(AndroidConstantes.TACHE_ID, taches.get(pos).getId());
-                intent.putExtra(AndroidConstantes.TASK_DESC_FROM, AndroidConstantes.TASK_DESC_FROM_LIST);
+               // intent.putExtra(AndroidConstantes.TASK_DESC_FROM, AndroidConstantes.TASK_DESC_FROM_LIST);
                 page_project.startActivity(intent);
             }
         }));

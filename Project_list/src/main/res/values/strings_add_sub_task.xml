@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_sub_add_task_page">Créer une nouvelle sous Tache</string>
+    <string name="add_sub_task_titre">Nom : </string>
+    <string name="add_sub_task_etat">Etat : </string>
+    <string name="add_sub_task_boutton">Ajouter la nouvelle sous tâche</string>
+
+    <string-array name="etat_array">
+        <item>A faire</item>
+        <item>En cours</item>
+        <item>A relire</item>
+        <item>Fini</item>
+    </string-array>
+</resources>
