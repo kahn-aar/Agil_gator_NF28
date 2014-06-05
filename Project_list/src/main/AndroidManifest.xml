@@ -109,6 +109,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="LoginActivity" />
         </activity>
+        <activity
+            android:name="com.agil_gator_nf28.agil_gator.AddMemberProjet"
+            android:label="@string/title_activity_add_member_projet"
+            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Page_projet" />
+        </activity>
     </application>
 
 </manifest>
