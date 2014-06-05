@@ -233,4 +233,8 @@ public class Page_projet extends ActionBarActivity {
                 return super.onContextItemSelected(item);
         }
     }
+
+    public Projet getProject() {
+        return project;
+    }
 }

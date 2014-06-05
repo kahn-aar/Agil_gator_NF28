@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.agil_gator_nf28.Listeners.TacheGridListener;
 import com.agil_gator_nf28.SousTaches.SousTacheAdapter;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
+import com.agil_gator_nf28.agil_gator.AddSubTask;
 import com.agil_gator_nf28.agil_gator.DescriptifTaskActivity;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
