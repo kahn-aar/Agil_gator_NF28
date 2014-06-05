@@ -79,4 +79,11 @@ public class UserBDD extends GestionnaireBDD {
         return user;
     }
 
+    public User getUserById(int id) {
+        String query = "SELECT * FROM " + AndroidConstantes.TABLE_USER
+                + " WHERE " + AndroidConstantes.COL_USER_ID + " = " + id + ";";
+        Cursor c = bdd.rawQuery(query, null);
+
+        return cursorToUser(c);
+    }
 }

@@ -117,6 +117,7 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
 
         holder.tacheLayout = (LinearLayout)convertView.findViewById(R.id.tache);
 
+        holder.tacheLayout.setLongClickable(true);
         //on lance la page de description lorsque click sur tache
 
         holder.tacheLayout.setOnClickListener((new View.OnClickListener() {
