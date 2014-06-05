@@ -59,14 +59,14 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp" />
 
-        <TextView
+        <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="- Johny\n- Mickael"
-            android:id="@+id/membreContent"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp" />
+            android:layout_alignTop="@+id/membreTitle"
+            android:layout_marginTop="10dp"
+            android:dividerHeight="20dp"
+            android:id="@+id/listeMembres">
+            </ListView>
 
     <TextView
         android:layout_width="wrap_content"

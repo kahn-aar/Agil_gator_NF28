@@ -39,7 +39,7 @@ public class LoginActivity extends ActionBarActivity {
                 final String password = passwordText.getText().toString();
 
                 //AgentManager manager = AgentManager.getInstance();
-                //manager.doConnect(LoginActivity.this, "178.251.23.167", "loule");
+                //manager.doConnect(LoginActivity.this, "172.25.27.205", "loule");
                 //Mise en place de la récupération des datas.
                 UserBDD userBDD = new UserBDD(LoginActivity.this);
                 userBDD.open();
