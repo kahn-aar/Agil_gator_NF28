@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="JadeLeapAndroid">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Project_list/libs/JadeLeapAndroid.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:text="@string/title_sub_add_task_page"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/activity_title_size"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_marginTop="35dp"
+        android:id="@+id/add_task_project_name"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/lineTop"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/darker_gray"/>
+
+
+    <LinearLayout
+        android:id="@+id/nomSubTache"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/lineTop"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:text="@string/add_sub_task_titre"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/subtaskName" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/add_etat"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/nomSubTache"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="60dp">
+
+        <TextView
+            android:text="@string/add_sub_task_etat"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"/>
+
+
+        <Spinner
+            android:id="@+id/etat_spiner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_sub_task_boutton"
+        android:layout_alignTop="@+id/add_etat"
+        android:id="@+id/add_button"
+        android:layout_marginTop="120dp"/>
+
+</RelativeLayout>
