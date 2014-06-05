@@ -1,24 +1,15 @@
 package com.agil_gator_nf28.agil_gator;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,13 +18,11 @@ import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.BddInterne.SprintBDD;
 import com.agil_gator_nf28.Projet.Projet;
-import com.agil_gator_nf28.SousTaches.SousTache;
-import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -61,14 +50,14 @@ public class Page_projet extends ActionBarActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_projet);
-        final ListView ListeTaches = (ListView)findViewById(R.id.ListeTaches);
-        TextView titre = (TextView)findViewById(R.id.projectPageTitle);
+        final ListView listeView = (ListView)findViewById(R.id.listeTaches);
+        final TextView titre = (TextView)findViewById(R.id.projectPageTitle);
 
         Intent intent = getIntent();
         if (intent != null) {
             ProjetBDD projetBDD = new ProjetBDD(this);
             projetBDD.open();
-            id_project = Integer.valueOf(intent.getStringExtra(EXTRA_ID));
+            id_project = Integer.valueOf(intent.getStringExtra(AndroidConstantes.PROJECT_ID));
 
             project = projetBDD.getProjetById(id_project);
 
@@ -89,12 +78,7 @@ public class Page_projet extends ActionBarActivity {
             List<Tache> taches = tacheBDD.getTachesWithIdSprint(actualSprint.getId());
             tacheBDD.close();
 
-            //on definit la vue associé au menu floattant
-            this.registerForContextMenu(ListeTaches);
-
-            // On dit à la ListView de se remplir via cet adapter
-
-            adapter = new TacheAdapter(this,R.id.ListeTaches,getApplicationContext(), taches);
+            adapter = new TacheAdapter(this,R.id.listeTaches,getApplicationContext(), taches);
 
             // On dit à la ListView de se remplir via cet adapter
 
@@ -102,9 +86,11 @@ public class Page_projet extends ActionBarActivity {
             {
                 @Override
                 public void run() {
-            ListeTaches.setAdapter(adapter);
+                    listeView.setAdapter(adapter);
                 }
             };
+
+            this.registerForContextMenu(listeView);
 
             thread.start();
         }
@@ -170,9 +156,6 @@ public class Page_projet extends ActionBarActivity {
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        //AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        //Tache tache = (Tache) listTaches.getItemAtPosition(acmi.position);
-
         menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
         menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.description_task);
         menu.add(Menu.NONE, MENU_ADD_SUB_TASK, Menu.NONE, R.string.add_sub_task);
@@ -198,7 +181,7 @@ public class Page_projet extends ActionBarActivity {
                 this.startActivity(intent);
                 return true;
             case MENU_ADD_SUB_TASK:
-                Intent intent2 = new Intent(this,Modif_task.class);
+                Intent intent2 = new Intent(this, AddSubTask.class);
                 intent2.putExtra(AndroidConstantes.PROJECT_ID, project.getId());
                 intent2.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
                 this.startActivity(intent2);
@@ -228,5 +211,9 @@ public class Page_projet extends ActionBarActivity {
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+    public Projet getProject() {
+        return project;
     }
 }

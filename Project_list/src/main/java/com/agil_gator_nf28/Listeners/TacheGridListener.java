@@ -82,6 +82,10 @@ public class TacheGridListener implements View.OnDragListener {
                         //TMP - user
                         if(SousTacheEtat.AFAIRE.equals(old) && SousTacheEtat.ENCOURS.equals(clicked)) {
                             selected.setEffecteur(ConnectedUser.getInstance().getConnectedUser());
+                            sousTacheBDD.open();
+                            //Mise a jour en base de données
+                            sousTacheBDD.updateSousTacheEffecteur(selected);
+                            sousTacheBDD.close();
                         }
 
                         //Mise a jour de la vue

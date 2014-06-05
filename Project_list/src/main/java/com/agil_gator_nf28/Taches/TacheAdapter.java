@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.agil_gator_nf28.Listeners.TacheGridListener;
 import com.agil_gator_nf28.SousTaches.SousTacheAdapter;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
+import com.agil_gator_nf28.agil_gator.AddSubTask;
 import com.agil_gator_nf28.agil_gator.DescriptifTaskActivity;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
@@ -117,6 +118,7 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
 
         holder.tacheLayout = (LinearLayout)convertView.findViewById(R.id.tache);
 
+        holder.tacheLayout.setLongClickable(true);
         //on lance la page de description lorsque click sur tache
 
         holder.tacheLayout.setOnClickListener((new View.OnClickListener() {

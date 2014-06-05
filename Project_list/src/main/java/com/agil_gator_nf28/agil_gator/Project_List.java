@@ -58,6 +58,8 @@ public class Project_List extends ActionBarActivity {
         contenuDeLaPage.setAdapter(adapter);
     }};
     thread.start();
+
+        this.registerForContextMenu(contenuDeLaPage);
     }
 
     @Override
@@ -71,7 +73,8 @@ public class Project_List extends ActionBarActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        final Projet selectedProject = (Projet) adapter.getItem(item.getItemId() - 1);
+        final Projet selectedProject = (Projet) adapter.getItem(adapter.getposition());
+        System.out.println("id de la tache selectionne "+ selectedProject.getId());
         Intent intent;
 
         switch (item.getItemId()) {

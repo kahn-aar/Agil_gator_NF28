@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.Project_List;
 import com.agil_gator_nf28.agil_gator.R;
+import com.agil_gator_nf28.agil_gator.Statistic_sprint;
+import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class ProjetAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private Context context;
     private Project_List project_list;
+    private int Position;
 
     final String EXTRA_ID = "user_login";
 
@@ -52,6 +55,10 @@ public class ProjetAdapter extends BaseAdapter {
         return position;
     }
 
+    public int getposition (){
+        return Position;
+    }
+
     /**
      * Classe dans laquelle vous déclarez les éléments
      * qui vont être présents sur une ligne;
@@ -68,7 +75,7 @@ public class ProjetAdapter extends BaseAdapter {
         ViewHolder holder;
 
         final int pos = position;
-
+        Position = position;
         System.out.println("POSITION"+pos);
 
         if(convertView == null) {
@@ -92,12 +99,12 @@ public class ProjetAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(project_list, Page_projet.class);
-                intent.putExtra(EXTRA_ID, String.valueOf(projets.get(pos).getId()));
+                intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projets.get(pos).getId()));
                 project_list.startActivity(intent);
             }
         });
 
-        project_list.registerForContextMenu(convertView);
+        convertView.setLongClickable(true);
 
         return convertView;
     }

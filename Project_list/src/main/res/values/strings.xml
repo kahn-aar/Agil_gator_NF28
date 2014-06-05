@@ -46,5 +46,6 @@
     <string name="error_account_name">Veuillez entrer un nom</string>
     <string name="error_account_prenom">Veuillez entrer un prénom</string>
     <string name="error_account_password">Veuillez entrer un mot de passe correct</string>
+    <string name="title_activity_statistic_sprint">Statistic_sprint</string>
 
 </resources>
