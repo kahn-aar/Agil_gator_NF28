@@ -110,26 +110,22 @@
                 android:value="LoginActivity" />
         </activity>
         <activity
-<<<<<<< HEAD
             android:name="com.agil_gator_nf28.agil_gator.Statistic"
             android:label="@string/title_activity_statistic"
             android:parentActivityName="com.agil_gator_nf28.agil_gator.LoginActivity" >
-=======
+            </activity>
+        <activity
             android:name="com.agil_gator_nf28.agil_gator.AddMemberProjet"
             android:label="@string/title_activity_add_member_projet"
             android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
->>>>>>> 9e60994c5355335a2d02380b7798e488ae552b46
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Page_projet" />
         </activity>
-<<<<<<< HEAD
         <activity
             android:name="com.agil_gator_nf28.agil_gator.Statistic_sprint"
             android:label="@string/title_activity_statistic_sprint" >
         </activity>
-=======
->>>>>>> 9e60994c5355335a2d02380b7798e488ae552b46
     </application>
 
 </manifest>
