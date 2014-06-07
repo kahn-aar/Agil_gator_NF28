@@ -144,18 +144,28 @@ public class UserBDD extends GestionnaireBDD {
         halfUsers = cursorToUsers(c);
         List<User> finalUsers = new ArrayList<User>();
         boolean ok = true;
-        for (User user : halfUsers) {
+        for (User user : allUsers) {
             System.out.println(user.getEmail());
-            for(User user2 : allUsers) {
+            for(User user2 : halfUsers) {
                 System.out.println(user2.getEmail());
                 if (user.getEmail().equals(user2.getEmail())) {
                     ok = false;
+                    System.out.println("flase");
+                }
+                if (ok) {
+                    finalUsers.add(user);
+                    System.out.println("ture");
                 }
             }
-            if (ok) {
-                finalUsers.add(user);
-            }
+
             ok = true;
+        }
+
+        System.out.println("final users");
+
+        for (User user : finalUsers) {
+
+            System.out.println(user.getEmail());
         }
 
         return finalUsers;

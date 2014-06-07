@@ -99,7 +99,7 @@ public class UserAdapter extends ArrayAdapter<User> {
                 userProjetBDD.close();
 
                 Intent intent = new Intent(getContext(), Page_projet.class);
-                intent.putExtra("user_login", String.valueOf(projectId));
+                intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projectId));
                 getContext().startActivity(intent);
             }
         });
