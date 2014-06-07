@@ -49,5 +49,7 @@
     <string name="title_activity_statistic_sprint">Statistic_sprint</string>
     <string name="title_activity_add_member_projet">AddMemberProjet</string>
     <string name="title_add_member_project">Ajouter un membre au projet</string>
+    <string name="title_activity_assign_member">AssignMember</string>
+    <string name="assign_task">Choisir la Sous tâche à affecter</string>
 
 </resources>

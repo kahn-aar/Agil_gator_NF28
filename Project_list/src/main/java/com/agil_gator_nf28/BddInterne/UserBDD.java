@@ -91,8 +91,8 @@ public class UserBDD extends GestionnaireBDD {
     }
 
     public List<User> getListUserOfAProject(int projectId) {
-        String query = "SELECT " + AndroidConstantes.TABLE_USER + "." + AndroidConstantes.COL_USER_ID + ", " + AndroidConstantes.COL_USER_NAME + ", " + AndroidConstantes.COL_USER_PRENOM + ", " + AndroidConstantes.COL_USER_EMAIL
-                + " FROM " + AndroidConstantes.TABLE_USER + " INNER JOIN " + AndroidConstantes.TABLE_USER_PROJET + " ON " + AndroidConstantes.COL_USER_PROJET_USER + " = " + AndroidConstantes.COL_USER_ID
+        String query = "SELECT " + AndroidConstantes.TABLE_USER + "." + AndroidConstantes.COL_USER_ID + ", " + AndroidConstantes.COL_USER_EMAIL + ", " + AndroidConstantes.COL_USER_NAME + ", " + AndroidConstantes.COL_USER_PRENOM
+                + " FROM " + AndroidConstantes.TABLE_USER + " INNER JOIN " + AndroidConstantes.TABLE_USER_PROJET + " ON " + AndroidConstantes.COL_USER_PROJET_USER + " = " + AndroidConstantes.TABLE_USER + "." + AndroidConstantes.COL_USER_ID
                 + " WHERE " + AndroidConstantes.COL_USER_PROJET_PROJET + " = " + projectId + ";";
         Cursor c = bdd.rawQuery(query, null);
 
@@ -163,10 +163,7 @@ public class UserBDD extends GestionnaireBDD {
 
         System.out.println("final users");
 
-        for (User user : finalUsers) {
 
-            System.out.println(user.getEmail());
-        }
 
         return finalUsers;
     }

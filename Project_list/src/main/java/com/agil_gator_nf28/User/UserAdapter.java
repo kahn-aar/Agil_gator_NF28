@@ -87,7 +87,7 @@ public class UserAdapter extends ArrayAdapter<User> {
         holder.nom.setText(taches.get(position).getName());
         holder.prenom.setText(taches.get(position).getFirstname());
         holder.email.setText(taches.get(position).getEmail());
-
+        System.out.println(taches.get(position).getEmail());
         //Onclick sur la view
 
         convertView.setOnClickListener(new View.OnClickListener() {

@@ -33,11 +33,13 @@ public class DescriptifProjectActivity extends ActionBarActivity {
         setContentView(R.layout.activity_descriptifproject);
         /** permet de deserializer xml -> java **/
         layout = (RelativeLayout) RelativeLayout.inflate(this, R.layout.activity_descriptifproject, null);
-        final ListView listeView = (ListView)findViewById(R.id.listeMembres);
+        ListView listeView = (ListView)findViewById(R.id.listeMembres);
 
         title_project = (TextView)layout.findViewById(R.id.title_project);
         text_description = (TextView)layout.findViewById(R.id.descriptionContent);
         text_advanced = (TextView)layout.findViewById(R.id.avancedContent);
+
+
 
         Intent intent = getIntent();
 
@@ -60,9 +62,12 @@ public class DescriptifProjectActivity extends ActionBarActivity {
 
         UserBDD userBDD = new UserBDD(DescriptifProjectActivity.this);
         userBDD.open();
-        List<User> users = userBDD.getListUserOfNotAProject(ID);
+        List<User> users = userBDD.getListUserOfAProject(ID);
         userBDD.close();
+        for (User user : users) {
 
+            System.out.println(user.getEmail());
+        }
         UserAdapter adapter = new UserAdapter(DescriptifProjectActivity.this, R.id.listeMembres , users, ID);
 
         listeView.setAdapter(adapter);

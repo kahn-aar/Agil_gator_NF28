@@ -107,7 +107,8 @@ public class TacheBDD extends GestionnaireBDD {
                 + " FROM " + AndroidConstantes.TABLE_TACHE
                 + " WHERE " + AndroidConstantes.COL_TACHE_PROJET + "=" + id_project + ";";*/
         String query = "SELECT * FROM " + AndroidConstantes.TABLE_TACHE
-                + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + id_sprint + ";";
+                + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + id_sprint
+                + " ORDER BY " + AndroidConstantes.COL_TACHE_PRIORITE + " DESC;";
         Cursor c = bdd.rawQuery(query, null);
 
         return toList(c);

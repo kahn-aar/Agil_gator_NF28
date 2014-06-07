@@ -192,6 +192,7 @@ public class Page_projet extends ActionBarActivity {
             case MENU_DESCRIPTION:
                 intent = new Intent(this,DescriptifTaskActivity.class);
                 intent.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                intent.putExtra(AndroidConstantes.PROJECT_ID, project.getId());
                 this.startActivity(intent);
                 return true;
             case MENU_ADD_SUB_TASK:
