@@ -46,6 +46,7 @@ public class Modif_task extends ActionBarActivity {
         }
 
        if (intent != null) {
+           final Modif_task modif_task = this;
 
                    TacheBDD tacheBDD = new TacheBDD(Modif_task.this);
                    tacheBDD.open();
@@ -97,6 +98,9 @@ public class Modif_task extends ActionBarActivity {
                     tacheBDD.open();
                     tacheBDD.updateTache(ID,new Tache(NomTache,Description,Integer.valueOf(Priority),Integer.valueOf(Difficulty)));
                     tacheBDD.close();
+
+                    Intent intent1 = getSupportParentActivityIntent();
+                    modif_task.startActivity(intent1);
                 }
 
                  });
@@ -111,7 +115,7 @@ public class Modif_task extends ActionBarActivity {
         Intent intent = null;
         if (AndroidConstantes.TASK_DESC_FROM_LIST.equals(from)) {
             intent = new Intent(this, Page_projet.class);
-            intent.putExtra("user_login", String.valueOf(ID));
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(ID));
         }
         else if (AndroidConstantes.TASK_DESC_FROM_ARCHIVE.equals(from)) {
             intent = new Intent(this, PageSprint.class);

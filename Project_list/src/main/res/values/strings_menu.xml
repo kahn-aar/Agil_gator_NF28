@@ -12,4 +12,6 @@
     <string name="archiver">Archiver le sprint</string>
     <string name="context_menu_tache_add">Créer une sous tâche</string>
     <string name="add_user_project">Ajouter un membre</string>
+    <string name="sprint_statistiques">Voir les statistiques</string>
+    <string name="statistiques_tache">voir les statitstiques de la tâche</string>
 </resources>

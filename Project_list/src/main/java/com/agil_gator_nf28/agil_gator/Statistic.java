@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,7 +8,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
@@ -15,9 +15,6 @@ import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.LineGraphView;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
@@ -36,7 +33,8 @@ public class Statistic extends ActionBarActivity {
 
     // ordonnées somme des difficultés restantes, temps
     //camenbert pourcentage des sous taches
-    private int ID;
+    private int tacheId;
+    private int projectId;
     private static int[] COLORS = new int[] { Color.GREEN, Color.BLUE,Color.YELLOW, Color.RED };
     private static String[] NAME_LIST = new String[] { "A Faire", "En Cours", "A Relire", "Done" };
     private CategorySeries mSeries = new CategorySeries("");
@@ -54,14 +52,16 @@ public class Statistic extends ActionBarActivity {
         setContentView(R.layout.activity_statistic);
 
         Intent intent = getIntent();
-        ID = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
+        tacheId = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
+        projectId = intent.getIntExtra(AndroidConstantes.PROJECT_ID,-1);
 
-        if(ID != -1){
+
+        if(tacheId != -1){
             TacheBDD tacheBDD = new TacheBDD(this);
 
             tacheBDD.open();
 
-            tache = tacheBDD.getTacheWithId(ID);
+            tache = tacheBDD.getTacheWithId(tacheId);
 
             tacheBDD.close();
 
@@ -115,7 +115,7 @@ public class Statistic extends ActionBarActivity {
                     SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
 
                     if (seriesSelection == null) {
-                        Toast.makeText(Statistic.this, "Pas d'element du camembert a été selectionné"+ afaire +" "+encours+" "+arelire+" "+done+ " "+ID, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Statistic.this, "Pas d'element du camembert a été selectionné"+ afaire +" "+encours+" "+arelire+" "+done+ " "+ tacheId, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(Statistic.this, mapTitle.get(seriesSelection.getPointIndex()+1) + " : nombre de sous tâches ="+ seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
                     }
@@ -128,4 +128,11 @@ public class Statistic extends ActionBarActivity {
             mChartView.repaint();
         }
     }
+
+    @Override
+    public Intent getSupportParentActivityIntent() {
+        this.finish();
+        return null;
+    }
+
 }

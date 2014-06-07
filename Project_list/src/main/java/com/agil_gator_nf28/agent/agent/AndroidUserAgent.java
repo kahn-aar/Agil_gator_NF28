@@ -26,7 +26,7 @@ public class AndroidUserAgent extends Agent {
         myManager = (AgentManager) args[1];
         myManager.setAgent(this);
         super.setup();
-        addBehaviour(new ReceptionistBehaviour());
+        //addBehaviour(new ReceptionistBehaviour());
 
         //Enregistrement de l'agent auprès du DF
         DFAgentDescription dfd = new DFAgentDescription();

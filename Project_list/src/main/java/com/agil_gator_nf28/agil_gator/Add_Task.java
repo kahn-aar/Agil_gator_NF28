@@ -99,8 +99,9 @@ public class Add_Task extends ActionBarActivity {
 
                     //On retourne sur la page d'accueil
                     Intent intent = new Intent(Add_Task.this, Page_projet.class);
-                    intent.putExtra("user_login", String.valueOf(project.getId()));
+                    intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
                     startActivity(intent);
+                    Add_Task.this.finish();
 
                 }
             });
@@ -131,7 +132,7 @@ public class Add_Task extends ActionBarActivity {
     @Override
     public Intent getSupportParentActivityIntent() {
         Intent intent = new Intent(this, Page_projet.class);
-        intent.putExtra("user_login", String.valueOf(project.getId()));
+        intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
         return intent;
     }
 

@@ -27,7 +27,7 @@
 
     <!-- pour le context menu des tâches -->
     <string name="modif_task">Modifier Tâche</string>
-    <string name="add_sub_task">Ajouter sous_Tâche</string>
+    <string name="add_sub_task">Ajouter une sous tâche</string>
     <!-- pour modifier la tâche -->
     <string name="modif_task_button">Modifier la tâche</string>
     <string name="title_activity_edit_projet">EditProjet</string>
@@ -46,11 +46,8 @@
     <string name="error_account_name">Veuillez entrer un nom</string>
     <string name="error_account_prenom">Veuillez entrer un prénom</string>
     <string name="error_account_password">Veuillez entrer un mot de passe correct</string>
-<<<<<<< HEAD
     <string name="title_activity_statistic_sprint">Statistic_sprint</string>
-=======
     <string name="title_activity_add_member_projet">AddMemberProjet</string>
     <string name="title_add_member_project">Ajouter un membre au projet</string>
->>>>>>> 9e60994c5355335a2d02380b7798e488ae552b46
 
 </resources>

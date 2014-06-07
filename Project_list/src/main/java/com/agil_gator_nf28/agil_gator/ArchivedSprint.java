@@ -78,8 +78,7 @@ public class ArchivedSprint extends ActionBarActivity {
     @Override
     public Intent getSupportParentActivityIntent() {
         Intent intent = new Intent(ArchivedSprint.this, Page_projet.class);
-        System.out.println(">>>>>>>>>>>" + project.getId());
-        intent.putExtra("user_login", String.valueOf(project.getId()));
+        intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
         return intent;
     }
 

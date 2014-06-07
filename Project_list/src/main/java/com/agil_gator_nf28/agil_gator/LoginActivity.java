@@ -39,7 +39,7 @@ public class LoginActivity extends ActionBarActivity {
                 final String password = passwordText.getText().toString();
 
                 //AgentManager manager = AgentManager.getInstance();
-                //manager.doConnect(LoginActivity.this, "172.25.27.205", "loule");
+                //manager.doConnect(LoginActivity.this, "83.156.25.95", "loule");
                 //Mise en place de la récupération des datas.
                 UserBDD userBDD = new UserBDD(LoginActivity.this);
                 userBDD.open();
@@ -47,8 +47,11 @@ public class LoginActivity extends ActionBarActivity {
                 userBDD.close();
 
                 if (isOkConnect) {
+                    //AgentManager manager = AgentManager.getInstance();
+                    //manager.doConnect(LoginActivity.this, "83.156.25.95", "loule");
                     Intent intent = new Intent(LoginActivity.this, Project_List.class);
                     startActivity(intent);
+
                 }
                 else {
                     Toast.makeText(LoginActivity.this, R.string.error_login, Toast.LENGTH_SHORT).show();

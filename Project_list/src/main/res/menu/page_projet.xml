@@ -16,6 +16,11 @@
         android:orderInCategory="100"
         app:showAsAction="never" />
 
+    <item android:id="@+id/sprint_statistique"
+        android:title="@string/sprint_statistiques"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
     <item android:id="@+id/archives"
         android:title="@string/archives"
         android:orderInCategory="110"

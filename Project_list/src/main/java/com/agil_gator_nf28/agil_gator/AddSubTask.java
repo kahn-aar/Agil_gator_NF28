@@ -96,7 +96,7 @@ public class AddSubTask extends ActionBarActivity {
 
                     //On retourne sur la page d'accueil
                     Intent intent = new Intent(AddSubTask.this, Page_projet.class);
-                    intent.putExtra("user_login", String.valueOf(projet.getId()));
+                    intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
                     startActivity(intent);
 
                 }
@@ -123,6 +123,13 @@ public class AddSubTask extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public Intent getSupportParentActivityIntent() {
+        Intent intent = new Intent(this, Page_projet.class);
+        intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
+        return intent;
     }
 
 }

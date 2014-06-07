@@ -130,7 +130,11 @@ public class Statistic_sprint extends ActionBarActivity {
         }
     }
 
-
-
+    @Override
+    public Intent getSupportParentActivityIntent() {
+        Intent intent = new Intent(this, Page_projet.class);
+        intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
+        return intent;
+    }
 
 }

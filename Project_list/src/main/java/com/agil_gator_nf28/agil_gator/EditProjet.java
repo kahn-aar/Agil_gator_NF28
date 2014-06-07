@@ -115,7 +115,7 @@ public class EditProjet extends ActionBarActivity {
         Intent intent = null;
         if (AndroidConstantes.PROJECT_EDIT_FROM_DETAIL.equals(fromPage)) {
             intent = new Intent(this, Page_projet.class);
-            intent.putExtra("user_login", String.valueOf(projet.getId()));
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
         }
         else if (AndroidConstantes.PROJECT_EDIT_FROM_LIST.equals(fromPage)) {
             intent = new Intent(this, Project_List.class);

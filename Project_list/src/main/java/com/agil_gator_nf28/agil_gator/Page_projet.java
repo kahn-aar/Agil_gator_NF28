@@ -34,7 +34,8 @@ public class Page_projet extends ActionBarActivity {
     private static final int  MENU_EDIT = Menu.FIRST;
     private static final int  MENU_DESCRIPTION = Menu.FIRST + 1;
     private static final int  MENU_ADD_SUB_TASK = Menu.FIRST + 2;
-    private static final int  MENU_DELETE = Menu.FIRST + 3;
+    private static final int  MENU_STATISTIQUE_TACHE = Menu.FIRST + 3;
+    private static final int  MENU_DELETE = Menu.FIRST + 4;
 
     private CharSequence mTitle;
     private int id_project;
@@ -135,6 +136,12 @@ public class Page_projet extends ActionBarActivity {
             startActivity(intent);
             return true;
         }
+        if (id == R.id.sprint_statistique) {
+            Intent intent = new Intent(Page_projet.this, Statistic_sprint.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            startActivity(intent);
+            return true;
+        }
         if (id == R.id.archives) {
             Intent intent = new Intent(Page_projet.this, ArchivedSprint.class);
             intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
@@ -165,6 +172,7 @@ public class Page_projet extends ActionBarActivity {
         menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
         menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.description_task);
         menu.add(Menu.NONE, MENU_ADD_SUB_TASK, Menu.NONE, R.string.add_sub_task);
+        menu.add(Menu.NONE, MENU_STATISTIQUE_TACHE, Menu.NONE, R.string.statistiques_tache);
         menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.supp_task);
     }
 
@@ -191,6 +199,11 @@ public class Page_projet extends ActionBarActivity {
                 intent2.putExtra(AndroidConstantes.PROJECT_ID, project.getId());
                 intent2.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
                 this.startActivity(intent2);
+                return true;
+            case MENU_STATISTIQUE_TACHE:
+                Intent intent3 = new Intent(this, Statistic.class);
+                intent3.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                this.startActivity(intent3);
                 return true;
             case MENU_DELETE:
                 //on affiche un popup de confirmation pour la suppression
