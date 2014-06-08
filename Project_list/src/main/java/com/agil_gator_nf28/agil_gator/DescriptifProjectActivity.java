@@ -3,6 +3,7 @@ package com.agil_gator_nf28.agil_gator;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,6 +16,8 @@ import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.User.UserAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,7 +36,7 @@ public class DescriptifProjectActivity extends ActionBarActivity {
         setContentView(R.layout.activity_descriptifproject);
         /** permet de deserializer xml -> java **/
         layout = (RelativeLayout) RelativeLayout.inflate(this, R.layout.activity_descriptifproject, null);
-        ListView listeView = (ListView)findViewById(R.id.listeMembres);
+        LinearLayout listeView = (LinearLayout)layout.findViewById(R.id.listeMembres);
 
         title_project = (TextView)layout.findViewById(R.id.title_project);
         text_description = (TextView)layout.findViewById(R.id.descriptionContent);
@@ -65,13 +68,12 @@ public class DescriptifProjectActivity extends ActionBarActivity {
         List<User> users = userBDD.getListUserOfAProject(ID);
         userBDD.close();
         for (User user : users) {
+            TextView vue = new TextView(this);
+            vue.setText(user.getFirstname() + " " + user.getName());
+            listeView.addView(vue);
+            System.out.println(">>>>>" + user.getEmail());
 
-            System.out.println(user.getEmail());
         }
-        UserAdapter adapter = new UserAdapter(DescriptifProjectActivity.this, R.id.listeMembres , users, ID);
-
-        listeView.setAdapter(adapter);
-
         setContentView(layout);
 
     }
