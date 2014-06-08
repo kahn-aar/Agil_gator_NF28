@@ -19,10 +19,19 @@
 
     </TextView>
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/lineTop"
+        android:layout_alignTop="@id/titre_assign_task"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/darker_gray"/>
+
     <ListView
         android:id="@+id/contenu"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/lineTop" />
 
 </RelativeLayout>

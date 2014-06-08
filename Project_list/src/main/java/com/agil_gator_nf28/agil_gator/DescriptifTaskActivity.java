@@ -90,6 +90,8 @@ public class DescriptifTaskActivity extends ActionBarActivity {
                     Intent intent1 = new Intent(DescriptifTaskActivity.this, AssignMember.class);
                     intent1.putExtra(AndroidConstantes.PROJECT_ID, projetId);
                     intent1.putExtra(AndroidConstantes.TACHE_ID, tacheId);
+                    System.out.println("projet = " + projetId );
+                    System.out.println("Tache = " + tacheId);
                     DescriptifTaskActivity.this.startActivity(intent1);
                 }
             });

@@ -3,6 +3,9 @@ package com.agil_gator_nf28.agil_gator;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -42,7 +45,7 @@ public class DescriptifProjectActivity extends ActionBarActivity {
         text_description = (TextView)layout.findViewById(R.id.descriptionContent);
         text_advanced = (TextView)layout.findViewById(R.id.avancedContent);
 
-
+        ImageButton add_user_button = (ImageButton) layout.findViewById(R.id.add_user_button);
 
         Intent intent = getIntent();
 
@@ -71,9 +74,18 @@ public class DescriptifProjectActivity extends ActionBarActivity {
             TextView vue = new TextView(this);
             vue.setText(user.getFirstname() + " " + user.getName());
             listeView.addView(vue);
-            System.out.println(">>>>>" + user.getEmail());
 
         }
+
+        add_user_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(DescriptifProjectActivity.this, AddMemberProjet.class);
+                intent1.putExtra(AndroidConstantes.PROJECT_ID, projet.getId());
+                DescriptifProjectActivity.this.startActivity(intent1);
+            }
+        });
+
         setContentView(layout);
 
     }

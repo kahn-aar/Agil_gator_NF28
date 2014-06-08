@@ -1,58 +1,52 @@
 package com.agil_gator_nf28.agil_gator;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
-import com.agil_gator_nf28.BddInterne.TacheBDD;
+import com.agil_gator_nf28.BddInterne.UserBDD;
 import com.agil_gator_nf28.SousTaches.SousTache;
-import com.agil_gator_nf28.SousTaches.SousTacheListAdapter;
-import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.User.User;
+import com.agil_gator_nf28.User.UserAdapter;
+import com.agil_gator_nf28.User.UserAssignAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
 
-public class AssignMember extends ActionBarActivity {
+public class AssignMemberToTask extends ActionBarActivity {
+
+    private int id_project;
+    private int id_sous_tache;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_assign_member);
-
-        ListView contenu = (ListView) findViewById(R.id.contenu);
-
-        // Récupération de la liste de tâches  faire
+        setContentView(R.layout.activity_add_member_projet);
+        final ListView listeView = (ListView)findViewById(R.id.listeMembres);
 
         Intent intent = getIntent();
         if (intent != null) {
-
-            int projectId = intent.getIntExtra(AndroidConstantes.PROJECT_ID, -1);
-            int tacheId = intent.getIntExtra(AndroidConstantes.TACHE_ID, -1);
-
-            TacheBDD tacheBDD = new TacheBDD(this);
-            tacheBDD.open();
-            Tache tache = tacheBDD.getTacheWithId(tacheId);
-
-            tacheBDD.close();
+            id_sous_tache = Integer.valueOf(intent.getStringExtra(AndroidConstantes.SOUS_TACHE_ID));
+            id_project = Integer.valueOf(intent.getStringExtra(AndroidConstantes.PROJECT_ID));
 
             SousTacheBDD sousTacheBDD = new SousTacheBDD(this);
             sousTacheBDD.open();
-            List<SousTache> sousTaches = sousTacheBDD.getSousTaches(tache);
+            SousTache sousTache = sousTacheBDD.getSousTacheFromId(id_sous_tache);
             sousTacheBDD.close();
 
-            tache.setSousTaches(sousTaches);
+            UserBDD userBDD = new UserBDD(AssignMemberToTask.this);
+            userBDD.open();
+            List<User> users = userBDD.getListUserOfAProject(id_project);
+            userBDD.close();
 
-            SousTacheListAdapter adapter = new SousTacheListAdapter(AssignMember.this, getApplicationContext(), tache.getSousTachesAFaire(), projectId);
+            UserAssignAdapter adapter = new UserAssignAdapter(AssignMemberToTask.this, R.id.listeMembres , users, sousTache, id_project);
 
-            contenu.setAdapter(adapter);
+            listeView.setAdapter(adapter);
         }
-
-
     }
 
 
@@ -60,7 +54,7 @@ public class AssignMember extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.assign_member, menu);
+        getMenuInflater().inflate(R.menu.add_member_projet, menu);
         return true;
     }
 

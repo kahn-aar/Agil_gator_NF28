@@ -31,6 +31,7 @@ public class Project_List extends ActionBarActivity {
     private static final int  MENU_EDIT = Menu.FIRST+1;
     private static final int  MENU_DELETE = Menu.FIRST + 2;
     ProjetAdapter adapter = null;
+    Projet selectedProject = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,9 @@ public class Project_List extends ActionBarActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View vue, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, vue, menuInfo);
+        ListView lv = (ListView) vue;
+        AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        selectedProject = (Projet) lv.getItemAtPosition(acmi.position);
         menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.context_menu_proj_desc);
         menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.context_menu_proj_edit);
         menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.context_menu_proj_suppr);
@@ -73,7 +77,6 @@ public class Project_List extends ActionBarActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        final Projet selectedProject = (Projet) adapter.getItem(adapter.getposition());
         System.out.println("id de la tache selectionne "+ selectedProject.getId());
         Intent intent;
 

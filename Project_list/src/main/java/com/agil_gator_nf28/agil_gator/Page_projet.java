@@ -10,6 +10,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -43,6 +44,7 @@ public class Page_projet extends ActionBarActivity {
     private Projet project;
     private Sprint actualSprint;
     private TacheAdapter adapter = null;
+    private Tache selectedTask = null;
 
 
     @Override
@@ -169,6 +171,10 @@ public class Page_projet extends ActionBarActivity {
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+        ListView lv = (ListView) v;
+        AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        selectedTask = (Tache) lv.getItemAtPosition(acmi.position);
+
         menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
         menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.description_task);
         menu.add(Menu.NONE, MENU_ADD_SUB_TASK, Menu.NONE, R.string.add_sub_task);
@@ -179,31 +185,31 @@ public class Page_projet extends ActionBarActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
-        final Tache selectedTache = (Tache) adapter.getItem(adapter.getposition());
-        System.out.println("id de la tache selectionne "+ selectedTache.getId());
+        //final Tache selectedTache = (Tache) adapter.getItem(adapter.getposition());
+        System.out.println("id de la tache selectionne "+ selectedTask.getId());
         Intent intent;
 
         switch (item.getItemId()) {
             case MENU_EDIT:
                 intent = new Intent(this,Modif_task.class);
-                intent.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                intent.putExtra(AndroidConstantes.TACHE_ID, selectedTask.getId());
                 this.startActivity(intent);
                 return true;
             case MENU_DESCRIPTION:
                 intent = new Intent(this,DescriptifTaskActivity.class);
-                intent.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                intent.putExtra(AndroidConstantes.TACHE_ID, selectedTask.getId());
                 intent.putExtra(AndroidConstantes.PROJECT_ID, project.getId());
                 this.startActivity(intent);
                 return true;
             case MENU_ADD_SUB_TASK:
                 Intent intent2 = new Intent(this, AddSubTask.class);
                 intent2.putExtra(AndroidConstantes.PROJECT_ID, project.getId());
-                intent2.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                intent2.putExtra(AndroidConstantes.TACHE_ID, selectedTask.getId());
                 this.startActivity(intent2);
                 return true;
             case MENU_STATISTIQUE_TACHE:
                 Intent intent3 = new Intent(this, Statistic.class);
-                intent3.putExtra(AndroidConstantes.TACHE_ID, selectedTache.getId());
+                intent3.putExtra(AndroidConstantes.TACHE_ID, selectedTask.getId());
                 this.startActivity(intent3);
                 return true;
             case MENU_DELETE:
@@ -215,9 +221,9 @@ public class Page_projet extends ActionBarActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 TacheBDD tacheBDD = new TacheBDD(Page_projet.this);
                                 tacheBDD.open();
-                                tacheBDD.deleteTacheWithId(selectedTache.getId());
+                                tacheBDD.deleteTacheWithId(selectedTask.getId());
                                 tacheBDD.close();
-                                adapter.remove(selectedTache);
+                                adapter.remove(selectedTask);
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {

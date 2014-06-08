@@ -80,8 +80,7 @@
         android:layout_alignTop="@+id/nomProjet"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="192dp"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:text="@string/create_account_nom"
@@ -108,7 +107,7 @@
         android:layout_alignTop="@+id/sousTitre"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:text="@string/create_account_prenom"
@@ -133,7 +132,7 @@
         android:layout_alignTop="@+id/difficulte"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:text="@string/create_account_password"
@@ -156,7 +155,7 @@
         android:text="@string/create_account"
         android:layout_alignTop="@+id/description"
         android:id="@+id/create_account_btn"
-        android:layout_marginTop="120dp"/>
+        android:layout_marginTop="20dp"/>
 </LinearLayout>
     </ScrollView>
 </RelativeLayout>
