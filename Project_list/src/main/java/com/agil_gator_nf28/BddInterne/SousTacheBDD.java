@@ -147,6 +147,7 @@ public class SousTacheBDD extends GestionnaireBDD {
     public void updateSousTacheEffecteur(SousTache clicked) {
         ContentValues values = new ContentValues();
         values.put(AndroidConstantes.COL_SS_TACHE_USER, clicked.getEffecteur().getId());
+        values.put(AndroidConstantes.COL_SS_TACHE_ETAT, clicked.getEtat().name());
         bdd.update(AndroidConstantes.TABLE_SS_TACHE, values, AndroidConstantes.COL_SS_TACHE_ID + " = " + clicked.getId(), null);
         System.out.println("User update = " + clicked.getEffecteur().getEmail());
     }

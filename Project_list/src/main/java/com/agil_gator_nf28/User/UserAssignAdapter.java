@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.BddInterne.UserProjetBDD;
 import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
@@ -91,6 +92,7 @@ public class UserAssignAdapter extends ArrayAdapter<User> {
             @Override
             public void onClick(View v) {
                 sousTache.setEffecteur(users.get(pos));
+                sousTache.setEtat(SousTacheEtat.ENCOURS);
 
                 SousTacheBDD sousTacheBDD = new SousTacheBDD(getContext());
                 sousTacheBDD.open();
