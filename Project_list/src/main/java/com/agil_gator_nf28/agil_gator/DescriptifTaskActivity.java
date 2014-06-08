@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,8 +23,8 @@ import com.agil_gator_nf28.constantes.AndroidConstantes;
 public class DescriptifTaskActivity extends ActionBarActivity {
     private TextView title_project, text_description, text_advanced, text_priority, text_doing;
     private RelativeLayout layout = null;
-    private int tacheId = 0;
-    private int projetId = 0;
+    //private int tacheId = 0;
+   // private int projetId = 0;
 
     private Tache tache;
 
@@ -40,15 +41,15 @@ public class DescriptifTaskActivity extends ActionBarActivity {
         text_description = (TextView)layout.findViewById(R.id.descriptionContent);
         text_priority = (TextView)layout.findViewById(R.id.prioritycontent);
         text_advanced = (TextView)layout.findViewById(R.id.avancedContent);
-        text_doing = (TextView)layout.findViewById(R.id.doingContent);
 
         ImageButton assign = (ImageButton) layout.findViewById(R.id.assign_task_button);
         ProgressBar progressBar = (ProgressBar) layout.findViewById(R.id.progressBar);
 
         Intent intent = getIntent();
 
-        tacheId = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
-        projetId = intent.getIntExtra(AndroidConstantes.PROJECT_ID,-1);
+        LinearLayout en_cours = (LinearLayout) layout.findViewById(R.id.doingContent);
+        final int tacheId = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
+        final int projetId = intent.getIntExtra(AndroidConstantes.PROJECT_ID,-1);
         if(tacheId != -1){
 
             TacheBDD tacheBDD = new TacheBDD(this);
@@ -76,19 +77,28 @@ public class DescriptifTaskActivity extends ActionBarActivity {
             progressBar.setMax(avancement.getNombre_total());
             progressBar.setProgress(avancement.getNombre_fini());
             progressBar.setSecondaryProgress(avancement.getNombre_fini() + avancement.getNombre_en_cours());
+
+            for (SousTache underTask : tache.getSousTachesEnCours()) {
+                TextView vue = new TextView(DescriptifTaskActivity.this);
+                vue.setText(underTask.getTitre() + " - " + underTask.getEffecteur().getFirstname() + " " + underTask.getEffecteur().getName());
+                en_cours.addView(vue);
+            }
+
+            assign.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent1 = new Intent(DescriptifTaskActivity.this, AssignMember.class);
+                    intent1.putExtra(AndroidConstantes.PROJECT_ID, projetId);
+                    intent1.putExtra(AndroidConstantes.TACHE_ID, tacheId);
+                    DescriptifTaskActivity.this.startActivity(intent1);
+                }
+            });
+
+
+            setContentView(layout);
+
         }
 
-        assign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(DescriptifTaskActivity.this, AssignMember.class);
-                intent1.putExtra(AndroidConstantes.PROJECT_ID, projetId);
-                intent1.putExtra(AndroidConstantes.TACHE_ID, tacheId);
-                DescriptifTaskActivity.this.startActivity(intent1);
-            }
-        });
-
-        setContentView(layout);
 
     }
 

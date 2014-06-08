@@ -106,14 +106,14 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="none"
+                android:orientation="vertical"
                 android:id="@+id/doingContent"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp" >
+            </LinearLayout>
 
 
 

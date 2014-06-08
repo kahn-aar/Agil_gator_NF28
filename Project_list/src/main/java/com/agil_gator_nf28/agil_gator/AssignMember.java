@@ -30,8 +30,8 @@ public class AssignMember extends ActionBarActivity {
         Intent intent = getIntent();
         if (intent != null) {
 
-            int projectId = intent.getIntExtra(AndroidConstantes.PROJECT_ID,-1);
-            int tacheId = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
+            int projectId = Integer.valueOf(intent.getStringExtra(AndroidConstantes.PROJECT_ID));
+            int tacheId = Integer.valueOf(intent.getStringExtra(AndroidConstantes.TACHE_ID));
 
             TacheBDD tacheBDD = new TacheBDD(this);
             tacheBDD.open();
@@ -46,9 +46,9 @@ public class AssignMember extends ActionBarActivity {
 
             tache.setSousTaches(sousTaches);
 
-            ArrayAdapter<SousTache> adapter = new ArrayAdapter<SousTache>(this, R.id.contenu, tache.getSousTachesAFaire());
+            //ArrayAdapter<SousTache> adapter = new ArrayAdapter<SousTache>(this, R.id.contenu, tache.getSousTachesAFaire());
 
-            contenu.setAdapter(adapter);
+            //contenu.setAdapter(adapter);
         }
 
 
