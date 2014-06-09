@@ -18,6 +18,7 @@ import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.BddInterne.UserBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.User.UserAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
@@ -81,6 +82,7 @@ public class DescriptifProjectActivity extends ActionBarActivity {
             listeView.addView(vue);
         }
 
+
         add_user_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,6 +136,13 @@ public class DescriptifProjectActivity extends ActionBarActivity {
 
             }
         });
+        
+        if (! ConnectedUser.getInstance().getConnectedUser().isChef(projet)) {
+            add_user_button.setEnabled(false);
+            change_powerbutton.setEnabled(false);
+            suppbutton.setEnabled(false);
+            System.out.println("disabled move");
+        }
 
         setContentView(layout);
 
