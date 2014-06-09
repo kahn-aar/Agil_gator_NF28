@@ -22,6 +22,7 @@ import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
+import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
@@ -108,7 +109,12 @@ public class Page_projet extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.page_projet, menu);
+        if (ConnectedUser.getInstance().getConnectedUser().isChef(project)) {
+            getMenuInflater().inflate(R.menu.page_projet, menu);
+        }
+        else {
+            getMenuInflater().inflate(R.menu.page_projet_limited, menu);
+        }
         restoreActionBar();
         return true;
     }
@@ -134,6 +140,12 @@ public class Page_projet extends ActionBarActivity {
         }
         if (id == R.id.add_user_project) {
             Intent intent = new Intent(Page_projet.this, AddMemberProjet.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.make_user_chef) {
+            Intent intent = new Intent(Page_projet.this, TransferChief.class);
             intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
             startActivity(intent);
             return true;
@@ -179,7 +191,9 @@ public class Page_projet extends ActionBarActivity {
         menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.description_task);
         menu.add(Menu.NONE, MENU_ADD_SUB_TASK, Menu.NONE, R.string.add_sub_task);
         menu.add(Menu.NONE, MENU_STATISTIQUE_TACHE, Menu.NONE, R.string.statistiques_tache);
-        menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.supp_task);
+        if (ConnectedUser.getInstance().getConnectedUser().isChef(project)) {
+            menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.supp_task);
+        }
     }
 
     @Override

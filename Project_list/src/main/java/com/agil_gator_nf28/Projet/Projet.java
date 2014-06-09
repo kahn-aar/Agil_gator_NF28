@@ -1,5 +1,7 @@
 package com.agil_gator_nf28.Projet;
 
+import com.agil_gator_nf28.User.User;
+
 /**
  * Created by Nicolas on 30/04/14.
  */
@@ -10,12 +12,13 @@ public class Projet {
     private String subTitle;
     private String description;
     private int advanced;
+    private User chef;
 
-    public Projet(String name, String subTitle, String description, int advanced) {
+    public Projet(String name, String subTitle, String description, User chef) {
         this.name = name;
         this.subTitle = subTitle;
         this.description = description;
-        this.advanced = advanced;
+        this.chef = chef;
     }
 
     public Projet() {}
@@ -64,5 +67,13 @@ public class Projet {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getChef() {
+        return chef;
+    }
+
+    public void setChef(User chef) {
+        this.chef = chef;
     }
 }

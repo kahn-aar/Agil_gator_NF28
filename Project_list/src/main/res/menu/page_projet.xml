@@ -2,9 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.agil_gator_nf28.agil_gator.Page_projet" >
+
     <item android:id="@+id/add_task_menu"
         android:title="@string/add_task_menu"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:orderInCategory="100" />
 
     <item android:id="@+id/edit_project"
         android:title="@string/edit_project"
@@ -13,6 +15,11 @@
 
     <item android:id="@+id/add_user_project"
         android:title="@string/add_user_project"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/make_user_chef"
+        android:title="@string/make_user_chef"
         android:orderInCategory="100"
         app:showAsAction="never" />
 

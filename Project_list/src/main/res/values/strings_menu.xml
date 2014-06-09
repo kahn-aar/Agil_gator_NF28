@@ -14,4 +14,5 @@
     <string name="add_user_project">Ajouter un membre</string>
     <string name="sprint_statistiques">Voir les statistiques</string>
     <string name="statistiques_tache">voir les statitstiques de la tâche</string>
+    <string name="make_user_chef">Transférer la possession</string>
 </resources>

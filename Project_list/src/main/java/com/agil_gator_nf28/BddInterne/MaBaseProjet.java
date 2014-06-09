@@ -20,7 +20,8 @@ public class MaBaseProjet extends SQLiteOpenHelper {
             + AndroidConstantes.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + AndroidConstantes.COL_NAME + " TEXT NOT NULL, "
             + AndroidConstantes.COL_SUBTITLE + " TEXT NOT NULL, " + AndroidConstantes.COL_DESC + " TEXT,"
-            + AndroidConstantes.COL_ADVANCED+" INTEGER);";
+            + AndroidConstantes.COL_CHEF+" INTEGER NOT NULL, "
+            + "FOREIGN KEY(" + AndroidConstantes.COL_CHEF + ") REFERENCES " + AndroidConstantes.TABLE_USER + "(" + AndroidConstantes.COL_USER_ID + "))";
 
     private static final String CREATE_USER_TABLE = " CREATE TABLE " + AndroidConstantes.TABLE_USER + "("
             + AndroidConstantes.COL_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -42,7 +43,7 @@ public class MaBaseProjet extends SQLiteOpenHelper {
             + AndroidConstantes.COL_TACHE_PRIORITE + " INTEGER NOT NULL, "
             + AndroidConstantes.COL_TACHE_DIFFICULTE + " INTEGER NOT NULL, "
             + AndroidConstantes.COL_TACHE_SPRINT + " INTEGER NOT NULL, "
-            + "FOREIGN KEY(" + AndroidConstantes.COL_TACHE_SPRINT + ") REFERENCES " + AndroidConstantes.TABLE_PROJET + "(" + AndroidConstantes.COL_ID + "))";
+            + "FOREIGN KEY(" + AndroidConstantes.COL_TACHE_SPRINT + ") REFERENCES " + AndroidConstantes.TABLE_SPRINT + "(" + AndroidConstantes.COL_SPRINT_ID + "))";
 
     private static final String CREATE_SOUS_TACHE_TABLE = "CREATE TABLE " + AndroidConstantes.TABLE_SS_TACHE + " ("
             + AndroidConstantes.COL_SS_TACHE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -77,17 +78,17 @@ public class MaBaseProjet extends SQLiteOpenHelper {
         db.execSQL(CREATE_USER_PROJET_TABLE);
         System.out.println("création de la table");
 
-        /*db.execSQL("INSERT INTO table_user values (1, \"nicolas.martinr@gmail.com\", \"Nicolas\", \"Martin\", \"nicoco\");");
+        db.execSQL("INSERT INTO table_user values (1, \"nicolas.martinr@gmail.com\", \"Nicolas\", \"Martin\", \"nicoco\");");
 
-        db.execSQL("INSERT INTO table_projet values (1, \"agilgator\", \"le dieu des agiles\", \"application android\", 0);");
+        db.execSQL("INSERT INTO table_projet values (1, \"agilgator\", \"le dieu des agiles\", \"application android\", 1);");
 
         db.execSQL("INSERT INTO table_sprint values (1, 1, 1);");
 
         db.execSQL("INSERT INTO table_tache values (1, \"application\", \"creer l'application\", 900, 10, 1);");
 
-        db.execSQL("INSERT INTO table_tache values (2, \"SMA\", \"Créer le serveur\", 800, 7, 1);");*/
+        db.execSQL("INSERT INTO table_tache values (2, \"SMA\", \"Créer le serveur\", 800, 7, 1);");
 
-        //db.execSQL("INSERT INTO table_sous_tache values (1, \"vue\", \"" + SousTacheEtat.ENCOURS + "\", 1, 1);");
+        db.execSQL("INSERT INTO table_sous_tache values (1, \"vue\", \"" + SousTacheEtat.ENCOURS + "\", 1, 1);");
 
         db.execSQL("INSERT INTO table_sous_tache values (2, \"agent\", \"" + SousTacheEtat.AFAIRE + "\", 1, null);");
 
@@ -99,6 +100,7 @@ public class MaBaseProjet extends SQLiteOpenHelper {
         //On peut fait ce qu'on veut ici moi j'ai décidé de supprimer la table et de la recréer
         //comme ça lorsque je change la version les id repartent de 0
 
+        db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_USER_PROJET + ";");
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_SS_TACHE + ";");
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_TACHE + ";");
         db.execSQL("DROP TABLE " + AndroidConstantes.TABLE_SPRINT + ";");

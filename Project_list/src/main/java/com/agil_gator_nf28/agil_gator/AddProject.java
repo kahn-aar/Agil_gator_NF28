@@ -56,7 +56,7 @@ public class AddProject extends ActionBarActivity {
                     Toast.makeText(AddProject.this, R.string.error_sub_project, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Projet projet = new Projet(nomText, subText, descText);
+                Projet projet = new Projet(nomText, subText, descText, ConnectedUser.getInstance().getConnectedUser());
 
 
                 ProjetBDD projetBdd = new ProjetBDD(AddProject.this);

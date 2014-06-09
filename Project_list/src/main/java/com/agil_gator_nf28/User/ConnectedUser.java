@@ -1,5 +1,7 @@
 package com.agil_gator_nf28.User;
 
+import com.agil_gator_nf28.Projet.Projet;
+
 /**
  * Created by Nicolas on 04/06/14.
  */
@@ -22,4 +24,5 @@ public class ConnectedUser {
     public void setConnectedUser(User connectedUser) {
         this.connectedUser = connectedUser;
     }
+
 }

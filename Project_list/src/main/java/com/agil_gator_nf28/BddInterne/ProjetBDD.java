@@ -23,7 +23,7 @@ public class ProjetBDD extends GestionnaireBDD{
     private static final int NUM_COL_ISBN = 1;
     private static final int NUM_COL_TITRE = 2;
     private static final int NUM_COL_DESCRIPTION = 3;
-    private static final int NUM_COL_ADVANCED = 4;
+    private static final int NUM_COL_CHEF = 4;
 
     public ProjetBDD(Context context) {
         super(context);
@@ -40,7 +40,7 @@ public class ProjetBDD extends GestionnaireBDD{
         values.put(AndroidConstantes.COL_NAME, projet.getName());
         values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
         values.put(AndroidConstantes.COL_DESC, projet.getDescription());
-        values.put(AndroidConstantes.COL_ADVANCED, projet.getAdvanced());
+        values.put(AndroidConstantes.COL_CHEF, projet.getChef().getId());
 
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(AndroidConstantes.TABLE_PROJET, null, values);
@@ -53,7 +53,7 @@ public class ProjetBDD extends GestionnaireBDD{
         values.put(AndroidConstantes.COL_NAME, projet.getName());
         values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
         values.put(AndroidConstantes.COL_DESC, projet.getDescription());
-        //values.put(AndroidConstantes.COL_ADVANCED, projet.getAdvanced());
+        values.put(AndroidConstantes.COL_CHEF, projet.getChef().getId());
         return bdd.update(AndroidConstantes.TABLE_PROJET, values, AndroidConstantes.COL_ID + " = " +id, null);
     }
 
@@ -100,7 +100,6 @@ public class ProjetBDD extends GestionnaireBDD{
             projet.setName(c.getString(NUM_COL_ISBN));
             projet.setSubTitle(c.getString(NUM_COL_TITRE));
             projet.setDescription(c.getString(NUM_COL_DESCRIPTION));
-            //projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
 
             projets.add(projet);
             c.moveToNext();
@@ -128,7 +127,16 @@ public class ProjetBDD extends GestionnaireBDD{
         projet.setName(c.getString(NUM_COL_ISBN));
         projet.setSubTitle(c.getString(NUM_COL_TITRE));
         projet.setDescription(c.getString(NUM_COL_DESCRIPTION));
+
+        int chefID = c.getInt(NUM_COL_CHEF);
+        UserBDD userBDD = new UserBDD(context);
+        userBDD.open();
+        projet.setChef(userBDD.getUserById(chefID));
+        userBDD.close();
         //projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
+
+        System.out.println("chef de projet : " + projet.getChef().getEmail());
+
         //On ferme le cursor
         c.close();
 

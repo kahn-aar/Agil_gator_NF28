@@ -1,5 +1,7 @@
 package com.agil_gator_nf28.User;
 
+import com.agil_gator_nf28.Projet.Projet;
+
 /**
  * Classe gérant les utilisateurs
  *
@@ -59,4 +61,7 @@ public class User {
         this.id = id;
     }
 
+    public boolean isChef(Projet project) {
+        return id == project.getChef().getId();
+    }
 }
