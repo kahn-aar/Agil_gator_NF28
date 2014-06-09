@@ -186,8 +186,9 @@ public class Page_projet extends ActionBarActivity {
         ListView lv = (ListView) v;
         AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
         selectedTask = (Tache) lv.getItemAtPosition(acmi.position);
-
-        menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
+        if (ConnectedUser.getInstance().getConnectedUser().isChef(project)) {
+            menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.modif_task);
+        }
         menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.description_task);
         menu.add(Menu.NONE, MENU_ADD_SUB_TASK, Menu.NONE, R.string.add_sub_task);
         menu.add(Menu.NONE, MENU_STATISTIQUE_TACHE, Menu.NONE, R.string.statistiques_tache);
