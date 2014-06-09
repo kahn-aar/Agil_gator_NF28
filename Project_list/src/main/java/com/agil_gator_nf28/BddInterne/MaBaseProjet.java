@@ -49,6 +49,7 @@ public class MaBaseProjet extends SQLiteOpenHelper {
             + AndroidConstantes.COL_SS_TACHE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + AndroidConstantes.COL_SS_TACHE_NAME + " TEXT NOT NULL, "
             + AndroidConstantes.COL_SS_TACHE_ETAT + " INTEGER NOT NULL, "
+            + AndroidConstantes.COL_SS_TACHE_DESCRIPTION + " TEXT NOT NULL, "
             + AndroidConstantes.COL_SS_TACHE_TACHE + " INTEGER NOT NULL, "
             + AndroidConstantes.COL_SS_TACHE_USER + " INTEGER, "
             + "FOREIGN KEY(" + AndroidConstantes.COL_SS_TACHE_TACHE + ") REFERENCES " + AndroidConstantes.TABLE_TACHE + "(" + AndroidConstantes.COL_TACHE_ID + ")"
@@ -88,11 +89,13 @@ public class MaBaseProjet extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO table_tache values (2, \"SMA\", \"Créer le serveur\", 800, 7, 1);");
 
-        db.execSQL("INSERT INTO table_sous_tache values (1, \"vue\", \"" + SousTacheEtat.ENCOURS + "\", 1, 1);");
+        db.execSQL("INSERT INTO table_sous_tache values (1, \"vue\", \"" + SousTacheEtat.ENCOURS + "\", \"ok cool\", 1, 1);");
 
-        db.execSQL("INSERT INTO table_sous_tache values (2, \"agent\", \"" + SousTacheEtat.AFAIRE + "\", 1, null);");
+        db.execSQL("INSERT INTO table_sous_tache values (2, \"agent\", \"" + SousTacheEtat.AFAIRE + "\", \"ok cool\", 1, null);");
 
-        db.execSQL("INSERT INTO table_sous_tache values (3, \"agent\", \"" + SousTacheEtat.ENCOURS + "\", 2, 1);");
+        db.execSQL("INSERT INTO table_sous_tache values (3, \"agent\", \"" + SousTacheEtat.ENCOURS + "\", \"ok cool\", 2, 1);");
+
+        db.execSQL("INSERT INTO table_user_projet values (1, 1, 1);");
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.agil_gator_nf28.SousTaches;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
+import android.app.FragmentManager;
 import android.content.ClipData;
 import android.content.Context;
 import android.os.Build;
@@ -11,7 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.agil_gator_nf28.Listeners.SousTacheListener;
+import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
+import com.agil_gator_nf28.agil_gator.SousTacheFragment;
 
 import java.util.List;
 
@@ -24,11 +28,13 @@ public class SousTacheAdapter extends ArrayAdapter<SousTache> {
 
     private List<SousTache> taches;
     private LayoutInflater inflater;
+    private Page_projet page_projet;
 
-    public SousTacheAdapter(Context context, int view, List<SousTache> taches) {
+    public SousTacheAdapter(Context context, int view, List<SousTache> taches, Page_projet page_projet) {
         super(context, view, taches);
         inflater = LayoutInflater.from(context);
         this.taches = taches;
+        this.page_projet = page_projet;
     }
 
     @Override
@@ -135,18 +141,10 @@ public class SousTacheAdapter extends ArrayAdapter<SousTache> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View postit = inflater.inflate(R.layout.post_it_layout_big, null);
-                ViewHolder holderBig = new ViewHolder();
-                holderBig.nom = (TextView)postit.findViewById(R.id.postitGrosTitre);
-                holderBig.nom.setText(taches.get(pos).getTitre());
-                postit.setTag(holderBig);
-                System.out.println("Ok long click");
-                postit.setVisibility(View.VISIBLE);
-
-                ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-                v.startDrag(data, shadowBuilder, v, 0);
-                //v.setVisibility(View.INVISIBLE);
+                FragmentManager fragmentManager = page_projet.getFragmentManager();
+                SousTacheFragment newFragment = new SousTacheFragment(taches.get(pos));
+                // The device is using a large layout, so show the fragment as a dialog
+                newFragment.show(fragmentManager, "dialog");
             }
         });
 

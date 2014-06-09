@@ -23,8 +23,9 @@ public class SousTacheBDD extends GestionnaireBDD {
     private static final int NUM_COL_ID = 0;
     private static final int NUM_COL_TITRE = 1;
     private static final int NUM_COL_ETAT = 2;
-    private static final int NUM_COL_TACHE = 4;
-    private static final int NUM_COL_EFFECTEUR = 3;
+    private static final int NUM_COL_DESCRIPTION = 3;
+    private static final int NUM_COL_TACHE = 5;
+    private static final int NUM_COL_EFFECTEUR = 4;
 
     public SousTacheBDD(Context context){
         super(context);
@@ -57,13 +58,14 @@ public class SousTacheBDD extends GestionnaireBDD {
         values.put(AndroidConstantes.COL_SS_TACHE_NAME, sousTache.getTitre());
         values.put(AndroidConstantes.COL_SS_TACHE_ETAT, sousTache.getEtat().toString());
         values.put(AndroidConstantes.COL_SS_TACHE_TACHE, tache.getId());
+        values.put(AndroidConstantes.COL_SS_TACHE_DESCRIPTION, sousTache.getDescription());
 
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(AndroidConstantes.TABLE_SS_TACHE, null, values);
     }
 
     public List<SousTache> getSousTaches(Tache tache) {
-        String query = "SELECT " + AndroidConstantes.COL_SS_TACHE_ID + ", " + AndroidConstantes.COL_SS_TACHE_NAME + ", " + AndroidConstantes.COL_SS_TACHE_ETAT + ", " + AndroidConstantes.COL_SS_TACHE_USER
+        String query = "SELECT " + AndroidConstantes.COL_SS_TACHE_ID + ", " + AndroidConstantes.COL_SS_TACHE_NAME + ", " + AndroidConstantes.COL_SS_TACHE_ETAT + ", " + AndroidConstantes.COL_SS_TACHE_DESCRIPTION + ", " + AndroidConstantes.COL_SS_TACHE_USER
                 + " FROM " + AndroidConstantes.TABLE_SS_TACHE
                  + " WHERE " + AndroidConstantes.COL_SS_TACHE_TACHE + "=" + tache.getId() + ";";
         Cursor c = bdd.rawQuery(query, null);
@@ -89,6 +91,7 @@ public class SousTacheBDD extends GestionnaireBDD {
             sousTache.setId(c.getInt(NUM_COL_ID));
             sousTache.setTitre(c.getString(NUM_COL_TITRE));
             sousTache.setEtat(SousTacheEtat.valueOf(c.getString(NUM_COL_ETAT)));
+            sousTache.setDescription(c.getString(NUM_COL_DESCRIPTION));
 
             UserBDD userBDD = new UserBDD(context);
             userBDD.open();
@@ -106,7 +109,7 @@ public class SousTacheBDD extends GestionnaireBDD {
     }
 
     public SousTache getSousTacheFromId(int id) {
-        String query = "SELECT " + AndroidConstantes.COL_SS_TACHE_ID + ", " + AndroidConstantes.COL_SS_TACHE_NAME + ", " + AndroidConstantes.COL_SS_TACHE_ETAT
+        String query = "SELECT " + AndroidConstantes.COL_SS_TACHE_ID + ", " + AndroidConstantes.COL_SS_TACHE_NAME + ", " + AndroidConstantes.COL_SS_TACHE_DESCRIPTION + ", " + AndroidConstantes.COL_SS_TACHE_ETAT
                 + " FROM " + AndroidConstantes.TABLE_SS_TACHE
                 + " WHERE " + AndroidConstantes.COL_SS_TACHE_ID + "=" + id + ";";
         Cursor c = bdd.rawQuery(query, null);
@@ -129,6 +132,7 @@ public class SousTacheBDD extends GestionnaireBDD {
         sousTache.setId(c.getInt(NUM_COL_ID));
         sousTache.setTitre(c.getString(NUM_COL_TITRE));
         sousTache.setEtat(SousTacheEtat.valueOf(c.getString(NUM_COL_ETAT)));
+        sousTache.setDescription(c.getString(NUM_COL_DESCRIPTION));
 
 
         //On ferme le cursor

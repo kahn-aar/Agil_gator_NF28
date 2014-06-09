@@ -13,6 +13,7 @@ public class SousTache {
 
     private int id;
     private String titre;
+    private String description;
     private SousTacheEtat etat;
     private User effecteur;
 
@@ -57,5 +58,13 @@ public class SousTache {
 
     public void setEffecteur(User effecteur) {
         this.effecteur = effecteur;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

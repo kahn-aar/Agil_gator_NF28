@@ -27,7 +27,7 @@ public class AndroidConstantes {
     //BDD
     public static final String NOM_BDD = "agilgator2.db";
 
-    public static final int VERSION_BDD = 34;
+    public static final int VERSION_BDD = 35;
 
     //Table Projet
     public static final String TABLE_PROJET = "table_projet";
@@ -43,6 +43,7 @@ public class AndroidConstantes {
     public static final String COL_USER_EMAIL = "EMAIL";
     public static final String COL_USER_NAME= "NOM";
     public static final String COL_USER_PRENOM = "PRENOM";
+    public static final String COL_USER_PASSWORD = "password";
 
     //Table Sprint
     public static final String TABLE_SPRINT = "table_sprint";
@@ -64,6 +65,7 @@ public class AndroidConstantes {
     public static final String COL_SS_TACHE_ID = "ID";
     public static final String COL_SS_TACHE_NAME = "Name";
     public static final String COL_SS_TACHE_ETAT = "Etat";
+    public static final String COL_SS_TACHE_DESCRIPTION = "desciption_ss";
     public static final String COL_SS_TACHE_TACHE = "Tache";
     public static final String COL_SS_TACHE_USER = "Effecteur";
 
@@ -72,6 +74,5 @@ public class AndroidConstantes {
     public static final String COL_USER_PROJET_ID = "id";
     public static final String COL_USER_PROJET_USER = "membre";
     public static final String COL_USER_PROJET_PROJET = "projet";
-    public static final String COL_USER_PASSWORD = "password";
 
 }

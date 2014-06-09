@@ -55,7 +55,7 @@ public class DescriptifProjectActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
 
-        ID = intent.getIntExtra(AndroidConstantes.PROJECT_ID,-1);
+        ID = Integer.valueOf(intent.getStringExtra(AndroidConstantes.PROJECT_ID));
 
         if(ID != -1){
 
@@ -136,7 +136,7 @@ public class DescriptifProjectActivity extends ActionBarActivity {
 
             }
         });
-        
+
         if (! ConnectedUser.getInstance().getConnectedUser().isChef(projet)) {
             add_user_button.setEnabled(false);
             change_powerbutton.setEnabled(false);

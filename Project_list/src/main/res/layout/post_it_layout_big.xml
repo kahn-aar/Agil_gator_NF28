@@ -26,6 +26,7 @@
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="30dp"
+        android:id="@+id/postitContenu"
         android:layout_alignTop="@+id/postitGrosTitre"
         android:text="Gros text, il explique en gros les enjeux des différences entre taches et sous taches, malgrès une beautée internière riche en émotions"/>
 
