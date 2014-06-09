@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.agil_gator_nf28.agil_gator.Page_projet" >
 
+<group>
+    <item android:id="@+id/desciption_projet"
+        android:title="@string/description_projet_menu"
+        app:showAsAction="never"
+        android:orderInCategory="100" />
+
     <item android:id="@+id/add_task_menu"
         android:title="@string/add_task_menu"
         app:showAsAction="never"
@@ -12,7 +18,8 @@
         android:title="@string/edit_project"
         android:orderInCategory="100"
         app:showAsAction="never" />
-
+</group>
+    <group>
     <item android:id="@+id/add_user_project"
         android:title="@string/add_user_project"
         android:orderInCategory="100"
@@ -27,7 +34,8 @@
         android:title="@string/sprint_statistiques"
         android:orderInCategory="100"
         app:showAsAction="never" />
-
+    </group>
+    <group>
     <item android:id="@+id/archives"
         android:title="@string/archives"
         android:orderInCategory="110"
@@ -37,4 +45,5 @@
         android:title="@string/archiver"
         android:orderInCategory="100"
         app:showAsAction="never" />
+    </group>
 </menu>

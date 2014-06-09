@@ -69,9 +69,13 @@ public class Project_List extends ActionBarActivity {
         ListView lv = (ListView) vue;
         AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
         selectedProject = (Projet) lv.getItemAtPosition(acmi.position);
+
+
         menu.add(Menu.NONE, MENU_DESCRIPTION, Menu.NONE, R.string.context_menu_proj_desc);
-        menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.context_menu_proj_edit);
-        menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.context_menu_proj_suppr);
+        if (ConnectedUser.getInstance().getConnectedUser().isChef(selectedProject)) {
+            menu.add(Menu.NONE, MENU_EDIT, Menu.NONE, R.string.context_menu_proj_edit);
+            menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, R.string.context_menu_proj_suppr);
+        }
     }
 
 

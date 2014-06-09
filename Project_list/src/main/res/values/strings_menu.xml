@@ -6,7 +6,7 @@
     <string name="context_menu_proj_desc">Description du projet</string>
 
     <!-- pour le context menu des tâches -->
-    <string name="description_task">Descrition de la Tâche</string>
+    <string name="description_task">Description de la Tâche</string>
     <string name="supp_task">Supprimer Tâche</string>
     <string name="archives">Voir les archives</string>
     <string name="archiver">Archiver le sprint</string>
@@ -15,4 +15,5 @@
     <string name="sprint_statistiques">Voir les statistiques</string>
     <string name="statistiques_tache">voir les statitstiques de la tâche</string>
     <string name="make_user_chef">Transférer la possession</string>
+    <string name="description_projet_menu">Description du projet</string>
 </resources>

@@ -125,6 +125,12 @@ public class Page_projet extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if (id == R.id.desciption_projet) {
+            Intent intent = new Intent(this, DescriptifProjectActivity.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            startActivity(intent);
+            return true;
+        }
         if (id == R.id.add_task_menu) {
             Intent intent = new Intent(this, Add_Task.class);
             intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
