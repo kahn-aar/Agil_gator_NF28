@@ -1,5 +1,7 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -46,6 +48,9 @@ public class DescriptifProjectActivity extends ActionBarActivity {
         text_advanced = (TextView)layout.findViewById(R.id.avancedContent);
 
         ImageButton add_user_button = (ImageButton) layout.findViewById(R.id.add_user_button);
+        ImageButton change_powerbutton = (ImageButton) layout.findViewById(R.id.change_pouvoirbutton);
+        ImageButton statsbutton = (ImageButton) layout.findViewById(R.id.statsbutton);
+        ImageButton suppbutton = (ImageButton) layout.findViewById(R.id.suppbutton);
 
         Intent intent = getIntent();
 
@@ -74,15 +79,59 @@ public class DescriptifProjectActivity extends ActionBarActivity {
             TextView vue = new TextView(this);
             vue.setText(user.getFirstname() + " " + user.getName());
             listeView.addView(vue);
-
         }
 
         add_user_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(DescriptifProjectActivity.this, AddMemberProjet.class);
-                intent1.putExtra(AndroidConstantes.PROJECT_ID, projet.getId());
+                intent1.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
                 DescriptifProjectActivity.this.startActivity(intent1);
+            }
+        });
+
+        change_powerbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(DescriptifProjectActivity.this, TransferChief.class);
+                intent1.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
+                DescriptifProjectActivity.this.startActivity(intent1);
+            }
+        });
+
+        statsbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(DescriptifProjectActivity.this, Statistic_sprint.class);
+                intent1.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
+                DescriptifProjectActivity.this.startActivity(intent1);
+            }
+        });
+
+        suppbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(DescriptifProjectActivity.this)
+                        .setTitle("Suppression")
+                        .setMessage("Etes vous sûr de vouloir supprimer ce projet?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                TacheBDD tacheBDD = new TacheBDD(DescriptifProjectActivity.this);
+                                tacheBDD.open();
+                                tacheBDD.deleteTacheWithId(projet.getId());
+                                tacheBDD.close();
+                                Intent intent1 = new Intent(DescriptifProjectActivity.this, Project_List.class);
+                                DescriptifProjectActivity.this.startActivity(intent1);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
             }
         });
 

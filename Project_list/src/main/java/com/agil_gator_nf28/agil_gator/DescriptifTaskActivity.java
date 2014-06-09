@@ -1,5 +1,7 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -43,6 +45,9 @@ public class DescriptifTaskActivity extends ActionBarActivity {
         text_advanced = (TextView)layout.findViewById(R.id.avancedContent);
 
         ImageButton assign = (ImageButton) layout.findViewById(R.id.assign_task_button);
+        ImageButton statsbutton = (ImageButton) layout.findViewById(R.id.statbutton);
+        ImageButton suppbutton = (ImageButton) layout.findViewById(R.id.suppbutton);
+
         ProgressBar progressBar = (ProgressBar) layout.findViewById(R.id.progressBar);
 
         Intent intent = getIntent();
@@ -93,6 +98,44 @@ public class DescriptifTaskActivity extends ActionBarActivity {
                     System.out.println("projet = " + projetId );
                     System.out.println("Tache = " + tacheId);
                     DescriptifTaskActivity.this.startActivity(intent1);
+                }
+            });
+
+            statsbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent1 = new Intent(DescriptifTaskActivity.this, Statistic.class);
+                    intent1.putExtra(AndroidConstantes.PROJECT_ID, projetId);
+                    intent1.putExtra(AndroidConstantes.TACHE_ID, tacheId);
+                    DescriptifTaskActivity.this.startActivity(intent1);
+                }
+            });
+
+            suppbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(DescriptifTaskActivity.this)
+                            .setTitle("Suppression")
+                            .setMessage("Etes vous sure de vouloir supprimer cette tâche?")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    TacheBDD tacheBDD = new TacheBDD(DescriptifTaskActivity.this);
+                                    tacheBDD.open();
+                                    tacheBDD.deleteTacheWithId(tacheId);
+                                    tacheBDD.close();
+                                    Intent intent1 = new Intent(DescriptifTaskActivity.this, Page_projet.class);
+                                    intent1.putExtra(AndroidConstantes.PROJECT_ID, projetId);
+                                    DescriptifTaskActivity.this.startActivity(intent1);
+                                }
+                            })
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+
                 }
             });
 

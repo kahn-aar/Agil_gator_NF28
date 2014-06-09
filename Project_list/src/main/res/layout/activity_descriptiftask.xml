@@ -133,14 +133,14 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:id="@+id/assign_task_button"
-            android:src="@drawable/plus_icone"
+            android:src="@drawable/plus_icone2"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="5dp"/>
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageButton2"
+            android:id="@+id/statbutton"
             android:src="@drawable/stat_icone"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"/>
@@ -148,8 +148,8 @@
         <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:id="@+id/imageButton3"
-            android:src="@drawable/supp_icone"
+            android:id="@+id/suppbutton"
+            android:src="@drawable/supp_icone2"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"/>
 

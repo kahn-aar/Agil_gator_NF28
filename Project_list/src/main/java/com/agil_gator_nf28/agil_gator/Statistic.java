@@ -114,9 +114,7 @@ public class Statistic extends ActionBarActivity {
                 public void onClick(View v) {
                     SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
 
-                    if (seriesSelection == null) {
-                        Toast.makeText(Statistic.this, "Pas d'element du camembert a été selectionné"+ afaire +" "+encours+" "+arelire+" "+done+ " "+ tacheId, Toast.LENGTH_SHORT).show();
-                    } else {
+                    if (seriesSelection != null) {
                         Toast.makeText(Statistic.this, mapTitle.get(seriesSelection.getPointIndex()+1) + " : nombre de sous tâches ="+ seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
                     }
                 }
