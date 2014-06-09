@@ -98,6 +98,7 @@ public class DescriptifTaskActivity extends ActionBarActivity {
                     System.out.println("projet = " + projetId );
                     System.out.println("Tache = " + tacheId);
                     DescriptifTaskActivity.this.startActivity(intent1);
+                    DescriptifTaskActivity.this.finish();
                 }
             });
 
@@ -108,6 +109,7 @@ public class DescriptifTaskActivity extends ActionBarActivity {
                     intent1.putExtra(AndroidConstantes.PROJECT_ID, projetId);
                     intent1.putExtra(AndroidConstantes.TACHE_ID, tacheId);
                     DescriptifTaskActivity.this.startActivity(intent1);
+                    DescriptifTaskActivity.this.finish();
                 }
             });
 
@@ -126,6 +128,7 @@ public class DescriptifTaskActivity extends ActionBarActivity {
                                     Intent intent1 = new Intent(DescriptifTaskActivity.this, Page_projet.class);
                                     intent1.putExtra(AndroidConstantes.PROJECT_ID, projetId);
                                     DescriptifTaskActivity.this.startActivity(intent1);
+                                    DescriptifTaskActivity.this.finish();
                                 }
                             })
                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {

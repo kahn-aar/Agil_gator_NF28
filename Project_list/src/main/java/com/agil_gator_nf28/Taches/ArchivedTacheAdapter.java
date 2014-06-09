@@ -88,6 +88,7 @@ public class ArchivedTacheAdapter extends BaseAdapter {
                 intent.putExtra(AndroidConstantes.TASK_DESC_FROM, AndroidConstantes.TASK_DESC_FROM_ARCHIVE);
                 intent.putExtra(AndroidConstantes.SPRINT_ID, String.valueOf(sprintId));
                 pageSprint.startActivity(intent);
+                pageSprint.finish();
             }
         });
 

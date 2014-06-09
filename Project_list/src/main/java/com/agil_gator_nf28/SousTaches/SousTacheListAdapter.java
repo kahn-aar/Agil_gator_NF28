@@ -85,6 +85,7 @@ public class SousTacheListAdapter extends BaseAdapter {
                 intent.putExtra(AndroidConstantes.SOUS_TACHE_ID, String.valueOf(taches.get(pos).getId()));
                 intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projectId));
                 assignMember.startActivity(intent);
+                assignMember.finish();
             }
         });
 

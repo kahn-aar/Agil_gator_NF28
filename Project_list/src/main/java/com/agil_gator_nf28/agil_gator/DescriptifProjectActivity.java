@@ -89,6 +89,7 @@ public class DescriptifProjectActivity extends ActionBarActivity {
                 Intent intent1 = new Intent(DescriptifProjectActivity.this, AddMemberProjet.class);
                 intent1.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
                 DescriptifProjectActivity.this.startActivity(intent1);
+                DescriptifProjectActivity.this.finish();
             }
         });
 
@@ -98,6 +99,7 @@ public class DescriptifProjectActivity extends ActionBarActivity {
                 Intent intent1 = new Intent(DescriptifProjectActivity.this, TransferChief.class);
                 intent1.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
                 DescriptifProjectActivity.this.startActivity(intent1);
+                DescriptifProjectActivity.this.finish();
             }
         });
 
@@ -107,6 +109,7 @@ public class DescriptifProjectActivity extends ActionBarActivity {
                 Intent intent1 = new Intent(DescriptifProjectActivity.this, Statistic_sprint.class);
                 intent1.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projet.getId()));
                 DescriptifProjectActivity.this.startActivity(intent1);
+                DescriptifProjectActivity.this.finish();
             }
         });
 

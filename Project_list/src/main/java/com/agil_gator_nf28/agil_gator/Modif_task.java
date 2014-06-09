@@ -101,6 +101,7 @@ public class Modif_task extends ActionBarActivity {
 
                     Intent intent1 = getSupportParentActivityIntent();
                     modif_task.startActivity(intent1);
+                    Modif_task.this.finish();
                 }
 
                  });

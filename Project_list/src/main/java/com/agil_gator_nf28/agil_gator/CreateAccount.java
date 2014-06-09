@@ -78,6 +78,7 @@ public class CreateAccount extends ActionBarActivity {
                 //On retourne sur la page d'accueil
                 Intent intent = getSupportParentActivityIntent();
                 startActivity(intent);
+                CreateAccount.this.finish();
             }
 
         });

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:gravity="center_horizontal"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:text="Titre"
         android:id="@+id/postitGrosTitre"/>
@@ -23,10 +23,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="70dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="30dp"
         android:id="@+id/postitContenu"
+        android:textSize="16sp"
         android:layout_alignTop="@+id/postitGrosTitre"
         android:text="Gros text, il explique en gros les enjeux des différences entre taches et sous taches, malgrès une beautée internière riche en émotions"/>
 

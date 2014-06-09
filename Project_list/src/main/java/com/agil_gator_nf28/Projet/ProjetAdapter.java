@@ -101,6 +101,7 @@ public class ProjetAdapter extends BaseAdapter {
                 Intent intent = new Intent(project_list, Page_projet.class);
                 intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projets.get(pos).getId()));
                 project_list.startActivity(intent);
+                project_list.finish();
             }
         });
 
