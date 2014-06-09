@@ -87,7 +87,7 @@ public class Project_List extends ActionBarActivity {
         switch (item.getItemId()) {
             case MENU_DESCRIPTION:
                 intent = new Intent(Project_List.this,DescriptifProjectActivity.class);
-                intent.putExtra(AndroidConstantes.PROJECT_ID,selectedProject.getId());
+                intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(selectedProject.getId()));
                 startActivity(intent);
                 return true;
             case MENU_EDIT:
