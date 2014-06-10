@@ -114,13 +114,10 @@ public class Statistic_sprint extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
-
-                    if (seriesSelection == null) {
-                        Toast.makeText(Statistic_sprint.this, "Pas d'element du camembert a été selectionné" + afaire + " " + encours + " " + arelire + " " + done + " " + ID, Toast.LENGTH_SHORT).show();
-                    } else {
+                    if (seriesSelection != null) {
                         Toast.makeText(Statistic_sprint.this, mapTitle.get(seriesSelection.getPointIndex()+1) + " : nombre de sous tâches ="+ seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
                     }
-                }
+                 }
             });
 
             layout.addView(mChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));

@@ -140,8 +140,8 @@ public class SprintBDD extends GestionnaireBDD {
     public ArrayList<SousTache> getSousTachesFromSprintID(int sprint_id){
         String query =  "SELECT " + AndroidConstantes.COL_SS_TACHE_ID + ", " + AndroidConstantes.COL_SS_TACHE_NAME + ", " + AndroidConstantes.COL_SS_TACHE_ETAT + ", " + AndroidConstantes.COL_SS_TACHE_USER
                 + " FROM " + AndroidConstantes.TABLE_SS_TACHE
-                + " WHERE " + AndroidConstantes.COL_SS_TACHE_TACHE + "=" + "(SELECT "+AndroidConstantes.COL_TACHE_ID +" FROM " + AndroidConstantes.TABLE_TACHE
-                + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + sprint_id + ")" + ";";
+                + " WHERE " + AndroidConstantes.COL_SS_TACHE_TACHE + " IN " + "(SELECT "+AndroidConstantes.COL_TACHE_ID +" FROM " + AndroidConstantes.TABLE_TACHE
+                + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + " = " + sprint_id + ")" + ";";
         Cursor c = bdd.rawQuery(query,null);
         return getAllSousTache(c);
     }
@@ -160,6 +160,7 @@ public class SprintBDD extends GestionnaireBDD {
             SousTache sub = new SousTache();
             //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
             sub.setId(c.getInt(NUM_COL_ID));
+            System.out.println("IDENTIFIANT SOUS TACHE : "+sub.getId());
             sub.setTitre(c.getString(1));
             sub.setEtat(SousTacheEtat.valueOf(c.getString(2)));
 
