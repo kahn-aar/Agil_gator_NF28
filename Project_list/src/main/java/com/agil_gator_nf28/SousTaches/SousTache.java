@@ -16,6 +16,7 @@ public class SousTache {
     private String description;
     private SousTacheEtat etat;
     private User effecteur;
+    private Tache tache;
 
     public SousTache() {
     }
@@ -49,7 +50,11 @@ public class SousTache {
     }
 
     public Tache getTache() {
-        return null;
+        return tache;
+    }
+
+    public  void setTache(Tache tache) {
+        this.tache = tache;
     }
 
     public User getEffecteur() {

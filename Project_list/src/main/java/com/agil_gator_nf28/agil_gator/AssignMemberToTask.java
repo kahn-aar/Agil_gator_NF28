@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.BddInterne.UserBDD;
@@ -27,6 +28,8 @@ public class AssignMemberToTask extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_member_projet);
         final ListView listeView = (ListView)findViewById(R.id.listeMembres);
+        TextView title = (TextView) findViewById(R.id.title_add_member);
+        title.setText("Assigner cette sous tâche au membre");
 
         Intent intent = getIntent();
         if (intent != null) {

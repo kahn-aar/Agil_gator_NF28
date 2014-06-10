@@ -24,7 +24,7 @@ public class SousTacheBDD extends GestionnaireBDD {
     private static final int NUM_COL_TITRE = 1;
     private static final int NUM_COL_ETAT = 2;
     private static final int NUM_COL_DESCRIPTION = 3;
-    private static final int NUM_COL_TACHE = 5;
+    private static final int NUM_COL_TACHE = 4;
     private static final int NUM_COL_EFFECTEUR = 4;
 
     public SousTacheBDD(Context context){
@@ -109,7 +109,7 @@ public class SousTacheBDD extends GestionnaireBDD {
     }
 
     public SousTache getSousTacheFromId(int id) {
-        String query = "SELECT " + AndroidConstantes.COL_SS_TACHE_ID + ", " + AndroidConstantes.COL_SS_TACHE_NAME + ", " + AndroidConstantes.COL_SS_TACHE_DESCRIPTION + ", " + AndroidConstantes.COL_SS_TACHE_ETAT
+        String query = "SELECT " + AndroidConstantes.COL_SS_TACHE_ID + ", " + AndroidConstantes.COL_SS_TACHE_NAME + ", " + AndroidConstantes.COL_SS_TACHE_ETAT + ", " + AndroidConstantes.COL_SS_TACHE_DESCRIPTION + ", " + AndroidConstantes.COL_SS_TACHE_TACHE
                 + " FROM " + AndroidConstantes.TABLE_SS_TACHE
                 + " WHERE " + AndroidConstantes.COL_SS_TACHE_ID + "=" + id + ";";
         Cursor c = bdd.rawQuery(query, null);
@@ -134,6 +134,12 @@ public class SousTacheBDD extends GestionnaireBDD {
         sousTache.setEtat(SousTacheEtat.valueOf(c.getString(NUM_COL_ETAT)));
         sousTache.setDescription(c.getString(NUM_COL_DESCRIPTION));
 
+        TacheBDD tacheBDD = new TacheBDD(context);
+        tacheBDD.open();
+        sousTache.setTache(tacheBDD.getTacheWithId(c.getInt(NUM_COL_TACHE)));
+        tacheBDD.close();
+
+
 
         //On ferme le cursor
         c.close();
@@ -154,5 +160,11 @@ public class SousTacheBDD extends GestionnaireBDD {
         values.put(AndroidConstantes.COL_SS_TACHE_ETAT, clicked.getEtat().name());
         bdd.update(AndroidConstantes.TABLE_SS_TACHE, values, AndroidConstantes.COL_SS_TACHE_ID + " = " + clicked.getId(), null);
         System.out.println("User update = " + clicked.getEffecteur().getEmail());
+    }
+
+    public void updateSousTacheTache(Tache selected, SousTache sousTache) {
+        ContentValues values = new ContentValues();
+        values.put(AndroidConstantes.COL_SS_TACHE_TACHE, selected.getId());
+        bdd.update(AndroidConstantes.TABLE_SS_TACHE, values, AndroidConstantes.COL_SS_TACHE_ID + " = " + sousTache.getId(), null);
     }
 }

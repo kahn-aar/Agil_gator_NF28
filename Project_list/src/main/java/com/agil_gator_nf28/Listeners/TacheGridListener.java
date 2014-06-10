@@ -5,9 +5,12 @@ import android.content.ClipData;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.HorizontalScrollView;
+import android.widget.ScrollView;
 
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.SousTaches.SousTache;
@@ -29,21 +32,22 @@ import java.util.List;
 public class TacheGridListener implements View.OnDragListener {
 
     private Context context;
-    private SousTacheAdapter adapter;
 
     Drawable enterShape;
     Drawable normalShape;
-    SousTache actualDragged;
     SousTacheEtat clicked;
     List<SousTache> taches;
+    View vueTotale;
+    Tache linkedTask;
 
-    public TacheGridListener(Context context, List<SousTache> taches, SousTacheAdapter adapter, SousTacheEtat etat) {
+    public TacheGridListener(Context context, List<SousTache> taches, Tache tache, SousTacheEtat etat, View vue) {
         this.context = context;
-        this.adapter = adapter;
         this.clicked = etat;
         this.taches = taches;
         this.enterShape = context.getResources().getDrawable(R.drawable.shape_droptarget);
         this.normalShape = context.getResources().getDrawable(R.drawable.shape);
+        this.vueTotale = vue;
+        this.linkedTask = tache;
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -57,6 +61,23 @@ public class TacheGridListener implements View.OnDragListener {
                 case DragEvent.ACTION_DRAG_ENTERED:
                     //v.setBackgroundDrawable(enterShape);
                     break;
+                case DragEvent.ACTION_DRAG_LOCATION:
+                    HorizontalScrollView mainScrollView = (HorizontalScrollView) vueTotale.findViewById(R.id.main_scroll_view);
+
+                    int topOfDropZone = v.getRight();
+                    int bottomOfDropZone = v.getLeft();
+
+                    int scrollX = mainScrollView.getScrollX();
+                    int getScrollViewWidth = mainScrollView.getMeasuredWidth();
+
+
+                    if (topOfDropZone > (scrollX + getScrollViewWidth - 300))
+                        mainScrollView.smoothScrollBy(30, 0);
+
+                    if (bottomOfDropZone < (scrollX + 300))
+                        mainScrollView.smoothScrollBy(-30, 0);
+
+                    break;
                 case DragEvent.ACTION_DRAG_EXITED:
                     //v.setBackgroundDrawable(normalShape);
                     break;
@@ -66,12 +87,17 @@ public class TacheGridListener implements View.OnDragListener {
                     SousTacheEtat old = SousTacheEtat.valueOf(event.getClipData().getItemAt(1).getText().toString());
                     View view = (View) event.getLocalState();
 
-                    if (! clicked.equals(old)) {
-                        SousTacheBDD sousTacheBDD = new SousTacheBDD(context);
+                    SousTacheBDD sousTacheBDD = new SousTacheBDD(context);
+                    sousTacheBDD.open();
+                    //Mise a jour en base de données
+                    SousTache selected = sousTacheBDD.getSousTacheFromId(id);
+                    sousTacheBDD.close();
+
+                    if (! clicked.equals(old) || selected.getTache().getId() != linkedTask.getId()) {
+                        selected.setEtat(clicked);
                         sousTacheBDD.open();
                         //Mise a jour en base de données
                         sousTacheBDD.updateSousTacheEtat(id, clicked);
-                        SousTache selected = sousTacheBDD.getSousTacheFromId(id);
                         sousTacheBDD.close();
 
                         //Récupération des différentes vues
@@ -79,26 +105,37 @@ public class TacheGridListener implements View.OnDragListener {
                         GridView owner = (GridView) view.getParent();
                         GridView container = (GridView) v;
 
-                        //TMP - user
                         if(SousTacheEtat.AFAIRE.equals(old) && SousTacheEtat.ENCOURS.equals(clicked)) {
                             selected.setEffecteur(ConnectedUser.getInstance().getConnectedUser());
                             sousTacheBDD.open();
                             //Mise a jour en base de données
                             sousTacheBDD.updateSousTacheEffecteur(selected);
                             sousTacheBDD.close();
+                            System.out.println("Ok bdd");
                         }
+
+                        if (selected.getTache().getId() != linkedTask.getId()) {
+                            selected.setTache(linkedTask);
+                            sousTacheBDD.open();
+                            //Mise a jour en base de données
+                            sousTacheBDD.updateSousTacheTache(linkedTask, selected);
+                            sousTacheBDD.close();
+                            System.out.println("Ok bdd2 wtf");
+                        }
+                        System.out.println("maj");
 
                         //Mise a jour de la vue
                         ((SousTacheAdapter )container.getAdapter()).addSousTache(selected);
                         ((SousTacheAdapter )container.getAdapter()).notifyDataSetChanged();
                         ((SousTacheAdapter )owner.getAdapter()).removeSousTacheId(id);
                         ((SousTacheAdapter )owner.getAdapter()).notifyDataSetChanged();
+                        System.out.println("end maj");
                     }
 
-                    view.setVisibility(View.VISIBLE);
+                    //view.setVisibility(View.VISIBLE);
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
-                    v.setBackgroundDrawable(normalShape);
+                    //v.setBackgroundDrawable(normalShape);
                 default:
                     break;
                 }

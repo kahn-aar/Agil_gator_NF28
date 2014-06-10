@@ -71,6 +71,7 @@ public class SousTacheAdapter extends ArrayAdapter<SousTache> {
                 tacheToRemove = tache;
             }
         }
+        System.out.println("suppression");
         taches.remove(tacheToRemove);
     }
 
