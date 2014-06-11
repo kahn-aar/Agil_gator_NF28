@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class LoginActivity extends ActionBarActivity {
         final EditText emailText = (EditText) findViewById(R.id.user_email);
         final EditText passwordText = (EditText) findViewById(R.id.user_password);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         final Button loginButton = (Button) findViewById(R.id.connect);
         loginButton.setOnClickListener(new View.OnClickListener() {
 

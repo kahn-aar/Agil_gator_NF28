@@ -1,6 +1,9 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,10 +29,15 @@ public class Add_Task extends ActionBarActivity {
 
     private Projet project;
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add__task);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
+
         Intent intent = getIntent();
         if (intent != null) {
             int projectId = Integer.valueOf(intent.getStringExtra(AndroidConstantes.PROJECT_ID));
@@ -108,11 +116,5 @@ public class Add_Task extends ActionBarActivity {
         }
     }
 
-    @Override
-    public Intent getSupportParentActivityIntent() {
-        Intent intent = new Intent(this, Page_projet.class);
-        intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
-        return intent;
-    }
 
 }

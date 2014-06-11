@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -27,6 +28,8 @@ public class TransferChief extends ActionBarActivity {
         setContentView(R.layout.activity_add_member_projet);
         final ListView listeView = (ListView)findViewById(R.id.listeMembres);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         Intent intent = getIntent();
         if (intent != null) {
             id_project = Integer.valueOf(intent.getStringExtra(AndroidConstantes.PROJECT_ID));

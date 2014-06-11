@@ -55,6 +55,8 @@ public class Statistic extends ActionBarActivity {
         tacheId = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
         projectId = intent.getIntExtra(AndroidConstantes.PROJECT_ID,-1);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
 
         if(tacheId != -1){
             TacheBDD tacheBDD = new TacheBDD(this);

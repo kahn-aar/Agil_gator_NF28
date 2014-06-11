@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -31,6 +32,8 @@ public class AssignMemberToTask extends ActionBarActivity {
         TextView title = (TextView) findViewById(R.id.title_add_member);
         title.setText("Assigner cette sous tâche au membre");
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         Intent intent = getIntent();
         if (intent != null) {
             id_sous_tache = Integer.valueOf(intent.getStringExtra(AndroidConstantes.SOUS_TACHE_ID));

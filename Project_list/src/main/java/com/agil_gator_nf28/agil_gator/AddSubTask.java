@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -36,6 +37,9 @@ public class AddSubTask extends ActionBarActivity {
         setContentView(R.layout.activity_add_sub_task);
         //add_sub_task_task_name
         Intent intent = getIntent();
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         if (intent != null) {
             int projectId = intent.getIntExtra(AndroidConstantes.PROJECT_ID, -1);
             int tacheId = intent.getIntExtra(AndroidConstantes.TACHE_ID, -1);

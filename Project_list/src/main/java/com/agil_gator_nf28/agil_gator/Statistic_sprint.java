@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
@@ -55,6 +56,8 @@ public class Statistic_sprint extends ActionBarActivity {
 
         setContentView(R.layout.activity_statistic);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         Intent intent = getIntent();
         ID = Integer.valueOf(intent.getStringExtra(AndroidConstantes.PROJECT_ID));
 

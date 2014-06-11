@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -28,6 +29,8 @@ public class PageSprint extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_sprint);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         ListView contenuDeLaPage = (ListView)findViewById(R.id.contenuDeLaPage);
 
         Intent intent = getIntent();
@@ -54,7 +57,7 @@ public class PageSprint extends ActionBarActivity {
             titre.setText(project.getName() + " sprint n°" + sprint.getNumber());
 
 
-            ArchivedTacheAdapter adapter = new ArchivedTacheAdapter(PageSprint.this, getApplicationContext(), taches, sprint.getId());
+            ArchivedTacheAdapter adapter = new ArchivedTacheAdapter(PageSprint.this, getApplicationContext(), taches, projectId);
             // On dit à la ListView de se remplir via cet adapter
             contenuDeLaPage.setAdapter(adapter);
         }

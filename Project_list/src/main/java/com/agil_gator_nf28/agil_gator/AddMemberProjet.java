@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -23,6 +24,10 @@ public class AddMemberProjet extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_member_projet);
         final ListView listeView = (ListView)findViewById(R.id.listeMembres);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
+
 
         Intent intent = getIntent();
         if (intent != null) {

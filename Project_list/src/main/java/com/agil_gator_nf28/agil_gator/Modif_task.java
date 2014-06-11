@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -45,6 +46,8 @@ public class Modif_task extends ActionBarActivity {
             sprintIdFrom = intent.getIntExtra(AndroidConstantes.SPRINT_ID,-1);
         }
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
        if (intent != null) {
            final Modif_task modif_task = this;
 

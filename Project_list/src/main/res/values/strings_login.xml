@@ -4,7 +4,7 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="image_content_description">Agil\'gator</string>
     <string name="create_account">créer un compte</string>
-    <string name="email_login">login</string>
-    <string name="password">mot de passe</string>
+    <string name="email_login">Email</string>
+    <string name="password">Password</string>
     <string name="connect">Connexion</string>
 </resources>

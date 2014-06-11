@@ -40,14 +40,16 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
     private Context context;
     private Page_projet page_project;
     private int Position;
+    private int projectId;
 
 
-    public TacheAdapter(Page_projet page_project, int view, Context context, List<Tache> taches) {
+    public TacheAdapter(Page_projet page_project, int view, Context context, List<Tache> taches, int projectId) {
         super(context,view,taches);
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.taches = taches == null ? new ArrayList<Tache>() : taches;
         this.page_project = page_project;
+        this.projectId = projectId;
     }
 
     @Override
@@ -125,10 +127,10 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(page_project, DescriptifTaskActivity.class);
-                intent.putExtra(AndroidConstantes.TACHE_ID, taches.get(pos).getId());
+                intent.putExtra(AndroidConstantes.TACHE_ID, String.valueOf(taches.get(pos).getId()));
+                intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projectId));
                 intent.putExtra(AndroidConstantes.TASK_DESC_FROM, AndroidConstantes.TASK_DESC_FROM_LIST);
                 page_project.startActivity(intent);
-                page_project.finish();
             }
         }));
 

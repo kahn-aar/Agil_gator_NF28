@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -28,6 +29,8 @@ public class ArchivedSprint extends ActionBarActivity {
         setContentView(R.layout.activity_archived_sprint);
         ListView contenuDeLaPage = (ListView)findViewById(R.id.contenuDeLaPage);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         Intent intent = getIntent();
         if (intent != null) {
             ProjetBDD projetBDD = new ProjetBDD(this);

@@ -38,10 +38,10 @@
     <string name="error_login">Mauvaise combinaison email/password</string>
     <string name="title_activity_create_account">CreateAccount</string>
     <string name="title_activity_statistic">Statistique</string>
-    <string name="create_account_email">email</string>
+    <string name="create_account_email">Email</string>
     <string name="create_account_nom">Nom</string>
-    <string name="create_account_prenom">Prenom</string>
-    <string name="create_account_password">password</string>
+    <string name="create_account_prenom">Prénom</string>
+    <string name="create_account_password">Password</string>
     <string name="error_account_email">L\'email que vous avez entré est incorecte</string>
     <string name="error_account_name">Veuillez entrer un nom</string>
     <string name="error_account_prenom">Veuillez entrer un prénom</string>
