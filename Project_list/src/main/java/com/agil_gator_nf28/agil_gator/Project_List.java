@@ -47,10 +47,9 @@ public class Project_List extends ActionBarActivity {
 
         List<Projet> projets = projetBdd.getProjetsFromUser(ConnectedUser.getInstance().getConnectedUser());
 
-
         projetBdd.close();
 
-        adapter = new ProjetAdapter(Project_List.this, getApplicationContext(), projets);
+        adapter = new ProjetAdapter(getApplicationContext(), R.id.contenuDeLaPage,  projets, Project_List.this);
         // On dit à la ListView de se remplir via cet adapter
         Thread thread = new Thread()
         {
@@ -107,7 +106,12 @@ public class Project_List extends ActionBarActivity {
                                 projetBDD.open();
                                 projetBDD.removeProjetWithID(selectedProject.getId());
                                 projetBDD.close();
-                               // adapter.remove(selectedProject);
+                                UserProjetBDD userProjectBDD = new UserProjetBDD(Project_List.this);
+                                userProjectBDD.open();
+                                userProjectBDD.removeProjetUserWithID(selectedProject.getId());
+                                userProjectBDD.close();
+                                adapter.removeProjectId(selectedProject.getId());
+                                adapter.notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {

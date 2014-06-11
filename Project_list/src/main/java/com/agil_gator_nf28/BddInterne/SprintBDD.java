@@ -65,6 +65,17 @@ public class SprintBDD extends GestionnaireBDD {
         return getFirstSprint(c);
     }
 
+
+    public Sprint getLastSprintOfProjectWithId(int proj_id) {
+        String query = "SELECT " + AndroidConstantes.COL_SPRINT_ID + ", " + AndroidConstantes.COL_SPRINT_NUMBER
+                + " FROM " + AndroidConstantes.TABLE_SPRINT
+                + " WHERE " + AndroidConstantes.COL_SPRINT_PROJET + "=" + proj_id
+                + " ORDER BY " + AndroidConstantes.COL_SPRINT_NUMBER + " DESC;";
+        Cursor c = bdd.rawQuery(query, null);
+
+        return getFirstSprint(c);
+    }
+
     public Sprint getFirstSprint(Cursor c) {
         if (c.getCount() == 0)
             return null;

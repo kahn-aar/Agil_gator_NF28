@@ -12,9 +12,13 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
+import com.agil_gator_nf28.BddInterne.SprintBDD;
 import com.agil_gator_nf28.BddInterne.TacheBDD;
+import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Utils.Avancement;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
@@ -62,7 +66,7 @@ public class DescriptifTaskActivity extends ActionBarActivity {
             tacheBDD.open();
 
             tache = tacheBDD.getTacheWithId(tacheId);
-
+            int sprint_id = tacheBDD.getSprintIdWithTacheId(tacheId);
             tacheBDD.close();
 
             //Récupération des Sous taches
@@ -73,6 +77,16 @@ public class DescriptifTaskActivity extends ActionBarActivity {
 
             Avancement avancement = new Avancement(tache.getSousTaches().size(), tache.getSousTachesDone().size(), tache.getSousTachesEnCours().size() + tache.getSousTachesARelire().size());
 
+            /** on verifie si la tache est archive **/
+           /* SprintBDD sprintBDD = new SprintBDD(this);
+            sprintBDD.open();
+            Sprint actualsprint = sprintBDD.getLastSprintOfProjectWithId(projetId);
+            sprintBDD.close();
+
+            if(actualsprint.getId()!=sprint_id){
+                assign.setClickable(false);
+                suppbutton.setClickable(false);
+            }*/
 
             /** on remplit les champs de la description d'une tache **/
             title_project.setText(tache.getNom());
@@ -101,6 +115,8 @@ public class DescriptifTaskActivity extends ActionBarActivity {
                     DescriptifTaskActivity.this.finish();
                 }
             });
+
+
 
             statsbutton.setOnClickListener(new View.OnClickListener() {
                 @Override

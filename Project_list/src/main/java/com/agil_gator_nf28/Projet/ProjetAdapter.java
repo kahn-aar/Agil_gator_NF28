@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -14,12 +15,13 @@ import com.agil_gator_nf28.agil_gator.R;
 import com.agil_gator_nf28.agil_gator.Statistic_sprint;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Nicolas on 05/05/14.
  */
-public class ProjetAdapter extends BaseAdapter {
+public class ProjetAdapter extends ArrayAdapter<Projet> {
 
     private List<Projet> projets;
     private LayoutInflater inflater;
@@ -29,16 +31,14 @@ public class ProjetAdapter extends BaseAdapter {
 
     final String EXTRA_ID = "user_login";
 
-    public ProjetAdapter(Context context, List<Projet> projets) {
+
+    public ProjetAdapter(Context context, int view, List<Projet> projets, Project_List project_list) {
+        super(context, view, projets);
+        this.project_list = project_list;
         inflater = LayoutInflater.from(context);
-        this.projets = projets;
+        this.projets = projets ==null ? new ArrayList<Projet>() : projets;
     }
 
-    public ProjetAdapter(Project_List project_list, Context applicationContext, List<Projet> projets) {
-        this.project_list = project_list;
-        inflater = LayoutInflater.from(applicationContext);
-        this.projets = projets;
-    }
 
     @Override
     public int getCount() {
@@ -46,13 +46,25 @@ public class ProjetAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return projets.get(position);
+    public Projet getItem(int position) {
+        return super.getItem(position);
     }
 
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    public void removeProjectId(int supp_projet_id){
+        Projet supp_projet = null;
+        for(Projet projet : projets) {
+            if (projet.getId() == supp_projet_id) {
+                supp_projet = projet;
+            }
+        }
+        System.out.println("suppression");
+        System.out.println(projets.remove(supp_projet));
+
     }
 
     public int getposition (){

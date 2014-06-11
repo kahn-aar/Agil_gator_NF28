@@ -102,6 +102,21 @@ public class TacheBDD extends GestionnaireBDD {
         return toList(c);
     }
 
+    public int getSprintIdWithTacheId(int tache_id){
+        String query = "SELECT "+AndroidConstantes.COL_TACHE_SPRINT
+                +" FROM "+AndroidConstantes.TABLE_TACHE
+                +" WHERE "+AndroidConstantes.COL_TACHE_ID+" = '"+tache_id+"';";
+        Cursor c = bdd.rawQuery(query,null);
+
+        if (c.getCount() == 0)
+            return 0;
+
+        c.moveToFirst();
+        int sprint = c.getInt(0);
+        c.close();
+        return sprint;
+    }
+
     public List<Tache> getTachesWithIdSprint(int id_sprint) {
        /* String query = "SELECT " + AndroidConstantes.COL_TACHE_ID + ", " + AndroidConstantes.COL_TACHE_NAME + ", " + AndroidConstantes.COL_TACHE_PRIORITE + ", " + AndroidConstantes.COL_TACHE_DIFFICULTE
                 + " FROM " + AndroidConstantes.TABLE_TACHE

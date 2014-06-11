@@ -40,6 +40,11 @@ public class UserProjetBDD extends GestionnaireBDD {
         return bdd.insert(AndroidConstantes.TABLE_USER_PROJET, null, values);
     }
 
+    public int removeProjetUserWithID(int project_id){
+        //Suppression d'un livre de la BDD grâce à l'ID
+        return bdd.delete(AndroidConstantes.TABLE_USER_PROJET, AndroidConstantes.COL_USER_PROJET_PROJET + " = " +project_id, null);
+    }
+
     public List<Projet> getProjetsFromUser(User connectedUser) {
 
         String query = "SELECT " + AndroidConstantes.COL_USER_PROJET_PROJET

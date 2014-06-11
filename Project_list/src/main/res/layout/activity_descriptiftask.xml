@@ -121,6 +121,12 @@
 
     </ScrollView>
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonScrollView"
+        android:layout_alignParentBottom="true">
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
@@ -130,11 +136,11 @@
         android:weightSum="1">
 
         <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/assign_task_button"
             android:src="@drawable/plus_icone2"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"/>
 
         <ImageButton
@@ -146,21 +152,22 @@
             android:layout_marginTop="5dp"/>
 
         <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/suppbutton"
             android:src="@drawable/supp_icone2"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"/>
 
       </LinearLayout>
+    </HorizontalScrollView>
 
     <View
         android:background="@android:color/darker_gray"
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:id="@+id/separateur"
-        android:layout_above="@id/menu_options"
+        android:layout_above="@id/buttonScrollView"
         />
 
 </RelativeLayout>
