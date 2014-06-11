@@ -27,6 +27,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Page d'affichage des statistiques d'une tache
+ *
  * Created by Mathieu on 05/06/14.
  */
 public class Statistic extends ActionBarActivity {

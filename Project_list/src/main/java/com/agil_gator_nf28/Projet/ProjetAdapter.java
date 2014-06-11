@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.Project_List;
 import com.agil_gator_nf28.agil_gator.R;
-import com.agil_gator_nf28.agil_gator.Statistic_sprint;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
@@ -62,8 +60,7 @@ public class ProjetAdapter extends ArrayAdapter<Projet> {
                 supp_projet = projet;
             }
         }
-        System.out.println("suppression");
-        System.out.println(projets.remove(supp_projet));
+        projets.remove(supp_projet);
 
     }
 
@@ -88,7 +85,6 @@ public class ProjetAdapter extends ArrayAdapter<Projet> {
 
         final int pos = position;
         Position = position;
-        System.out.println("POSITION"+pos);
 
         if(convertView == null) {
             holder = new ViewHolder();

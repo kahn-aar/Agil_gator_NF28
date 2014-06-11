@@ -1,9 +1,7 @@
 package com.agil_gator_nf28.agil_gator;
 
-import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +16,6 @@ import com.agil_gator_nf28.SousTaches.SousTache;
  *
  * Created by Nicolas on 09/06/14.
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class SousTacheFragment  extends DialogFragment {
 
     private class ViewHolder {

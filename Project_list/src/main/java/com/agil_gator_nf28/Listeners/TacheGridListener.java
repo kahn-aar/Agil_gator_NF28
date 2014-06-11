@@ -1,16 +1,11 @@
 package com.agil_gator_nf28.Listeners;
 
-import android.annotation.TargetApi;
-import android.content.ClipData;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.HorizontalScrollView;
-import android.widget.ScrollView;
 
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.SousTaches.SousTache;
@@ -18,7 +13,6 @@ import com.agil_gator_nf28.SousTaches.SousTacheAdapter;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.User.ConnectedUser;
-import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.agil_gator.R;
 
 import java.util.List;
@@ -28,7 +22,6 @@ import java.util.List;
  *
  * Created by Nicolas on 22/05/14.
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class TacheGridListener implements View.OnDragListener {
 
     private Context context;
@@ -50,7 +43,6 @@ public class TacheGridListener implements View.OnDragListener {
         this.linkedTask = tache;
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public boolean onDrag(View v, DragEvent event) {
             int action = event.getAction();
@@ -111,7 +103,6 @@ public class TacheGridListener implements View.OnDragListener {
                             //Mise a jour en base de données
                             sousTacheBDD.updateSousTacheEffecteur(selected);
                             sousTacheBDD.close();
-                            System.out.println("Ok bdd");
                         }
 
                         if (selected.getTache().getId() != linkedTask.getId()) {
@@ -120,16 +111,13 @@ public class TacheGridListener implements View.OnDragListener {
                             //Mise a jour en base de données
                             sousTacheBDD.updateSousTacheTache(linkedTask, selected);
                             sousTacheBDD.close();
-                            System.out.println("Ok bdd2 wtf");
                         }
-                        System.out.println("maj");
 
                         //Mise a jour de la vue
                         ((SousTacheAdapter )container.getAdapter()).addSousTache(selected);
                         ((SousTacheAdapter )container.getAdapter()).notifyDataSetChanged();
                         ((SousTacheAdapter )owner.getAdapter()).removeSousTacheId(id);
                         ((SousTacheAdapter )owner.getAdapter()).notifyDataSetChanged();
-                        System.out.println("end maj");
                     }
 
                     //view.setVisibility(View.VISIBLE);

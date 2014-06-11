@@ -30,8 +30,6 @@ public class UserProjetBDD extends GestionnaireBDD {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
 
-        System.out.println("insert user projet");
-
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_USER_PROJET_USER, user.getId());
         values.put(AndroidConstantes.COL_USER_PROJET_PROJET, projetId);

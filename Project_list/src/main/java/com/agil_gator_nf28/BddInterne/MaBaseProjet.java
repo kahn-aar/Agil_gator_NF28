@@ -64,7 +64,6 @@ public class MaBaseProjet extends SQLiteOpenHelper {
 
     public MaBaseProjet(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-        System.out.println("création de la bdd");
     }
 
 

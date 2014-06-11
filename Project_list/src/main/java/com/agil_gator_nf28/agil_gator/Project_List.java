@@ -3,25 +3,22 @@ package com.agil_gator_nf28.agil_gator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
-import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.BddInterne.UserProjetBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Projet.ProjetAdapter;
 import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Project_List extends ActionBarActivity {
@@ -57,7 +54,7 @@ public class Project_List extends ActionBarActivity {
             public void run() {
         contenuDeLaPage.setAdapter(adapter);
     }};
-    thread.start();
+        thread.start();
 
         this.registerForContextMenu(contenuDeLaPage);
     }

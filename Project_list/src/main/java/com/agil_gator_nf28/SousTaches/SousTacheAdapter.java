@@ -1,11 +1,7 @@
 package com.agil_gator_nf28.SousTaches;
 
-import android.annotation.TargetApi;
-import android.app.Dialog;
 import android.app.FragmentManager;
-import android.content.ClipData;
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +67,6 @@ public class SousTacheAdapter extends ArrayAdapter<SousTache> {
                 tacheToRemove = tache;
             }
         }
-        System.out.println("suppression");
         taches.remove(tacheToRemove);
     }
 
@@ -87,8 +82,6 @@ public class SousTacheAdapter extends ArrayAdapter<SousTache> {
     }
 
 
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

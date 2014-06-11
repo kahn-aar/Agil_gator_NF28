@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
@@ -56,8 +55,6 @@ public class TacheBDD extends GestionnaireBDD {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
 
-        System.out.println("insert Tache, sprint = " + sprint.getNumber());
-
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_TACHE_NAME, tache.getNom());
         values.put(AndroidConstantes.COL_TACHE_DESCRIPTION, tache.getDescription());
@@ -78,7 +75,6 @@ public class TacheBDD extends GestionnaireBDD {
     }
 
     public void deleteTacheWithId(int id){
-       // bdd.rawQuery("DELETE FROM "+AndroidConstantes.TABLE_TACHE + " WHERE "+AndroidConstantes.COL_TACHE_ID+" = '"+id+"';",null);
         bdd.delete(AndroidConstantes.TABLE_TACHE,AndroidConstantes.COL_TACHE_ID +" = "+id+" ",null);
     }
 
@@ -118,9 +114,6 @@ public class TacheBDD extends GestionnaireBDD {
     }
 
     public List<Tache> getTachesWithIdSprint(int id_sprint) {
-       /* String query = "SELECT " + AndroidConstantes.COL_TACHE_ID + ", " + AndroidConstantes.COL_TACHE_NAME + ", " + AndroidConstantes.COL_TACHE_PRIORITE + ", " + AndroidConstantes.COL_TACHE_DIFFICULTE
-                + " FROM " + AndroidConstantes.TABLE_TACHE
-                + " WHERE " + AndroidConstantes.COL_TACHE_PROJET + "=" + id_project + ";";*/
         String query = "SELECT * FROM " + AndroidConstantes.TABLE_TACHE
                 + " WHERE " + AndroidConstantes.COL_TACHE_SPRINT + "=" + id_sprint
                 + " ORDER BY " + AndroidConstantes.COL_TACHE_PRIORITE + " DESC;";

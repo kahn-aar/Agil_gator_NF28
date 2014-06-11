@@ -2,10 +2,8 @@ package com.agil_gator_nf28.agil_gator;
 
 import android.app.ActionBar;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +15,6 @@ import com.agil_gator_nf28.BddInterne.UserProjetBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.User.ConnectedUser;
-import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

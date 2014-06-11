@@ -4,13 +4,11 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,13 +16,9 @@ import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.BddInterne.UserBDD;
 import com.agil_gator_nf28.Projet.Projet;
-import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.User.User;
-import com.agil_gator_nf28.User.UserAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 

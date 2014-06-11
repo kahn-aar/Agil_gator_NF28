@@ -1,9 +1,7 @@
 package com.agil_gator_nf28.User;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;
-import com.agil_gator_nf28.BddInterne.UserProjetBDD;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.agil_gator.Page_projet;
@@ -22,6 +19,8 @@ import java.util.List;
 
 
 /**
+ * Adapteur pour la liste des user pour leur assigner une tâche
+ *
  * Created by Nicolas on 05/06/14.
  */
 public class UserAssignAdapter extends ArrayAdapter<User> {
@@ -60,7 +59,6 @@ public class UserAssignAdapter extends ArrayAdapter<User> {
         TextView email;
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
@@ -85,8 +83,7 @@ public class UserAssignAdapter extends ArrayAdapter<User> {
         holder.nom.setText(users.get(position).getName());
         holder.prenom.setText(users.get(position).getFirstname());
         holder.email.setText(users.get(position).getEmail());
-        System.out.println(users.get(position).getEmail());
-        //Onclick sur la view
+
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,8 +95,6 @@ public class UserAssignAdapter extends ArrayAdapter<User> {
                 sousTacheBDD.open();
                 sousTacheBDD.updateSousTacheEffecteur(sousTache);
                 sousTacheBDD.close();
-
-                System.out.println("User update = " + users.get(pos));
 
                 Intent intent = new Intent(getContext(), Page_projet.class);
                 intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projectId));

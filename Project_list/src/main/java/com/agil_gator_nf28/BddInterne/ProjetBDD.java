@@ -3,7 +3,6 @@ package com.agil_gator_nf28.BddInterne;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.User.User;
@@ -33,8 +32,6 @@ public class ProjetBDD extends GestionnaireBDD{
     public long insertProjet(Projet projet){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
-
-        System.out.println("insert projet");
 
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_NAME, projet.getName());
@@ -133,9 +130,7 @@ public class ProjetBDD extends GestionnaireBDD{
         userBDD.open();
         projet.setChef(userBDD.getUserById(chefID));
         userBDD.close();
-        //projet.setAdvanced(c.getInt(NUM_COL_ADVANCED));
 
-        System.out.println("chef de projet : " + projet.getChef().getEmail());
 
         //On ferme le cursor
         c.close();

@@ -10,13 +10,14 @@ import android.widget.TextView;
 
 import com.agil_gator_nf28.agil_gator.AssignMember;
 import com.agil_gator_nf28.agil_gator.AssignMemberToTask;
-import com.agil_gator_nf28.agil_gator.DescriptifTaskActivity;
 import com.agil_gator_nf28.agil_gator.R;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
 
 /**
+ * Adapteur pour la liste des sous tache
+ *
  * Created by Nicolas on 02/06/14.
  */
 public class SousTacheListAdapter extends BaseAdapter {
@@ -73,10 +74,8 @@ public class SousTacheListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        // On défini ici le texte que doit contenir chacun des TextView
-        // Le premier affichera le numéro de l'élément (numéro de ligne)
+
         holder.nom.setText(taches.get(position).getTitre());
-        //holder.desc.setText(String.valueOf(taches.get(position).get));
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,13 +10,14 @@ import android.widget.TextView;
 
 import com.agil_gator_nf28.agil_gator.ArchivedSprint;
 import com.agil_gator_nf28.agil_gator.PageSprint;
-import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
 
 /**
+ * Adapteur pour la liste des sprint
+ *
  * Created by Nicolas on 02/06/14.
  */
 public class SprintAdapter extends BaseAdapter {
@@ -48,11 +49,6 @@ public class SprintAdapter extends BaseAdapter {
         return position;
     }
 
-    /**
-     * Classe dans laquelle vous déclarez les éléments
-     * qui vont être présents sur une ligne;
-     * (ici, éléments du fichier ligne_de_la_listview.xml)
-     */
     private class ViewHolder {
         TextView number;
     }
@@ -63,7 +59,6 @@ public class SprintAdapter extends BaseAdapter {
 
         final int pos = position;
 
-
         if(convertView == null) {
             holder = new ViewHolder();
             // On lie les éléments au fichier ligne_de_la_listview.xml
@@ -73,8 +68,7 @@ public class SprintAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        // On défini ici le texte que doit contenir chacun des TextView
-        // Le premier affichera le numéro de l'élément (numéro de ligne)
+
         holder.number.setText("Sprint n°" + sprints.get(position).getNumber());
 
         convertView.setOnClickListener(new View.OnClickListener() {

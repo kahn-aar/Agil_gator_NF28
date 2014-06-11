@@ -45,8 +45,6 @@ public class SprintBDD extends GestionnaireBDD {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
 
-        System.out.println("insert Sprint");
-
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_SPRINT_NUMBER, sprint.getNumber());
         values.put(AndroidConstantes.COL_SPRINT_PROJET, projet.getId());
@@ -171,7 +169,6 @@ public class SprintBDD extends GestionnaireBDD {
             SousTache sub = new SousTache();
             //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
             sub.setId(c.getInt(NUM_COL_ID));
-            System.out.println("IDENTIFIANT SOUS TACHE : "+sub.getId());
             sub.setTitre(c.getString(1));
             sub.setEtat(SousTacheEtat.valueOf(c.getString(2)));
 

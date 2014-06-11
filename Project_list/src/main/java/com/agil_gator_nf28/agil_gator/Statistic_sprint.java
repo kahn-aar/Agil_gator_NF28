@@ -3,19 +3,15 @@ package com.agil_gator_nf28.agil_gator;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
-import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.BddInterne.SprintBDD;
-import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.Sprint.Sprint;
@@ -31,7 +27,6 @@ import org.achartengine.renderer.SimpleSeriesRenderer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Statistic_sprint extends ActionBarActivity {
 
@@ -39,7 +34,6 @@ public class Statistic_sprint extends ActionBarActivity {
     //camenbert pourcentage des sous taches
     private int ID;
     private static int[] COLORS = new int[] { Color.GREEN, Color.BLUE,Color.YELLOW, Color.RED };
-    //private int[] values = new int[4];
     private static String[] NAME_LIST = new String[] { "A Faire", "En Cours", "A Relire", "Done" };
     private CategorySeries mSeries = new CategorySeries("");
     private DefaultRenderer mRenderer = new DefaultRenderer();

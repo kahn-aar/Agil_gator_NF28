@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
@@ -32,8 +31,6 @@ public class UserBDD extends GestionnaireBDD {
     public long insertProjet(User user, String password){
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
-
-        System.out.println("insert user");
 
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_USER_EMAIL, user.getEmail());
@@ -150,20 +147,14 @@ public class UserBDD extends GestionnaireBDD {
                 System.out.println(user2.getEmail());
                 if (user.getEmail().equals(user2.getEmail())) {
                     ok = false;
-                    System.out.println("flase");
                 }
                 if (ok) {
                     finalUsers.add(user);
-                    System.out.println("ture");
                 }
             }
 
             ok = true;
         }
-
-        System.out.println("final users");
-
-
 
         return finalUsers;
     }

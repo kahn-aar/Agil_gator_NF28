@@ -1,9 +1,7 @@
 package com.agil_gator_nf28.User;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
-import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
-import com.agil_gator_nf28.SousTaches.SousTache;
-import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
@@ -23,6 +18,8 @@ import java.util.List;
 
 
 /**
+ * Adapteur pour la liste des users pour leurs transférer les droits
+ *
  * Created by Nicolas on 05/06/14.
  */
 public class UserTransferAdapter extends ArrayAdapter<User> {
@@ -59,7 +56,6 @@ public class UserTransferAdapter extends ArrayAdapter<User> {
         TextView email;
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
@@ -84,8 +80,7 @@ public class UserTransferAdapter extends ArrayAdapter<User> {
         holder.nom.setText(users.get(position).getName());
         holder.prenom.setText(users.get(position).getFirstname());
         holder.email.setText(users.get(position).getEmail());
-        System.out.println(users.get(position).getEmail());
-        //Onclick sur la view
+
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

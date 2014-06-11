@@ -52,7 +52,6 @@ public class SousTacheBDD extends GestionnaireBDD {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
 
-        System.out.println("insert sous Tache");
 
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_SS_TACHE_NAME, sousTache.getTitre());
@@ -159,7 +158,6 @@ public class SousTacheBDD extends GestionnaireBDD {
         values.put(AndroidConstantes.COL_SS_TACHE_USER, clicked.getEffecteur().getId());
         values.put(AndroidConstantes.COL_SS_TACHE_ETAT, clicked.getEtat().name());
         bdd.update(AndroidConstantes.TABLE_SS_TACHE, values, AndroidConstantes.COL_SS_TACHE_ID + " = " + clicked.getId(), null);
-        System.out.println("User update = " + clicked.getEffecteur().getEmail());
     }
 
     public void updateSousTacheTache(Tache selected, SousTache sousTache) {

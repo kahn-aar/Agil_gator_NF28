@@ -2,11 +2,8 @@ package com.agil_gator_nf28.agil_gator;
 
 import android.app.ActionBar;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.support.v7.app.ActionBarActivity;
 import android.widget.ListView;
 
 import com.agil_gator_nf28.BddInterne.SousTacheBDD;

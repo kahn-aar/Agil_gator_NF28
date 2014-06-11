@@ -3,9 +3,9 @@ package com.agil_gator_nf28.agil_gator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,10 +14,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-
-import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.BddInterne.SprintBDD;
+import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;

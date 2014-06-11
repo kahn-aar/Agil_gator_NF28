@@ -1,22 +1,13 @@
 package com.agil_gator_nf28.Listeners;
 
-import android.annotation.TargetApi;
 import android.content.ClipData;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.view.DragEvent;
 import android.view.View;
-import android.widget.GridView;
 
 import com.agil_gator_nf28.SousTaches.SousTache;
-import com.agil_gator_nf28.SousTaches.SousTacheAdapter;
-import com.agil_gator_nf28.agil_gator.R;
 
 /**
  * Created by Nicolas on 22/05/14.
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class SousTacheListener implements View.OnLongClickListener {
 
     private SousTache sousTache;

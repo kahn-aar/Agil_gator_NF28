@@ -4,8 +4,6 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,7 +11,6 @@ import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.BddInterne.UserBDD;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.User.User;
-import com.agil_gator_nf28.User.UserAdapter;
 import com.agil_gator_nf28.User.UserAssignAdapter;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 

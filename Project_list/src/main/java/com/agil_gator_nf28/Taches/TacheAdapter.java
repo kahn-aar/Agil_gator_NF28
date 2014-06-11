@@ -1,28 +1,21 @@
 package com.agil_gator_nf28.Taches;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.agil_gator_nf28.Listeners.TacheGridListener;
 import com.agil_gator_nf28.SousTaches.SousTacheAdapter;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
-import com.agil_gator_nf28.agil_gator.AddSubTask;
 import com.agil_gator_nf28.agil_gator.DescriptifTaskActivity;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
-import com.agil_gator_nf28.agil_gator.Statistic;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.ArrayList;
@@ -86,7 +79,6 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
         GridView doneGrid;
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;

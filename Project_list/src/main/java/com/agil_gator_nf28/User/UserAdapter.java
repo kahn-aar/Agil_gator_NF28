@@ -1,23 +1,14 @@
 package com.agil_gator_nf28.User;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.agil_gator_nf28.BddInterne.UserProjetBDD;
-import com.agil_gator_nf28.Listeners.TacheGridListener;
-import com.agil_gator_nf28.SousTaches.SousTacheAdapter;
-import com.agil_gator_nf28.SousTaches.SousTacheEtat;
-import com.agil_gator_nf28.Taches.Tache;
-import com.agil_gator_nf28.agil_gator.DescriptifTaskActivity;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
@@ -26,6 +17,8 @@ import java.util.List;
 
 
 /**
+ * Adapteur pour afficher la liste de user
+ *
  * Created by Nicolas on 05/06/14.
  */
 public class UserAdapter extends ArrayAdapter<User> {
@@ -62,7 +55,6 @@ public class UserAdapter extends ArrayAdapter<User> {
         TextView email;
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
@@ -87,8 +79,7 @@ public class UserAdapter extends ArrayAdapter<User> {
         holder.nom.setText(taches.get(position).getName());
         holder.prenom.setText(taches.get(position).getFirstname());
         holder.email.setText(taches.get(position).getEmail());
-        System.out.println(taches.get(position).getEmail());
-        //Onclick sur la view
+
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
