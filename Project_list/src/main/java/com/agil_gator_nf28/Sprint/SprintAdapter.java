@@ -84,7 +84,6 @@ public class SprintAdapter extends BaseAdapter {
                 intent.putExtra(AndroidConstantes.SPRINT_ID, String.valueOf(sprints.get(pos).getId()));
                 intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projectId));
                 archivedSprint.startActivity(intent);
-                archivedSprint.finish();
             }
         });
 

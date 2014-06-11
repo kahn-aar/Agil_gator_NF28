@@ -104,7 +104,8 @@
         android:layout_height="wrap_content"
         android:text="@string/add_project_boutton"
         android:id="@+id/add_button"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"/>
 </LinearLayout>
     </ScrollView>
 </RelativeLayout>

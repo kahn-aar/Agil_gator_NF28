@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ public class EditProjet extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_projet);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         //Récupération des informations
         Intent intent = getIntent();
         if (intent != null) {

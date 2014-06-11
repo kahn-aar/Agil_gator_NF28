@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -31,6 +32,9 @@ public class AddProject extends ActionBarActivity {
         final EditText nom = (EditText) findViewById(R.id.editNomProjet);
         final EditText sub = (EditText) findViewById(R.id.editSubTitre);
         final EditText desc = (EditText) findViewById(R.id.editDescription);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
 
         final Button loginButton = (Button) findViewById(R.id.add_button);
         loginButton.setOnClickListener(new View.OnClickListener() {

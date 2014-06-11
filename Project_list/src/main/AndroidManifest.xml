@@ -6,7 +6,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18">
         <activity
             android:name="com.agil_gator_nf28.agil_gator.LoginActivity"
             android:label="@string/app_name" >
@@ -35,9 +37,6 @@
         <activity
             android:name="com.agil_gator_nf28.agil_gator.DescriptifTaskActivity"
             android:label="@string/app_name" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.Page_projet"
@@ -66,97 +65,50 @@
         <activity
             android:name="com.agil_gator_nf28.agil_gator.EditProjet"
             android:label="@string/app_name" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.Modif_task"
-            android:label="@string/app_name"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.ArchivedSprint"
-            android:label="@string/app_name"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.PageSprint"
-            android:label="@string/app_name"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.ArchivedSprint" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ArchivedSprint" />
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.AddSubTask"
-            android:label="@string/title_activity_add_sub_task"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
+            android:label="@string/title_activity_add_sub_task">
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.CreateAccount"
-            android:label="@string/app_name"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.LoginActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="LoginActivity" />
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.Statistic"
-            android:label="@string/app_name"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.AddMemberProjet"
-            android:label="@string/title_activity_add_member_projet"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
+            android:label="@string/title_activity_add_member_projet">
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.Statistic_sprint"
-            android:label="@string/app_name"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.AssignMember"
-            android:label="@string/title_activity_assign_member"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
+            android:label="@string/title_activity_assign_member" >
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.AssignMemberToTask"
-            android:label="@string/app_name"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name="com.agil_gator_nf28.agil_gator.TransferChief"
-            android:label="@string/app_name"
-            android:parentActivityName="com.agil_gator_nf28.agil_gator.Page_projet" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="Page_projet" />
+            android:label="@string/app_name" >
         </activity>
     </application>
 

@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -52,9 +53,11 @@ public class DescriptifTaskActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         LinearLayout en_cours = (LinearLayout) layout.findViewById(R.id.doingContent);
-        final int tacheId = intent.getIntExtra(AndroidConstantes.TACHE_ID,-1);
-        final int projetId = intent.getIntExtra(AndroidConstantes.PROJECT_ID,-1);
+        final int tacheId = Integer.valueOf(intent.getStringExtra(AndroidConstantes.TACHE_ID));
+        final int projetId = Integer.valueOf(intent.getStringExtra(AndroidConstantes.PROJECT_ID));
         if(tacheId != -1){
 
             TacheBDD tacheBDD = new TacheBDD(this);

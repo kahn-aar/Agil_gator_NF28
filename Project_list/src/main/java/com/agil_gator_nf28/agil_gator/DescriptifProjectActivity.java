@@ -1,5 +1,6 @@
 package com.agil_gator_nf28.agil_gator;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -44,6 +45,8 @@ public class DescriptifProjectActivity extends ActionBarActivity {
         layout = (RelativeLayout) RelativeLayout.inflate(this, R.layout.activity_descriptifproject, null);
         LinearLayout listeView = (LinearLayout)layout.findViewById(R.id.listeMembres);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
         title_project = (TextView)layout.findViewById(R.id.title_project);
         text_description = (TextView)layout.findViewById(R.id.descriptionContent);
         text_advanced = (TextView)layout.findViewById(R.id.avancedContent);

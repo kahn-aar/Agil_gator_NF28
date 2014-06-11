@@ -24,14 +24,14 @@ public class ArchivedTacheAdapter extends BaseAdapter {
     private PageSprint pageSprint;
     private Context context;
     private LayoutInflater inflater;
-    private int sprintId;
+    private int projetId;
 
     public ArchivedTacheAdapter(PageSprint pageSprint, Context context, List<Tache> taches, int id) {
         this.taches = taches;
         this.pageSprint = pageSprint;
         this.context = context;
         this.inflater = LayoutInflater.from(context);
-        this.sprintId = id;
+        this.projetId = id;
     }
 
     @Override
@@ -86,9 +86,8 @@ public class ArchivedTacheAdapter extends BaseAdapter {
                 Intent intent = new Intent(pageSprint, DescriptifTaskActivity.class);
                 intent.putExtra(AndroidConstantes.TACHE_ID, String.valueOf(taches.get(pos).getId()));
                 intent.putExtra(AndroidConstantes.TASK_DESC_FROM, AndroidConstantes.TASK_DESC_FROM_ARCHIVE);
-                intent.putExtra(AndroidConstantes.SPRINT_ID, String.valueOf(sprintId));
+                intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projetId));
                 pageSprint.startActivity(intent);
-                pageSprint.finish();
             }
         });
 

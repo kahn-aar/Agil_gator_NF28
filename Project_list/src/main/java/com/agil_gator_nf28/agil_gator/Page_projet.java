@@ -72,7 +72,7 @@ public class Page_projet extends ActionBarActivity {
             SprintBDD sprintBDD = new SprintBDD(this);
             sprintBDD.open();
 
-            Sprint actualSprint = sprintBDD.getLastSprintOfProject(project);
+            actualSprint = sprintBDD.getLastSprintOfProject(project);
             sprintBDD.close();
 
 
@@ -82,7 +82,7 @@ public class Page_projet extends ActionBarActivity {
             List<Tache> taches = tacheBDD.getTachesWithIdSprint(actualSprint.getId());
             tacheBDD.close();
 
-            adapter = new TacheAdapter(this,R.id.listeTaches,getApplicationContext(), taches);
+            adapter = new TacheAdapter(this,R.id.listeTaches,getApplicationContext(), taches, project.getId());
 
             // On dit à la ListView de se remplir via cet adapter
 
@@ -218,8 +218,8 @@ public class Page_projet extends ActionBarActivity {
                 return true;
             case MENU_DESCRIPTION:
                 intent = new Intent(this,DescriptifTaskActivity.class);
-                intent.putExtra(AndroidConstantes.TACHE_ID, selectedTask.getId());
-                intent.putExtra(AndroidConstantes.PROJECT_ID, project.getId());
+                intent.putExtra(AndroidConstantes.TACHE_ID, String.valueOf(selectedTask.getId()));
+                intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
                 this.startActivity(intent);
                 return true;
             case MENU_ADD_SUB_TASK:
