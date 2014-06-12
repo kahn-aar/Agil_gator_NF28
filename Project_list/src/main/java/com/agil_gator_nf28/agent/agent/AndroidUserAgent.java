@@ -2,7 +2,7 @@ package com.agil_gator_nf28.agent.agent;
 
 import android.content.Context;
 
-import com.agil_gator_nf28.agent.behaviour.ReceptionistBehaviour;
+import com.agil_gator_nf28.agent.behaviour.SendNotificationToLiaison;
 import com.agil_gator_nf28.agent.manager.AgentManager;
 
 import jade.core.Agent;
@@ -27,7 +27,7 @@ public class AndroidUserAgent extends Agent {
         myManager.setAgent(this);
         super.setup();
         //addBehaviour(new ReceptionistBehaviour());
-
+        addBehaviour(new SendNotificationToLiaison());
         //Enregistrement de l'agent auprès du DF
         DFAgentDescription dfd = new DFAgentDescription();
         dfd.setName(getAID());
