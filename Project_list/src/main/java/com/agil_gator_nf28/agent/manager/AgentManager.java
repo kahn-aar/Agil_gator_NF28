@@ -4,6 +4,12 @@ package com.agil_gator_nf28.agent.manager;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.User.ConnectedUser;
+import com.agil_gator_nf28.User.User;
+import com.agil_gator_nf28.Utils.DeviceInfoTypes;
 import com.agil_gator_nf28.agent.agent.AndroidUserAgent;
 
 import jade.android.MicroRuntimeService;
@@ -138,6 +144,26 @@ public class AgentManager {
         //Toast.makeText(context, "looser connected", Toast.LENGTH_SHORT).show();
     }
 
+    public void createAccount(User user) {
+        //agent.createAccount(DeviceInfoTypes.CREE_COMPTE, user);
+    }
 
+    public boolean askForConnexion(User user) {
+        //agent.askForConnexion(DeviceInfoTypes.CONNEXION, user);
+        return true;
+    }
+
+    public void createProject(Projet projet) {
+        agent.createProjet(DeviceInfoTypes.CREE_PROJET, ConnectedUser.getInstance().getConnectedUser(), projet);
+    }
+
+    public void createTache(Tache tache) {
+        //agent.createTache(DeviceInfoTypes.CREE_TACHE, ConnectedUser.getInstance().getConnectedUser(), tache);
+    }
+
+    public void createSubTask(SousTache sousTache) {
+        //agent.createSubTask(DeviceInfoTypes.CREE_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache);
+
+    }
 
 }

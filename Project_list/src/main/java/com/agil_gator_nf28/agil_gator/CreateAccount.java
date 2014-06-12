@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.agil_gator_nf28.BddInterne.UserBDD;
 import com.agil_gator_nf28.User.User;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -68,10 +68,14 @@ public class CreateAccount extends ActionBarActivity {
 
                 User user = new User(emailText, nomText, prenomText);
 
+                //On va lancer la création
+                AgentManager.getInstance().createAccount(user);
+
+                /*
                 UserBDD userBDD = new UserBDD(CreateAccount.this);
                 userBDD.open();
                 userBDD.insertProjet(user, passwordText);
-                userBDD.close();
+                userBDD.close();*/
 
                 //On retourne sur la page d'accueil
                 Intent intent = getSupportParentActivityIntent();

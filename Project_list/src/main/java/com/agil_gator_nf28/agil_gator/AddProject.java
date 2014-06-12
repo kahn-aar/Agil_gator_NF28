@@ -15,6 +15,7 @@ import com.agil_gator_nf28.BddInterne.UserProjetBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.User.ConnectedUser;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -59,6 +60,7 @@ public class AddProject extends ActionBarActivity {
                 }
                 Projet projet = new Projet(nomText, subText, descText, ConnectedUser.getInstance().getConnectedUser());
 
+                AgentManager.getInstance().createProject(projet);
 
                 ProjetBDD projetBdd = new ProjetBDD(AddProject.this);
                 projetBdd.open();

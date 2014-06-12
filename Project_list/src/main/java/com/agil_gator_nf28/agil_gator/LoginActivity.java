@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.agil_gator_nf28.BddInterne.UserBDD;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -38,8 +39,8 @@ public class LoginActivity extends ActionBarActivity {
                 userBDD.close();
 
                 if (isOkConnect) {
-                    //AgentManager manager = AgentManager.getInstance();
-                    //manager.doConnect(LoginActivity.this, "83.156.25.95", "myAgent");
+                    AgentManager manager = AgentManager.getInstance();
+                    manager.doConnect(LoginActivity.this, "172.25.27.53", "myAgent");
                     Intent intent = new Intent(LoginActivity.this, Project_List.class);
                     startActivity(intent);
 
@@ -55,6 +56,8 @@ public class LoginActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
+                AgentManager manager = AgentManager.getInstance();
+                manager.doConnect(LoginActivity.this, "83.156.25.95", "myAgent");
                 Intent intent = new Intent(LoginActivity.this, CreateAccount.class);
                 startActivity(intent);
             }
