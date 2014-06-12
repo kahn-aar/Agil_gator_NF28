@@ -2,7 +2,11 @@ package com.agil_gator_nf28.agent.agent;
 
 import android.content.Context;
 
-import com.agil_gator_nf28.agent.behaviour.ReceptionistBehaviour;
+import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.User.ConnectedUser;
+import com.agil_gator_nf28.User.User;
+import com.agil_gator_nf28.Utils.DeviceInfoTypes;
+import com.agil_gator_nf28.agent.behaviour.WaitingProjectBehaviour;
 import com.agil_gator_nf28.agent.manager.AgentManager;
 
 import jade.core.Agent;
@@ -42,4 +46,29 @@ public class AndroidUserAgent extends Agent {
             fe.printStackTrace();
         }
     }
+
+   /* public void createSubTask(DeviceInfoTypes creeSousTache, User connectedUser, SousTache sousTache) {
+        this.addBehaviour(new machintrucbehaviour(DeviceInfoTypes.CREE_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache));
+
+    }
+
+    public void createTache(DeviceInfoTypes creeTache, User connectedUser, Tache tache) {
+        this.addBehaviour(new machintrucbehaviour(DeviceInfoTypes.CREE_TACHE, ConnectedUser.getInstance().getConnectedUser(), tache));
+
+    }*/
+
+    public void createProjet(DeviceInfoTypes creeProjet, User connectedUser, Projet projet) {
+
+        this.addBehaviour(new WaitingProjectBehaviour(DeviceInfoTypes.CREE_PROJET, ConnectedUser.getInstance().getConnectedUser(), projet));
+    }
+
+    /*public void askForConnexion(DeviceInfoTypes connexion, User user) {
+
+        this.addBehaviour(new machintrucbehaviour(DeviceInfoTypes.CONNEXION, user));
+    }
+
+    public void createAccount(DeviceInfoTypes creeCompte, User user) {
+
+        this.addBehaviour(new machintrucbehaviour(DeviceInfoTypes.CREE_COMPTE, user));
+    }*/
 }
