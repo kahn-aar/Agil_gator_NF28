@@ -182,7 +182,7 @@ public class Page_projet extends ActionBarActivity {
         SprintBDD sprintBDD = new SprintBDD(this);
         sprintBDD.open();
         sprintBDD.archivateSprint(actualSprint, project);
-        AgentManager.getInstance().archiveSprint(actualSprint);
+        AgentManager.getInstance().archiveSprint(actualSprint,Page_projet.this);
         sprintBDD.close();
     }
 
@@ -247,7 +247,7 @@ public class Page_projet extends ActionBarActivity {
                                 tacheBDD.close();
                                 adapter.remove(selectedTask);
 
-                                AgentManager.getInstance().suppTache(selectedTask);
+                                AgentManager.getInstance().suppTache(selectedTask,Page_projet.this);
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {

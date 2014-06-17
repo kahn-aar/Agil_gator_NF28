@@ -99,7 +99,7 @@ public class Modif_task extends ActionBarActivity {
                     tacheBDD.updateTache(ID,new Tache(NomTache,Description,Integer.valueOf(Priority),Integer.valueOf(Difficulty)));
                     tacheBDD.close();
 
-                    AgentManager.getInstance().modifTache(new Tache(NomTache,Description,Integer.valueOf(Priority),Integer.valueOf(Difficulty)));
+                    AgentManager.getInstance().modifTache(new Tache(NomTache,Description,Integer.valueOf(Priority),Integer.valueOf(Difficulty)),Modif_task.this);
 
                     Intent intent1 = getSupportParentActivityIntent();
                     modif_task.startActivity(intent1);
@@ -107,9 +107,6 @@ public class Modif_task extends ActionBarActivity {
                 }
 
                  });
-
-
-
        }
     }
 

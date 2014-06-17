@@ -142,4 +142,19 @@ public class ProjetBDD extends GestionnaireBDD{
     public List<Projet> getProjetsFromUser(User connectedUser) {
         return null;
     }
+
+    public void insertProjetWithId(Projet projet) {
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
+        values.put(AndroidConstantes.COL_ID, projet.getId());
+        values.put(AndroidConstantes.COL_NAME, projet.getTitle());
+        values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
+        values.put(AndroidConstantes.COL_DESC, projet.getDescription());
+        values.put(AndroidConstantes.COL_CHEF, projet.getChef().getId());
+
+        //on insère l'objet dans la BDD via le ContentValues
+        bdd.insert(AndroidConstantes.TABLE_PROJET, null, values);
+    }
 }

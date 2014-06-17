@@ -60,7 +60,7 @@ public class AddProject extends ActionBarActivity {
                 }
                 Projet projet = new Projet(nomText, subText, descText, ConnectedUser.getInstance().getConnectedUser());
 
-                AgentManager.getInstance().createProject(projet);
+                AgentManager.getInstance().createProject(projet, AddProject.this);
 
                 ProjetBDD projetBdd = new ProjetBDD(AddProject.this);
                 projetBdd.open();
@@ -75,14 +75,14 @@ public class AddProject extends ActionBarActivity {
                 sprintBDD.open();
                 sprintBDD.insertSprint(sprint, projet);
                 sprintBDD.close();
-                AgentManager.getInstance().createSprint(sprint);
+                AgentManager.getInstance().createSprint(sprint, AddProject.this);
 
                 UserProjetBDD userProjetBDD = new UserProjetBDD(AddProject.this);
                 userProjetBDD.open();
                 userProjetBDD.insertProjet(ConnectedUser.getInstance().getConnectedUser(), projectId);
                 userProjetBDD.close();
 
-                AgentManager.getInstance().createUserProject(ConnectedUser.getInstance().getConnectedUser(), projet);
+                AgentManager.getInstance().createUserProject(ConnectedUser.getInstance().getConnectedUser(), projet, AddProject.this);
 
                 //On retourne sur la page d'accueil
                 Intent intent = new Intent(AddProject.this, Project_List.class);

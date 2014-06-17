@@ -13,8 +13,12 @@ import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.Utils.DeviceInfoTypes;
+import com.agil_gator_nf28.agent.behaviour.WaitingAnswerBehaviour;
 import com.agil_gator_nf28.agent.behaviour.WaitingProjectBehaviour;
 import com.agil_gator_nf28.agent.manager.AgentManager;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 import jade.core.Agent;
 import jade.domain.DFService;
@@ -45,7 +49,7 @@ public class AndroidUserAgent extends Agent {
         DFAgentDescription dfd = new DFAgentDescription();
         dfd.setName(getAID());
         ServiceDescription sd = new ServiceDescription();
-        sd.setType("user");
+        sd.setType("Device");
         sd.setName(getLocalName());
         dfd.addServices(sd);
         try {
@@ -56,60 +60,84 @@ public class AndroidUserAgent extends Agent {
         }
     }
 
-    public void createProjet(DeviceInfoTypes creeProjet, User connectedUser, Projet projet) {
-        this.addBehaviour(new WaitingProjectBehaviour(creeProjet, connectedUser, projet, null, null, null));
+
+    private String generateConversationId() {
+        Date date = new Date();
+        return new Timestamp(date.getTime()).toString();
     }
 
-    public void createAccount(DeviceInfoTypes creeCompte, User user) {
-        this.addBehaviour(new WaitingProjectBehaviour(creeCompte, user, null, null, null, null));
-    }
+   /* public void createSubTask(DeviceInfoTypes creeSousTache, User connectedUser, SousTache sousTache) {
+        this.addBehaviour(new machintrucbehaviour(DeviceInfoTypes.CREE_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache));
 
-    public void createSprint(DeviceInfoTypes creeSprint, User connectedUser, Sprint sprint) {
-        this.addBehaviour(new WaitingProjectBehaviour(creeSprint, connectedUser, null, sprint, null, null));
-    }
-
-    public void createUserProjet(DeviceInfoTypes ajoutManager, User connectedUser, Projet project) {
-        this.addBehaviour(new WaitingProjectBehaviour(ajoutManager, connectedUser, project, null, null, null));
     }
 
     public void createTache(DeviceInfoTypes creeTache, User connectedUser, Tache tache) {
-        this.addBehaviour(new WaitingProjectBehaviour(creeTache, connectedUser, null, null, tache, null));
+        this.addBehaviour(new machintrucbehaviour(DeviceInfoTypes.CREE_TACHE, ConnectedUser.getInstance().getConnectedUser(), tache));
+
+    }*/
+
+    public void createProjet(DeviceInfoTypes creeProjet, User connectedUser, Projet projet, Context context) {
+
+        this.addBehaviour(new WaitingProjectBehaviour(creeProjet, generateConversationId(), ConnectedUser.getInstance().getConnectedUser(), projet, null, null, null, context));
+        this.addBehaviour(new WaitingAnswerBehaviour(projet, generateConversationId(), context));
     }
 
-    public void createSubTask(DeviceInfoTypes creeSousTache, User connectedUser, SousTache sousTache) {
-        this.addBehaviour(new WaitingProjectBehaviour(creeSousTache, connectedUser, null, null, null, sousTache));
+    public void createAccount(DeviceInfoTypes creeCompte, User user, Context context) {
+        this.addBehaviour(new WaitingProjectBehaviour(creeCompte, generateConversationId(), user, null, null, null, null, context));
     }
 
-    public void editProjet(DeviceInfoTypes modifieProjet, User connectedUser, Projet projet) {
-        this.addBehaviour(new WaitingProjectBehaviour(modifieProjet, connectedUser, projet, null, null, null));
+    public void createSprint(DeviceInfoTypes creeSprint, User connectedUser, Sprint sprint, Context context) {
+        this.addBehaviour(new WaitingProjectBehaviour(creeSprint, generateConversationId(), connectedUser, null, sprint, null, null, context));
     }
 
-    public void modifTask(DeviceInfoTypes modifieTache, User connectedUser, Tache tache){
-        this.addBehaviour(new WaitingProjectBehaviour(modifieTache, connectedUser, null, null, tache,null));
+    public void createUserProjet(DeviceInfoTypes ajoutManager, User connectedUser, Projet project, Context context) {
+        this.addBehaviour(new WaitingProjectBehaviour(ajoutManager, generateConversationId(), connectedUser, project, null, null, null, context));
     }
 
-    public void modifSoustache(DeviceInfoTypes modifieSubTache, User connectedUser, SousTache sousTache){
-        this.addBehaviour(new WaitingProjectBehaviour(modifieSubTache, connectedUser, null, null, null, sousTache));
+
+    public void createTache(DeviceInfoTypes creeTache, User connectedUser, Tache tache, Context context) {
+        this.addBehaviour(new WaitingProjectBehaviour(creeTache, generateConversationId(), connectedUser, null, null, tache, null, context));
+
     }
 
-    public void archiveSprint(DeviceInfoTypes archivesprint, User connectedUser, Sprint sprint){
-        this.addBehaviour(new WaitingProjectBehaviour(archivesprint, connectedUser, null, sprint, null, null));
+    public void createSubTask(DeviceInfoTypes creeSousTache, User connectedUser, SousTache sousTache, Context context) {
+        this.addBehaviour(new WaitingProjectBehaviour(creeSousTache, generateConversationId(), connectedUser, null, null, null, sousTache, context));
     }
 
-    public void suppProjet(DeviceInfoTypes suppProjet, User connectedUser, Projet projet){
-        this.addBehaviour(new WaitingProjectBehaviour(suppProjet, connectedUser, projet, null, null,null));
+    public void editProjet(DeviceInfoTypes modifieProjet, User connectedUser, Projet projet, Context context) {
+        this.addBehaviour(new WaitingProjectBehaviour(modifieProjet, generateConversationId(), connectedUser, projet, null, null, null, context));
     }
 
-    public void suppTache(DeviceInfoTypes suppTache, User connectedUser, Tache tache){
-        this.addBehaviour(new WaitingProjectBehaviour(suppTache, connectedUser, null, null, tache, null));
+    public void askForConnexion(DeviceInfoTypes connexion, User user, Context context) {
+        this.addBehaviour(new WaitingProjectBehaviour(connexion, generateConversationId(), user, null, null, null, null, context));
     }
 
-    public void suppSousTache(DeviceInfoTypes suppSubTache, User connectedUser, SousTache sousTache){
-        this.addBehaviour(new WaitingProjectBehaviour(suppSubTache, connectedUser, null, null, null, sousTache));
+    public void modifTask(DeviceInfoTypes modifieTache, User connectedUser, Tache tache,  Context context){
+        this.addBehaviour(new WaitingProjectBehaviour(modifieTache, generateConversationId(),connectedUser, null, null, tache,null,context));
     }
 
-    public void ajoutUser(DeviceInfoTypes ajoutUser, User connectedUser, SousTache sousTache){
-        this.addBehaviour(new WaitingProjectBehaviour(ajoutUser, connectedUser, null, null, null, sousTache));
+    public void modifSoustache(DeviceInfoTypes modifieSubTache, User connectedUser, SousTache sousTache, Context context){
+        this.addBehaviour(new WaitingProjectBehaviour(modifieSubTache, generateConversationId(), connectedUser, null, null, null, sousTache, context));
+    }
+
+    public void archiveSprint(DeviceInfoTypes archivesprint, User connectedUser, Sprint sprint, Context context){
+        this.addBehaviour(new WaitingProjectBehaviour(archivesprint, generateConversationId(), connectedUser, null, sprint, null, null,context));
+    }
+
+    public void suppProjet(DeviceInfoTypes suppProjet, User connectedUser, Projet projet,Context context){
+        this.addBehaviour(new WaitingProjectBehaviour(suppProjet, generateConversationId(), connectedUser, projet, null, null,null,context));
+    }
+
+    public void suppTache(DeviceInfoTypes suppTache, User connectedUser, Tache tache,Context context){
+        this.addBehaviour(new WaitingProjectBehaviour(suppTache, generateConversationId(),connectedUser, null, null, tache, null,context));
+    }
+
+    public void suppSousTache(DeviceInfoTypes suppSubTache, User connectedUser, SousTache sousTache,Context context){
+        this.addBehaviour(new WaitingProjectBehaviour(suppSubTache, generateConversationId(),connectedUser, null, null, null, sousTache,context));
+    }
+
+    public void ajoutUser(DeviceInfoTypes ajoutUser, User connectedUser, SousTache sousTache,Context context){
+        this.addBehaviour(new WaitingProjectBehaviour(ajoutUser, generateConversationId(),connectedUser, null, null, null, sousTache,context));
     }
 
 

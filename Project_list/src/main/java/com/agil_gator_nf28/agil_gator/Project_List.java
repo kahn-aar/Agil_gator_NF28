@@ -104,7 +104,7 @@ public class Project_List extends ActionBarActivity {
                                 projetBDD.open();
                                 projetBDD.removeProjetWithID(selectedProject.getId());
 
-                                AgentManager.getInstance().suppProject(selectedProject);
+                                AgentManager.getInstance().suppProject(selectedProject,Project_List.this);
 
                                 projetBDD.close();
                                 UserProjetBDD userProjectBDD = new UserProjetBDD(Project_List.this);

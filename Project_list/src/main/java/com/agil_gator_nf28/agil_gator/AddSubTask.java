@@ -97,7 +97,7 @@ public class AddSubTask extends ActionBarActivity {
                     sousTacheBDD.insertSousTache(sousTache, tache);
                     sousTacheBDD.close();
                     sousTache.setTask(tache);
-                    AgentManager.getInstance().createSubTask(sousTache);
+                    AgentManager.getInstance().createSubTask(sousTache, AddSubTask.this);
 
                     //On retourne sur la page d'accueil
                     Intent intent = new Intent(AddSubTask.this, Page_projet.class);

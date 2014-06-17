@@ -96,7 +96,7 @@ public class Add_Task extends ActionBarActivity {
                     // Ajout de la tâche
                     Tache tache = new Tache(nomText, descriptionText, prioValue, hardValue);
                     tache.setSprint(acutalSprint.getId());
-                    AgentManager.getInstance().createTache(tache);
+                    AgentManager.getInstance().createTache(tache, Add_Task.this);
 
                     //Création d'une instance de ma classe TacheBDD
                     TacheBDD tacheBDD = new TacheBDD(Add_Task.this);
