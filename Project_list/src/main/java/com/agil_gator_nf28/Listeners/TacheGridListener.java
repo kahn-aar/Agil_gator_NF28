@@ -85,7 +85,7 @@ public class TacheGridListener implements View.OnDragListener {
                     SousTache selected = sousTacheBDD.getSousTacheFromId(id);
                     sousTacheBDD.close();
 
-                    if (! clicked.equals(old) || selected.getTache().getId() != linkedTask.getId()) {
+                    if (! clicked.equals(old) || selected.getTask().getId() != linkedTask.getId()) {
                         selected.setEtat(clicked);
                         sousTacheBDD.open();
                         //Mise a jour en base de données
@@ -105,8 +105,8 @@ public class TacheGridListener implements View.OnDragListener {
                             sousTacheBDD.close();
                         }
 
-                        if (selected.getTache().getId() != linkedTask.getId()) {
-                            selected.setTache(linkedTask);
+                        if (selected.getTask().getId() != linkedTask.getId()) {
+                            selected.setTask(linkedTask);
                             sousTacheBDD.open();
                             //Mise a jour en base de données
                             sousTacheBDD.updateSousTacheTache(linkedTask, selected);

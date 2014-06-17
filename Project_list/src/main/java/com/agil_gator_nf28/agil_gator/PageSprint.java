@@ -52,7 +52,7 @@ public class PageSprint extends ActionBarActivity {
             tacheBDD.close();
 
             TextView titre = (TextView) findViewById(R.id.SprintNumber);
-            titre.setText(project.getName() + " sprint n°" + sprint.getNumber());
+            titre.setText(project.getTitle() + " sprint n°" + sprint.getNumber());
 
 
             ArchivedTacheAdapter adapter = new ArchivedTacheAdapter(PageSprint.this, getApplicationContext(), taches, projectId);

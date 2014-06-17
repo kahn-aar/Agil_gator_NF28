@@ -2,6 +2,7 @@ package com.agil_gator_nf28.agent.behaviour;
 
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.Utils.DeviceInfoTypes;
@@ -30,17 +31,21 @@ public class WaitingProjectBehaviour extends Behaviour {
     User user;
     Projet projet;
     Tache tache;
-    SousTache soustache;
     String conversationId;
+    Sprint sprint;
+    SousTache sousTache;
     int step = 0;
 
-    public WaitingProjectBehaviour(DeviceInfoTypes demande, User user, Projet projet, Tache tache, SousTache soustache){
+    public WaitingProjectBehaviour(DeviceInfoTypes demande, User user, Projet projet, Sprint sprint, Tache tache, SousTache sousTache){
+
         this.demande = demande;
         this.user = user;
         this.projet = projet;
         this.tache = tache;
-        this.soustache = soustache;
         this.conversationId  = generateConversationId();
+        this.sprint = sprint;
+        this.tache = tache;
+        this.sousTache = sousTache;
     }
 
     private String generateConversationId() {
@@ -55,8 +60,10 @@ public class WaitingProjectBehaviour extends Behaviour {
         dm.setDemande(demande);
         dm.setUser(user);
         dm.setProjet(projet);
+        dm.setSprint(sprint);
         dm.setTache(tache);
-        dm.setSousTache(soustache);
+        dm.setSousTache(sousTache);
+
         // construction de l'acl message
         ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
         message.addReceiver(getLiaisonAID());
@@ -68,6 +75,7 @@ public class WaitingProjectBehaviour extends Behaviour {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+
         myAgent.send(message);
         step = 1;
     }

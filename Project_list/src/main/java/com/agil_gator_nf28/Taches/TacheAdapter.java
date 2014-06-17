@@ -102,7 +102,7 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
         }
         // On défini ici le texte que doit contenir chacun des TextView
         // Le premier affichera le numéro de l'élément (numéro de ligne)
-        holder.nom.setText(taches.get(position).getNom());
+        holder.nom.setText(taches.get(position).getName());
         holder.priorite.setText("priorité = " + taches.get(position).getPriorite());
         holder.difficulte.setText("difficulté = " + taches.get(position).getDifficulte());
         holder.notifs.setText("" + taches.get(position).getNotifications());
@@ -126,27 +126,27 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
             }
         }));
 
-        SousTacheAdapter adapter1 = new SousTacheAdapter(context, R.id.gridAFaire, taches.get(position).getSousTachesAFaire(), page_project);
-        holder.aFaireGrid.setOnDragListener(new TacheGridListener(context, taches.get(position).getSousTachesAFaire(), taches.get(position), SousTacheEtat.AFAIRE, page_project.findViewById(R.id.container)));
+        SousTacheAdapter adapter1 = new SousTacheAdapter(context, R.id.gridAFaire, taches.get(position).sousTachesAFaire(), page_project);
+        holder.aFaireGrid.setOnDragListener(new TacheGridListener(context, taches.get(position).sousTachesAFaire(), taches.get(position), SousTacheEtat.AFAIRE, page_project.findViewById(R.id.container)));
         // On dit à la ListView de se remplir via cet adapter
         holder.aFaireGrid.setAdapter(adapter1);
 
         holder.enCoursGrid = (GridView)convertView.findViewById(R.id.gridenCours);
-        SousTacheAdapter adapter2 = new SousTacheAdapter(context, R.id.gridenCours, taches.get(position).getSousTachesEnCours(), page_project);
-        holder.enCoursGrid.setOnDragListener(new TacheGridListener(context, taches.get(position).getSousTachesEnCours(), taches.get(position), SousTacheEtat.ENCOURS, page_project.findViewById(R.id.container)));
+        SousTacheAdapter adapter2 = new SousTacheAdapter(context, R.id.gridenCours, taches.get(position).sousTachesEnCours(), page_project);
+        holder.enCoursGrid.setOnDragListener(new TacheGridListener(context, taches.get(position).sousTachesEnCours(), taches.get(position), SousTacheEtat.ENCOURS, page_project.findViewById(R.id.container)));
 
         // On dit à la ListView de se remplir via cet adapter
         holder.enCoursGrid.setAdapter(adapter2);
 
         holder.aRelireGrid = (GridView)convertView.findViewById(R.id.gridaRelire);
-        SousTacheAdapter adapter3 = new SousTacheAdapter(context, R.id.gridaRelire, taches.get(position).getSousTachesARelire(), page_project);
-        holder.aRelireGrid.setOnDragListener(new TacheGridListener(context, taches.get(position).getSousTachesARelire(), taches.get(position), SousTacheEtat.ARELIRE, page_project.findViewById(R.id.container)));
+        SousTacheAdapter adapter3 = new SousTacheAdapter(context, R.id.gridaRelire, taches.get(position).sousTachesARelire(), page_project);
+        holder.aRelireGrid.setOnDragListener(new TacheGridListener(context, taches.get(position).sousTachesARelire(), taches.get(position), SousTacheEtat.ARELIRE, page_project.findViewById(R.id.container)));
         // On dit à la ListView de se remplir via cet adapter
         holder.aRelireGrid.setAdapter(adapter3);
 
         holder.doneGrid = (GridView)convertView.findViewById(R.id.griddone);
-        SousTacheAdapter adapter4 = new SousTacheAdapter(context, R.id.griddone, taches.get(position).getSousTachesDone(), page_project);
-        holder.doneGrid.setOnDragListener(new TacheGridListener(context, taches.get(position).getSousTachesDone(), taches.get(position), SousTacheEtat.VALIDE, page_project.findViewById(R.id.container)));
+        SousTacheAdapter adapter4 = new SousTacheAdapter(context, R.id.griddone, taches.get(position).sousTachesDone(), page_project);
+        holder.doneGrid.setOnDragListener(new TacheGridListener(context, taches.get(position).sousTachesDone(), taches.get(position), SousTacheEtat.VALIDE, page_project.findViewById(R.id.container)));
         // On dit à la ListView de se remplir via cet adapter
         holder.doneGrid.setAdapter(adapter4);
 

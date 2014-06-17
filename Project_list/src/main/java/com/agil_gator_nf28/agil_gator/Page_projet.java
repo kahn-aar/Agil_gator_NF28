@@ -22,6 +22,7 @@ import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.Taches.TacheAdapter;
 import com.agil_gator_nf28.User.ConnectedUser;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
@@ -66,7 +67,7 @@ public class Page_projet extends ActionBarActivity {
 
             projetBDD.close();
 
-            titre.setText(project.getName());
+            titre.setText(project.getTitle());
 
             SprintBDD sprintBDD = new SprintBDD(this);
             sprintBDD.open();
@@ -181,6 +182,7 @@ public class Page_projet extends ActionBarActivity {
         SprintBDD sprintBDD = new SprintBDD(this);
         sprintBDD.open();
         sprintBDD.archivateSprint(actualSprint, project);
+        AgentManager.getInstance().archiveSprint(actualSprint);
         sprintBDD.close();
     }
 
@@ -244,6 +246,8 @@ public class Page_projet extends ActionBarActivity {
                                 tacheBDD.deleteTacheWithId(selectedTask.getId());
                                 tacheBDD.close();
                                 adapter.remove(selectedTask);
+
+                                AgentManager.getInstance().suppTache(selectedTask);
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {

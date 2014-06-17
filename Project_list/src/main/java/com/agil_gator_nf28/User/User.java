@@ -13,6 +13,8 @@ public class User {
     private String email;
     private String name;
     private String firstname;
+    private String password;
+    private String salt1;
 
     public User() {
 
@@ -59,6 +61,22 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalt1() {
+        return salt1;
+    }
+
+    public void setSalt1(String salt1) {
+        this.salt1 = salt1;
     }
 
     public boolean isChef(Projet project) {

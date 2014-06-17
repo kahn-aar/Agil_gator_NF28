@@ -40,7 +40,7 @@ public class LoginActivity extends ActionBarActivity {
 
                 if (isOkConnect) {
                     AgentManager manager = AgentManager.getInstance();
-                    manager.doConnect(LoginActivity.this, "172.25.27.53", "myAgent");
+                    manager.doConnect(LoginActivity.this, "192.168.2.75", "myAgent");
                     Intent intent = new Intent(LoginActivity.this, Project_List.class);
                     startActivity(intent);
 
@@ -57,7 +57,7 @@ public class LoginActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 AgentManager manager = AgentManager.getInstance();
-                manager.doConnect(LoginActivity.this, "83.156.25.95", "myAgent");
+                manager.doConnect(LoginActivity.this, "192.168.2.75", "myAgent");
                 Intent intent = new Intent(LoginActivity.this, CreateAccount.class);
                 startActivity(intent);
             }

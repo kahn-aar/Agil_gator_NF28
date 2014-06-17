@@ -64,9 +64,8 @@ public class DescriptifProjectActivity extends ActionBarActivity {
 
         projetBDD.close();
         /** on remplit les champs title, description, priorité et l'avancee **/
-        title_project.setText(projet.getName());
+        title_project.setText(projet.getTitle());
         text_description.setText(projet.getDescription());
-        text_advanced.setText(Integer.toString(projet.getAdvanced()));
         }
 
         UserBDD userBDD = new UserBDD(DescriptifProjectActivity.this);

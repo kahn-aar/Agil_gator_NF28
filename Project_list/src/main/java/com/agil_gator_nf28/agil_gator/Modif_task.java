@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.regex.Matcher;
@@ -54,7 +55,7 @@ public class Modif_task extends ActionBarActivity {
 
 
             final EditText ediNomTache = (EditText) findViewById(R.id.editTextNomTache);
-            ediNomTache.setText(tache.getNom());
+            ediNomTache.setText(tache.getName());
 
             final EditText editDifficulty = (EditText) findViewById(R.id.editTextDifficulty);
             editDifficulty.setText(String.valueOf(tache.getDifficulte()));
@@ -62,8 +63,8 @@ public class Modif_task extends ActionBarActivity {
             final EditText editPriority = (EditText) findViewById(R.id.editTextPriority);
             editPriority.setText(String.valueOf(tache.getPriorite()));
 
-           final EditText editDescription = (EditText) findViewById(R.id.editTextDescription);
-           editDescription.setText(tache.getDescription());
+            final EditText editDescription = (EditText) findViewById(R.id.editTextDescription);
+            editDescription.setText(tache.getDescription());
 
             Button edit = (Button) findViewById(R.id.modif_button);
 
@@ -97,6 +98,8 @@ public class Modif_task extends ActionBarActivity {
                     tacheBDD.open();
                     tacheBDD.updateTache(ID,new Tache(NomTache,Description,Integer.valueOf(Priority),Integer.valueOf(Difficulty)));
                     tacheBDD.close();
+
+                    AgentManager.getInstance().modifTache(new Tache(NomTache,Description,Integer.valueOf(Priority),Integer.valueOf(Difficulty)));
 
                     Intent intent1 = getSupportParentActivityIntent();
                     modif_task.startActivity(intent1);

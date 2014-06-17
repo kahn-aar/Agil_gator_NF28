@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.regex.Matcher;
@@ -48,7 +49,7 @@ public class EditProjet extends ActionBarActivity {
             final EditText subProj = (EditText) findViewById(R.id.editSubTitre);
             final EditText descProj = (EditText) findViewById(R.id.editDescription);
 
-            titreProj.setText(projet.getName());
+            titreProj.setText(projet.getTitle());
             subProj.setText(projet.getSubTitle());
             descProj.setText(projet.getDescription());
 
@@ -75,6 +76,9 @@ public class EditProjet extends ActionBarActivity {
                         Toast.makeText(EditProjet.this, R.string.error_sub_project, Toast.LENGTH_SHORT).show();
                         return;
                     }
+
+                    AgentManager.getInstance().editProject(projet);
+
                     //Création d'une instance de ma classe LivresBDD
                     ProjetBDD projetBdd = new ProjetBDD(EditProjet.this);
 
@@ -91,7 +95,6 @@ public class EditProjet extends ActionBarActivity {
                 }
             });
         }
-
     }
 
     @Override

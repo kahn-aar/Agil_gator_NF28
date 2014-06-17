@@ -70,23 +70,25 @@ public class AddProject extends ActionBarActivity {
                 projet.setId((int) projectId);
                 Sprint sprint = new Sprint();
                 sprint.setNumber(1);
+                sprint.setProject((int) projectId);
                 SprintBDD sprintBDD = new SprintBDD(AddProject.this);
                 sprintBDD.open();
                 sprintBDD.insertSprint(sprint, projet);
                 sprintBDD.close();
+                AgentManager.getInstance().createSprint(sprint);
 
                 UserProjetBDD userProjetBDD = new UserProjetBDD(AddProject.this);
                 userProjetBDD.open();
                 userProjetBDD.insertProjet(ConnectedUser.getInstance().getConnectedUser(), projectId);
                 userProjetBDD.close();
 
+                AgentManager.getInstance().createUserProject(ConnectedUser.getInstance().getConnectedUser(), projet);
+
                 //On retourne sur la page d'accueil
                 Intent intent = new Intent(AddProject.this, Project_List.class);
                 startActivity(intent);
                 AddProject.this.finish();
-
             }
         });
     }
-
 }

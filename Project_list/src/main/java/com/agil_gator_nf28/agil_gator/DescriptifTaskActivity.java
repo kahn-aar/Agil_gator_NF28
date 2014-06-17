@@ -75,10 +75,10 @@ public class DescriptifTaskActivity extends ActionBarActivity {
             tache.setSousTaches(sousTacheBDD.getSousTaches(tache));
             sousTacheBDD.close();
 
-            Avancement avancement = new Avancement(tache.getSousTaches().size(), tache.getSousTachesDone().size(), tache.getSousTachesEnCours().size() + tache.getSousTachesARelire().size());
+            Avancement avancement = new Avancement(tache.getSousTaches().size(), tache.sousTachesDone().size(), tache.sousTachesEnCours().size() + tache.sousTachesARelire().size());
 
             /** on remplit les champs de la description d'une tache **/
-            title_project.setText(tache.getNom());
+            title_project.setText(tache.getName());
             text_description.setText(tache.getDescription());
             text_priority.setText(Integer.toString(tache.getPriorite()));
             text_advanced.setText("Fait/En cours/total : " + avancement.getNombre_fini() + "/" + avancement.getNombre_en_cours() + "/" + avancement.getNombre_total());
@@ -86,7 +86,7 @@ public class DescriptifTaskActivity extends ActionBarActivity {
             progressBar.setProgress(avancement.getNombre_fini());
             progressBar.setSecondaryProgress(avancement.getNombre_fini() + avancement.getNombre_en_cours());
 
-            for (SousTache underTask : tache.getSousTachesEnCours()) {
+            for (SousTache underTask : tache.sousTachesEnCours()) {
                 TextView vue = new TextView(DescriptifTaskActivity.this);
                 vue.setText(underTask.getTitre() + " - " + underTask.getEffecteur().getFirstname() + " " + underTask.getEffecteur().getName());
                 en_cours.addView(vue);

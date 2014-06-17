@@ -1,6 +1,5 @@
 package com.agil_gator_nf28.Sprint;
 
-import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.Taches.Tache;
 
 import java.util.List;
@@ -12,6 +11,7 @@ public class Sprint {
 
     private int id;
     private int number;
+    private int project;
     private List<Tache> taches;
 
     public Sprint() {
@@ -44,5 +44,13 @@ public class Sprint {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getProject() {
+        return project;
+    }
+
+    public void setProject(int project) {
+        this.project = project;
     }
 }

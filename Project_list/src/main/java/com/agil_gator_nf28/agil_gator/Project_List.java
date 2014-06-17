@@ -17,6 +17,7 @@ import com.agil_gator_nf28.BddInterne.UserProjetBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Projet.ProjetAdapter;
 import com.agil_gator_nf28.User.ConnectedUser;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.List;
@@ -102,6 +103,9 @@ public class Project_List extends ActionBarActivity {
                                 ProjetBDD projetBDD = new ProjetBDD(Project_List.this);
                                 projetBDD.open();
                                 projetBDD.removeProjetWithID(selectedProject.getId());
+
+                                AgentManager.getInstance().suppProject(selectedProject);
+
                                 projetBDD.close();
                                 UserProjetBDD userProjectBDD = new UserProjetBDD(Project_List.this);
                                 userProjectBDD.open();

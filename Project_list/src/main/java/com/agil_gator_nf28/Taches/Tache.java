@@ -14,12 +14,14 @@ import java.util.List;
 public class Tache {
 
     private List<SousTache> sousTaches = new ArrayList<SousTache>();
+
     private int id;
-    private String nom;
+    private String name;
     private String description;
     private int priorite;
     private int difficulte;
     private int notifications;
+    private int sprint;
 
     public Tache() {
     }
@@ -32,20 +34,20 @@ public class Tache {
     }
 
     public Tache(String nom, int priorite, int difficulte) {
-        this.nom = nom;
+        this.name = nom;
         this.priorite = priorite;
         this.difficulte = difficulte;
     }
 
     public Tache(String nom, String description, int priorite, int difficulte) {
-        this.nom = nom;
+        this.name = nom;
         this.description = description;
         this.priorite = priorite;
         this.difficulte = difficulte;
     }
 
     public Tache(String nom, String description, int difficulte, int priorite, int notifications) {
-        this.nom = nom;
+        this.name = nom;
         this.description = description;
         this.difficulte = difficulte;
         this.priorite = priorite;
@@ -77,12 +79,12 @@ public class Tache {
         this.difficulte = difficulte;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String nom) {
+        this.name = nom;
     }
 
     public int getNotifications() {
@@ -109,12 +111,20 @@ public class Tache {
         this.description = description;
     }
 
+    public int getSprint() {
+        return sprint;
+    }
+
+    public void setSprint(int sprint) {
+        this.sprint = sprint;
+    }
+
     // Opérations sur les sousTaches
     public void addNewSousTache(SousTache tache) {
         sousTaches.add(tache);
     }
 
-    public List<SousTache> getSousTachesAFaire() {
+    public List<SousTache> sousTachesAFaire() {
         List<SousTache> aFaire = new ArrayList<SousTache>();
         for(SousTache tache : sousTaches) {
             if (SousTacheEtat.AFAIRE.equals(tache.getEtat())) {
@@ -124,7 +134,7 @@ public class Tache {
         return aFaire;
     }
 
-    public List<SousTache> getSousTachesEnCours() {
+    public List<SousTache> sousTachesEnCours() {
         List<SousTache> enCours = new ArrayList<SousTache>();
         for(SousTache tache : sousTaches) {
             if (SousTacheEtat.ENCOURS.equals(tache.getEtat())) {
@@ -134,8 +144,7 @@ public class Tache {
         return enCours;
     }
 
-
-    public List<SousTache> getSousTachesARelire() {
+    public List<SousTache> sousTachesARelire() {
         List<SousTache> aRelire = new ArrayList<SousTache>();
         for(SousTache tache : sousTaches) {
             if (SousTacheEtat.ARELIRE.equals(tache.getEtat())) {
@@ -145,7 +154,7 @@ public class Tache {
         return aRelire;
     }
 
-    public List<SousTache> getSousTachesDone() {
+    public List<SousTache> sousTachesDone() {
         List<SousTache> done = new ArrayList<SousTache>();
         for(SousTache tache : sousTaches) {
             if (SousTacheEtat.VALIDE.equals(tache.getEtat())) {

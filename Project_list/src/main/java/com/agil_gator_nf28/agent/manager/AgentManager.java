@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.User.User;
@@ -62,19 +63,16 @@ public class AgentManager {
                 }
 
                 public void onFailure(Throwable arg0) {
-
                 }
-
             });
-
             mr = null;
-
         }
     }
 
     public synchronized void doConnect (Context context, String ip, String name) {
         if (isConnected) {
-            throw new IllegalStateException("Already connected");
+            this.clean();
+
         }
         mr = new MicroRuntimeService();
         this.participant = name;
@@ -145,7 +143,7 @@ public class AgentManager {
     }
 
     public void createAccount(User user) {
-        //agent.createAccount(DeviceInfoTypes.CREE_COMPTE, user);
+        agent.createAccount(DeviceInfoTypes.CREE_COMPTE, user);
     }
 
     public boolean askForConnexion(User user) {
@@ -158,12 +156,47 @@ public class AgentManager {
     }
 
     public void createTache(Tache tache) {
-        //agent.createTache(DeviceInfoTypes.CREE_TACHE, ConnectedUser.getInstance().getConnectedUser(), tache);
+        agent.createTache(DeviceInfoTypes.CREE_TACHE, ConnectedUser.getInstance().getConnectedUser(), tache);
     }
 
     public void createSubTask(SousTache sousTache) {
-        //agent.createSubTask(DeviceInfoTypes.CREE_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache);
+        agent.createSubTask(DeviceInfoTypes.CREE_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache);
 
     }
 
+    public void createSprint(Sprint sprint) {
+        agent.createSprint(DeviceInfoTypes.CREE_SPRINT, ConnectedUser.getInstance().getConnectedUser(), sprint);
+    }
+
+    public void createUserProject(User connectedUser, Projet project) {
+        agent.createUserProjet(DeviceInfoTypes.AJOUT_MANAGER, ConnectedUser.getInstance().getConnectedUser(), project);
+    }
+
+    public void editProject(Projet projet) {
+        agent.editProjet(DeviceInfoTypes.MODIFIE_PROJET, ConnectedUser.getInstance().getConnectedUser(), projet);
+    }
+
+    public void modifTache(Tache tache){
+        agent.modifTask(DeviceInfoTypes.MODIFIE_TACHE, ConnectedUser.getInstance().getConnectedUser(), tache);
+    }
+
+    public void modifSousTache(SousTache sousTache){
+        agent.modifSoustache(DeviceInfoTypes.MODIFIER_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache);
+    }
+
+    public void suppProject(Projet projet){
+        agent.suppProjet(DeviceInfoTypes.EFFACE_PROJET, ConnectedUser.getInstance().getConnectedUser(), projet);
+    }
+
+    public void suppTache(Tache tache){
+        agent.suppTache(DeviceInfoTypes.SUPPRIMER_TACHE, ConnectedUser.getInstance().getConnectedUser(), tache);
+    }
+
+    public void suppSousTache(SousTache sousTache){
+        agent.suppSousTache(DeviceInfoTypes.SUPPRIMER_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache);
+    }
+      
+    public void archiveSprint(Sprint sprint){
+        agent.archiveSprint(DeviceInfoTypes.ARCHIVER_SPRINT, ConnectedUser.getInstance().getConnectedUser(), sprint);
+    }
 }

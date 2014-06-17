@@ -56,7 +56,7 @@ public class TacheBDD extends GestionnaireBDD {
         ContentValues values = new ContentValues();
 
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
-        values.put(AndroidConstantes.COL_TACHE_NAME, tache.getNom());
+        values.put(AndroidConstantes.COL_TACHE_NAME, tache.getName());
         values.put(AndroidConstantes.COL_TACHE_DESCRIPTION, tache.getDescription());
         values.put(AndroidConstantes.COL_TACHE_PRIORITE, tache.getPriorite());
         values.put(AndroidConstantes.COL_TACHE_DIFFICULTE, tache.getDifficulte());
@@ -80,7 +80,7 @@ public class TacheBDD extends GestionnaireBDD {
 
     public int updateTache(int id, Tache tache){
         ContentValues values = new ContentValues();
-        values.put(AndroidConstantes.COL_TACHE_NAME, tache.getNom());
+        values.put(AndroidConstantes.COL_TACHE_NAME, tache.getName());
         values.put(AndroidConstantes.COL_TACHE_PRIORITE, tache.getPriorite());
         values.put(AndroidConstantes.COL_TACHE_DIFFICULTE, tache.getDifficulte());
         values.put(AndroidConstantes.COL_TACHE_DESCRIPTION, tache.getDescription());
@@ -133,7 +133,7 @@ public class TacheBDD extends GestionnaireBDD {
         Tache tache = new Tache();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         tache.setId(c.getInt(NUM_COL_ID));
-        tache.setNom(c.getString(NUM_COL_TITRE));
+        tache.setName(c.getString(NUM_COL_TITRE));
         tache.setDescription(c.getString(NUM_COL_DESCRIPTION));
         tache.setDifficulte(c.getInt(NUM_COL_DIFF));
         tache.setPriorite(c.getInt(NUM_COL_PRIO));
@@ -158,7 +158,7 @@ public class TacheBDD extends GestionnaireBDD {
             Tache tache = new Tache();
             //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
             tache.setId(c.getInt(NUM_COL_ID));
-            tache.setNom(c.getString(NUM_COL_TITRE));
+            tache.setName(c.getString(NUM_COL_TITRE));
             tache.setPriorite(c.getInt(NUM_COL_PRIO));
             tache.setDifficulte(c.getInt(NUM_COL_DIFF));
 

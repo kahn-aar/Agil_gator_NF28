@@ -47,7 +47,7 @@ public class AssignMember extends ActionBarActivity {
 
             tache.setSousTaches(sousTaches);
 
-            SousTacheListAdapter adapter = new SousTacheListAdapter(AssignMember.this, getApplicationContext(), tache.getSousTachesAFaire(), projectId);
+            SousTacheListAdapter adapter = new SousTacheListAdapter(AssignMember.this, getApplicationContext(), tache.sousTachesAFaire(), projectId);
 
             contenu.setAdapter(adapter);
         }
