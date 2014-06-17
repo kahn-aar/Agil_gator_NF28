@@ -77,7 +77,7 @@ public class EditProjet extends ActionBarActivity {
                         return;
                     }
 
-                    AgentManager.getInstance().editProject(projet);
+                    AgentManager.getInstance().editProject(projet, EditProjet.this);
 
                     //Création d'une instance de ma classe LivresBDD
                     ProjetBDD projetBdd = new ProjetBDD(EditProjet.this);

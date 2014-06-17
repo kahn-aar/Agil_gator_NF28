@@ -1,5 +1,7 @@
 package com.agil_gator_nf28.agent.behaviour;
 
+import android.content.Context;
+
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.Sprint.Sprint;
@@ -9,9 +11,6 @@ import com.agil_gator_nf28.Utils.DeviceInfoTypes;
 import com.agil_gator_nf28.agent.Message.DataMessage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.sql.Timestamp;
-import java.util.Date;
 
 import jade.core.AID;
 import jade.core.behaviours.Behaviour;
@@ -34,22 +33,21 @@ public class WaitingProjectBehaviour extends Behaviour {
     Sprint sprint;
     Tache tache;
     SousTache sousTache;
+    private Context context;
     int step = 0;
 
-    public WaitingProjectBehaviour(DeviceInfoTypes demande, User user, Projet projet, Sprint sprint, Tache tache, SousTache sousTache){
+    public WaitingProjectBehaviour(DeviceInfoTypes demande, String conversationId, User user, Projet projet, Sprint sprint, Tache tache, SousTache sousTache, Context context){
         this.demande = demande;
         this.user = user;
         this.projet = projet;
-        this.conversationId  = generateConversationId();
+        this.conversationId  = conversationId;
         this.sprint = sprint;
         this.tache = tache;
         this.sousTache = sousTache;
+        this.context = context;
     }
 
-    private String generateConversationId() {
-        Date date = new Date();
-        return new Timestamp(date.getTime()).toString();
-    }
+
 
     @Override
     public void action() {
@@ -57,6 +55,7 @@ public class WaitingProjectBehaviour extends Behaviour {
         DataMessage dm = new DataMessage();
         dm.setDemande(demande);
         dm.setUser(user);
+        System.out.println(user.getEmail());
         dm.setProjet(projet);
         dm.setSprint(sprint);
         dm.setTache(tache);
@@ -68,14 +67,34 @@ public class WaitingProjectBehaviour extends Behaviour {
         ObjectMapper omap = new ObjectMapper();
         try {
             String content = omap.writeValueAsString(dm);
+            System.out.println(content);
             message.setContent(content);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
 
-
-
         myAgent.send(message);
+
+        switch (demande) {
+
+            case CREE_COMPTE:
+                myAgent.addBehaviour(new WaitingAnswerBehaviour(projet, conversationId, context));
+                break;
+            case CREE_PROJET:
+                myAgent.addBehaviour(new WaitingAnswerBehaviour(projet, conversationId, context));
+                break;
+            case CREE_SPRINT:
+                myAgent.addBehaviour(new WaitingAnswerBehaviour(sprint, conversationId, context));
+                break;
+            case CREE_TACHE:
+                myAgent.addBehaviour(new WaitingAnswerBehaviour(tache, conversationId, context));
+                break;
+            case CREE_SOUS_TACHE:
+                myAgent.addBehaviour(new WaitingAnswerBehaviour(sousTache, conversationId, context));
+                break;
+            default:break;
+        }
+
         step = 1;
     }
 

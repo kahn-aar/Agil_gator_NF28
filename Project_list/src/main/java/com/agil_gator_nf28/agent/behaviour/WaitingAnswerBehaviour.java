@@ -1,15 +1,15 @@
 package com.agil_gator_nf28.agent.behaviour;
 
+import android.content.Context;
+
+import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.Utils.DeviceInfoTypes;
-import com.agil_gator_nf28.agent.Message.BDDAnswerMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
 
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
@@ -19,31 +19,27 @@ public class WaitingAnswerBehaviour extends Behaviour {
 
     private Object objectWaitingId;
     private String conversationId;
+    private Context context;
     private int step = 0;
 
-    public WaitingAnswerBehaviour(Object o, String conversationId)
+    public WaitingAnswerBehaviour(Object o, String conversationId, Context context)
     {
         this.objectWaitingId = o;
         this.conversationId = conversationId;
+        this.context = context;
     }
 
     @Override
     public void action() {
-        ACLMessage message = myAgent.receive(MessageTemplate.and(MessageTemplate.MatchPerformative(ACLMessage.REQUEST), MessageTemplate.MatchConversationId(conversationId)));
+        ACLMessage message = myAgent.receive(MessageTemplate.and(MessageTemplate.MatchPerformative(ACLMessage.INFORM), MessageTemplate.MatchConversationId(conversationId)));
         if (message != null) {
             System.out.println(myAgent.getLocalName() + " reçu -> " + message.getContent());
             ObjectMapper omap = new ObjectMapper();
             DeviceInfoTypes demande = null;
             int id = -1;
+            demande = DeviceInfoTypes.CREE_PROJET;
+                id = Integer.valueOf(message.getContent());
 
-            try {
-                BDDAnswerMessage msg = omap.readValue(message.getContent(),BDDAnswerMessage.class);
-                demande = msg.getDemande();
-                id = msg.getId();
-
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
             if(demande!=null){
                 switch(demande){
                     //Attend un boolean ou rien
@@ -78,6 +74,10 @@ public class WaitingAnswerBehaviour extends Behaviour {
                     //Attend un ID
                     case CREE_PROJET:
                         ((Projet)this.objectWaitingId).setId(id);
+                        ProjetBDD projetBDD = new ProjetBDD(context);
+                        projetBDD.open();
+                        projetBDD.insertProjetWithId((Projet) this.objectWaitingId);
+                        projetBDD.close();
                         break;
                     case CREE_COMPTE:
                         ((User)this.objectWaitingId).setId(id);

@@ -71,7 +71,7 @@ public class CreateAccount extends ActionBarActivity {
                 user.setSalt1("oksaltwaiting");
 
                 //On va lancer la création
-                AgentManager.getInstance().createAccount(user);
+                AgentManager.getInstance().createAccount(user, CreateAccount.this);
 
                 /*
                 UserBDD userBDD = new UserBDD(CreateAccount.this);

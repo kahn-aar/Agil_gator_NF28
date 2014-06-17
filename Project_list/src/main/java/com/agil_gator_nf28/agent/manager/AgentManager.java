@@ -146,37 +146,37 @@ public class AgentManager {
         //Toast.makeText(context, "looser connected", Toast.LENGTH_SHORT).show();
     }
 
-    public void createAccount(User user) {
-        agent.createAccount(DeviceInfoTypes.CREE_COMPTE, user);
+    public void createAccount(User user, Context context) {
+        agent.createAccount(DeviceInfoTypes.CREE_COMPTE, user, context);
     }
 
-    public boolean askForConnexion(User user) {
-        //agent.askForConnexion(DeviceInfoTypes.CONNEXION, user);
+    public boolean askForConnexion(User user, Context context) {
+        agent.askForConnexion(DeviceInfoTypes.CONNEXION, user, context);
         return true;
     }
 
-    public void createProject(Projet projet) {
-        agent.createProjet(DeviceInfoTypes.CREE_PROJET, ConnectedUser.getInstance().getConnectedUser(), projet);
+    public void createProject(Projet projet, Context context) {
+        agent.createProjet(DeviceInfoTypes.CREE_PROJET, ConnectedUser.getInstance().getConnectedUser(), projet, context);
     }
 
-    public void createTache(Tache tache) {
-        agent.createTache(DeviceInfoTypes.CREE_TACHE, ConnectedUser.getInstance().getConnectedUser(), tache);
+    public void createTache(Tache tache, Context context) {
+        agent.createTache(DeviceInfoTypes.CREE_TACHE, ConnectedUser.getInstance().getConnectedUser(), tache, context);
     }
 
-    public void createSubTask(SousTache sousTache) {
-        agent.createSubTask(DeviceInfoTypes.CREE_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache);
+    public void createSubTask(SousTache sousTache, Context context) {
+        agent.createSubTask(DeviceInfoTypes.CREE_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache, context);
 
     }
 
-    public void createSprint(Sprint sprint) {
-        agent.createSprint(DeviceInfoTypes.CREE_SPRINT, ConnectedUser.getInstance().getConnectedUser(), sprint);
+    public void createSprint(Sprint sprint, Context context) {
+        agent.createSprint(DeviceInfoTypes.CREE_SPRINT, ConnectedUser.getInstance().getConnectedUser(), sprint, context);
     }
 
-    public void createUserProject(User connectedUser, Projet project) {
-        agent.createUserProjet(DeviceInfoTypes.AJOUT_MANAGER, ConnectedUser.getInstance().getConnectedUser(), project);
+    public void createUserProject(User connectedUser, Projet project, Context context) {
+        agent.createUserProjet(DeviceInfoTypes.AJOUT_MANAGER, ConnectedUser.getInstance().getConnectedUser(), project, context);
     }
 
-    public void editProject(Projet projet) {
-        agent.editProjet(DeviceInfoTypes.MODIFIE_PROJET, ConnectedUser.getInstance().getConnectedUser(), projet);
+    public void editProject(Projet projet, Context context) {
+        agent.editProjet(DeviceInfoTypes.MODIFIE_PROJET, ConnectedUser.getInstance().getConnectedUser(), projet, context);
     }
 }
