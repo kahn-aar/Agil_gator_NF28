@@ -34,7 +34,7 @@ public class ProjetBDD extends GestionnaireBDD{
         ContentValues values = new ContentValues();
 
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
-        values.put(AndroidConstantes.COL_NAME, projet.getName());
+        values.put(AndroidConstantes.COL_NAME, projet.getTitle());
         values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
         values.put(AndroidConstantes.COL_DESC, projet.getDescription());
         values.put(AndroidConstantes.COL_CHEF, projet.getChef().getId());
@@ -47,7 +47,7 @@ public class ProjetBDD extends GestionnaireBDD{
         //La mise à jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
         //il faut simple préciser quelle livre on doit mettre à jour grâce à l'ID
         ContentValues values = new ContentValues();
-        values.put(AndroidConstantes.COL_NAME, projet.getName());
+        values.put(AndroidConstantes.COL_NAME, projet.getTitle());
         values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
         values.put(AndroidConstantes.COL_DESC, projet.getDescription());
         values.put(AndroidConstantes.COL_CHEF, projet.getChef().getId());
@@ -94,7 +94,7 @@ public class ProjetBDD extends GestionnaireBDD{
             Projet projet = new Projet();
             //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
             projet.setId(c.getInt(NUM_COL_ID));
-            projet.setName(c.getString(NUM_COL_ISBN));
+            projet.setTitle(c.getString(NUM_COL_ISBN));
             projet.setSubTitle(c.getString(NUM_COL_TITRE));
             projet.setDescription(c.getString(NUM_COL_DESCRIPTION));
 
@@ -121,7 +121,7 @@ public class ProjetBDD extends GestionnaireBDD{
         Projet projet = new Projet();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         projet.setId(c.getInt(NUM_COL_ID));
-        projet.setName(c.getString(NUM_COL_ISBN));
+        projet.setTitle(c.getString(NUM_COL_ISBN));
         projet.setSubTitle(c.getString(NUM_COL_TITRE));
         projet.setDescription(c.getString(NUM_COL_DESCRIPTION));
 

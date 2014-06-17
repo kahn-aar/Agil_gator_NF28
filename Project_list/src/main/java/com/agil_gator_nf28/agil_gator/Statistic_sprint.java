@@ -70,10 +70,10 @@ public class Statistic_sprint extends ActionBarActivity {
             Tache tache = new Tache();
             tache.setSousTaches(sousTaches);
 
-            afaire = tache.getSousTachesAFaire().size();
-            encours = tache.getSousTachesEnCours().size();
-            arelire = tache.getSousTachesARelire().size();
-            done = tache.getSousTachesDone().size();
+            afaire = tache.sousTachesAFaire().size();
+            encours = tache.sousTachesEnCours().size();
+            arelire = tache.sousTachesARelire().size();
+            done = tache.sousTachesDone().size();
 
             int[] values = new int[] {afaire,encours,arelire,done};
 

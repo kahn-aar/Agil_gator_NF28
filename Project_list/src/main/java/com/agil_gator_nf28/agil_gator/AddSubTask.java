@@ -17,6 +17,7 @@ import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.regex.Matcher;
@@ -51,7 +52,7 @@ public class AddSubTask extends ActionBarActivity {
             tacheBDD.close();
 
             TextView titreTache = (TextView) findViewById(R.id.add_sub_task_task_name);
-            titreTache.setText(tache.getNom());
+            titreTache.setText(tache.getName());
 
             final EditText titre = (EditText) findViewById(R.id.taskName);
             final EditText description = (EditText) findViewById(R.id.description_task);
@@ -81,6 +82,7 @@ public class AddSubTask extends ActionBarActivity {
                         return;
                     }
 
+
                     // Ajout de la sous tâche
                     SousTache sousTache = new SousTache();
                     sousTache.setTitre(nomText);
@@ -94,6 +96,8 @@ public class AddSubTask extends ActionBarActivity {
                     //On insère la tâche que l'on vient de créer
                     sousTacheBDD.insertSousTache(sousTache, tache);
                     sousTacheBDD.close();
+                    sousTache.setTask(tache);
+                    AgentManager.getInstance().createSubTask(sousTache);
 
                     //On retourne sur la page d'accueil
                     Intent intent = new Intent(AddSubTask.this, Page_projet.class);

@@ -77,7 +77,7 @@ public class ArchivedTacheAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.nom.setText(taches.get(position).getNom());
+        holder.nom.setText(taches.get(position).getName());
         holder.priorite.setText("Priorité : " + String.valueOf(taches.get(position).getPriorite()));
         holder.difficulte.setText("Difficulté : " +String.valueOf(taches.get(position).getDifficulte()));
 

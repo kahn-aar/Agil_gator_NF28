@@ -135,7 +135,7 @@ public class SousTacheBDD extends GestionnaireBDD {
 
         TacheBDD tacheBDD = new TacheBDD(context);
         tacheBDD.open();
-        sousTache.setTache(tacheBDD.getTacheWithId(c.getInt(NUM_COL_TACHE)));
+        sousTache.setTask(tacheBDD.getTacheWithId(c.getInt(NUM_COL_TACHE)));
         tacheBDD.close();
 
 

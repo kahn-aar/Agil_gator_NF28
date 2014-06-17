@@ -3,6 +3,9 @@ package com.agil_gator_nf28.agent.agent;
 import android.content.Context;
 
 import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.SousTaches.SousTache;
+import com.agil_gator_nf28.Sprint.Sprint;
+import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.Utils.DeviceInfoTypes;
@@ -59,7 +62,32 @@ public class AndroidUserAgent extends Agent {
 
     public void createProjet(DeviceInfoTypes creeProjet, User connectedUser, Projet projet) {
 
-        this.addBehaviour(new WaitingProjectBehaviour(DeviceInfoTypes.CREE_PROJET, ConnectedUser.getInstance().getConnectedUser(), projet));
+        this.addBehaviour(new WaitingProjectBehaviour(creeProjet, ConnectedUser.getInstance().getConnectedUser(), projet, null, null, null));
+    }
+
+    public void createAccount(DeviceInfoTypes creeCompte, User user) {
+        this.addBehaviour(new WaitingProjectBehaviour(creeCompte, user, null, null, null, null));
+    }
+
+    public void createSprint(DeviceInfoTypes creeSprint, User connectedUser, Sprint sprint) {
+        this.addBehaviour(new WaitingProjectBehaviour(creeSprint, connectedUser, null, sprint, null, null));
+    }
+
+    public void createUserProjet(DeviceInfoTypes ajoutManager, User connectedUser, Projet project) {
+        this.addBehaviour(new WaitingProjectBehaviour(ajoutManager, connectedUser, project, null, null, null));
+    }
+
+    public void createTache(DeviceInfoTypes creeTache, User connectedUser, Tache tache) {
+        this.addBehaviour(new WaitingProjectBehaviour(creeTache, connectedUser, null, null, tache, null));
+
+    }
+
+    public void createSubTask(DeviceInfoTypes creeSousTache, User connectedUser, SousTache sousTache) {
+        this.addBehaviour(new WaitingProjectBehaviour(creeSousTache, connectedUser, null, null, null, sousTache));
+    }
+
+    public void editProjet(DeviceInfoTypes modifieProjet, User connectedUser, Projet projet) {
+        this.addBehaviour(new WaitingProjectBehaviour(modifieProjet, connectedUser, projet, null, null, null));
     }
 
     /*public void askForConnexion(DeviceInfoTypes connexion, User user) {

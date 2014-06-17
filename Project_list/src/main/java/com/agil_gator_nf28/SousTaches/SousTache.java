@@ -1,6 +1,5 @@
 package com.agil_gator_nf28.SousTaches;
 
-import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.Taches.Tache;
 import com.agil_gator_nf28.User.User;
 
@@ -16,7 +15,7 @@ public class SousTache {
     private String description;
     private SousTacheEtat etat;
     private User effecteur;
-    private Tache tache;
+    private Tache task;
 
     public SousTache() {
     }
@@ -49,12 +48,12 @@ public class SousTache {
         this.etat = etat;
     }
 
-    public Tache getTache() {
-        return tache;
+    public Tache getTask() {
+        return task;
     }
 
-    public  void setTache(Tache tache) {
-        this.tache = tache;
+    public  void setTask(Tache tache) {
+        this.task = tache;
     }
 
     public User getEffecteur() {

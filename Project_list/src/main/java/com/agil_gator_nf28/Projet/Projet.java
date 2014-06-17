@@ -3,19 +3,20 @@ package com.agil_gator_nf28.Projet;
 import com.agil_gator_nf28.User.User;
 
 /**
+ * POJO gérant les projets
+ *
  * Created by Nicolas on 30/04/14.
  */
 public class Projet {
 
     private int id;
-    private String name;
+    private String title;
     private String subTitle;
     private String description;
-    private int advanced;
     private User chef;
 
-    public Projet(String name, String subTitle, String description, User chef) {
-        this.name = name;
+    public Projet(String title, String subTitle, String description, User chef) {
+        this.title = title;
         this.subTitle = subTitle;
         this.description = description;
         this.chef = chef;
@@ -23,16 +24,8 @@ public class Projet {
 
     public Projet() {}
 
-    public int getAdvanced() {
-        return advanced;
-    }
-
-    public void setAdvanced(int advanced) {
-        this.advanced = advanced;
-    }
-
-    public Projet(String name, String subTitle, String description) {
-        this.name = name;
+    public Projet(String title, String subTitle, String description) {
+        this.title = title;
         this.subTitle = subTitle;
         this.description = description;
     }
@@ -45,12 +38,12 @@ public class Projet {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getSubTitle() {

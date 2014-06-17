@@ -66,7 +66,7 @@ public class Page_projet extends ActionBarActivity {
 
             projetBDD.close();
 
-            titre.setText(project.getName());
+            titre.setText(project.getTitle());
 
             SprintBDD sprintBDD = new SprintBDD(this);
             sprintBDD.open();

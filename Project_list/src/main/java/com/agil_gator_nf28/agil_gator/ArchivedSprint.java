@@ -38,7 +38,7 @@ public class ArchivedSprint extends ActionBarActivity {
             projetBDD.close();
 
             TextView projectName = (TextView) findViewById(R.id.ProjectName);
-            projectName.setText(project.getName());
+            projectName.setText(project.getTitle());
 
             SprintBDD sprintBDD = new SprintBDD(this);
             sprintBDD.open();

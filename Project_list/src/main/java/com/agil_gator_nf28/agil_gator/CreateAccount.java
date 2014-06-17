@@ -67,6 +67,8 @@ public class CreateAccount extends ActionBarActivity {
                 }
 
                 User user = new User(emailText, nomText, prenomText);
+                user.setPassword(passwordText);
+                user.setSalt1("oksaltwaiting");
 
                 //On va lancer la création
                 AgentManager.getInstance().createAccount(user);
@@ -78,7 +80,7 @@ public class CreateAccount extends ActionBarActivity {
                 userBDD.close();*/
 
                 //On retourne sur la page d'accueil
-                Intent intent = getSupportParentActivityIntent();
+                Intent intent = new Intent(CreateAccount.this, LoginActivity.class);
                 startActivity(intent);
                 CreateAccount.this.finish();
             }

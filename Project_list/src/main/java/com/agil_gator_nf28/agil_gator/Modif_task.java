@@ -54,7 +54,7 @@ public class Modif_task extends ActionBarActivity {
 
 
             final EditText ediNomTache = (EditText) findViewById(R.id.editTextNomTache);
-            ediNomTache.setText(tache.getNom());
+            ediNomTache.setText(tache.getName());
 
             final EditText editDifficulty = (EditText) findViewById(R.id.editTextDifficulty);
             editDifficulty.setText(String.valueOf(tache.getDifficulte()));

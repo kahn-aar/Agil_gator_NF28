@@ -18,6 +18,7 @@ import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 import java.util.regex.Matcher;
@@ -50,7 +51,7 @@ public class Add_Task extends ActionBarActivity {
             sprintBDD.close();
             System.out.println("actualSprint = " + acutalSprint.getNumber());
             TextView titreProjet = (TextView) findViewById(R.id.add_task_project_name);
-            titreProjet.setText(project.getName());
+            titreProjet.setText(project.getTitle());
 
             final EditText titre = (EditText) findViewById(R.id.taskName);
             final EditText prio = (EditText) findViewById(R.id.taskPrio);
@@ -94,6 +95,9 @@ public class Add_Task extends ActionBarActivity {
 
                     // Ajout de la tâche
                     Tache tache = new Tache(nomText, descriptionText, prioValue, hardValue);
+                    tache.setSprint(acutalSprint.getId());
+                    AgentManager.getInstance().createTache(tache);
+
                     //Création d'une instance de ma classe TacheBDD
                     TacheBDD tacheBDD = new TacheBDD(Add_Task.this);
 
