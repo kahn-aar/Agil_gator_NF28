@@ -161,7 +161,6 @@ public class AgentManager {
 
     public void createSubTask(SousTache sousTache, Context context) {
         agent.createSubTask(DeviceInfoTypes.CREE_SOUS_TACHE, ConnectedUser.getInstance().getConnectedUser(), sousTache, context);
-
     }
 
     public void createSprint(Sprint sprint, Context context) {

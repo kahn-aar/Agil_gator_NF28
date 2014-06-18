@@ -50,7 +50,7 @@ public class LoginActivity extends ActionBarActivity {
                     user.setSalt1("oki");
                     if (! isConnexted) {
                         AgentManager manager = AgentManager.getInstance();
-                        manager.doConnect(LoginActivity.this, "192.168.2.75", "myAgent");
+                        manager.doConnect(LoginActivity.this, "172.25.27.205", "myAgent");
                         isConnexted = true;
                     }
                     else {
