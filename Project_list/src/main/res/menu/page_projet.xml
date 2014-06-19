@@ -45,5 +45,10 @@
         android:title="@string/archiver"
         android:orderInCategory="100"
         app:showAsAction="never" />
+
+        <item android:id="@+id/refresh"
+            android:title="rafraichir"
+            android:orderInCategory="100"
+            app:showAsAction="never" />
     </group>
 </menu>

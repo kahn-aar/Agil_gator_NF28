@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.agil_gator_nf28.SousTaches.SousTacheEtat;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
 
 /**
@@ -80,22 +79,6 @@ public class MaBaseProjet extends SQLiteOpenHelper {
 
         db.execSQL("INSERT INTO table_user values (1, \"nicolas.martinr@gmail.com\", \"Nicolas\", \"Martin\", \"nicoco\");");
         db.execSQL("INSERT INTO table_user values (2, \"lea.capgen@gmail.com\", \"Lea\", \"Capgen\", \"nicoco\");");
-
-        db.execSQL("INSERT INTO table_projet values (1, \"agilgator\", \"le dieu des agiles\", \"application android\", 1);");
-
-        db.execSQL("INSERT INTO table_sprint values (1, 1, 1);");
-
-        db.execSQL("INSERT INTO table_tache values (1, \"application\", \"creer l'application\", 900, 10, 1);");
-
-        db.execSQL("INSERT INTO table_tache values (2, \"SMA\", \"Créer le serveur\", 800, 7, 1);");
-
-        db.execSQL("INSERT INTO table_sous_tache values (1, \"vue\", \"" + SousTacheEtat.ENCOURS + "\", \"ok cool\", 1, 1);");
-
-        db.execSQL("INSERT INTO table_sous_tache values (2, \"agent\", \"" + SousTacheEtat.AFAIRE + "\", \"ok cool\", 1, null);");
-
-        db.execSQL("INSERT INTO table_sous_tache values (3, \"agent\", \"" + SousTacheEtat.ENCOURS + "\", \"ok cool\", 2, 1);");
-
-        db.execSQL("INSERT INTO table_user_projet values (1, 1, 1);");
     }
 
     @Override

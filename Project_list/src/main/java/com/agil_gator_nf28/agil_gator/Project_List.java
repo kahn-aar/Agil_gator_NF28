@@ -151,6 +151,12 @@ public class Project_List extends ActionBarActivity {
             startActivity(intent);
             return true;
         }
+        if (id == R.id.refresh) {
+            Intent intent = new Intent(this, Project_List.class);
+            startActivity(intent);
+            this.finish();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

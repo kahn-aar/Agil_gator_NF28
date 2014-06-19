@@ -91,19 +91,21 @@ public class WaitingAnswerBehaviour extends CyclicBehaviour {
                     case IS_USER:
                         break;
                     case CREE_PROJET:
-                        ProjetBDD projetBDD = new ProjetBDD(context);
-                        projetBDD.open();
-                        Projet projet = dataMessage.getProjet();
-                        projetBDD.insertProjetWithId(projet);
-                        projetBDD.close();
-                        UserProjetBDD userProjetBDD = new UserProjetBDD(context);
-                        userProjetBDD.open();
-                        userProjetBDD.insertProjet(projet.getChef(), projet.getId());
-                        userProjetBDD.close();
-                        Sprint sprint = new Sprint();
-                        sprint.setProject(dataMessage.getProjet().getId());
-                        AgentManager.getInstance().createSprint(sprint,context);
-                        AgentManager.getInstance().createUserProject(projet.getChef(), projet, context);
+                        if (dataMessage.getProjet().getChef().getId() == ConnectedUser.getInstance().getConnectedUser().getId()) {
+                            ProjetBDD projetBDD = new ProjetBDD(context);
+                            projetBDD.open();
+                            Projet projet = dataMessage.getProjet();
+                            projetBDD.insertProjetWithId(projet);
+                            projetBDD.close();
+                            UserProjetBDD userProjetBDD = new UserProjetBDD(context);
+                            userProjetBDD.open();
+                            userProjetBDD.insertProjet(projet.getChef(), projet.getId());
+                            userProjetBDD.close();
+                            Sprint sprint = new Sprint();
+                            sprint.setProject(dataMessage.getProjet().getId());
+                            AgentManager.getInstance().createSprint(sprint,context);
+                            AgentManager.getInstance().createUserProject(projet.getChef(), projet, context);
+                        }
 
                         break;
                     case CREE_COMPTE:
@@ -123,7 +125,7 @@ public class WaitingAnswerBehaviour extends CyclicBehaviour {
                     case CREE_TACHE:
                         TacheBDD tacheBDD = new TacheBDD(context);
                         tacheBDD.open();
-                        tacheBDD.insertTache(dataMessage.getTache(),dataMessage.getTache().getSprint());
+                        tacheBDD.insertTacheWithId(dataMessage.getTache(),dataMessage.getTache().getSprint());
                         tacheBDD.close();
                         break;
 

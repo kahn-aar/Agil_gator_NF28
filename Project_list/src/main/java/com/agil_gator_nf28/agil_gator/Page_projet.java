@@ -175,6 +175,13 @@ public class Page_projet extends ActionBarActivity {
             startActivity(intent);
             return true;
         }
+        if (id == R.id.refresh) {
+            Intent intent = new Intent(this, Page_projet.class);
+            intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(project.getId()));
+            startActivity(intent);
+            this.finish();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

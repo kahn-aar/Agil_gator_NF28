@@ -12,4 +12,9 @@
         android:title="@string/archives"
         android:orderInCategory="110"
         app:showAsAction="never" />
+
+    <item android:id="@+id/refresh"
+        android:title="rafraichir"
+        android:orderInCategory="120"
+        app:showAsAction="never" />
 </menu>

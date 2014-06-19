@@ -54,7 +54,7 @@ public class LoginActivity extends ActionBarActivity {
                         AgentManager manager = AgentManager.getInstance();
                         Random randomgen = new Random();
                         int randomint = randomgen.nextInt(100);
-                        manager.doConnect(LoginActivity.this, "192.168.43.162", "myAgent" + randomint);
+                        manager.doConnect(LoginActivity.this, "172.25.27.53", "myAgent" + randomint);
                         isConnexted = true;
                     }
                     else {
