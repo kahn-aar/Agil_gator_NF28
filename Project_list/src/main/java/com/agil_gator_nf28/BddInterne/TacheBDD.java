@@ -197,5 +197,21 @@ public class TacheBDD extends GestionnaireBDD {
         sousTacheBDD.close();
         return sub;
     }
+
+    public long insertTacheWithId(Tache tache, int sprintid) {
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
+        values.put(AndroidConstantes.COL_TACHE_ID, tache.getId());
+        values.put(AndroidConstantes.COL_TACHE_NAME, tache.getName());
+        values.put(AndroidConstantes.COL_TACHE_DESCRIPTION, tache.getDescription());
+        values.put(AndroidConstantes.COL_TACHE_PRIORITE, tache.getPriorite());
+        values.put(AndroidConstantes.COL_TACHE_DIFFICULTE, tache.getDifficulte());
+        values.put(AndroidConstantes.COL_TACHE_SPRINT, sprintid);
+
+        //on insère l'objet dans la BDD via le ContentValues
+        return bdd.insert(AndroidConstantes.TABLE_TACHE, null, values);
+    }
 }
 

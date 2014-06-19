@@ -9,11 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.agil_gator_nf28.BddInterne.ProjetBDD;
-import com.agil_gator_nf28.BddInterne.SprintBDD;
-import com.agil_gator_nf28.BddInterne.UserProjetBDD;
 import com.agil_gator_nf28.Projet.Projet;
-import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.User.ConnectedUser;
 import com.agil_gator_nf28.agent.manager.AgentManager;
 
@@ -61,7 +57,7 @@ public class AddProject extends ActionBarActivity {
                 Projet projet = new Projet(nomText, subText, descText, ConnectedUser.getInstance().getConnectedUser());
 
                 AgentManager.getInstance().createProject(projet, AddProject.this);
-
+/*
                 ProjetBDD projetBdd = new ProjetBDD(AddProject.this);
                 projetBdd.open();
                 long projectId = projetBdd.insertProjet(projet);
@@ -83,7 +79,7 @@ public class AddProject extends ActionBarActivity {
                 userProjetBDD.close();
 
                 AgentManager.getInstance().createUserProject(ConnectedUser.getInstance().getConnectedUser(), projet, AddProject.this);
-
+*/
                 //On retourne sur la page d'accueil
                 Intent intent = new Intent(AddProject.this, Project_List.class);
                 startActivity(intent);

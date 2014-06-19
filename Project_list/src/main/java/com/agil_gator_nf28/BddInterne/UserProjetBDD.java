@@ -69,7 +69,7 @@ public class UserProjetBDD extends GestionnaireBDD {
             projetBDD.open();
             Projet projet = projetBDD.getProjetById(id);
             projetBDD.close();
-
+            System.out.println(id);
             projets.add(projet);
             c.moveToNext();
         }

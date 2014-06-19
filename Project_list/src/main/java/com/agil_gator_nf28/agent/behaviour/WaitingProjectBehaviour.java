@@ -33,6 +33,7 @@ public class WaitingProjectBehaviour extends Behaviour {
     String conversationId;
     Sprint sprint;
     SousTache sousTache;
+    private User member = null;
     private Context context;
     int step = 0;
 
@@ -48,6 +49,17 @@ public class WaitingProjectBehaviour extends Behaviour {
         this.context = context;
     }
 
+    public WaitingProjectBehaviour(DeviceInfoTypes ajoutMembre, String conversationId, User connectedUser, User user, Projet projet, Sprint sprint, Tache tache, SousTache sousTache, Context context) {
+        this.demande = ajoutMembre;
+        this.user = connectedUser;
+        this.projet = projet;
+        this.conversationId  = conversationId;
+        this.sprint = sprint;
+        this.tache = tache;
+        this.sousTache = sousTache;
+        this.context = context;
+        this.member = user;
+    }
 
 
     @Override
@@ -61,6 +73,7 @@ public class WaitingProjectBehaviour extends Behaviour {
         dm.setSprint(sprint);
         dm.setTache(tache);
         dm.setSousTache(sousTache);
+        dm.setMember(member);
 
         // construction de l'acl message
         ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
@@ -77,25 +90,6 @@ public class WaitingProjectBehaviour extends Behaviour {
 
         myAgent.send(message);
 
-        switch (demande) {
-
-            case CREE_COMPTE:
-                myAgent.addBehaviour(new WaitingAnswerBehaviour(projet, conversationId, context));
-                break;
-            case CREE_PROJET:
-                myAgent.addBehaviour(new WaitingAnswerBehaviour(projet, conversationId, context));
-                break;
-            case CREE_SPRINT:
-                myAgent.addBehaviour(new WaitingAnswerBehaviour(sprint, conversationId, context));
-                break;
-            case CREE_TACHE:
-                myAgent.addBehaviour(new WaitingAnswerBehaviour(tache, conversationId, context));
-                break;
-            case CREE_SOUS_TACHE:
-                myAgent.addBehaviour(new WaitingAnswerBehaviour(sousTache, conversationId, context));
-                break;
-            default:break;
-        }
         step = 1;
     }
 
@@ -115,10 +109,8 @@ public class WaitingProjectBehaviour extends Behaviour {
 
     @Override
     public boolean done() {
-        if (step == 1 ) {
-            return true;
-        }
-        return false;
+
+        return step == 1;
 
     }
 }

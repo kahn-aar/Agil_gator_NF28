@@ -2,10 +2,6 @@ package com.agil_gator_nf28.agent.agent;
 
 import android.content.Context;
 
-
-import com.agil_gator_nf28.SousTaches.SousTache;
-import com.agil_gator_nf28.Taches.Tache;
-import com.agil_gator_nf28.agent.behaviour.SendNotificationToLiaison;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
 import com.agil_gator_nf28.Sprint.Sprint;
@@ -42,8 +38,8 @@ public class AndroidUserAgent extends Agent {
         myManager.setAgent(this);
         super.setup();
 
-        //addBehaviour(new ReceptionistBehaviour());
-        //addBehaviour(new SendNotificationToLiaison());
+        this.addBehaviour(new WaitingAnswerBehaviour(context));
+
 
         //Enregistrement de l'agent auprès du DF
         DFAgentDescription dfd = new DFAgentDescription();
@@ -79,7 +75,6 @@ public class AndroidUserAgent extends Agent {
     public void createProjet(DeviceInfoTypes creeProjet, User connectedUser, Projet projet, Context context) {
 
         this.addBehaviour(new WaitingProjectBehaviour(creeProjet, generateConversationId(), ConnectedUser.getInstance().getConnectedUser(), projet, null, null, null, context));
-        this.addBehaviour(new WaitingAnswerBehaviour(projet, generateConversationId(), context));
     }
 
     public void createAccount(DeviceInfoTypes creeCompte, User user, Context context) {
@@ -97,7 +92,6 @@ public class AndroidUserAgent extends Agent {
 
     public void createTache(DeviceInfoTypes creeTache, User connectedUser, Tache tache, Context context) {
         this.addBehaviour(new WaitingProjectBehaviour(creeTache, generateConversationId(), connectedUser, null, null, tache, null, context));
-
     }
 
     public void createSubTask(DeviceInfoTypes creeSousTache, User connectedUser, SousTache sousTache, Context context) {
@@ -138,6 +132,17 @@ public class AndroidUserAgent extends Agent {
 
     public void ajoutUser(DeviceInfoTypes ajoutUser, User connectedUser, SousTache sousTache,Context context){
         this.addBehaviour(new WaitingProjectBehaviour(ajoutUser, generateConversationId(),connectedUser, null, null, null, sousTache,context));
+    }
+
+    public void addUserToProject(DeviceInfoTypes ajoutMembre, Projet projet, User user, User connectedUser, Context context) {
+        this.addBehaviour(new WaitingProjectBehaviour(ajoutMembre, generateConversationId(), connectedUser, user, projet, null, null, null, context));
+
+
+    }
+
+    public void selectLastSprint(DeviceInfoTypes selectLastSprint, User connectedUser, Projet projet, Context context) {
+        this.addBehaviour(new WaitingProjectBehaviour(selectLastSprint, generateConversationId(), connectedUser, projet, null, null, null, context));
+
     }
 
 

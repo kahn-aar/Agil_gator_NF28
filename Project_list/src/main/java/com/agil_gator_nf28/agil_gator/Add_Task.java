@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
 import com.agil_gator_nf28.BddInterne.SprintBDD;
-import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.Sprint.Sprint;
 import com.agil_gator_nf28.Taches.Tache;
@@ -97,15 +96,6 @@ public class Add_Task extends ActionBarActivity {
                     Tache tache = new Tache(nomText, descriptionText, prioValue, hardValue);
                     tache.setSprint(acutalSprint.getId());
                     AgentManager.getInstance().createTache(tache, Add_Task.this);
-
-                    //Création d'une instance de ma classe TacheBDD
-                    TacheBDD tacheBDD = new TacheBDD(Add_Task.this);
-
-                    //On ouvre la base de données pour écrire dedans
-                    tacheBDD.open();
-                    //On insère la tâche que l'on vient de créer
-                    tacheBDD.insertTache(tache, acutalSprint);
-                    tacheBDD.close();
 
                     //On retourne sur la page d'accueil
                     Intent intent = new Intent(Add_Task.this, Page_projet.class);

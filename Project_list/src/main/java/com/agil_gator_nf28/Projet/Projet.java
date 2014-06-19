@@ -13,6 +13,8 @@ public class Projet {
     private String title;
     private String subTitle;
     private String description;
+    private String creation_date;
+    private String last_update;
     private User chef;
 
     public Projet(String title, String subTitle, String description, User chef) {
@@ -68,5 +70,21 @@ public class Projet {
 
     public void setChef(User chef) {
         this.chef = chef;
+    }
+
+    public String getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(String creation_date) {
+        this.creation_date = creation_date;
+    }
+
+    public String getLast_update() {
+        return last_update;
+    }
+
+    public void setLast_update(String last_update) {
+        this.last_update = last_update;
     }
 }

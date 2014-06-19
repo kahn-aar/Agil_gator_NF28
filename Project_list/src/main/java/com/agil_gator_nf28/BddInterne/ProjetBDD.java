@@ -33,6 +33,7 @@ public class ProjetBDD extends GestionnaireBDD{
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
 
+
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_NAME, projet.getTitle());
         values.put(AndroidConstantes.COL_SUBTITLE, projet.getSubTitle());
@@ -147,6 +148,10 @@ public class ProjetBDD extends GestionnaireBDD{
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
 
+        System.out.println("titre = " + projet.getTitle());
+        System.out.println("sub = " + projet.getSubTitle());
+        System.out.println("desc = " + projet.getDescription());
+        System.out.println("chef = " + projet.getChef().getEmail());
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(AndroidConstantes.COL_ID, projet.getId());
         values.put(AndroidConstantes.COL_NAME, projet.getTitle());

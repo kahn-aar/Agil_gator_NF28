@@ -1,7 +1,5 @@
 package com.agil_gator_nf28.constantes;
 
-import com.agil_gator_nf28.SousTaches.SousTache;
-
 /**
  * Ensemble des constantes du projet
  *
@@ -27,7 +25,7 @@ public class AndroidConstantes {
     //BDD
     public static final String NOM_BDD = "agilgator2.db";
 
-    public static final int VERSION_BDD = 35;
+    public static final int VERSION_BDD = 41;
 
     //Table Projet
     public static final String TABLE_PROJET = "table_projet";

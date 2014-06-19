@@ -124,7 +124,7 @@ public class SousTacheAdapter extends ArrayAdapter<SousTache> {
 
                 holderdoing.nom.setText(taches.get(position).getTitre());
                 if(taches.get(position).getEffecteur() != null) {
-                    holderdoing.tag.setText(taches.get(position).getEffecteur().getTag());
+                    holderdoing.tag.setText(taches.get(position).getEffecteur().generateTag());
                 }
                 break;
         }

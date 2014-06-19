@@ -17,7 +17,7 @@ public class MaBaseProjet extends SQLiteOpenHelper {
 
 
     private static final String CREATE_BDD = "CREATE TABLE " + AndroidConstantes.TABLE_PROJET + " ("
-            + AndroidConstantes.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + AndroidConstantes.COL_ID + " INTEGER PRIMARY KEY, "
             + AndroidConstantes.COL_NAME + " TEXT NOT NULL, "
             + AndroidConstantes.COL_SUBTITLE + " TEXT NOT NULL, " + AndroidConstantes.COL_DESC + " TEXT,"
             + AndroidConstantes.COL_CHEF+" INTEGER NOT NULL, "
@@ -79,6 +79,7 @@ public class MaBaseProjet extends SQLiteOpenHelper {
         System.out.println("création de la table");
 
         db.execSQL("INSERT INTO table_user values (1, \"nicolas.martinr@gmail.com\", \"Nicolas\", \"Martin\", \"nicoco\");");
+        db.execSQL("INSERT INTO table_user values (2, \"lea.capgen@gmail.com\", \"Lea\", \"Capgen\", \"nicoco\");");
 
         db.execSQL("INSERT INTO table_projet values (1, \"agilgator\", \"le dieu des agiles\", \"application android\", 1);");
 

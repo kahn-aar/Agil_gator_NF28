@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.agil_gator_nf28.BddInterne.UserProjetBDD;
+import com.agil_gator_nf28.BddInterne.ProjetBDD;
+import com.agil_gator_nf28.Projet.Projet;
+import com.agil_gator_nf28.agent.manager.AgentManager;
 import com.agil_gator_nf28.agil_gator.Page_projet;
 import com.agil_gator_nf28.agil_gator.R;
 import com.agil_gator_nf28.constantes.AndroidConstantes;
@@ -84,10 +86,16 @@ public class UserAdapter extends ArrayAdapter<User> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserProjetBDD userProjetBDD = new UserProjetBDD(getContext());
+                /*UserProjetBDD userProjetBDD = new UserProjetBDD(getContext());
                 userProjetBDD.open();
                 userProjetBDD.insertProjet(taches.get(pos), (long) projectId);
-                userProjetBDD.close();
+                userProjetBDD.close();*/
+
+                ProjetBDD projetBDD = new ProjetBDD(getContext());
+                projetBDD.open();
+                Projet projet = projetBDD.getProjetById(projectId);
+                projetBDD.close();
+                AgentManager.getInstance().addUserToProject(projet, taches.get(pos), getContext());
 
                 Intent intent = new Intent(getContext(), Page_projet.class);
                 intent.putExtra(AndroidConstantes.PROJECT_ID, String.valueOf(projectId));

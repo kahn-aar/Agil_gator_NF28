@@ -2,6 +2,8 @@ package com.agil_gator_nf28.User;
 
 import com.agil_gator_nf28.Projet.Projet;
 
+import jade.core.AID;
+
 /**
  * Classe gérant les utilisateurs
  *
@@ -10,6 +12,7 @@ import com.agil_gator_nf28.Projet.Projet;
 public class User {
 
     private int id;
+    private AID aid;
     private String email;
     private String name;
     private String firstname;
@@ -50,7 +53,7 @@ public class User {
         this.firstname = firstname;
     }
 
-    public String getTag() {
+    public String generateTag() {
         String tag = firstname.substring(0,1) + name.substring(0,2);
         return tag;
     }
@@ -81,5 +84,13 @@ public class User {
 
     public boolean isChef(Projet project) {
         return id == project.getChef().getId();
+    }
+
+    public AID getAid() {
+        return aid;
+    }
+
+    public void setAid(AID aid) {
+        this.aid = aid;
     }
 }

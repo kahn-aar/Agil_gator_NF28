@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.agil_gator_nf28.BddInterne.ProjetBDD;
-import com.agil_gator_nf28.BddInterne.SousTacheBDD;
 import com.agil_gator_nf28.BddInterne.TacheBDD;
 import com.agil_gator_nf28.Projet.Projet;
 import com.agil_gator_nf28.SousTaches.SousTache;
@@ -88,15 +87,9 @@ public class AddSubTask extends ActionBarActivity {
                     sousTache.setTitre(nomText);
                     sousTache.setEtat(SousTacheEtat.AFAIRE);
                     sousTache.setDescription(descriptionText);
-                    //Création d'une instance de ma classe TacheBDD
-                    SousTacheBDD sousTacheBDD = new SousTacheBDD(AddSubTask.this);
-
-                    //On ouvre la base de données pour écrire dedans
-                    sousTacheBDD.open();
-                    //On insère la tâche que l'on vient de créer
-                    sousTacheBDD.insertSousTache(sousTache, tache);
-                    sousTacheBDD.close();
                     sousTache.setTask(tache);
+                    //Création d'une instance de ma classe TacheBDD
+
                     AgentManager.getInstance().createSubTask(sousTache, AddSubTask.this);
 
                     //On retourne sur la page d'accueil

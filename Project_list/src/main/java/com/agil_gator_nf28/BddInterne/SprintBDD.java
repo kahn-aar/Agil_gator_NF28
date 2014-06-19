@@ -194,4 +194,17 @@ public class SprintBDD extends GestionnaireBDD {
         //On retourne le projet
         return sousTaches;
     }
+
+    public void insertSprintWithId(Sprint sprint, int project) {
+        //Création d'un ContentValues (fonctionne comme une HashMap)
+        ContentValues values = new ContentValues();
+
+        //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
+        values.put(AndroidConstantes.COL_SPRINT_ID, sprint.getId());
+        values.put(AndroidConstantes.COL_SPRINT_NUMBER, sprint.getNumber());
+        values.put(AndroidConstantes.COL_SPRINT_PROJET, project);
+
+        //on insère l'objet dans la BDD via le ContentValues
+        bdd.insert(AndroidConstantes.TABLE_SPRINT, null, values);
+    }
 }

@@ -105,7 +105,7 @@ public class TacheAdapter extends ArrayAdapter<Tache> {
         holder.nom.setText(taches.get(position).getName());
         holder.priorite.setText("priorité = " + taches.get(position).getPriorite());
         holder.difficulte.setText("difficulté = " + taches.get(position).getDifficulte());
-        holder.notifs.setText("" + taches.get(position).getNotifications());
+        holder.notifs.setText("0");
 
         // On va créer les sous taches liés à la tache
         holder.aFaireGrid = (GridView)convertView.findViewById(R.id.gridAFaire);

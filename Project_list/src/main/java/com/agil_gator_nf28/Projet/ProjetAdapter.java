@@ -99,6 +99,7 @@ public class ProjetAdapter extends ArrayAdapter<Projet> {
         }
         // On défini ici le texte que doit contenir chacun des TextView
         // Le premier affichera le numéro de l'élément (numéro de ligne)
+        System.out.println(projets.get(position).getTitle());
         holder.titre.setText(projets.get(position).getTitle());
         // Le second affichera l'élément
         holder.sub.setText(projets.get(position).getSubTitle());

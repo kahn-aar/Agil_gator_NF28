@@ -30,7 +30,7 @@ public class Tache {
         this.sousTaches = sousTaches;
         this.priorite = priorite;
         this.difficulte = difficulte;
-        this.notifications = notifications;
+        //this.notifications = notifications;
     }
 
     public Tache(String nom, int priorite, int difficulte) {
@@ -51,7 +51,7 @@ public class Tache {
         this.description = description;
         this.difficulte = difficulte;
         this.priorite = priorite;
-        this.notifications = notifications;
+        //this.notifications = notifications;
     }
 
     //Getters and setters

@@ -13,6 +13,8 @@ import com.agil_gator_nf28.BddInterne.UserBDD;
 import com.agil_gator_nf28.User.User;
 import com.agil_gator_nf28.agent.manager.AgentManager;
 
+import java.util.Random;
+
 public class LoginActivity extends ActionBarActivity {
 
     boolean isConnexted = false;
@@ -50,7 +52,9 @@ public class LoginActivity extends ActionBarActivity {
                     user.setSalt1("oki");
                     if (! isConnexted) {
                         AgentManager manager = AgentManager.getInstance();
-                        manager.doConnect(LoginActivity.this, "172.25.27.205", "myAgent");
+                        Random randomgen = new Random();
+                        int randomint = randomgen.nextInt(100);
+                        manager.doConnect(LoginActivity.this, "192.168.43.162", "myAgent" + randomint);
                         isConnexted = true;
                     }
                     else {

@@ -198,4 +198,13 @@ public class AgentManager {
     public void archiveSprint(Sprint sprint,Context context){
         agent.archiveSprint(DeviceInfoTypes.ARCHIVER_SPRINT, ConnectedUser.getInstance().getConnectedUser(), sprint,context);
     }
+
+    public void addUserToProject(Projet projet, User user, Context context) {
+        agent.addUserToProject(DeviceInfoTypes.AJOUT_MEMBRE, projet, user, ConnectedUser.getInstance().getConnectedUser(), context);
+    }
+
+    public void selectLastSprint(Projet projet, Context context) {
+        agent.selectLastSprint(DeviceInfoTypes.SELECT_LAST_SPRINT, ConnectedUser.getInstance().getConnectedUser(), projet, context);
+
+    }
 }
